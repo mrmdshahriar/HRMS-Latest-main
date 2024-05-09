@@ -1,0 +1,180 @@
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.dll.config
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.pdb
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.CoreCompileInputs.cache
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.CopyComplete
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.pdb
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.AssemblyReference.cache
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.dll.config
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\Newtonsoft.Json.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Net.Http.Formatting.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\Newtonsoft.Json.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Net.Http.Formatting.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.CoreCompileInputs.cache
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.CopyComplete
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.AssemblyReference.cache
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Data.SqlClient.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Data.SqlClient.xml
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.dll.config
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.dll
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.pdb
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.dll
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.dll
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.dll
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Data.SqlClient.dll
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.xml
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.pdb
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.xml
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.pdb
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.xml
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Data.SqlClient.xml
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.AssemblyReference.cache
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.CoreCompileInputs.cache
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.CopyComplete
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.dll
+C:\Users\prince\Desktop\Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.pdb
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.dll.config
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.dll
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.pdb
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.dll
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.dll
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.dll
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Data.SqlClient.dll
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.xml
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.pdb
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.xml
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.pdb
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.xml
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Data.SqlClient.xml
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.AssemblyReference.cache
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.CoreCompileInputs.cache
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.CopyComplete
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.dll
+C:\Users\prince\Desktop\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.pdb
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.dll.config
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.pdb
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\Newtonsoft.Json.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Data.SqlClient.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Net.Http.Formatting.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.pdb
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.pdb
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\Newtonsoft.Json.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Data.SqlClient.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Net.Http.Formatting.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.AssemblyReference.cache
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.CoreCompileInputs.cache
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.CopyComplete
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.pdb
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.dll.config
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.dll
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.pdb
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.dll
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.dll
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.dll
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\Newtonsoft.Json.dll
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Data.SqlClient.dll
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Net.Http.Formatting.dll
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.xml
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.pdb
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.xml
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.pdb
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.xml
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\Newtonsoft.Json.xml
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Data.SqlClient.xml
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Net.Http.Formatting.xml
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.AssemblyReference.cache
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.CoreCompileInputs.cache
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.CopyComplete
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.dll
+D:\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.pdb
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.dll.config
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.dll
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\TalenBAL.pdb
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.dll
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.dll
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.dll
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\Newtonsoft.Json.dll
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Data.SqlClient.dll
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Net.Http.Formatting.dll
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.xml
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.pdb
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.xml
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.pdb
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\ExcelDataReader.DataSet.xml
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\Newtonsoft.Json.xml
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Data.SqlClient.xml
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Debug\System.Net.Http.Formatting.xml
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.CoreCompileInputs.cache
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.CopyComplete
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.dll
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.pdb
+D:\My Data\Talents Fusion\HRMS Merge_New1\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Debug\TalenBAL.csproj.AssemblyReference.cache
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\TalenBAL.dll.config
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\TalenBAL.dll
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\TalenBAL.pdb
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\EntityFramework.dll
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\EntityFramework.SqlServer.dll
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\ExcelDataReader.DataSet.dll
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\ExcelDataReader.dll
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\Newtonsoft.Json.dll
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\System.Data.SqlClient.dll
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\System.Net.Http.Formatting.dll
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\EntityFramework.xml
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\EntityFramework.SqlServer.xml
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\ExcelDataReader.pdb
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\ExcelDataReader.xml
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\ExcelDataReader.DataSet.pdb
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\ExcelDataReader.DataSet.xml
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\Newtonsoft.Json.xml
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\System.Data.SqlClient.xml
+J:\HRMS-Latest-main\TalenBAL\bin\Debug\System.Net.Http.Formatting.xml
+J:\HRMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.csproj.AssemblyReference.cache
+J:\HRMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.csproj.CoreCompileInputs.cache
+J:\HRMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.csproj.CopyComplete
+J:\HRMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.dll
+J:\HRMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.pdb

@@ -1,0 +1,488 @@
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\HRMS.dll.config
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\HRMS.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\HRMS.pdb
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\csc.exe
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\csc.exe.config
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\csc.rsp
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\csi.exe
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\csi.exe.config
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\csi.rsp
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.AppContext.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Collections.Immutable.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Console.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Globalization.Calendars.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.Compression.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.FileSystem.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Net.Http.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Net.Sockets.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Reflection.Metadata.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.ValueTuple.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.XPath.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\vbc.exe
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\vbc.exe.config
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\vbc.rsp
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\VBCSCompiler.exe
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\roslyn\VBCSCompiler.exe.config
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Antlr3.Runtime.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\BouncyCastle.Crypto.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\EntityFramework.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\EntityFramework.SqlServer.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\itextsharp.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\LinqToExcel.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Google.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Web.Infrastructure.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Newtonsoft.Json.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Owin.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Remotion.Linq.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\System.Web.Helpers.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\System.Web.Mvc.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\System.Web.Optimization.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\System.Web.Razor.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Deployment.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Razor.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\WebGrease.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\itextsharp.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\LinqToExcel.pdb
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Remotion.Linq.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\System.Web.Helpers.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\System.Web.Mvc.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\System.Web.Optimization.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\System.Web.Razor.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Deployment.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Razor.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Newtonsoft.Json.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Antlr3.Runtime.pdb
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\EntityFramework.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\EntityFramework.SqlServer.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Google.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\obj\Release\HRMS.csproj.AssemblyReference.cache
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\obj\Release\HRMS.csproj.CoreCompileInputs.cache
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\obj\Release\HRMS.csproj.CopyComplete
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\obj\Release\HRMS.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Project Repository\HRMS\HRMS\obj\Release\HRMS.pdb
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\HRMS.dll.config
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\HRMS.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\HRMS.pdb
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csc.exe
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csc.exe.config
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csc.rsp
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csi.exe
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csi.exe.config
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csi.rsp
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.AppContext.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Collections.Immutable.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Console.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Globalization.Calendars.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.Compression.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.FileSystem.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Net.Http.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Net.Sockets.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Reflection.Metadata.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.ValueTuple.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.XPath.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\vbc.exe
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\vbc.exe.config
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\vbc.rsp
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\VBCSCompiler.exe
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\VBCSCompiler.exe.config
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Antlr3.Runtime.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\BouncyCastle.Crypto.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\EntityFramework.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\EntityFramework.SqlServer.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\itextsharp.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\LinqToExcel.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Azure.Insights.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Google.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Web.Infrastructure.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Newtonsoft.Json.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Owin.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Remotion.Linq.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Helpers.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Mvc.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Optimization.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Razor.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Deployment.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Razor.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\WebGrease.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\itextsharp.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\LinqToExcel.pdb
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Azure.Insights.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Remotion.Linq.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Helpers.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Mvc.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Optimization.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Razor.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Deployment.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Razor.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Newtonsoft.Json.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Antlr3.Runtime.pdb
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\EntityFramework.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\EntityFramework.SqlServer.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Google.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.csproj.AssemblyReference.cache
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.csproj.CoreCompileInputs.cache
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.csproj.CopyComplete
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.dll
+E:\Upwork Task 2022\Umair Durani PK HRMS\Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\HRMS.dll.config
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\HRMS.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\HRMS.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csc.exe
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csc.exe.config
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csc.rsp
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csi.exe
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csi.exe.config
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csi.rsp
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.AppContext.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Collections.Immutable.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Console.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Globalization.Calendars.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.Compression.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.FileSystem.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Net.Http.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Net.Sockets.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Reflection.Metadata.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.ValueTuple.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.XPath.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\vbc.exe
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\vbc.exe.config
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\vbc.rsp
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\VBCSCompiler.exe
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\VBCSCompiler.exe.config
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Antlr3.Runtime.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\BouncyCastle.Crypto.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\EntityFramework.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\EntityFramework.SqlServer.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\itextsharp.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\LinqToExcel.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Azure.Insights.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Google.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Web.Infrastructure.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Newtonsoft.Json.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Owin.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Remotion.Linq.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Helpers.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Mvc.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Optimization.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Razor.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Deployment.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Razor.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\WebGrease.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\itextsharp.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\LinqToExcel.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Azure.Insights.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Remotion.Linq.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Helpers.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Mvc.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Optimization.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Razor.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Deployment.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Razor.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Newtonsoft.Json.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Antlr3.Runtime.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\EntityFramework.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\EntityFramework.SqlServer.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Google.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.csproj.AssemblyReference.cache
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.csproj.CoreCompileInputs.cache
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.csproj.CopyComplete
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\TalenBAL.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\TalenBAL.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\TalenBAL.dll.config
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Net.Http.Formatting.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\ExcelDataReader.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\ExcelDataReader.DataSet.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\System.Net.Http.Formatting.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\ExcelDataReader.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\ExcelDataReader.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\ExcelDataReader.DataSet.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\HRMS\bin\ExcelDataReader.DataSet.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\HRMS.dll.config
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\HRMS.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\HRMS.pdb
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csc.exe
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csc.exe.config
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csc.rsp
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csi.exe
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csi.exe.config
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\csi.rsp
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.AppContext.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Collections.Immutable.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Console.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Globalization.Calendars.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.Compression.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.FileSystem.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Net.Http.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Net.Sockets.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Reflection.Metadata.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.ValueTuple.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.XPath.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\vbc.exe
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\vbc.exe.config
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\vbc.rsp
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\VBCSCompiler.exe
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\roslyn\VBCSCompiler.exe.config
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Antlr3.Runtime.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\BouncyCastle.Crypto.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\EntityFramework.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\EntityFramework.SqlServer.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\itextsharp.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\LinqToExcel.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Azure.Insights.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Google.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Web.Infrastructure.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Newtonsoft.Json.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Owin.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Remotion.Linq.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Helpers.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Mvc.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Optimization.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Razor.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Deployment.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Razor.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\TalenBAL.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\WebGrease.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Net.Http.Formatting.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\ExcelDataReader.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\ExcelDataReader.DataSet.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\TalenBAL.pdb
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\TalenBAL.dll.config
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\itextsharp.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\LinqToExcel.pdb
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Azure.Insights.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Remotion.Linq.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Helpers.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Mvc.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Optimization.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.Razor.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Deployment.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Web.WebPages.Razor.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Newtonsoft.Json.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Antlr3.Runtime.pdb
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\EntityFramework.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\EntityFramework.SqlServer.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Google.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\System.Net.Http.Formatting.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\ExcelDataReader.pdb
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\ExcelDataReader.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\ExcelDataReader.DataSet.pdb
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\bin\ExcelDataReader.DataSet.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.csproj.AssemblyReference.cache
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.csproj.CoreCompileInputs.cache
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.csproj.CopyComplete
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\HRMS\obj\Release\HRMS.pdb

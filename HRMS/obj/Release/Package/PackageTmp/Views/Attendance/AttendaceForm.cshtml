@@ -1,0 +1,229 @@
+﻿
+@{
+    ViewBag.Title = "AttendaceForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>HiliteUI Admin</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/Content/Assets/css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/Content/Assets/images/favicon.png" />
+    <script src="~/lib/Microsoft.jQuery.Unobtrusive.Ajax/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</head>
+
+<style>
+    .ChkBox {
+        width: 43px;
+        height: 20px;
+    }
+</style>
+<div class="row">
+
+    <div class="container">
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title">
+
+                                    <h4>Manual Attendace</h4>
+                                </div><br />
+
+                                <form class="cmxform" id="commentForm" method="get" action="#">
+                                    <fieldset>
+                                        <div class="row">
+
+                                            <div class="form-group col-md-3" id="Employeeddl" style="display:block">
+                                                <label for="cname">Employee</label>
+                                                @Html.DropDownList("EmployeeDLL", new SelectList(ViewBag.EmployeeDDl, "Id", "FirstName"), "--Select Employee--", new { @style = "color:black;", @class = "form-control", id = "ddlEmployee" })
+                                            </div>
+
+                                            <div class="form-group col-md-3">
+                                                <label for="cemail">Date</label>
+                                                <input id="AttendanceDate" class="form-control" type="date" @*onchange="DateChange()"*@ name="date" required>
+                                            </div>
+
+                                            <div class="form-group col-md-3">
+                                                <label for="ccomment">Time In</label>
+                                                <input id="TimeIn" class="form-control attendanceTime" type="time" name="TimeIn" required>
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label for="ccomment">Time Out</label>
+                                                <input id="TimeOut" class="form-control attendanceTime" type="time" name="TimeOut" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-md-2">
+                                                <label for="cname">Is Present</label><br />
+
+                                                <input type="checkbox" id="IsPresent" name="IsPresent" class="ChkBox">
+                                            </div>
+                                            <div class="form-group col-md-2">
+                                                <label for="cname">Is Absent</label><br />
+                                                <input type="checkbox" id="IsAbsent" name="IsAbsent" class="ChkBox spDays">
+                                            </div>
+
+                                            <div class="form-group col-md-2">
+                                                <label for="cname">Is Half-Day</label><br />
+                                                <input type="checkbox" id="IsHalfDay" name="IsHalfDay" class="ChkBox">
+                                            </div>
+                                            <div class="form-group col-md-2">
+                                                <label for="cname">Is Late</label><br />
+                                                <input type="checkbox" id="IsLate" class="ChkBox" name="IsLate">
+
+                                            </div>
+
+                                            <div class="form-group col-md-2">
+                                                <label for="cname">Is Early</label><br />
+                                                <input type="checkbox" id="IsEarly" class="ChkBox" name="IsEarly">
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="form-group col-md-2">
+                                                <label for="cname">Is Leave</label><br />
+                                                <input type="checkbox" id="IsLeave" name="IsLeave" class="ChkBox spDays">
+                                            </div>
+                                            <div class="form-group col-md-3" id="LeaveType" style="display:none">
+                                                <label for="cname">Leave Type</label>
+                                                @Html.DropDownList("LeaveTypeDDL", new SelectList(ViewBag.LeaveTypeDDL, "Id", "Name"), "--Select Leave Type--", new { @style = "color:black;", @class = "form-control", id = "LeaveTypeD", name = "LeaveTypeD" })
+
+                                            </div>
+
+                                            <div class="form-group col-md-2">
+                                                <label for="cname">Is Holiday</label><br />
+                                                <input type="checkbox" id="IsHoliDay" name="IsHoliDay" class="ChkBox spDays">
+                                            </div>
+
+                                            <div class="form-group col-md-3" id="HoliDay" style="display:none">
+                                                <label for="cname">Holiday</label>
+                                                @Html.DropDownList("HoliDayDDL", new SelectList(ViewBag.HoliDays, "Pk_PublicId", "Name"), "--Select HoliDay--", new { @style = "color:black;", @class = "form-control", id = "Holidayd", name = "Holidayd" })
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input class="btn btn-primary" type="button" id="BtnAddRecord" value="Submit">
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">Manual Attendace</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+
+
+
+
+                                        <div class="table-responsive">
+                                            <table id="table-information" class="table">
+                                                <thead>
+                                                    <tr style="background-color:cornflowerblue">
+                                                        <th>Employee</th>
+                                                        <th>Date</th>
+                                                        <th>Time In</th>
+                                                        <th>Time Out</th>
+                                                        <th>Is Present</th>
+                                                        <th>Is Absent</th>
+                                                        <th>Is Leave</th>
+                                                        <th>Leave Type</th>
+                                                        <th>Is Holiday</th>
+                                                        <th>Holiday Type</th>
+                                                        <th>Is Half-Day</th>
+                                                        <th>Is Late</th>
+                                                        <th>Is Early</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="table-body">
+                                                </tbody>
+
+
+                                                <tfoot>
+                                                    <tr>
+                                                        <td><input type="button" value="Save Attendance" id="SaveAttendance" class="btn btn-primary" /></td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+    <!-- base:js -->
+    <script src="~/Scripts/ManualAttendance.js"></script>
+    <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="~/Content/Assets/js/off-canvas.js"></script>
+    <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+    <script src="~/Content/Assets/js/template.js"></script>
+    <script src="~/Content/Assets/js/settings.js"></script>
+    <!-- endinject -->
+    <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/Content/Assets/js/todolist.js"></script>
+
+    <script src="~/Content/Assets/js/formpickers.js"></script>
+    <!-- plugin js for this page -->
+
+    <script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="~/Content/Assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Content/Assets/js/select2.js"></script>
+
+
+
+}

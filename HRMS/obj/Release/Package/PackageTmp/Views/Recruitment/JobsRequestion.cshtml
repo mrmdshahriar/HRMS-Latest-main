@@ -1,0 +1,252 @@
+﻿
+@{
+    ViewBag.Title = "Jobs Reqestion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- base:css -->
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css"> *@
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css"> *@
+<!-- endinject -->
+<!-- plugin css for this page -->
+@*<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />*@
+@* <link href="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" rel="stylesheet" /> *@
+
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+@* <link href="~/Content/Assets/css/vertical-layout-light/style.css" rel="stylesheet" /> *@
+
+@* <link href="~/Content/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" /> *@
+
+@* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> *@
+
+<link href="~/Content/Assets/css/Region.css" rel="stylesheet" />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="__top_head">
+                <h3 class="all-md">Hiring Requestion List</h3>
+                <div class="btn_blk">
+                    <a href="/Recruitment/JobRequestion" class="btn btn-inverse-primary u-btn-3d ml-auto"><i class="fas fa-plus tm-fa-plus"></i> Add Requestion</a>
+                </div>
+            </div>
+            <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllEmployeeList"></div>
+
+          
+        </div>
+    </div>
+</div>
+
+@section scripts{
+     <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script> 
+     endinject 
+     inject:js 
+     <script src="~/Content/Assets/js/off-canvas.js"></script> 
+     <script src="~/Content/Assets/js/hoverable-collapse.js"></script> 
+     <script src="~/Content/Assets/js/template.js"></script> 
+     <script src="~/Content/Assets/js/settings.js"></script> 
+     endinject 
+     <script src="~/Content/Assets/js/todolist.js"></script> 
+
+     plugin js for this page 
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+        <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+     <script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script> 
+     <script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script> 
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+
+    <script>
+        $(document).ready(function () {
+            LoadingEmployeeDetails();
+        });
+        function LoadingEmployeeDetails() {
+            $.ajax({
+                type: "GET",
+                url: "/Recruitment/GetAllJobsRequestion",
+                success: onSuccessEmployeeList,
+                error: function (error) {
+                    alert($.parseJSON(error))
+                },
+                cache: false
+            });
+        }
+
+        function onSuccessEmployeeList(data) {
+            data = $.parseJSON(data);
+            $("#AllEmployeeList").empty();
+            $("#AllEmployeeList").append("<table id='AlldatadetailTable' class='table u-table--v3 g-color-black'>");
+            $("#AlldatadetailTable").empty();
+            $("#AlldatadetailTable").append("<thead>" +
+                "<tr class='ob_gC'>" +
+              /*  "<th>S.NO</th>" +*/
+                "<th>Advertise #</th>" +
+                "<th>Job Type</th>" +
+                "<th>Job Title</th>" +
+                "<th>Designation</th>" +
+                "<th>Department</th>" +
+                "<th>Shift</th>" +
+                "<th>Last Date</th>" +
+                "<th>Status</th>" +
+                //"<th>Min Experience</th>" +
+                //"<th>Max Experience</th>" +
+                //"<th>MIn Qualification</th>" +
+                //"<th>Location</th>" +
+                //"<th>Gender</th>" +
+                //"<th>Age</th>" +
+                //"<th>Skill</th>" +
+               
+                //"<th>Expected Salary</th>" +
+                //"<th>Currency</th>" +
+                //"<th>Status</th>" +
+
+                "<th colspan='2' class='last-td'>Action</th> " +
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='values1'>");
+            if (data.length > 0) {
+           /*     $.each(data, function (key, value) {*/
+                    for (const element of data) {
+                   
+                   
+                    //const { JobRequestion, LastDate, JobType,  Designation,  Department } = value;
+                    //debugger
+                   var val = '';
+                    val = "<tr>" +
+                        /*"<td class='first-td'>" + parseInt(key + 1) + "</td>" +*/
+                        "<td>" + element.AddvertiseNo+ "</td>" +
+                        "<td>" + element.JobTypeName+ "</td>" +
+                        "<td>" + element.JobTitle+ "</td>" +
+                        "<td>" + element.DesignationName+ "</td>" +
+                        "<td>" + element.DepartmentName + "</td>" +
+                        "<td>" + element.ShiftName + "</td>" +
+                        "<td>" + element.LastDate.substring(0, 10) + "</td>" +
+                        "<td>" + element.JobStatus + "</td>" +
+                /*        "<td>" + element.LastDate.substring(0, 10) + "</td>" +*/
+                       /* "<td>" + (JobRequestion.ShiftId==1?"Morning":"Evening")+ "</td>" +*/
+                        //"<td>" + JobRequestion.MinExpereince + "</td>" +
+                        //"<td>" + JobRequestion.MaxExpereince + "</td>" +
+                        //"<td>" + JobRequestion.MInQualification + "</td>" +
+                        //"<td>" + JobRequestion.Location + "</td>" +
+                        //"<td>" + JobRequestion.Gender + "</td>" +
+                        //"<td>" + JobRequestion.Age + "</td>" +
+                        //"<td>" + JobRequestion.Skills + "</td>" +
+                      
+                        //"<td>" + JobRequestion.ExpectedSalary + "</td>" +
+                        //"<td>" + JobRequestion.Currency + "</td>" +
+                        //"<td>" + JobRequestion.Status + "</td>" +
+                       /* `<td><a onclick='JobRequestionFileRead("${JobRequestion.Attachment}")'  title='Open PDF File' style='cursor: pointer;'><i style="cursor: pointer;" class="fa fa-file-pdf-o text-primary" aria-hidden="true"></i></a> </td>` +*/
+                        "<td class='last-td'><a class='btn  btn-sm' title='Post Job' style='cursor: pointer;' onclick = PostJob(" + element.RequestId + ") > <i class='fa fa-upload'></i></a ><a href='/Recruitment/JobRequestion/" + element.RequestId + "' class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' ><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = DeleteEmployee(" + element.RequestId + ") > <i class='fa fa-trash'></i></a > "
+                        + "</tr></tbody>";
+
+
+                    $('#values1').append(val);
+                };
+            }
+
+            $('#AlldatadetailTable').dataTable({
+                "bProcessing": true,
+                "bPaginate": true,
+                "sPaginationType": "full_numbers",
+                "responsive": true,
+                "ordering": true
+            });
+
+        }
+
+
+        function DeleteEmployee(ID) {
+            if (confirm('Are you sure to Delete this record ?')) {
+
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: "/Recruitment/DeleteJobsRequestion/" + ID,
+                    success: function (data) {
+                        LoadingEmployeeDetails();
+                    },
+                    error: function (e) {
+                        LoadingEmployeeDetails();
+                    }
+
+
+                });
+            }
+
+        }
+
+        function PostJob(ID) {
+           
+
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: "/Recruitment/PostJob/" + ID,
+                    success: function (data) {
+                        LoadingEmployeeDetails();
+                    },
+                    error: function (e) {
+                        LoadingEmployeeDetails();
+                    }
+
+
+                });
+            
+
+        }
+
+        function JobRequestionFileRead(fileName) {
+            $.ajax({
+                traditional: true,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ fileName: fileName }),
+                type: "POST",
+                dataType: "text",
+                url: `/EmployeeProfile/DownloadFile`,
+                success: function (r) {
+                    var bytes = jobRequestionFileFromBase64ToBytes(r);
+                    //Convert Byte Array to BLOB.
+                    var blob = new Blob([bytes], { type: "application/octetstream" });
+                    //Check the Browser type and download the File.
+                    var isIE = false || !!document.documentMode;
+                    if (isIE) {
+                        window.navigator.msSaveBlob(blob, fileName);
+                    } else {
+                        var url = window.URL || window.webkitURL;
+                        link = url.createObjectURL(blob);
+                        //Open PDF in NEw Tab
+                        var win = window.open();
+                        win.document.write('<iframe src="' + "data:application/pdf;base64," + r + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
+
+                    }
+                },
+                error: function (error) {
+                    debugger
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Still file not Upload.',
+                    });
+                },
+                cache: false
+            });
+        }
+        function jobRequestionFileFromBase64ToBytes(base64) {
+            var s = window.atob(base64);
+            var bytes = new Uint8Array(s.length);
+            for (var i = 0; i < s.length; i++) {
+                bytes[i] = s.charCodeAt(i);
+            }
+            return bytes;
+        }
+
+    </script>
+}

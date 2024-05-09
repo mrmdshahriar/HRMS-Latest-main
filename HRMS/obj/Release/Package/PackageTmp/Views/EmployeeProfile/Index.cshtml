@@ -1,0 +1,195 @@
+﻿
+@{
+    ViewBag.Title = "Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- base:css -->
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css"> *@
+<!-- endinject -->
+<!-- plugin css for this page -->
+@*<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />*@
+@* <link href="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" rel="stylesheet" /> *@
+
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+@* <link href="~/Content/Assets/css/vertical-layout-light/style.css" rel="stylesheet" />
+
+<link href="~/Content/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> *@
+
+<link href="~/Content/Assets/css/Region.css" rel="stylesheet" />
+
+<div class="container-fluid">
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header modal-header">
+                    <h4 class="modal-title" style="color:white">Upload Employee Data</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm("UploadExcel", "EmployeeProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="form-group">
+                            <div class="control-label col-md-2">Excel:</div>
+                            <div class="col-md-10">
+                                <input type="file" id="FileUpload" name="FileUpload" class="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Upload" id="btnSubmit" class="btn btn-primary" />
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="__top_head">
+                <h3 class="all-md">Employee List</h3><br />
+                <div class="btn_blk">
+                    <button type="button" class="btn btn-inverse-primary" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus tm-fa-plus"></i> Upload Excel</button>
+                    <a href="/employeeprofile/EmployeesForm" class="btn btn-inverse-primary u-btn-3d ml-auto"> <i class="fa fa-plus" aria-hidden="true"></i> Add Employee</a>
+                </div>
+            </div>
+            <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllEmployeeList"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @* <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script> *@
+    <!-- endinject -->
+    <!-- inject:js -->
+    @* <script src="~/Content/Assets/js/off-canvas.js"></script>
+    <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+    <script src="~/Content/Assets/js/template.js"></script>
+    <script src="~/Content/Assets/js/settings.js"></script> *@
+    <!-- endinject -->
+    @* <script src="~/Content/Assets/js/todolist.js"></script> *@
+
+    <!-- plugin js for this page -->
+    @*<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+        <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>*@
+
+    @* <script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> *@
+
+    <script>
+        $(document).ready(function () {
+            LoadingEmployeeDetails();
+        });
+        function LoadingEmployeeDetails() {
+            
+            $.ajax({
+                type: "GET",
+           
+                contentType: 'application/json; charset=utf-8',
+                url: "/EmployeeProfile/GetAllEmployees",
+                dataType: 'json',
+              
+                success: onSuccessEmployeeList,
+                
+                error: function (err) {
+                    alert("error", err);
+                    //alert($.parseJSON(error))
+                },
+                cache: false
+            });
+        }
+
+        function onSuccessEmployeeList(Data) {
+            
+            Data = JSON.parse(Data);
+            $("#AllEmployeeList").empty();
+            $("#AllEmployeeList").append("<table id='AlldatadetailTable' class='table u-table--v3 g-color-black'>");
+            $("#AlldatadetailTable").empty();
+            $("#AlldatadetailTable").append("<thead>" +
+                "<tr class='ob_gC'>" +
+                "<th>S.NO</th>" +
+                "<th>Emp Code</th>" +
+                "<th>Full Name</th>" +
+                "<th>Designation</th>" +
+                "<th>Department</th>" +
+                "<th>Joining Date</th>" +
+                "<th>Contact No.</th>" +
+                "<th class='last-td'>Action</th> " +
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='values1'>");
+            if (Data.length > 0) {
+                var val = '';
+
+                $.each(Data, function (key, value) {
+                    
+                    var { data, dteJoiningDate } = value;
+                    val = "<tr>" +
+                        "<td class='first-td'>" + parseInt(key + 1) + "</td>" +
+                        "<td>" + data?.EmployeeCode + "</td>" +
+                        "<td>" + data?.FirstName + ' ' + data?.LastName + "</td>" +
+                        "<td>" + data?.Designation?.Name + "</td>" +
+                        "<td>" + data?.Department?.Name + "</td>" +
+                        "<td>" + dteJoiningDate?.substring(0, 10) + "</td>" +
+                        //"<td>" + $.format.date(data[i].JoiningDate, "dd-MM-yyyy")+ "</td>" +
+                        "<td>" + data?.ContacNo + "</td>" +
+                        "<td class='last-td'><a href='/EmployeeProfile/EmployeesForm/" + data?.Id + "' class='btn btn-default btn-sm' title='Edit' style='cursor: grab;' ><i class='fa fas fa-pencil'></i></a><a href='/EmployeeProfile/EmployeesForm/" + data?.Id +",V" +  "' class='btn btn-default btn-sm' title='View' style='cursor: pointer;' ><i class='fa fa-eye'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = DeleteEmployee(" + data?.Id + ") > <i class='fa fa-trash'></i></a > "
+                        + "</tr></tbody>";
+
+
+                    $('#values1').append(val);
+                });
+            }
+
+            $('#AlldatadetailTable').dataTable({
+                "bProcessing": true,
+                "bPaginate": true,
+                "sPaginationType": "full_numbers",
+                "responsive": true,
+                "ordering": true
+            });
+
+        }
+
+
+        function DeleteEmployee(ID) {
+            if (confirm('Are you sure to Delete this record ?')) {
+
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: "/employeeprofile/DeleteEmployee/" + ID,
+                    success: function (data) {
+                        LoadingEmployeeDetails();
+                    },
+                    error: function (e) {
+                        LoadingEmployeeDetails();
+                    }
+
+
+                });
+            }
+
+        }
+    </script>
+}

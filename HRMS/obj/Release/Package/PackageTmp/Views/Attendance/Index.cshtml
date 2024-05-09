@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Index"; Layout = "~/Views/Shared/_Layout.cshtml"; 
+} @* <!DOCTYPE html> <html lang="en"> *@ @* <head> *@
+<!-- Required meta tags --> @* <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <title>HiliteUI Admin</title> *@
+<!-- base:css --> @* <link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css"> <link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css"> *@
+<!-- endinject -->
+<!-- plugin css for this page --> @* <link rel="stylesheet" href="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css"> *@
+<!-- End plugin css for this page -->
+<!-- inject:css --> @* <link rel="stylesheet" href="~/Content/Assets/css/vertical-layout-light/style.css"> *@
+<!-- endinject --> @* <link rel="shortcut icon" href="~/Content/Assets/images/favicon.png" /> *@ @* </head> *@ @* <body> *@ <div class="container-fluid">
+    <!-- partial:../../partials/_settings-panel.html -->
+    <div class="main-panel"> @* <div class="content-wrapper" id="dt" style="width:1450px"> *@ @* <div class="card"> *@ @* <div class="card-body"> *@ <button type="button" class="btn btn-inverse-primary u-btn-3d  d-block ml-auto" onclick="location.href='@Url.Action("AttendaceForm", "Attendance")'"><i class="fas fa-plus tm-fa-plus"></i> Create</button>
+        <h3 class="card-title">Attendance</h3>
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="order-listing" class="table">
+                        <thead>
+                            <tr style="background-color:cornflowerblue">
+                                <th>Employee</th>
+                                <th>Date</th>
+                                <th>Present Days</th>
+                                <th>Absent Days</th>
+                                <th>Leave Count</th>
+                                <th>Holidays</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ghazi</td>
+                                <td>2012/08/03</td>
+                                <td>27</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>
+                                    <i class='fas fa-pen'></i>
+                                    <i class='fas fa-trash' style="margin-left:18px;"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> @* </div> *@ @* </div> *@ @* </div> *@
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- base:js --> @* <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script> *@
+<!-- endinject -->
+<!-- inject:js --> @* <script src="~/Content/Assets/js/off-canvas.js"></script> <script src="~/Content/Assets/js/hoverable-collapse.js"></script> <script src="~/Content/Assets/js/template.js"></script> <script src="~/Content/Assets/js/settings.js"></script> <script src="~/Content/Assets/js/todolist.js"></script> *@
+<!-- endinject -->
+<!-- plugin js for this page --> @* <script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script> <script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script> *@
+<!-- End plugin js for this page -->
+<!-- Custom js for this page--> @* <script src="~/Content/Assets/js/data-table.js"></script> *@
+<!-- End custom js for this page--> @* </body> </html> *@

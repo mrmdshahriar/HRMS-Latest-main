@@ -1,0 +1,324 @@
+﻿.create-md {
+    background-color: #5c71d4;
+    border-color: #5c71d4;
+    border-bottom: 5px solid rgba(110, 94, 43, .6) !important;
+}
+
+    .create-md:active, .create-md:hover {
+        background-color: #5c71d4 !important;
+        border-color: #5c71d4 !important;
+    }
+
+    .create-md.focus, .create-md:focus {
+        color: #fff;
+        background-color: #5c71d4;
+        border-color: #5c71d4;
+        box-shadow: 0;
+    }
+
+.all-md {
+    font-weight: 500;
+    color: #373737;
+}
+
+#AlldatadetailTable thead {
+    background-color: #5c71d4;
+    color: #fff;
+}
+
+#AlldatadetailTable tbody tr td {
+    text-align: left;
+}
+
+#AlldatadetailTable thead {
+    background-color: #5c71d4;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5 !important;
+}
+
+#AlldatadetailTable tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+    text-align: left;
+}
+
+#AlldatadetailTable tbody tr:nth-child(even) {
+    background-color: #fbf6f6;
+    text-align: left;
+}
+
+/*AllRegionsdatadetailTable {
+    table-layout: fixed;
+}*/
+
+#AlldatadetailTable thead tr th {
+    font-weight: bold;
+}
+
+#AlldatadetailTable tbody tr td:nth-child(1) {
+    max-width: 150px;
+}
+/*---------------------Employee Information Steps------------------------*/
+
+#AlldatadetailTableExperience thead {
+    background-color: #5c71d4;
+    color: #fff;
+}
+
+#AlldatadetailTableExperience tbody tr td {
+    text-align: left;
+}
+
+#AlldatadetailTableExperience thead {
+    background-color: #5c71d4;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5 !important;
+}
+
+#AlldatadetailTableExperience tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+    text-align: left;
+}
+
+#AlldatadetailTableExperience tbody tr:nth-child(even) {
+    background-color: #fbf6f6;
+    text-align: left;
+}
+
+#AlldatadetailTableExperience thead tr th {
+    font-weight: bold;
+}
+
+#AlldatadetailTableExperience tbody tr td:nth-child(1) {
+    max-width: 150px;
+}
+/*----------------------------*/
+
+#AlldatadetailTableSkill thead {
+    background-color: #5c71d4;
+    color: #fff;
+}
+
+#AlldatadetailTableSkill tbody tr td {
+    text-align: left;
+}
+
+#AlldatadetailTableSkill thead {
+    background-color: #5c71d4;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5 !important;
+}
+
+#AlldatadetailTableSkill tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+    text-align: left;
+}
+
+#AlldatadetailTableSkill tbody tr:nth-child(even) {
+    background-color: #fbf6f6;
+    text-align: left;
+}
+
+#AlldatadetailTableSkill thead tr th {
+    font-weight: bold;
+}
+
+#AlldatadetailTableSkill tbody tr td:nth-child(1) {
+    max-width: 150px;
+}
+/*----------------------------*/
+
+#AlldatadetailTableHealth thead {
+    background-color: #5c71d4;
+    color: #fff;
+}
+
+#AlldatadetailTableHealth tbody tr td {
+    text-align: left;
+}
+
+#AlldatadetailTableHealth thead {
+    background-color: #5c71d4;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5 !important;
+}
+
+#AlldatadetailTableHealth tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+    text-align: left;
+}
+
+#AlldatadetailTableHealth tbody tr:nth-child(even) {
+    background-color: #fbf6f6;
+    text-align: left;
+}
+
+
+#AlldatadetailTableHealth thead tr th {
+    font-weight: bold;
+}
+
+#AlldatadetailTableHealth tbody tr td:nth-child(1) {
+    max-width: 150px;
+}
+/*----------------------------*/
+
+#AlldatadetailTableRelation thead {
+    background-color: #5c71d4;
+    color: #fff;
+}
+
+#AlldatadetailTableRelation tbody tr td {
+    text-align: left;
+}
+
+#AlldatadetailTableRelation thead {
+    background-color: #5c71d4;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5 !important;
+}
+
+#AlldatadetailTableRelation tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+    text-align: left;
+}
+
+#AlldatadetailTableRelation tbody tr:nth-child(even) {
+    background-color: #fbf6f6;
+    text-align: left;
+}
+
+#AlldatadetailTableRelation thead tr th {
+    font-weight: bold;
+}
+
+#AlldatadetailTableRelation tbody tr td:nth-child(1) {
+    max-width: 150px;
+}
+/*----------------------------*/
+
+#AlldatadetailTableReference thead {
+    background-color: #5c71d4;
+    color: #fff;
+}
+
+#AlldatadetailTableReference tbody tr td {
+    text-align: left;
+}
+
+#AlldatadetailTableReference thead {
+    background-color: #5c71d4;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5 !important;
+}
+
+#AlldatadetailTableReference tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+    text-align: left;
+}
+
+#AlldatadetailTableReference tbody tr:nth-child(even) {
+    background-color: #fbf6f6;
+    text-align: left;
+}
+
+
+#AlldatadetailTableReference thead tr th {
+    font-weight: bold;
+}
+
+#AlldatadetailTableReference tbody tr td:nth-child(1) {
+    max-width: 150px;
+}
+
+/*-------------------------------------*/
+.modal-header {
+    padding: 9px 15px;
+    border-bottom: 1px solid #eee;
+    background-color: #5c71d4;
+}
+
+    .modal-header .close {
+        margin-top: 2px
+    }
+
+    .modal-header h3 {
+        margin: 0;
+        line-height: 30px
+    }
+
+.add-md {
+    color: #fff;
+    background-color: #5c71d4;
+    border-color: #5c71d4;
+    border-bottom: 5px solid rgba(110, 94, 43, .6) !important;
+}
+
+    .add-md:hover {
+        color: #fff;
+        background-color: #5c71d4;
+        border-color: #5c71d4;
+    }
+
+    .add-md.focus, .add-md:focus {
+        background-color: #5c71d4;
+        border-color: #5c71d4;
+        border-bottom: #5c71d4 !important;
+    }
+
+.md-name, .bg-language, .md-description, .bg-datatype, .md-size, .range-of-values, .bg-classification {
+    margin-bottom: 0px !important;
+}
+
+.md-name-input, .md-description-box, .bg-language-select, .bg-datatype-select, .md-size-input, .range-of-values-input, .classification-select {
+    border: 1px solid #d4d4d4 !important;
+    background-color: #fff !important;
+}
+
+.bg-language-select, .bg-datatype-select, .classification-select {
+    height: 43px !important;
+}
+
+.md-description-box {
+    border-color: #d4d4d4 !important;
+    resize: vertical;
+    overflow: auto;
+}
+
+/* Media Query */
+
+@media screen and (max-width: 767px) {
+    .all-md {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .all-md {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+    .all-md {
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width: 1440px) and (max-width: 1599px) {
+    .all-md {
+        font-size: 26px;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .all-md {
+        font-size: 26px;
+    }
+}

@@ -1,0 +1,48 @@
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\TalenBAL.dll.config
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\TalenBAL.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\TalenBAL.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\EntityFramework.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\EntityFramework.SqlServer.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\EntityFramework.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\EntityFramework.SqlServer.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\obj\Release\TalenBAL.csproj.AssemblyReference.cache
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\obj\Release\TalenBAL.csproj.CoreCompileInputs.cache
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\obj\Release\TalenBAL.csproj.CopyComplete
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\obj\Release\TalenBAL.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\obj\Release\TalenBAL.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\Newtonsoft.Json.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\System.Net.Http.Formatting.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\Newtonsoft.Json.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\System.Net.Http.Formatting.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\ExcelDataReader.DataSet.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\ExcelDataReader.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\System.Data.SqlClient.dll
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\ExcelDataReader.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\ExcelDataReader.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\ExcelDataReader.DataSet.pdb
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\ExcelDataReader.DataSet.xml
+E:\Upwork Task 2022\Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\System.Data.SqlClient.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\TalenBAL.dll.config
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\TalenBAL.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\TalenBAL.pdb
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\EntityFramework.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\EntityFramework.SqlServer.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\ExcelDataReader.DataSet.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\ExcelDataReader.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\Newtonsoft.Json.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\System.Data.SqlClient.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\System.Net.Http.Formatting.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\EntityFramework.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\EntityFramework.SqlServer.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\ExcelDataReader.pdb
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\ExcelDataReader.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\ExcelDataReader.DataSet.pdb
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\ExcelDataReader.DataSet.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\Newtonsoft.Json.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\System.Data.SqlClient.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\bin\Release\System.Net.Http.Formatting.xml
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Release\TalenBAL.csproj.AssemblyReference.cache
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Release\TalenBAL.csproj.CoreCompileInputs.cache
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Release\TalenBAL.csproj.CopyComplete
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Release\TalenBAL.dll
+E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Release\TalenBAL.pdb
