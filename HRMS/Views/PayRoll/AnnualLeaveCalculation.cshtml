@@ -1,0 +1,366 @@
+﻿
+@{
+    ViewBag.Title = "AnnualLeaveCalculation";
+}
+
+@*<h2>AnnualLeaveCalculation</h2>*@
+
+<!-- base:css -->
+<link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css">
+<!-- endinject -->
+<!-- plugin css for this page -->
+@*<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />*@
+<link href="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" rel="stylesheet" />
+
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<link href="~/Content/Assets/css/vertical-layout-light/style.css" rel="stylesheet" />
+
+<link href="~/Content/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link href="~/Content/Assets/css/Region.css" rel="stylesheet" />
+<br />
+<br />
+
+<div class="container-fluid">
+    <!-- Button trigger modal -->
+    @*<div class="row my-3">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-inverse-primary u-btn-3d  d-block ml-auto" data-toggle="modal" data-target="#CountryModal" onclick="clearfields()"><i class="fas fa-pen md-fa-pen"></i> Create</button>
+            </div>
+        </div>*@
+
+
+    @*<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#CountryModal" onclick="clearfields()"><i class="fas fa-pen md-fa-pen"></i> Create</button>*@
+
+    <!-- Country List -->
+    <div class="row">
+        <div class="col-12">
+            <center><h3 class="all-md">Annual Salary Calculation Details </h3></center>
+           
+            <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllCostList"></div>
+
+           @* <div><input type="button" value="Save" onclick="Save();" id="Save" style="display:none;margin-top:15px;" class="btn btn-primary"/></div>*@
+        </div>
+
+    </div>
+    <!-- Country List ends -->
+    <!-- container-scroller -->
+</div>
+
+
+@section scripts{
+    <!-- base:js -->
+    <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="~/Content/Assets/js/off-canvas.js"></script>
+    <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+    <script src="~/Content/Assets/js/template.js"></script>
+    <script src="~/Content/Assets/js/settings.js"></script>
+    <!-- endinject -->
+    <script src="~/Content/Assets/js/todolist.js"></script>
+
+    <!-- plugin js for this page -->
+    @*<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+        <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>*@
+
+    <script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    @*<script src="~/Content/Assets/js/data-table.js"></script>*@
+    <!-- End custom js for this page-->
+
+    <script>
+
+        $(document).ready(function () {
+            $("#AddTask").show();
+            $(".updateTask").hide();
+            LoadingCostDetails();
+
+        });
+
+        function Save() {
+            debugger;
+
+            var EmployeesArray = [];
+
+            var tr = $("#AllCostList").find("tr").each(function (index, obj) {
+
+                if ($(obj).find("td:nth-child(2)").find(".checkRow").prop("checked")) {
+
+                    debugger;
+
+                    var empObj = {};
+
+                    empObj.EmpId = $(obj).find("td:nth-child(3)").html();
+
+                    empObj.EmpName = $(obj).find("td:nth-child(4)").html();
+
+                    empObj.Department = $(obj).find("td:nth-child(5)").html();
+
+                    empObj.DateOfJoining = $(obj).find("td:nth-child(6)").html();
+
+                    empObj.Tenure = $(obj).find("td:nth-child(7)").html();
+
+                    empObj.GrossMonthlySalary = $(obj).find("td:nth-child(8)").html();
+
+                    empObj.NoOfPendingAnnualLeaves = $(obj).find("td:nth-child(9)").html();
+
+                    empObj.LeaveSalary = $(obj).find("td:nth-child(10)").html();
+
+                    EmployeesArray.push(empObj);
+                }
+            });
+
+            //if (EmployeesArray.length > 0) {
+
+            //    $.ajax({
+
+            //        type: "POST",
+
+            //        url: "/PayRoll/SaveAnnualLeaveSalaryCalculation",
+
+            //        data: { annualLeaveSalaryCalculation: EmployeesArray },
+
+            //        success: function (response) {
+            //            debugger;
+
+            //            if (response.Success == true) {
+
+            //                Swal.fire({
+            //                    icon: 'success',
+            //                    text: response.Message
+            //                });
+            //            }
+
+            //            if (response.Success == false) {
+
+            //                Swal.fire({
+            //                    icon: 'warning',
+            //                    text: response.Message
+            //                });
+            //            }
+            //        }
+            //    });
+
+            //}
+            //else {
+            //    Swal.fire({
+            //        icon: 'warning',
+            //        title: 'Oops...',
+            //        text: 'Please Select Employee First!'
+            //    });
+            //}
+        }
+
+        function LoadingCostDetails() {
+            debugger;
+
+            try {
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    url: "/PayRoll/GetAnnualLeaveSalaryData",
+                    success: onSuccessCostList,
+                    error: function (error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: "Error : " + error,
+                        });
+                    },
+                    cache: false
+                });
+            }
+            catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Something Went Wrong!',
+                    text: "Error : " + error,
+                });
+            }
+        }
+
+        function onSuccessCostList(Data) {
+            debugger;
+
+            if (Data.Success == false) {
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error Occurred',
+                    text: "Error : " + Data.Message,
+                });
+            }
+
+            if (Data.Success == true) {
+
+                var data = Data.Result;
+
+                $("#AllCostList").empty();
+                $("#AllCostList").append("<table id='AlldatadetailTable' class='table u-table--v3 g-color-black'>");
+                $("#AlldatadetailTable").empty();
+                $("#AlldatadetailTable").append("<thead>" +
+                    "<tr class='ob_gC'>" +
+                    "<th>No</th>" +
+                    //"<th><input type='checkbox' id='checkAll' onchange='SelectAll();' />Select</th>" +
+                    //"<th>Ser. No</th>" +
+                    "<th>Employee No</th>" +
+                    "<th>Employee Name</th>" +
+                    "<th>Department</th>" +
+                    "<th>Date Of Joining</th>" +
+                    "<th>Tenure</th>" +
+                    "<th>Gross Monthly Salary</th>" +
+                    "<th>No of Pending Annual Leaves</th>" +
+                    "<th>Leave Salary</th>" +
+                    "</tr>" +
+                    "</thead>" +
+                    "<tbody id='values1'>");
+                if (data.length > 0) {
+                    var val = '';
+
+                    var SL = 1;
+
+                    for (var i = 0; i < data.length; i++) {
+                        val += "<tr>" +
+                            "<td>" + (SL++) + "</td>" +
+                            //"<td>" + "<input type='checkbox' class='checkRow' onchange='RemoveCheck();'>" + "</td>" +
+                            "<td class='first-td'>" + data[i].EmployeeId + "</td>" +
+                            "<td>" + data[i].EmployeeName + "</td>" +
+                            "<td>" + data[i].Department + "</td>" +
+                            "<td>" + data[i].DateOfJoining + "</td>" +
+                            "<td>" + data[i].Tenure.toFixed(2) + "</td>" +
+                            "<td>" + data[i].GrossMonthlySalary + "</td>" +
+                            "<td>" + data[i].TotalAnnualLeaves + "</td>" +
+                            "<td>" + (((data[i].GrossMonthlySalary * 12) / 365) * data[i].TotalAnnualLeaves).toFixed(2) + "</td>" +
+
+                            //"<td class='last-td'><a class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' onclick='LoadingEditData(" + data[i].Id + ")' data-toggle='modal' data-target='#CostModal'><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = Delete(" + data[i].Id + ") > <i class='fa fa-trash'></i></a > "
+                            // "<td class='last-td'><label class='form-check-inline u-check g-mr-20 mx-0 mb-0'> <input class='g-hidden-xs-up g-pos-abs g-top-0 g-right-0' id='btnEdit' onclick='LoadingEditData(" + data.data[i].pK_MetaDataID + ")' name = 'radGroup1_1' data-toggle='modal' data-target='#myModal'><i class='fa fa-pencil'></i></label ></td>" +
+                            + "</tr>";
+                    }
+
+                        val += "</tbody>";
+
+                    $('#values1').append(val);
+
+                    $("#Save").css("display", "block");
+                }
+            }
+
+
+            $('#AlldatadetailTable').dataTable({
+                "bProcessing": true,
+                "bPaginate": true,
+                "sPaginationType": "full_numbers",
+                "responsive": true,
+                "ordering": true
+            });
+            
+        }
+
+
+        function SelectAll() {
+            debugger;
+
+            var checkAll = $("#checkAll").prop("checked");
+
+            if (checkAll) {
+                $(".checkRow").prop("checked", true);
+            }
+            else {
+                $(".checkRow").prop("checked", false);
+            }
+        }
+
+        function RemoveCheck() {
+            debugger;
+
+            $("#checkAll").prop("checked", false);
+
+            if ($(".checkRow").filter(":checked").length == $(".checkRow").length) {
+
+                $("#checkAll").prop("checked", true);
+            }
+        }
+
+        
+
+        //function onSuccessCostDetails(data) {
+
+        //    $('#txtName').val(data.Name);
+        //    $("#txtCode").val(data.Code);
+        //    $("#Activechk").prop('checked', data.Active);
+        //}
+
+        //function SaveData() {
+        //    var Name = $("#txtName").val();
+        //    var Code = $("#txtCode").val();
+        //    var Active = $('#Activechk').is(":checked");
+        //    if (Name == null || Name == 'string' || !Name.trim()) {
+
+        //        Swal.fire({
+        //            icon: 'warning',
+        //            dangerMode: true,
+        //            text: 'Please Fill All fields!'
+        //        });
+        //        return false;
+        //    }
+
+        //    var Data = JSON.stringify(
+        //        {
+        //            Name: Name,
+        //            Code: Code,
+        //            Active: Active
+        //        });
+        //    $.ajax({
+        //        type: "POST",
+        //        data: Data,
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        url: "/Master/AddCost",
+        //        success: onSuccessAddManagement,
+        //        error: function (error) {
+        //            Swal.fire({
+        //                icon: 'error',
+        //                title: 'Oops...',
+        //                text: 'Something went wrong to Insert new Record! in cost',
+        //            });
+        //        },
+        //        cache: false
+        //    });
+
+        //}
+
+        //function onSuccessAddManagement(data) {
+        //    Swal.fire({
+        //        icon: 'info',
+        //        title: 'Info',
+        //        text: 'Your work has been saved.',
+        //    }).then(function () {
+        //        location.reload(true);
+        //    });
+        //    Mode = "";
+        //    clearfields();
+        //    LoadingCostDetails();
+
+        //}
+
+        
+
+        
+
+    </script>
+}

@@ -1,0 +1,339 @@
+﻿
+@{
+    ViewBag.Title = "Selected";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- base:css -->
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css"> *@
+<!-- endinject -->
+<!-- plugin css for this page -->
+@*<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />*@
+@* <link href="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css"> *@
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+@* <link href="~/Content/Assets/css/vertical-layout-light/style.css" rel="stylesheet" />
+
+<link href="~/Content/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> *@
+
+@*<link rel="stylesheet" href="~/Content/Assets/vendors/select2/select2.min.css">*@
+@*<link rel="stylesheet" href="~/Content/Assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">*@
+<link href="~/Content/Assets/css/State.css" rel="stylesheet" />
+
+<div class="container-fluid">
+    <!-- Country List -->
+    <div class="row">
+        <div class="col-12">
+            <div class="__top_head">
+                <h3 class="all-md">Selected List</h3>
+                <div class="btn_blk">
+                    @*<button type="button" class="btn btn-inverse-primary u-btn-3d  d-block ml-auto" onclick="location.href='@Url.Action("OfferLetter", "Recruitment")'"><i class="fas fa-pen md-fa-pen"></i> Create</button>*@
+
+                    @*  <button type="button" class="btn btn-inverse-primary u-btn-3d  d-block ml-auto" onclick="OfferLetter();"><i class="fas fa-pen md-fa-pen"></i> Create</button>*@
+                </div>
+            </div>
+            <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllSateList"></div>
+        </div>
+    </div>
+    <!-- Country List ends -->
+    <!-- container-scroller -->
+</div>
+
+
+@section scripts{
+    <!-- base:js -->
+
+
+    @* <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script> *@
+    <!-- endinject -->
+    <!-- inject:js -->
+    @* <script src="~/Content/Assets/js/off-canvas.js"></script>
+    <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+    <script src="~/Content/Assets/js/template.js"></script>
+    <script src="~/Content/Assets/js/settings.js"></script> *@
+    <!-- endinject -->
+    @* <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/Content/Assets/js/todolist.js"></script>
+
+    <script src="~/Content/Assets/js/formpickers.js"></script> *@
+    <!-- plugin js for this page -->
+    @*<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+        <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>*@
+
+    @* <script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> *@
+
+    <script src="~/Content/Assets/vendors/select2/select2.min.js"></script>
+    @*<script src="~/Content/Assets/js/select2.js"></script>*@
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    @*<script src="~/Content/Assets/js/data-table.js"></script>*@
+    <!-- End custom js for this page-->
+    <script>
+        $(document).ready(function () {
+            $("#AddTask").show();
+            $(".updateTask").hide();
+            LoadingJobMasterDetails();
+            GetJobTypeDDL();
+            GetDepartmentDDL();
+            GetDesignationDDL();
+            GetHrmSkillsDDL();
+            var count = 0;
+            $('#DDLJobType').select2({
+                selectOnClose: true
+            });
+
+            $('#DDLDepartment').select2({
+                selectOnClose: true
+            });
+            $('#DDLDesignation').select2({
+                selectOnClose: true
+            });
+
+            $('#DDLSkills').select2({
+                selectOnClose: true
+            });
+        });
+
+
+        function LoadingJobMasterDetails() {
+
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Recruitment/SelectedList",
+
+                success: onSuccessJobMasterDetails,
+                error: function (error) {
+
+                },
+                cache: false
+            });
+        }
+        function onSuccessJobMasterDetails(data) {
+            $("#AllSateList").empty();
+            $("#AllSateList").append("<table id='AllSatedatadetailTable' class='table u-table--v3 g-color-black'>");
+            $("#AllSatedatadetailTable").empty();
+            $("#AllSatedatadetailTable").append("<thead>" +
+                "<tr class='ob_gC'>" +
+                /*"<th>SNO</th>" +*/
+                "<th>Candidate Name</th>" +
+                "<th>job Title</th>" +
+                "<th>Department Name</th>" +
+                "<th>Designation Name</th>" +
+                "<th>Status</th>" +
+                "<th>Apply Date</th>" +
+                "<th>Available Date</th>" +
+                "<th class='last-td'>Action</th> " +
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='values1'>");
+            if (data.length > 0) {
+                var val = '';
+
+                for (var i = 0; i < data.length; i++) {
+                    var fullDatestart = new Date(data[i].ApplyDate);
+                    var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
+                    if (twoDigitMonthstart.length == 1)
+                        twoDigitMonthstart = "0" + twoDigitMonthstart;
+                    var twoDigitDatestart = fullDatestart.getDate() + "";
+                    if (twoDigitDatestart.length == 1)
+                        twoDigitDatestart = "0" + twoDigitDatestart;
+
+                    var currentDatestart = twoDigitDatestart + "/" + twoDigitMonthstart + "/" + fullDatestart.getFullYear();
+
+                    var fullDatestart1 = new Date(data[i].AvailableDate);
+                    var twoDigitMonthstart1 = (fullDatestart1.getMonth() + 1) + "";
+                    if (twoDigitMonthstart1.length == 1)
+                        twoDigitMonthstart1 = "0" + twoDigitMonthstart1;
+                    var twoDigitDatestart1 = fullDatestart1.getDate() + "";
+                    if (twoDigitDatestart1.length == 1)
+                        twoDigitDatestart1 = "0" + twoDigitDatestart1;
+
+                    var currentDatestart1 = twoDigitDatestart1 + "/" + twoDigitMonthstart1 + "/" + fullDatestart1.getFullYear();
+
+                    var currentDatestart = twoDigitDatestart + "/" + twoDigitMonthstart + "/" + fullDatestart.getFullYear();
+
+                    val = "<tr>" +
+                        /* "<td class='first-td'>" + data[i].Id + "</td>" +*/
+                        "<td>" + data[i].CandidateName + "</td>" +
+                        "<td>" + data[i].JobTitle + "</td>" +
+                        "<td>" + data[i].DepertmentName + "</td>" +
+                        "<td>" + data[i].DesignationName + "</td>" +
+                        "<td>" + data[i].Status + "</td>" +
+                        "<td>" + data[i].ApplyDate + "</td>" +
+                        "<td>" + data[i].AvailableDate + "</td>" +
+                        "<td class='last-td'><a href='/Recruitment/AddAppliedCandidate/" + data[i].Id + "' class='btn btn-default btn-sm' title='View' style='cursor: pointer;'  ><i class='fa fa-eye'></i> </i></a></td>" +
+
+                        //"<td class='last-td'><a class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' onclick='LoadingEditData(" + data[i].Id + ")' href='https://localhost:44300/Recruitment/AddAppliedCandidate/1' ><i class='fa fas fa-pencil'></i> <a  href=" + data[i].Attachment + " class='btn  btn-sm' title='View' style='cursor: pointer;'><i class='fa fa-eye'></i></a></td>" +
+
+                        //"<td class='last-td'><a class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' onclick='LoadingEditData(" + data[i].Id + ")' data-toggle='modal' data-target='#JobModal'><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = Delete(" + data[i].Id + ") > <i class='fa fa-trash'></i></a > "
+                        // "<td class='last-td'><label class='form-check-inline u-check g-mr-20 mx-0 mb-0'> <input class='g-hidden-xs-up g-pos-abs g-top-0 g-right-0' id='btnEdit' onclick='LoadingEditData(" + data.data[i].pK_MetaDataID + ")' name = 'radGroup1_1' data-toggle='modal' data-target='#myModal'><i class='fa fa-pencil'></i></label ></td>" +
+                        + "</tr></tbody>";
+
+
+                    $('#values1').append(val);
+                }
+            }
+
+
+            $('#AllSatedatadetailTable').dataTable({
+                "bProcessing": true,
+                "bPaginate": true,
+                "sPaginationType": "full_numbers",
+                "responsive": true,
+                "ordering": true
+            });
+
+        }
+
+
+
+
+
+        function GetJobTypeDDL() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Master/GetJobTypeList",
+                success: function (data, status) {
+                    ;
+                    if (data != "") {
+
+                        $('#DDLJobType').empty();
+                        $('#DDLJobType').append('<option value="-1" selected disabled>Select JobType</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#DDLJobType').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+
+            });
+        }
+
+        function GetDepartmentDDL() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Master/GetDepartmentList",
+                success: function (data, status) {
+                    ;
+                    if (data != "") {
+
+                        $('#DDLDepartment').empty();
+                        $('#DDLDepartment').append('<option value="-1" selected disabled>Select Department</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#DDLDepartment').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+
+            });
+        }
+
+        function GetDesignationDDL() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Master/GetDesignationList",
+                success: function (data, status) {
+                    ;
+                    if (data != "") {
+
+                        $('#DDLDesignation').empty();
+                        $('#DDLDesignation').append('<option value="-1" selected disabled>Select Designation</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#DDLDesignation').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+
+            });
+        }
+
+        function GetHrmSkillsDDL() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Master/GetHrmSkillsList",
+                success: function (data, status) {
+                    ;
+                    if (data != "") {
+
+                        $('#DDLSkills').empty();
+                        $('#DDLSkills').append('<option value="-1" selected disabled>Select Skills</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#DDLSkills').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+
+            });
+        }
+
+
+    </script>
+
+}
+
+

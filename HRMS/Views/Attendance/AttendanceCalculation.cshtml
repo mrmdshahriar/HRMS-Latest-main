@@ -1,0 +1,215 @@
+﻿@{
+    ViewBag.Title = "Attendance Calculator";
+}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>HiliteUI Admin</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/Content/Assets/css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/Content/Assets/images/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<style>
+    .prevent-select {
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    }
+
+    .headings {
+        font-weight: bold
+    }
+</style>
+<body>
+    <div class="container-scroller">
+        <!-- partial:../../partials/_navbar.html -->
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:../../partials/_settings-panel.html -->
+            <div class="main-panel">
+                <div class="content-wrapper" id="dt" style="width:1450px">
+                    <h2>Attendance Calculator</h2>
+                    <div id="divContent"></div>
+                    <div class="row grid-margin">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body" id="MainBody">
+                                    <form class="cmxform" id="commentForm" method="get" action="#">
+                                        <fieldset>
+                                            <div class="row divReportType">
+                                                <div class="form-group col-md-3">
+                                                    <label class="headings">Report Type:</label><br />
+                                                    <input type="radio" name="reportType" value="Employee Wise" checked="checked" /> Employee Wise
+                                                    <input type="radio" name="reportType" value="Department Wise" /> Department Wise
+                                                    <input style="display:none" type="radio" name="reportType" value="Company Wise" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-lg-3" id="Departmentdiv" style="display:block">
+                                                    <label class="headings" for="cname">Department</label>
+                                                    @Html.DropDownList("DepartmentDLL", new SelectList(ViewBag.DepartmentDLL, "Id", "Name"), new { @style = "color:black;", @class = "form-control ddlChosen", multiple = "multiple", id = "ddlDepartment", name = "ddlDepartment" })
+
+                                                </div>
+                                                <div class="form-group col-lg-3" id="Employeediv" style="display:block">
+                                                    <label class="headings" for="cname">Employee</label>
+                                                    <select id="ddlEmployee" class="form-control ddlChosen" multiple></select>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:block">
+                                                    <label class="headings" for="cname">Month</label>
+                                                    <select name="month" id="month" class="form-control">
+                                                        <option value="">Select Month</option>
+                                                        <option value="1">January</option>
+                                                        <option value="2">February</option>
+                                                        <option value="3">March</option>
+                                                        <option value="4">April</option>
+                                                        <option value="5">May</option>
+                                                        <option value="6">June</option>
+                                                        <option value="7">July</option>
+                                                        <option value="8">August</option>
+                                                        <option value="9">September</option>
+                                                        <option value="10">October</option>
+                                                        <option value="11">Novermber</option>
+                                                        <option value="12">December</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-lg-3" style="display:block">
+                                                    <label class="headings" for="cname">Year</label>
+                                                    <select name="year" id="year" class="form-control">
+                                                        <option value="">Select Year</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <input class="btn btn-primary" type="button" id="btnGetAttendanceReport" value="Submit" onclick="GetAttendanceReport()">
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- base:js -->
+    <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="~/Content/Assets/js/off-canvas.js"></script>
+    <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+    <script src="~/Content/Assets/js/template.js"></script>
+    <script src="~/Content/Assets/js/settings.js"></script>
+    <script src="~/Content/Assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- plugin js for this page -->
+    <script src="~/Content/Assets/vendors/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/Content/Assets/vendors/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    <script src="~/Content/Assets/js/form-validation.js"></script>
+    <script src="~/Content/Assets/js/bt-maxLength.js"></script>
+</body>
+<script>
+    $(document).ready(function () {
+        let _currentYear = (new Date()).getUTCFullYear();
+        $("#year").append("<option value=" + (_currentYear) + ">" + (_currentYear) + "</option>");
+        for (var i = 1; i <= 10; i++) {
+            $("#year").append("<option value=" + (_currentYear - i) + ">" + (_currentYear - i)+"</option>");
+        }
+
+        $(".ddlChosen").chosen();
+        $('.ddlChosen').trigger("chosen:updated");
+        $("#ddlDepartment").on("change", function () {
+        let _lstEmployees = @Html.Raw(ViewBag.EmployeeDLL);
+            let _lstSelectedDept = $("#ddlDepartment").val();
+            let _arrSelectedDeptEmployees = [];
+            for (var i = 0; i < _lstSelectedDept.length; i++) {
+                let _arrEmployees = _lstEmployees.filter(x => x.DepartmentId == _lstSelectedDept[i]);
+                for (var j = 0; j < _arrEmployees.length; j++)
+                    _arrSelectedDeptEmployees.push(_arrEmployees[j]);
+            }
+            if (_arrSelectedDeptEmployees.length > 0) {
+                $("#ddlEmployee").empty();
+                for (var i = 0; i < _arrSelectedDeptEmployees.length; i++)
+                    $("#ddlEmployee").append("<option value=" + _arrSelectedDeptEmployees[i].Id+">" + _arrSelectedDeptEmployees[i].FirstName+"</option>");
+                $('#ddlEmployee').trigger("chosen:updated");
+            }
+        });
+    });
+    function GetAttendanceReport() {
+        let _reportType = $("input[name='reportType']:checked").val();
+        if ($("#ddlDepartment").val().length == 0) {
+            Swal.fire({
+                icon: 'warning',
+                text: "Please select department!"
+            });
+            return false;
+        }
+        if ($("#ddlEmployee").val().length == 0) {
+            Swal.fire({
+                icon: 'warning',
+                text: "Please select employee!"
+            });
+            return false;
+        }
+        if ($("#month").val() == '') {
+            Swal.fire({
+                icon: 'warning',
+                text: "Please select month!"
+            });
+            return false;
+        }
+        if ($("#year").val() == '') {
+            Swal.fire({
+                icon: 'warning',
+                text: "Please select year!"
+            });
+            return false;
+        }
+
+        let _objAttendanceReportData = {
+            ReportType: _reportType,
+            DepartmentId: $("#ddlDepartment").val().join(','),
+            EmployeeId: _reportType == "Department Wise" ? '' : $("#ddlEmployee").val().join(','),
+            Month: parseInt($("#month").val()),
+            Year: parseInt($("#year").val())
+        };
+        var data = JSON.stringify({ dataa: _objAttendanceReportData });
+        var _employeeReportPath = "/AttendanceReports/EmployeeAttendance.pdf";
+        $.ajax({
+            url: "/Attendance/FetchAttendanceReport",
+            data: data,
+            dataType: "json",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                window.open(_employeeReportPath, '_blank');
+            },
+            failure: function (response) {
+            },
+            error: function (response) {
+                window.open(_employeeReportPath, '_blank');
+            }
+        });
+    }
+    $('.divReportType input[type="radio"]').change(function () {
+        let _reportType = $(this).val();
+        if (_reportType == "Department Wise")
+            $("#Employeediv").hide();
+        else
+            $("#Employeediv").show();
+    });
+</script>

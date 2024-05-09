@@ -1,0 +1,562 @@
+﻿
+@{
+    ViewBag.Title = "JobCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- base:css -->
+@*<link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css">
+
+    <link href="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+
+    <link href="~/Content/Assets/css/vertical-layout-light/style.css" rel="stylesheet" />
+
+    <link href="~/Content/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/Content/Assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Content/Assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">*@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+<script src="myfile.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+
+        var full_url = document.URL; // Get current url
+      
+        var url_array = full_url.split('/') // Split the string into an array with / as separator
+    
+        var JobRequestionId = url_array[url_array.length - 1];  // Get the last part of the array (-1)
+        
+        if (window.location.href.indexOf("JobCreate?Id") > -1) {
+            var full_url = document.URL; // Get current url
+
+            var url_array = full_url.split('/') // Split the string into an array with / as separator
+
+            var JobRequestionId = url_array[url_array.length - 1];  // Get the last part of the array (-1)
+            var URL = JobRequestionId.split('=');
+          
+            LoadingEditData(URL[1])
+        }
+       
+    
+      
+    });
+    function SaveData() {
+        var JobTitle = $("#txtJobTitle").val();
+        var NoOfposition = $("#txtNoOfposition").val();
+        var JobType = $("#Jobtyped").val();
+        var Shift = $("#Shiftd").val();
+
+        var Department = $("#Departmentd").val();
+        var Designation = $("#Designationd").val();
+        var Skills = $("#Skillsd").val();
+        var JobLocation = $("#txtJobLocation").val();
+        var Gender = $("#DDLGender").val();
+        var Age = $("#txtAge").val();
+        var MinExpereince = $("#txtMinExpereince").val();
+        var MaxExpereince = $("#txtMaxExpereince").val();
+        var MInQualification = $("#txtMInQualification").val();
+        var SalaryRange = $("#txtSalaryRange").val();
+        var jobDescription = $("#txtjobDescription").val();
+        var date = $("#txtJoiningDate").val();
+        /*var date = $('#datepickerJoining').datepicker({ dateFormat: "yy-mm-dd" }).find('input').val();*/
+        var Active = $('#Activechk').is(":checked");
+        $("#DDLSkills option").each(function () {
+            asigneeID = $('#DDLSkills').val();
+        });
+
+        if (JobTitle == null || JobTitle == 'string' || !JobTitle.trim()) {
+
+            Swal.fire({
+                icon: 'warning',
+                dangerMode: true,
+                text: 'Please Fill Job Title!'
+            });
+            return false;
+        }
+        if (JobType == null || JobType == -1 || JobType == "") {
+            Swal.fire({
+                icon: 'warning',
+                text: 'Please Select JobType!'
+            });
+            return false;
+        }
+
+        if (Department == null || Department == -1 || Department == "") {
+            Swal.fire({
+                icon: 'warning',
+                text: 'Please Select Department!'
+            });
+            return false;
+        }
+
+        if (Designation == null || Designation == -1 || Designation == "") {
+            Swal.fire({
+                icon: 'warning',
+                text: 'Please Select Designation!'
+            });
+            return false;
+        }
+
+        if (Shift == null || Shift == -1 || Shift == "") {
+            Swal.fire({
+                icon: 'warning',
+                text: 'Please Select Shift!'
+            });
+            return false;
+        }
+
+        if (Skills == null || Skills == -1 || Skills == "") {
+            Swal.fire({
+                icon: 'warning',
+                text: 'Please Select Skills!'
+            });
+            return false;
+        }
+
+        if (jobDescription == null || jobDescription == 'string' || !jobDescription.trim()) {
+
+            Swal.fire({
+                icon: 'warning',
+                dangerMode: true,
+                text: 'Please Fill Job job Description!'
+            });
+            return false;
+        }
+
+        var Data = JSON.stringify(
+            {
+                JobTitle: JobTitle,
+                JobType: JobType,
+                ShiftId: Shift,
+                DepartmentId: Department,
+                DesignationId: Designation,
+                MinExpereince: MinExpereince,
+                MaxExpereince: MaxExpereince,
+                MInQualification: MInQualification,
+                NoOfposition: NoOfposition,
+                ClosingDate: date,
+                Location: JobLocation,
+                Gender: Gender,
+                Age: Age,
+                Skills: Skills.toString(),
+                SalaryRange: SalaryRange,
+                jobDescription: jobDescription,
+                Active: Active
+            });
+
+        $.ajax({
+            type: "POST",
+            data: Data,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: "/Recruitment/AddJobMaster",
+            success: onSuccessAddManagement,
+            error: function (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong to Insert new Job!',
+                });
+            },
+            cache: false
+        });
+
+    }
+
+    function onSuccessAddManagement(data) {
+        Swal.fire({
+            icon: 'info',
+            title: 'Info',
+            text: 'Your work has been saved.',
+        }).then(function () {
+            window.location.href = '/Recruitment/Job';
+            AllowancesDeduction
+        });
+
+        Mode = "";
+
+        clearfields();
+        LoadingJobMasterDetails();
+
+    }
+
+    function LoadingEditData(ID) {
+        Mode = "Update";
+        $("#AddTask").hide();
+        $(".updateTask").hide();
+        $("#divAddTask").append(" <button type='button' class='btn btn-inverse-primary  my-auto ml-auto updateTask' id='updateTasks' onclick='UpdateState(" + ID + ");'>Update Recrod</button>");
+
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            url: "/Recruitment/EditJobList/" + ID,
+            success: onSuccessEditDetails,
+            error: function (error) {
+                alert("error", error);
+            },
+            cache: false
+        });
+
+    }
+
+    function onSuccessEditDetails(data) {
+        /*for (const element of data) {*/
+
+            var fullDatestart = new Date(data.CreatedBy);
+            var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
+            if (twoDigitMonthstart.length == 1)
+                twoDigitMonthstart = "0" + twoDigitMonthstart;
+            var twoDigitDatestart = fullDatestart.getDate() + "";
+            if (twoDigitDatestart.length == 1)
+                twoDigitDatestart = "0" + twoDigitDatestart;
+
+            var currentDatestart = fullDatestart.getFullYear() + "/" + twoDigitMonthstart + "/" + twoDigitDatestart;
+
+            /*  var splitdata = data.Skills.split(',');*/
+            /* $('#DDLSkills').val(splitdata).change();*/
+
+            $("#txtJobTitle").val(data.JobTitle);
+            $("#txtNoOfposition").val(data.NoOfposition);
+            $('#Jobtyped').val(data.JobType);
+            /* $("#JobTyped").val(data.JobType).select2();*/
+            $("#Shiftd").val(data.ShiftId);
+            $("#Departmentd").val(data.DepartmentId);
+            $("#Designationd").val(data.DesignationId);
+            $("#Skillsd").val(data.Skills);
+            $("#txtJobLocation").val(data.Location);
+            $("#DDLGender").val(data.Gender);
+            $("#txtAge").val(data.Age);
+            $("#txtMinExpereince").val(data.MinExpereince);
+            $("#txtMaxExpereince").val(data.MaxExpereince);
+            $("#txtMInQualification").val(data.MInQualification);
+            $("#txtSalaryRange").val(data.SalaryRange);
+            $("#txtjobDescription").val(data.jobDescription);
+        $('#txtJoiningDate').val(currentDatestart);
+          /*  $('#datepickerJoining').datepicker({ dateFormat: "yy-mm-dd" }).find('input').val(currentDatestart);*/
+            $("#Activechk").prop('checked', data.Active);
+        /*}*/
+    }
+
+    function UpdateRecord(ID) {
+        alert("sdsdsd");
+        var JobTitle = $("#txtJobTitle").val();
+        var NoOfposition = $("#txtNoOfposition").val();
+        var JobType = $("#Jobtyped").val();
+        var Shift = $("#Shiftd").val();
+
+        var Department = $("#Departmentd").val();
+        var Designation = $("#Designationd").val();
+        var Skills = $("#Skillsd").val();
+        var JobLocation = $("#txtJobLocation").val();
+        var Gender = $("#DDLGender").val();
+        var Age = $("#txtAge").val();
+        var MinExpereince = $("#txtMinExpereince").val();
+        var MaxExpereince = $("#txtMaxExpereince").val();
+        var MInQualification = $("#txtMInQualification").val();
+        var SalaryRange = $("#txtSalaryRange").val();
+        var jobDescription = $("#txtjobDescription").val();
+        var date = $("#txtJoiningDate").val();
+        /*var date = $('#datepickerJoining').datepicker({ dateFormat: "yy-mm-dd" }).find('input').val();*/
+        var Active = $('#Activechk').is(":checked");
+    }
+
+    function UpdateState(ID) {
+       
+        Mode = "Update";       
+
+         var JobTitle = $("#txtJobTitle").val();
+        var NoOfposition = $("#txtNoOfposition").val();
+        var JobType = $("#Jobtyped").val();
+        var Shift = $("#Shiftd").val();
+
+        var Department = $("#Departmentd").val();
+        var Designation = $("#Designationd").val();
+        var Skills = $("#Skillsd").val();
+        var JobLocation = $("#txtJobLocation").val();
+        var Gender = $("#DDLGender").val();
+        var Age = $("#txtAge").val();
+        var MinExpereince = $("#txtMinExpereince").val();
+        var MaxExpereince = $("#txtMaxExpereince").val();
+        var MInQualification = $("#txtMInQualification").val();
+        var SalaryRange = $("#txtSalaryRange").val();
+        var jobDescription = $("#txtjobDescription").val();
+        var date = $("#txtJoiningDate").val();
+        /*var date = $('#datepickerJoining').datepicker({ dateFormat: "yy-mm-dd" }).find('input').val();*/
+        var Active = $('#Activechk').is(":checked");
+
+        var Data = JSON.stringify(
+            {
+                JobId: ID,
+                JobTitle: JobTitle,
+                JobType: JobType,
+                ShiftId: Shift,
+                DepartmentId: Department,
+                DesignationId: Designation,
+                MinExpereince: MinExpereince,
+                MaxExpereince: MaxExpereince,
+                MInQualification: MInQualification,
+                NoOfposition: NoOfposition,
+                ClosingDate: date,
+                Location: JobLocation,
+                Gender: Gender,
+                Age: Age,
+                Skills: Skills.toString(),
+                SalaryRange: SalaryRange,
+                jobDescription: jobDescription,
+                Active: Active
+            });
+
+        $.ajax({
+            type: "POST",
+            data: Data,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: "/Recruitment/UpdateJobMaster",
+            success: onSuccessUpdateManagement,
+            error: function (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong to Insert new State!',
+                });
+            },
+            cache: false,
+        });
+    }
+    function onSuccessUpdateManagement(data) {
+
+        Swal.fire({
+            icon: 'info',
+            title: 'Info',
+            text: 'Your work has been Updated.',
+        }).then(function () {
+            window.location.href = '/Recruitment/Job';
+        });
+        Mode = "";
+        globalImagesPath = "";
+        // location.reload(true);
+        clearfields();
+        LoadingJobMasterDetails();
+
+    }
+
+    function Delete(ID) {
+        if (confirm('Are you sure to Delete this record ?')) {
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/Recruitment/DeleteJobMaster/" + ID,
+                success: function (data) {
+
+                    LoadingJobMasterDetails();
+
+                }
+
+            });
+        }
+    }
+</script>
+<div class="container" style="max-width: 94% !important; margin-top: 11px; ">
+    <form id="commentForm" class="cmxform">
+
+        <fieldset>
+            <h4>Add/Update Job</h4>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label" for="txtJobTitle">Job Title</label>
+                        <input type="text" class="form-control" id="txtJobTitle" placeholder="Enter Job Title" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label">No Of position</label>
+                        <input type="number" class="form-control" aria-describedby="NoOfposition" id="txtNoOfposition" min="0" placeholder="Enter No Of position" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label" for="exampleFormControlSelect1">Job Type</label>
+                        @Html.DropDownList("JobTypeDDL", new SelectList(ViewBag.JobTypeDDL, "Id", "Name"), "--Select Job Type--", new { @style = "color:black;", @class = "form-control", id = "Jobtyped", name = "Jobtyped" })
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label" for="exampleFormControlSelect1">Joining Date</label>
+                        <div id="datepickerJoining" class="input-group date datepicker">
+                            <input type="text" class="form-control" id="txtJoiningDate">
+                            <span class="input-group-addon input-group-append border-left">
+                                <span class="mdi mdi-calendar input-group-text"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-form-label" for="exampleFormControlSelect2">Shift</label>
+                            <select class="form-control" id="DDLShift">
+                                <option value="-1" selected="selected">Shift</option>
+                                <option value="night">Night</option>
+                                <option value="day">Day</option>
+
+                            </select>
+                        </div>
+                    </div>*@
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label" for="exampleFormControlSelect3">Shift</label>
+                        @Html.DropDownList("ShiftDDL", new SelectList(ViewBag.ShiftDDL, "ShiftId", "ShiftName"), "--Select Shift--", new { @style = "color:black;", @class = "form-control", id = "Shiftd", name = "Shiftd" })
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label">Job Location</label>
+                        <input type="text" class="form-control" aria-describedby="JobLocation" id="txtJobLocation" placeholder="Enter Job Location">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label" for="exampleFormControlSelect3">Department</label>
+                        @Html.DropDownList("DepartmentDDL", new SelectList(ViewBag.DepartmentDDL, "Id", "Name"), "--Select Department--", new { @style = "color:black;", @class = "form-control", id = "Departmentd", name = "Departmentd" })
+
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label" for="exampleFormControlSelect3">Gender</label>
+                        <select class="form-control" id="DDLGender" name="Gender">
+                            <option value="-1" selected="selected">Select Gender</option>
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                            <option value="2">Any</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label" for="exampleFormControlSelect4">Designation</label>
+                        @Html.DropDownList("DesignationDDL", new SelectList(ViewBag.DesignationDDL, "Id", "Name"), "--Select Designation--", new { @style = "color:black;", @class = "form-control", id = "Designationd", name = "Designationd" })
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label">Age</label>
+                        <input type="text" class="form-control" aria-describedby="Age" id="txtAge" placeholder="Enter Age">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label">Min Expereince(Years)</label>
+                        <input type="text" class="form-control" aria-describedby="MinExpereince" id="txtMinExpereince" placeholder="Enter Min Expereince">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label">Max Expereince(Years)</label>
+                        <input type="text" class="form-control" aria-describedby="MaxExpereince" id="txtMaxExpereince" placeholder="Enter Max Expereince">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label" for="exampleFormControlSelect7">MIn Qualification</label>
+                        <select class="form-control" id="txtMInQualification" name="MInQualification">
+                            <option value="-1" selected="selected">Select Qualification</option>
+                            <option value="1">Primary</option>
+                            <option value="3">Middle</option>
+                            <option value="4">Secondary</option>
+                            <option value="5">Inter</option>
+                            <option value="6">Graduation</option>
+                            <option value="7">Master</option>
+
+                        </select>
+                        @* <input type="text" class="form-control" aria-describedby="MInQualification" id="txtMInQualification" placeholder="Enter MIn Qualification">*@
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class=" col-form-label">Salary Budget</label>
+                        <input type="text" class="form-control" aria-describedby="SalaryRange" id="txtSalaryRange" placeholder="Enter Salary Range">
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-form-label" for="exampleFormControlSelect5">Skills</label>
+                        @Html.DropDownList("HrmSkillsDDL", new SelectList(ViewBag.HrmSkillsDDL, "Id", "Name"), "--Select Skills--", new { @style = "color:black;", @class = "form-control", id = "Skillsd", name = "Skillsd" })
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">job Description</label>
+                        <textarea class="form-control" id="txtjobDescription" placeholder="Enter job Description" rows="3" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-2">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" checked="" id="Activechk">
+                            Active
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer" id="divAddTask">
+                <button type="button" class="btn btn-inverse-primary u-btn-3d  my-auto ml-auto" id="AddTask" onclick="SaveData();"><i class="fas fa-plus tm-fa-plus"></i>Add</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script>
+<script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="~/Content/Assets/js/off-canvas.js"></script>
+<script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+<script src="~/Content/Assets/js/template.js"></script>
+<script src="~/Content/Assets/js/settings.js"></script>
+<script src="~/Content/Assets/js/todolist.js"></script>
+<script src="~/Content/Assets/js/formpickers.js"></script>
+<!-- endinject -->
+<!-- plugin js for this page -->
+<script src="~/Content/Assets/vendors/jquery-steps/jquery.steps.min.js"></script>
+<script src="~/Content/Assets/vendors/jquery-validation/jquery.validate.min.js"></script>
+<script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>

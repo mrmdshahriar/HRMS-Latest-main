@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AE8F9C44-95D4-4455-A72C-894D747D2E59}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TalenBAL</RootNamespace>
+    <AssemblyName>TalenBAL</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.DataSet.3.6.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.3\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BALModel\Allowance.cs" />
+    <Compile Include="BALModel\AllowancesDeduction.cs" />
+    <Compile Include="BALModel\AllowanceType.cs" />
+    <Compile Include="BALModel\AppliedCandidate.cs" />
+    <Compile Include="BALModel\ApplyCandidate.cs" />
+    <Compile Include="BALModel\AspNetRole.cs" />
+    <Compile Include="BALModel\AspNetUser.cs" />
+    <Compile Include="BALModel\AspNetUserLogin.cs" />
+    <Compile Include="BALModel\AspNetUserRole.cs" />
+    <Compile Include="BALModel\Attendance.cs" />
+    <Compile Include="BALModel\BALHRMS.cs" />
+    <Compile Include="BALModel\EmployeeTask.cs" />
+    <Compile Include="BALModel\ExpensesRequest.cs" />
+    <Compile Include="BALModel\InMemoryMultipartFormDataStreamProvider.cs" />
+    <Compile Include="BALModel\LoanRequest.cs" />
+    <Compile Include="BALModel\SalaryRequest.cs" />
+    <Compile Include="BALModel\City.cs" />
+    <Compile Include="BALModel\Country.cs" />
+    <Compile Include="BALModel\Department.cs" />
+    <Compile Include="BALModel\Designation.cs" />
+    <Compile Include="BALModel\EmplouyeeView.cs" />
+    <Compile Include="BALModel\EmployeeGroup.cs" />
+    <Compile Include="BALModel\EmployeeTransfer.cs" />
+    <Compile Include="BALModel\HrmEmployee.cs" />
+    <Compile Include="BALModel\HrmEmployeeEducation.cs" />
+    <Compile Include="BALModel\HrmEmployeeHealth.cs" />
+    <Compile Include="BALModel\HrmEmployeementHistory.cs" />
+    <Compile Include="BALModel\HrmEmployeeRefrence.cs" />
+    <Compile Include="BALModel\HrmEmployeeRelation.cs" />
+    <Compile Include="BALModel\HrmInternalRequisition.cs" />
+    <Compile Include="BALModel\HrmInterview.cs" />
+    <Compile Include="BALModel\HrmInterviewDetail.cs" />
+    <Compile Include="BALModel\HrmJobPost.cs" />
+    <Compile Include="BALModel\HrmJobType.cs" />
+    <Compile Include="BALModel\HrmSkill.cs" />
+    <Compile Include="BALModel\Job.cs" />
+    <Compile Include="BALModel\JobRequisition.cs" />
+    <Compile Include="BALModel\LeaveRequest.cs" />
+    <Compile Include="BALModel\LeaveType.cs" />
+    <Compile Include="BALModel\Organization.cs" />
+    <Compile Include="BALModel\PublicHoliday.cs" />
+    <Compile Include="BALModel\RecruitmentView.cs" />
+    <Compile Include="BALModel\Region.cs" />
+    <Compile Include="BALModel\ShiftMaster.cs" />
+    <Compile Include="BALModel\State.cs" />
+    <Compile Include="BALModel\Termination.cs" />
+    <Compile Include="BALModel\User.cs" />
+    <Compile Include="BALModel\UserType.cs" />
+    <Compile Include="BAL\BLAttendance.cs" />
+    <Compile Include="BAL\BLEmployee.cs" />
+    <Compile Include="BAL\BLEmployeeProfile.cs" />
+    <Compile Include="BAL\BLCommon.cs" />
+    <Compile Include="BAL\BLMaster.cs" />
+    <Compile Include="BAL\BLPayRoll.cs" />
+    <Compile Include="BAL\BLRecruitment.cs" />
+    <Compile Include="BAL\BLLeave.cs" />
+    <Compile Include="BAL\BLUserLogin.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="Messages.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\EmployeeLeaveViewModel.cs" />
+    <Compile Include="ViewModel\EmployeeModel.cs" />
+    <Compile Include="ViewModel\Response.cs" />
+    <Compile Include="ViewModel\ViewModelAttandence.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Doc\upload\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

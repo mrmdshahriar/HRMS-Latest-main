@@ -1,0 +1,183 @@
+﻿
+@{
+    ViewBag.Title = "AttendaceList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- base:css -->
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css"> *@
+<!-- endinject -->
+@* <link href="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css"> *@
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+@* <link href="~/Content/Assets/css/vertical-layout-light/style.css" rel="stylesheet" />
+
+    <link href="~/Content/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> *@
+
+<link href="~/Content/Assets/css/State.css" rel="stylesheet" />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="__top_head">
+                <h3 class="all-md">Attendance List</h3>
+                <div class="btn_blk">
+                    <button type="button" class="btn btn-inverse-primary u-btn-3d  d-block ml-auto" onclick="location.href='@Url.Action("ManualAttendace", "Attendance")'"><i class="fas fa-plus tm-fa-plus"></i> Create</button>
+                </div>
+            </div>
+            <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllSateList"></div>
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts{
+    <!-- base:js -->
+    @*<script src="~/Content/Assets/js/appliedCandidates.js"></script>*@
+    @* <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script> *@
+    <!-- endinject -->
+    <!-- inject:js -->
+    @* <script src="~/Content/Assets/js/off-canvas.js"></script>
+        <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+        <script src="~/Content/Assets/js/template.js"></script>
+        <script src="~/Content/Assets/js/settings.js"></script> *@
+    <!-- endinject -->
+    @* <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+        <script src="~/Content/Assets/js/todolist.js"></script> *@
+
+    <script src="~/Content/Assets/js/formpickers.js"></script>
+    <!-- plugin js for this page -->
+    @* <script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script>
+        <script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> *@
+    <script src="~/Content/Assets/vendors/select2/select2.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#addtask").show();
+            $(".updatetask").hide();
+            loadingjobmasterdetails();
+
+        });
+
+        function loadingjobmasterdetails() {
+
+
+            $.ajax({
+                type: "GET",
+                contenttype: "application/json; charset=utf-8",
+                url: "/Attendance/GetAttendaceList",
+
+                success: onsuccessjobmasterdetails,
+                error: function (error) {
+
+                },
+                cache: false
+            });
+        }
+        function onsuccessjobmasterdetails(data) {
+
+            $("#AllSateList").empty();
+            $("#AllSateList").append("<table id='AllSatedatadetailTable' class='table u-table--v3 g-color-black'>");
+            $("#AllSatedatadetailTable").empty();
+            $("#AllSatedatadetailTable").append("<thead>" +
+                "<tr class='ob_gc'>" +
+           
+                "<th>Employee Code</th>" +
+                "<th>Employee Name</th>" +
+                "<th>Month Year</th>" +
+                "<th>Total Days</th>" +
+                "<th>Present Days</th>" +
+                "<th>Absent Days</th>" +
+                "<th>Leave Days</th>" +               +              
+                "<th>Early Days</th>" +               
+                "<th>Late Days</th>" +
+                "<th>Half Days</th>" +
+                "<th>Check</th>" +
+                "<th>Action</th>" +
+               /* "<th class='last-td'>action</th> " +*/
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='values1'>");
+            if (data.length > 0) {
+                var val = '';
+
+                for (var i = 0; i < data.length; i++) {
+
+                                      
+
+                 
+
+                    val = "<tr>" +
+                    /*  "<td class='first-td'>" + data[i].id + "</td>" +*/
+                        "<td>" + data[i].EmployeeCode + "</td>" +
+                        "<td>" + data[i].EmployeeName + "</td>" +
+                        "<td>" + data[i].MonthYear +"</td>"+
+                        "<td>" + data[i].TotalDays + "</td>" +
+                        "<td>" + data[i].PresentDays + "</td>" +
+                        "<td>" + data[i].AbsentDays + "</td>" +
+                        "<td>" + data[i].LeaveDays + "</td>" +
+                        "<td>" + data[i].EarlyDays + "</td>" +
+                        "<td>" + data[i].LateDays + "</td>" +
+                        "<td>" + data[i].HalfDays + "</td>" +
+                        "<td class='last-td'><a class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' onclick='LoadingEditData(" + data[i].Id + ")' data-toggle='modal' data-target='#CityModal'><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = Delete(" + data[i].Id + ") > <i class='fa fa-trash'></i></a > "
+                        // "<td class='last-td'><label class='form-check-inline u-check g-mr-20 mx-0 mb-0'> <input class='g-hidden-xs-up g-pos-abs g-top-0 g-right-0' id='btnEdit' onclick='LoadingEditData(" + data.data[i].pK_MetaDataID + ")' name = 'radGroup1_1' data-toggle='modal' data-target='#myModal'><i class='fa fa-pencil'></i></label ></td>" +
+                        + "</tr></tbody>";
+
+
+                    $('#values1').append(val);
+                }
+            }
+
+
+
+            $('#AllSatedatadetailTable').dataTable({
+                "bProcessing": true,
+                "bPaginate": true,
+                "sPaginationType": "full_numbers",
+                "responsive": true,
+                "ordering": true
+            });
+
+        }
+
+
+
+        function Delete(ID) {
+            if (confirm('Are you sure to Delete this record ?')) {
+
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    url: "/LeaveManagment/DeleteLeaveRequest/" + ID,
+                    success: function (data) {
+                        window.location.href = '/LeaveManagment/LeaveRequest';
+                        /*LoadingJobMasterDetails();*/
+
+                    }
+
+                });
+            }
+        }
+
+    </script>
+
+}
+
+
+
+
+
+

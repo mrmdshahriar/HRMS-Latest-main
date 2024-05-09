@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-lg-12">
+    <h2>Policies and Procedures</h2>
+    <div class=" float-right">    
+            <a type="button" class="btn btn-inverse-primary u-btn-3d  ml-auto" href="/NotificationRequests/CreatePolicy"> Create Policy</a>
+            <a type="button" class="btn btn-inverse-primary u-btn-3d   ml-auto" href="/NotificationRequests/CreateProcedure"> Create Procedure</a>
+             
+    </div>
+    <br />
+    <hr style=" border: 3px solid;"/>
+
+    @*<input type="button" class="btn btn-primary" style="padding:5px 25px;" id="GetDeptChange" value="" onclick="DeptChange(this);" />*@
+    <button type="button" class="btn btn-inverse-primary  ml-auto" onclick="Create();">Leave</button>
+    <button type="button" class="btn btn-inverse-primary u-btn-3d   ml-auto" onclick="Create();">Leave</button>
+    <button type="button" class="btn btn-inverse-primary u-btn-3d   ml-auto" onclick="Create();">Leave</button>
+    <button type="button" class="btn btn-inverse-primary u-btn-3d  ml-auto" onclick="Create();">Leave</button>
+
+</div>
+
+

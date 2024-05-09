@@ -1,0 +1,454 @@
+﻿
+@{
+    ViewBag.Title = "Deduction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- base:css -->
+<link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css">
+<!-- endinject -->
+<!-- plugin css for this page -->
+@*<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />*@
+<link href="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" rel="stylesheet" />
+
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<link href="~/Content/Assets/css/vertical-layout-light/style.css" rel="stylesheet" />
+
+<link href="~/Content/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link href="~/Content/Assets/css/Country.css" rel="stylesheet" />
+<br />
+<br />
+<div class="container">
+    <!-- Button trigger modal -->
+    @*<div class="row my-3">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-inverse-primary u-btn-3d  d-block ml-auto" data-toggle="modal" data-target="#CountryModal" onclick="clearfields()"><i class="fas fa-pen md-fa-pen"></i> Create</button>
+            </div>
+        </div>*@
+
+
+    @*<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#CountryModal" onclick="clearfields()"><i class="fas fa-pen md-fa-pen"></i> Create</button>*@
+
+    <!-- Modal -->
+    <div class="modal fade" id="DeductionModal" tabindex="-1" role="dialog" aria-labelledby="CountryModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header modal-header">
+                    <h4 class="modal-title" style="color:white">Add/Update Deduction</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 bg-classification" for="inputGroupStatus">Employee</label> <span style="color:red">*</span>
+                                <div class="form-group u-select--v3 g-pos-rel g-brd-gray-light-v7 g-rounded-4 mb-0">
+                                    <select id="EmployeeId" name="EmployeeId" class="form-control classification-select">
+                                        <option value="-1" selected="selected">Select Employee</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 md-name" for="inputGroup-1_1"> Amount </label> <span style="color:red">*</span>
+                                <div class="g-pos-rel">
+                                    <input id="Amount" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder="Enter Amount">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 md-name" for="inputGroup-1_1"> Deduction Month </label> <span style="color:red">*</span>
+                                <div class="g-pos-rel">
+                                    <input id="DeductionMonth" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="date">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 md-name" for="inputGroup-1_1"> Deduction Mode </label> <span style="color:red">*</span>
+                                <div class="g-pos-rel">
+                                    <input id="DeductionMode" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="number" min="0" placeholder="Deduction Mode">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 md-name" for="inputGroup-1_1"> Reson </label> <span style="color:red">*</span>
+                                <div class="g-pos-rel">
+                                    <input id="Reason" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder="Enter Reason">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-2">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" checked="" id="Activechk">
+                                    Active
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer" id="divAddTask">
+                    <button type="button" class="btn btn-inverse-primary u-btn-3d  my-auto ml-auto" id="AddTask" onclick="SaveData();"><i class="fas fa-plus tm-fa-plus"></i>Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Country List -->
+    <div class="row">
+        <div class="col-12">
+            <h3 class="all-md">Deduction List</h3>
+            <hr />
+            <button type="button" class="btn btn-inverse-primary u-btn-3d  d-block ml-auto" data-toggle="modal" data-target="#DeductionModal" onclick="clearfields()"><i class="fas fa-plus tm-fa-plus"></i> Create</button>
+            <br />
+            <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllDeductionList"></div>
+        </div>
+    </div>
+    <!-- Country List ends -->
+    <!-- container-scroller -->
+</div>
+
+
+@section scripts{
+    <!-- base:js -->
+    <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="~/Content/Assets/js/off-canvas.js"></script>
+    <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+    <script src="~/Content/Assets/js/template.js"></script>
+    <script src="~/Content/Assets/js/settings.js"></script>
+    <!-- endinject -->
+    <script src="~/Content/Assets/js/todolist.js"></script>
+
+    <!-- plugin js for this page -->
+    @*<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+        <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>*@
+
+    <script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="~/Content/Assets/vendors/select2/select2.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    @*<script src="~/Content/Assets/js/data-table.js"></script>*@
+    <!-- End custom js for this page-->
+
+    <script>
+
+
+
+        $(document).ready(function () {
+            $("#AddTask").show();
+            $(".updateTask").hide();
+            LoadingDeductionDetails();
+            GetEmployeeId();
+
+        });
+
+        $('#EmployeeId').select2({
+            selectOnClose: true
+        });
+
+        function LoadingDeductionDetails() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Master/GetDeductionList",
+                success: onSuccessDeductionDetails,
+                error: function (error) {
+
+                },
+                cache: false
+            });
+        }
+        function onSuccessDeductionDetails(data) {
+            $("#AllDeductionList").empty();
+            $("#AllDeductionList").append("<table id='AllCountrydatadetailTable' class='table u-table--v3 g-color-black'>");
+            $("#AllCountrydatadetailTable").empty();
+            $("#AllCountrydatadetailTable").append("<thead>" +
+                "<tr class='ob_gC'>" +
+                "<th>Employee</th>" +
+                "<th> Amount </th>" +
+                "<th> Deduction Mode </th>" +
+                "<th>  Deduction Month </th>" +
+
+                "<th class='last-td' style='width:35px'>Action</th> " +
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='values1'>");
+            if (data.length > 0) {
+                var val = '';
+
+                for (var i = 0; i < data.length; i++) {
+                    val = "<tr>" +
+                        /* "<td class='first-td'>" + data[i].Id + "</td>" +*/
+                        "<td>" + data[i].EmployeeName + "</td>" +
+                        "<td>" + data[i].Amount + "</td>" +
+                        "<td>" + data[i].DeductionMode + "</td>" +
+                        "<td>" + data[i].DeductionMonth + "</td>" +
+
+                        "<td class='last-td'><a class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' onclick='LoadingEditData(" + data[i].Id + ")' data-toggle='modal' data-target='#DeductionModal'><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = Delete(" + data[i].Id + ") > <i class='fa fa-trash'></i></a > "
+                        // "<td class='last-td'><label class='form-check-inline u-check g-mr-20 mx-0 mb-0'> <input class='g-hidden-xs-up g-pos-abs g-top-0 g-right-0' id='btnEdit' onclick='LoadingEditData(" + data.data[i].pK_MetaDataID + ")' name = 'radGroup1_1' data-toggle='modal' data-target='#myModal'><i class='fa fa-pencil'></i></label ></td>" +
+                        + "</tr></tbody>";
+
+
+                    $('#values1').append(val);
+                }
+            }
+
+
+            $('#AllCountrydatadetailTable').dataTable({
+                "bProcessing": true,
+                "bPaginate": true,
+                "sPaginationType": "full_numbers",
+                "responsive": true,
+                "ordering": true
+            });
+
+        }
+
+        function LoadingEditData(ID) {
+            console.log(ID);
+            Mode = "Update";
+            $("#AddTask").hide();
+            $(".updateTask").hide();
+            $("#divAddTask").append(" <button type='button' class='btn btn-inverse-primary  my-auto ml-auto updateTask' id='updateTask' onclick='UpdateMetaData(" + ID + ");'>Update</button>");
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Master/EditDeduction/" + ID,
+                success: onSuccessMetaDetaDetails,
+
+                error: function (error) {
+                    alert("error", error);
+                },
+                cache: false
+
+            });
+
+        }
+
+        function onSuccessMetaDetaDetails(data) {
+            debugger
+            $('#Amount').val(data.Amount);
+            $("#Reason").val(data.Reason);
+            $("#DeductionMode").val(data.DeductionMode);
+            $("#DeductionMonth").val(data.DeductionMonth);
+
+            $('#EmployeeId').val(data.EmployeeId).select2();
+            $("#Activechk").prop('checked', data.Active);
+
+        }
+
+        function SaveData() {
+            var Amount = $("#Amount").val();
+            var Reason = $("#Reason").val();
+            var DeductionMode = $("#DeductionMode").val();
+            var DeductionMonth = $("#DeductionMonth").val();
+
+            var EmployeeId = $('#EmployeeId').val();
+            var Active = $('#Activechk').is(":checked");
+            if (Reason == null || Reason == 'string' || !Reason.trim()) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    dangerMode: true,
+                    text: 'Please Fill All Fields!'
+                });
+                return false;
+            }
+            if (EmployeeId == null || EmployeeId == -1 || EmployeeId == "") {
+                Swal.fire({
+                    icon: 'warning',
+                    text: 'Please Select EmployeeId!'
+                });
+                return false;
+            }
+
+            var Data = JSON.stringify(
+                {
+                    Amount: Amount,
+                    Reason: Reason,
+                    DeductionMode: DeductionMode,
+                    DeductionMonth: DeductionMonth,
+                    EmployeeId: EmployeeId,
+                    Active: Active
+                });
+            $.ajax({
+                type: "POST",
+                data: Data,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/Master/AddDeduction",
+                success: onSuccessAddManagement,
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong to Insert new Deduction!',
+                    });
+                },
+                cache: false
+            });
+
+        }
+
+        function onSuccessAddManagement(data) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Info',
+                text: 'Your work has been Save.',
+            }).then(function () {
+                location.reload(true);
+            });
+            Mode = "";
+            clearfields();
+
+            LoadingDeductionDetails();
+
+        }
+
+        function UpdateMetaData(ID) {
+            Mode = "Update";
+            var Amoumt = $("#Amount").val();
+            var Reason = $("#Reason").val();
+            var DeductionMode = $('#DeductionMode').val();
+            var DeductionMonth = $('#DeductionMonth').val();
+            var EmployeeId = $('#EmployeeId').val();
+            var Active = $('#Activechk').is(":checked");
+
+            var Data = JSON.stringify(
+                {
+
+                    Amount: Amoumt,
+                    Reason: Reason,
+                    DeductionMode: DeductionMode,
+                    DeductionMonth: DeductionMonth,
+                    EmployeeId: EmployeeId,
+                    Active: Active
+
+                });
+            /* $("#CountryModal").modal('hide')*/
+            $.ajax({
+                type: "POST",
+                data: Data,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/Master/UpdateDeduction",
+                success: onSuccessUpdateManagement,
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong to Insert new Deduction!',
+                    });
+                },
+                cache: false,
+            });
+        }
+        function onSuccessUpdateManagement(data) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Info',
+                text: 'Your work has been Save.',
+            }).then(function () {
+                location.reload(true);
+            });
+            Mode = "";
+            clearfields();
+
+            LoadingDeductionDetails();
+
+        }
+
+
+        function Delete(ID) {
+            if (confirm('Are you sure to Delete this record ?')) {
+
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    url: "/Master/DeleteDeduction/" + ID,
+                    success: function (data) {
+
+                        LoadingDeductionDetails();
+
+                    }
+
+                });
+            }
+        }
+
+        function GetEmployeeId() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/EmployeeProfile/Employeesddl",
+                success: function (data) {
+
+                    if (data != 0) {
+
+                        $('#EmployeeId').empty();
+                        $('#EmployeeId').append('<option value="-1" selected disabled>Select Employee</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#EmployeeId').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+
+            });
+        }
+
+        function clearfields() {
+            $(".updateTask").hide();
+            $("#AddTask").show();
+            $("#Amount").val("");
+            $("#EmployeeId").val("-1").select2();
+            $("#Reason").val("");
+            $("#DeductionMode").val("");
+            $("#DeductionMonth").val("");
+
+        }
+
+    </script>
+}

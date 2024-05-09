@@ -1,0 +1,1628 @@
+﻿@*@model HRMS.Models.AppliedCandidat*@
+@{
+    ViewBag.Title = "AddAppliedCandidate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- base:css -->
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css"> *@
+<!-- endinject -->
+<!-- plugin css for this page -->
+@*<link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />*@
+@* <link href="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css"> *@
+<!-- End plugin css for this page -->
+<!-- End plugin css for this page -->
+
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/select2/select2.min.css">
+<link rel="stylesheet" href="~/Content/Assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css"> *@
+
+<!-- inject:css -->
+@* <link href="~/Content/Assets/css/vertical-layout-light/style.css" rel="stylesheet" />
+
+<link href="~/Content/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> *@
+<link href="~/Content/Assets/css/Applied.css" rel="stylesheet" />
+<script>
+    
+    var full_url = document.URL; // Get current url
+    var url_array = full_url.split('/') // Split the string into an array with / as separator
+    var ID = url_array[url_array.length - 1];  // Get the last part of the array (-1)
+    function ShortlistEvent() {
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            url: "/Recruitment/ShorListUpdate/" + ID,
+            success: onSuccessAppliedCandidate,
+            error: function (error) {
+
+                $('#responseTextDivId').html(error.responseText)
+                alert(JSON.stringify(error));
+            },
+            cache: false
+        });
+    }
+</script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="__top_head">
+                <h3 class="all-md">Applied Candidate</h3>
+                <div class="btn_blk">
+                    <div id="btnDive">
+   
+                        <button type="button" id="Btnstatus" value="shortList" onclick="ShortlistEvent();" class="btn btn-inverse-primary">ShortList</button>
+                    </div>
+                    <div id="btnDiv">
+                        <button type="button" id="BtnInter" value="shortList" class="btn btn-inverse-primary" data-toggle="modal" data-target="#InterviewModal">Interview</button>
+                    </div>
+                </div>
+            </div>
+            <div class="__blk">
+                @*<form class="forms-sample" id="EmployeeForm">*@
+                <input name="AppliedId" id="AppliedId" type="hidden" />
+                <input type="hidden" id="hdnSession" data-value="@Request.RequestContext.HttpContext.Session["shortlist"]" />
+                <input type="hidden" id="hdnInterview" data-value="@Request.RequestContext.HttpContext.Session["interview"]" />
+                <input type="hidden" id="hdnSelected" data-value="@Request.RequestContext.HttpContext.Session["selected"]" />
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="">Addvertise No</label>
+                                <input type="text" class="form-control" name="AddvertiseNo" id="txtAddvertiseNo" placeholder="Enter Addvertise No">
+            
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="">Candidate Name</label>
+                                <input type="text" class="form-control" name="CandidateName" id="txtCandidateName" placeholder="Enter Candidate Name">
+                        
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="">Father Name</label>
+                                <input type="text" class="form-control" name="FatherName" id="txtFatherName" placeholder="Enter Father Name">
+                            
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="">Email</label>
+                                <input type="email" class="form-control" name="Email" id="txtEmail" placeholder="Enter Email">
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="">CNIC</label>
+                            <input type="text" class="form-control" name="CNIC" id="txtCNIC" maxlength="13" placeholder="Enter CNIC">
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="">Contact Number</label>
+                            <input type="text" class="form-control" name="ContactNumber" id="txtContactNumber" maxlength="11" placeholder="Enter Contact Number">
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="form-group">
+                            <label class="" for="exampleFormControlSelect12">Job Title</label>
+                               <input type="text" class="form-control" name="txtJobTitle1" id="txtJobTitle1" readonly>
+                                @*<select class="form-control" id="txtJobTitle">
+                                    <option value="-1" selected="selected">Job Title</option>
+                                </select>*@
+                            
+                        </div>
+                    
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="form-group">
+                            <label class="" for="exampleFormControlSelect1">Job Type</label>
+                            <input type="text" class="form-control" name="DDLJobType1" id="DDLJobType1" readonly>
+                            @*<select class="form-control" id="DDLJobType">
+                                <option value="-1" selected="selected">Job Type</option>
+                            </select>*@
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-4">
+                        <div class="form-group">
+                            <label class="">Job Location</label>
+                                <input type="text" class="form-control" name="txtJobLocation" id="txtJobLocation" placeholder="Enter Job Location" readonly>
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="">Shift</label>
+                            <input type="text" class="form-control" name="DDLShift1" id="DDLShift1"  readonly>
+                            @*<select class="form-control" id="DDLShift">
+
+                                <option value="-1" selected="selected">Shift</option>
+                                <option value="2">Night</option>
+                                <option value="3">Day</option>
+
+                            </select>*@
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="">Designation</label>
+                            <input type="text" class="form-control" name="DDLDesignation1" id="DDLDesignation1" readonly>
+                            @*<select class="form-control" id="DDLDesignation">
+            <option value="-1" selected="selected">Select Designation</option>
+        </select>*@
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="" for="exampleFormControlSelect3">Department</label>
+                            <input type="text" class="form-control" name="DDLDepartment1" id="DDLDepartment1" readonly>
+                            @*<select class="form-control" id="DDLDepartment">
+            <option value="-1" selected="selected">Select Department</option>
+        </select>*@
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="">Expected Salary</label>
+                                <input type="text" class="form-control" name="ExpectedSalary" id="txtSalaryRange" placeholder="Enter Salary Range">
+                        
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="" for="exampleFormControlSelect3">Currency</label>
+                            <input type="text" class="form-control" name="DDLCurrency1" id="DDLCurrency1" readonly>
+                            @*<select class="form-control" id="DDLCurrency" name="Currency">
+                                <option value="-1" selected="selected">Select Currency</option>
+                                <option value="2">PKR</option>
+                                <option value="3">US</option>
+
+                            </select>*@
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="" for="exampleFormControlSelect3">Gender</label>
+                            <input type="text" class="form-control" name="DDLGender1" id="DDLGender1" readonly>
+                            @*<select class="form-control" id="DDLGender" name="Gender">
+            <option value="-1" selected="selected">Select Gender</option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+
+        </select>*@
+                        </div>
+                    </div>
+
+                    @*<div class="col-md-4">
+                        <div class="form-group">
+                            <label class="" for="exampleFormControlSelect3">Status</label>
+                            <div class="col-sm-12">
+                                <select class="form-control" id="DDLStatus" name="Status">
+                                    <option value="-1" selected="selected">Select Status</option>
+
+                                    <option value="applied">Applied</option>
+                                    <option value="selected">Selected</option>
+                                    <option value="interview">Interview</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>*@
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="">Age</label>
+                                <input type="text" class="form-control" name="Age" id="txtAge" maxlength="2" placeholder="Enter Age">
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="">Total Expereince</label>
+                                <input type="text" class="form-control" name="MinExpereince" id="txtMinExpereince" placeholder="Enter Min Expereince">
+                        
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="display:none">
+                        <div class="form-group">
+                            <label class="">Max Expereince(Year)</label>
+                                <input type="text" class="form-control" name="MaxExpereince" id="txtMaxExpereince" placeholder="Enter Max Expereince">
+                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-form-label" for="exampleFormControlSelect7">MIn Qualification</label>
+                            <input type="text" class="form-control" name="txtMInQualification1" id="txtMInQualification1" readonly>
+                            @*<select class="form-control" id="txtMInQualification" name="MInQualification">
+                                <option value="-1" selected="selected">Select Qualification</option>
+                                <option value="1">Primary</option>
+                                <option value="3">Middle</option>
+                                <option value="4">Secondary</option>
+                                <option value="5">Inter</option>
+                                <option value="6">Graduation</option>
+                                <option value="7">Master</option>
+
+                            </select>*@
+                            @* <input type="text" class="form-control" aria-describedby="MInQualification" id="txtMInQualification" placeholder="Enter MIn Qualification">*@
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="">Applied From</label>
+                                <input type="text" class="form-control" name="AppliedFrom" id="txtAppliedFrom" placeholder="Enter Applied From">
+                        
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="">Skills</label>
+                            <input type="text" class="form-control" name="txtSkills" id="txtSkills" readonly>
+                            <!--<select class="js-example-basic-multiple w-100" id="DDLSkills" multiple="multiple">
+                                <option value="-1" selected="selected">-->@*Select Skills*@<!--</option>
+                            </select>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="" for="exampleFormControlSelect1">Apply Date</label>
+                            <input type="text" class="form-control" name="ApplyDate1" id="ApplyDate1" readonly>
+                            @*<div id="ApplyDate" class="input-group date datepicker">
+            <input type="text" class="form-control" name="ApplyDate">
+            <span class="input-group-addon input-group-append border-left">
+                <span class="mdi mdi-calendar input-group-text"></span>
+            </span>
+        </div>*@
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="" for="exampleFormControlSelect1">Available Date</label>
+                            <input type="text" class="form-control" name="AvailableDate1" id="AvailableDate1" readonly>
+                            @*<div id="AvailableDate" class="input-group date datepicker">
+                                <input type="text" class="form-control" name="AvailableDate">
+                                <span class="input-group-addon input-group-append border-left">
+                                    <span class="mdi mdi-calendar input-group-text"></span>
+                                </span>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="display:none">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="UploadImg">Select image:</label>
+                            <input type="file" name="Photo" required="required" id="UploadImg" class="form-control" />
+                            <input type="text" id="txtImg" name="txtImg" />
+                            <div id="IamgeView">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="UploadImg">Select CV:</label>
+                            <input type="file" name="Attachment" required="required" id="UploadFile" class="form-control" />
+                            <input type="text" id="txtFile" name="txtFile" />
+                            <div id="VWdivfileupload">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="display:none">
+                    <div class="col-sm-12 col-md-2">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="Active" checked="" id="Activechk">
+                                Active
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div id="divAddTask">
+                    <button type="button" class="btn btn-inverse-primary u-btn-3d  my-auto ml-auto" id="AddTask" onclick="SaveData();"><i class="fas fa-plus tm-fa-plus"></i>Add</button>
+                </div>
+                @*</form>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*interview Modal*@
+<div class="modal fade" id="InterviewModal" tabindex="-1" role="dialog" aria-labelledby="InterviewModal" aria-hidden="true">
+    <div class="modal-dialog mw-100 w-75" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-header">
+                <h4 class="modal-title" style="color:white">Interview Evaluation</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    @*@using (Html.BeginForm("OfferLetter", "Recruitment", FormMethod.Post, new { target = "_blank" }))
+            {*@
+                    @*<input name="appliedId" id="appliedId" type="hidden" />*@
+
+                    <table class="table table-hover table-bordered">
+                        <thead style="color: white; background: gray; ">
+                            <tr>
+                                <th rowspan="2">Attributes</th>
+                                <th colspan="4">&nbsp;Interviewers</th>
+                            </tr>
+                            <tr>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Education
+                                </td>
+                                <td><span><input type="radio" name="Education" id="Education" value="1"><label for="Education"></label></span></td>
+                                <td><span><input type="radio" name="Education" id="Education" value="2"><label for="Education"></label></span></td>
+                                <td><span><input type="radio" name="Education" id="Education" value="3"><label for="Education"></label></span></td>
+                                <td><span><input type="radio" name="Education" id="Education" value="4"><label for="Education"></label></span></td>
+
+                            </tr>
+                            <tr>
+                                <td>  Computer Literacy</td>
+                                <td><span><input type="radio" name="ComputerLiteracy" id="ComputerLiteracy" value="1"><label for="ComputerLiteracy"></label></span></td>
+                                <td><span><input type="radio" name="ComputerLiteracy" id="ComputerLiteracy" value="2"><label for="ComputerLiteracy"></label></span></td>
+                                <td><span><input type="radio" name="ComputerLiteracy" id="ComputerLiteracy" value="3"><label for="ComputerLiteracy"></label></span></td>
+                                <td><span><input type="radio" name="ComputerLiteracy" id="ComputerLiteracy" value="4"><label for="ComputerLiteracy"></label></span></td>
+                            </tr>
+                            <tr>
+                                <td>Intelligence</td>
+                                <td><span><input type="radio" name="Intelligence" id="Intelligence" value="1"><label for="Intelligence"></label></span></td>
+                                <td><span><input type="radio" name="Intelligence" id="Intelligence" value="2"><label for="Intelligence"></label></span></td>
+                                <td><span><input type="radio" name="Intelligence" id="Intelligence" value="3"><label for="Intelligence"></label></span></td>
+                                <td><span><input type="radio" name="Intelligence" id="Intelligence" value="4"><label for="Intelligence"></label></span></td>
+                            </tr>
+                            <tr>
+                                <td>Experience related to the Job Interviewed For</td>
+                                <td><span><input type="radio" name="ExperienceInterviewed" id="ExperienceInterviewed" value="1"><label for="ExperienceInterviewed"></label></span></td>
+                                <td><span><input type="radio" name="ExperienceInterviewed" id="ExperienceInterviewed" value="2"><label for="ExperienceInterviewed"></label></span></td>
+                                <td><span><input type="radio" name="ExperienceInterviewed" id="ExperienceInterviewed" value="3"><label for="ExperienceInterviewed"></label></span></td>
+                                <td><span><input type="radio" name="ExperienceInterviewed" id="ExperienceInterviewed" value="4"><label for="ExperienceInterviewed"></label></span></td>
+                            </tr>
+                            <tr>
+                                <td>Experience related to Other Lines of Company Business</td>
+                                <td><span><input type="radio" name="ExperienceCompanyBusiness" id="ExperienceCompanyBusiness" value="1"><label for="ExperienceCompanyBusiness"></label></span></td>
+                                <td><span><input type="radio" name="ExperienceCompanyBusiness" id="ExperienceCompanyBusiness" value="2"><label for="ExperienceCompanyBusiness"></label></span></td>
+                                <td><span><input type="radio" name="ExperienceCompanyBusiness" id="ExperienceCompanyBusiness" value="3"><label for="ExperienceCompanyBusiness"></label></span></td>
+                                <td><span><input type="radio" name="ExperienceCompanyBusiness" id="ExperienceCompanyBusiness" value="4"><label for="ExperienceCompanyBusiness"></label></span></td>
+                            </tr>
+                            <tr>
+                                <td>Job Knowledge/Skill</td>
+                                <td><span><input type="radio" name="JobKnowledgeSkill" id="JobKnowledgeSkill" value="1"><label for="JobKnowledgeSkill"></label></span></td>
+                                <td><span><input type="radio" name="JobKnowledgeSkill" id="JobKnowledgeSkill" value="2"><label for="JobKnowledgeSkill"></label></span></td>
+                                <td><span><input type="radio" name="JobKnowledgeSkill" id="JobKnowledgeSkill" value="3"><label for="JobKnowledgeSkill"></label></span></td>
+                                <td><span><input type="radio" name="JobKnowledgeSkill" id="JobKnowledgeSkill" value="4"><label for="JobKnowledgeSkill"></label></span></td>
+                            </tr>
+                            <tr>
+                                <td>Personality</td>
+                                <td><span><input type="radio" name="Personality" id="Personality" value="1"><label for="Personality"></label></span></td>
+                                <td><span><input type="radio" name="Personality" id="Personality" value="2"><label for="Personality"></label></span></td>
+                                <td><span><input type="radio" name="Personality" id="Personality" value="3"><label for="Personality"></label></span></td>
+                                <td><span><input type="radio" name="Personality" id="Personality" value="4"><label for="Personality"></label></span></td>
+                            </tr>
+                            <tr>
+                                <td>Communication Skills</td>
+                                <td><span><input type="radio" name="CommunicationSkills" id="CommunicationSkills" value="1"><label for="CommunicationSkills"></label></span></td>
+                                <td><span><input type="radio" name="CommunicationSkills" id="CommunicationSkills" value="2"><label for="CommunicationSkills"></label></span></td>
+                                <td><span><input type="radio" name="CommunicationSkills" id="CommunicationSkills" value="3"><label for="CommunicationSkills"></label></span></td>
+                                <td><span><input type="radio" name="CommunicationSkills" id="CommunicationSkills" value="4"><label for="CommunicationSkills"></label></span></td>
+                            </tr>
+                            <tr>
+                                <td>Development Potential/Motivation</td>
+                                <td><span><input type="radio" name="DevelopmentMotivation" id="DevelopmentMotivation" value="1"><label for="DevelopmentMotivation"></label></span></td>
+                                <td><span><input type="radio" name="DevelopmentMotivation" id="DevelopmentMotivation" value="2"><label for="DevelopmentMotivation"></label></span></td>
+                                <td><span><input type="radio" name="DevelopmentMotivation" id="DevelopmentMotivation" value="3"><label for="DevelopmentMotivation"></label></span></td>
+                                <td><span><input type="radio" name="DevelopmentMotivation" id="DevelopmentMotivation" value="4"><label for="DevelopmentMotivation"></label></span></td>
+                            </tr>
+                            <tr>
+                                <td>Personal Aptitude related to the Job Interviewed For</td>
+                                <td><span><input type="radio" name="PersonalAptitude" id="PersonalAptitude" value="1"><label for="PersonalAptitude"></label></span></td>
+                                <td><span><input type="radio" name="PersonalAptitude" id="PersonalAptitude" value="2"><label for="PersonalAptitude"></label></span></td>
+                                <td><span><input type="radio" name="PersonalAptitude" id="PersonalAptitude" value="3"><label for="PersonalAptitude"></label></span></td>
+                                <td><span><input type="radio" name="PersonalAptitude" id="PersonalAptitude" value="4"><label for="PersonalAptitude"></label></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="">Other Comments</label>
+                                <textarea class="form-control" id="Comments" name="Comments" placeholder="Enter Comments"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div class="modal-footer" id="divAddTasks">
+                    <button class="btn btn-inverse-primary" id="AddTasks" type="submit" onclick="AddInterView();"><i class="fas fa-plus tm-fa-plus"></i>Add Interview</button>
+                    @*}*@
+                </div>
+            </div>
+                @*<div class="modal-footer" id="divAddTask">
+            <button type="button" class="btn btn-inverse-primary u-btn-3d  my-auto ml-auto" id="AddTask" onclick="addOfferLetter();"><i class="fas fa-plus tm-fa-plus"></i>Add</button>
+        </div>*@
+            </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="CityModal" tabindex="-1" role="dialog" aria-labelledby="CityModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header modal-header">
+                <h4 class="modal-title" style="color:white"></h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+
+                @using (Html.BeginForm("OfferLetter", "Recruitment", FormMethod.Post, new { target = "_blank" }))
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="" for="exampleFormControlSelect1">Joining Date</label>
+                                <div class="col-sm-12">
+                                    <div id="JoiningDate" class="input-group date datepicker">
+                                        <input type="text" class="form-control" name="date">
+                                        <span class="input-group-addon input-group-append border-left">
+                                            <span class="mdi mdi-calendar input-group-text"></span>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="">Salary</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" name="Salary" id="txtSalary" placeholder="Enter Salary">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row" style="display:none">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input name="appliedId" id="appliedId" type="hidden" />
+                                <input name="designation" id="designation" type="hidden" />
+                                <input name="department" id="department" type="hidden" />
+                                <input name="hdnCandidateName" id="hdnCandidateName" type="hidden" />
+                                <input name="hdndepartmentName" id="hdndepartmentName" type="hidden" />
+                                <input name="hdnDesignationName" id="hdnDesignationName" type="hidden" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <button class="btn btn-inverse-primary" id="submitButton" value="Close" type="submit">Genrate OfferLetter</button>
+                }
+            </div>
+            @*<div class="modal-footer" id="divAddTask">
+                    <button type="button" class="btn btn-inverse-primary u-btn-3d  my-auto ml-auto" id="AddTask" onclick="addOfferLetter();"><i class="fas fa-plus tm-fa-plus"></i>Add</button>
+                </div>*@
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+    <!-- base:js -->
+    @* <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script> *@
+    <!-- endinject -->
+    <!-- inject:js -->
+    @* <script src="~/Content/Assets/js/off-canvas.js"></script>
+    <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+    <script src="~/Content/Assets/js/template.js"></script>
+    <script src="~/Content/Assets/js/settings.js"></script> *@
+    <!-- endinject -->
+     <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script> 
+    @* <script src="~/Content/Assets/js/todolist.js"></script> *@
+
+    <script src="~/Content/Assets/js/formpickers.js"></script>
+    <!-- plugin js for this page -->
+    @*<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+        <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>*@
+
+    @* <script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script> *@
+
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> *@
+    @*<script src="~/Content/Assets/js/appliedCandidates.js"></script>*@
+    <script src="~/Content/Assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Content/Assets/js/select2.js"></script>
+    @*<script src="~/Content/Assets/js/select2.js"></script>*@
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    @*<script src="~/Content/Assets/js/data-table.js"></script>*@
+    <!-- End custom js for this page-->
+
+<script>
+
+        var ID = 0;
+        var Url;
+
+
+        $(document).ready(function () {
+            $("#AddTask").show();
+            $(".updatetask").hide();
+            $('#Btnstatus').hide();
+            $('#BtnInter').hide();
+            $('#AddTasks').hide();
+
+            $("#txtImg").hide();
+            $("#txtFile").hide();
+
+            //$('#btnInterview').hide();
+            //$('#btnSelected').hide();
+
+            //getjobtypeddl();
+            //getdepartmentddl();
+            //getdesignationddl();
+            //getJobTitle();
+            //gethrmskillsddl();
+
+            $('#DDLJobType').select2({
+                selectOnClose: true
+            });
+
+            $('#DDLDepartment').select2({
+                selectOnClose: true
+            });
+            $('#DDLDesignation').select2({
+                selectOnClose: true
+            });
+
+            $('#txtJobTitle').select2({
+                selectOnClose: true
+            });
+            $('#DDLSkills').select2({
+               // selectOnClose: true
+            });
+
+            //Only Number Allow Function
+            $('#txtAge').keypress(function (e) {
+
+                var charCode = (e.which) ? e.which : event.keyCode
+
+                if (String.fromCharCode(charCode).match(/[^0-9]/g))
+
+                    return false;
+
+            });
+
+
+            $('#txtMaxExpereince').keypress(function (e) {
+
+                var charCode = (e.which) ? e.which : event.keyCode
+
+                if (String.fromCharCode(charCode).match(/[^0-9]/g))
+
+                    return false;
+
+            });
+
+            $('#txtMinExpereince').keypress(function (e) {
+
+                var charCode = (e.which) ? e.which : event.keyCode
+
+                if (String.fromCharCode(charCode).match(/[^0-9]/g))
+
+                    return false;
+
+            });
+
+
+            //Change this code
+            $("#txtSalaryRange").on("input", function (evt) {
+                var self = $(this);
+                self.val(self.val().replace(/[^0-9\.]/g, ''));
+                if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+                    evt.preventDefault();
+                }
+            });
+
+
+            $('#txtJobTitle').change(function () {
+                // Mode = "Update";
+                var ID = $(this).val();
+
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: "/Recruitment/EditJobList/" + ID,
+                    success: onSuccessJobMaster,
+                    error: function (error) {
+                        $('#responseTextDivId').html(error.responseText)
+                        alert(JSON.stringify(error));
+                    },
+                    cache: false
+                });
+            });
+
+            $('#txtCNIC').keypress(function (e) {
+
+                var charCode = (e.which) ? e.which : event.keyCode
+
+                if (String.fromCharCode(charCode).match(/[^0-9]/g))
+
+                    return false;
+
+            });
+
+
+            $('#txtContactNumber').keypress(function (e) {
+
+                var charCode = (e.which) ? e.which : event.keyCode
+
+                if (String.fromCharCode(charCode).match(/[^0-9]/g))
+
+                    return false;
+
+            });
+
+            //$('#txtCandidateName').keypress(function (e) {
+            //    var regex = new RegExp("^[a-zA-Z]+$");
+            //    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            //    if (regex.test(str)) {
+            //        return true;
+            //    }
+            //    else {
+            //        e.preventDefault();
+            //        $('.error').show();
+            //        $('.error').text('Please Enter Alphabate');
+            //        return false;
+            //    }
+            //});
+
+            //$('#txtFatherName').keypress(function (e) {
+            //    var regex = new RegExp("^[a-zA-Z]+$");
+            //    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            //    if (regex.test(str)) {
+            //        return true;
+            //    }
+            //    else {
+            //        e.preventDefault();
+            //        $('.error').show();
+            //        $('.error').text('Please Enter Alphabate');
+            //        return false;
+            //    }
+            //});
+
+
+
+
+            if (document.referrer.indexOf(window.location.hostname) != -1) {
+                var referrer = document.referrer;
+                var UrlSplit = referrer.split("/")
+                Url = UrlSplit[4];
+
+            }
+
+
+            var full_url = document.URL; // Get current url
+            var url_array = full_url.split('/') // Split the string into an array with / as separator
+            var ID = url_array[url_array.length - 1];  // Get the last part of the array (-1)
+
+            if (!isNaN(ID)) {
+                mode = "update";
+                $("#AddTask").hide();
+
+                $(".updatetask").hide();
+
+                //var btnInterview = $("#btnInterview").val();
+                //if (btnInterview == "interview") {
+                //    $("#btnInterview").hide();
+
+                //    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right' id='updatetask' onclick='updatestate(" + ID + ");'>InterView</button>");
+                //}
+                //var btnShortList = $("#Btnstatus").val();
+                //if (btnShortList == "shortList") {
+  
+                if (Url == "HrmAppliedCandidate") {
+                    $("#Btnstatus").hide();
+                    $('#BtnInter').hide();
+                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='ShortList' data=" + ID +" id='updatetask' onclick='updatestate(this);'>ShortList</button>");
+                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Reject' data=" + ID +" id='btnReject' onclick='updatestate(this);'>Reject</button>");
+                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Hold' data="+ ID +" id='btnHold' onclick='updatestate(this);'>Hold</button>");
+
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Recruitment/AppliedCandidate/" + ID,
+                        success: onSuccessAppliedCandidate,
+                        error: function (error) {
+
+                            $('#responseTextDivId').html(error.responseText)
+                            alert(JSON.stringify(error));
+                        },
+                        cache: false
+                    });
+                }
+
+             
+                if (Url == "ShortList") {
+                    $("#Btnstatus").hide();
+                    $('#BtnInter').hide();
+                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='InterView' data=" + ID + " id='updatetask' onclick='updatestate(this);'>InterView</button>");
+                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Hold' data=" + ID + " id='updatetask' onclick='updatestate(this);'>Hold</button>");
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Recruitment/ViewShortList/" + ID,
+                        success: onSuccessAppliedCandidate,
+                        error: function (error) {
+
+                            $('#responseTextDivId').html(error.responseText)
+                            alert(JSON.stringify(error));
+                        },
+                        cache: false
+                    });
+                }
+
+                //var SelectedValue = $("#hdnSelected").data('value');
+           
+                if (Url == "Interview") {
+                    $('#BtnInter').show();
+                    $("#AddTasks").hide();
+                    $("#Btnstatus").hide();
+                    $("#divAddTasks").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Selected' id='updatetask' data=" + ID + " onclick='updatestate(this);'>Selected</button>");
+                    $("#divAddTasks").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Rejected' id='updatetask' data=" + ID + " onclick='updatestate(this);'>Rejected</button>");
+                    $("#divAddTasks").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Another InterView' id='updatetask' data=" + ID + "  onclick='updatestate(this);'>Another InterView</button>");
+                    //$("#divAddTasks").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Another InterView' id='updatetask' data=" + ID + "  onclick='updatestate(" + ID + ");'>Another InterView</button>");
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Recruitment/ViewInterView/" + ID,
+                        success: onSuccessAppliedCandidate,
+                        error: function (error) {
+
+                            $('#responseTextDivId').html(error.responseText)
+                            alert(JSON.stringify(error));
+                        },
+                        cache: false
+                    });
+                }
+
+                if (Url == "Selected") {
+
+                    $("#Btnstatus").hide();
+                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Offer Letter' id='updatetask' data-toggle='modal' data-target='#CityModal' >Offer Letter</button>");
+                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Hold' id='updatetask' data-toggle='modal' data-target='#CityModal' >Hold</button>");
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Recruitment/AppliedCandidate/" + ID,
+                        success: onSuccessAppliedCandidate,
+                        error: function (error) {
+
+                            $('#responseTextDivId').html(error.responseText)
+                            alert(JSON.stringify(error));
+                        },
+                        cache: false
+                    });
+                }
+
+                if (Url == "Offerletters") {
+                    $("#Btnstatus").hide();
+                    // $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right' id='updatetask' data-toggle='modal' data-target='#CityModal' >Offer Letter</button>");
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Recruitment/AppliedCandidate/" + ID,
+                        success: onSuccessAppliedCandidate,
+                        error: function (error) {
+
+                            $('#responseTextDivId').html(error.responseText)
+                            alert(JSON.stringify(error));
+                        },
+                        cache: false
+                    });
+                }
+
+            }
+
+        });
+
+        function onSuccessJobMaster(data) {
+            $("#DDLJobType").val(data.JobType).select2().attr('disabled', 'disabled');
+            $("#DDLDepartment").val(data.DepartmentId).select2().attr('disabled', 'disabled');
+            $("#DDLDesignation").val(data.DesignationId).select2().attr('disabled', 'disabled');
+            $("#txtJobLocation").val(data.Location).attr('disabled', 'disabled');
+            //$("#txtAddvertiseNo").val(data.AddvertiseNo).attr('disabled', 'disabled');
+
+        }
+
+
+    function onSuccessAppliedCandidate(data) {
+
+        for (const element of data) {
+            $("#txtCandidateName").val(element.CandidateName).attr('disabled', 'disabled');
+            $("#txtJobLocation").val(element.Location).attr('disabled', 'disabled');
+        
+            $("#DDLShift1").val(element.ShiftName).attr('disabled', 'disabled');
+            $("#txtFatherName").val(element.FatherName).attr('disabled', 'disabled');
+            $("#txtEmail").val(element.Email).attr('disabled', 'disabled');
+            $("#txtCNIC").val(element.CNIC).attr('disabled', 'disabled');
+
+            $("#txtContactNumber").val(element.ContactNumber).attr('disabled', 'disabled');
+            $("#txtJobTitle1").val(element.JobTitle).attr('disabled', 'disabled');
+            $("#txtAddvertiseNo").val(element.AddvertiseNo).attr('disabled', 'disabled');
+            $("#DDLJobType1").val(element.JobType).attr('disabled', 'disabled');
+           
+         
+            $("#DDLDepartment1").val(element.DepertmentName).attr('disabled', 'disabled');
+            $("#DDLDesignation1").val(element.DesignationName).attr('disabled', 'disabled');
+            // $("#txtSkills").val(data.Skills).attr('disabled', 'disabled');
+          
+            
+            $("#DDLGender1").val(element.Gender).attr('disabled', 'disabled');
+            $("#txtAge").val(element.Age).attr('disabled', 'disabled');
+            $("#txtMinExpereince").val(element.MinExpereince).attr('disabled', 'disabled');
+            $("#txtMaxExpereince").val(element.MaxExpereince).attr('disabled', 'disabled');
+            $("#txtMInQualification1").val(element.MInQualification).attr('disabled', 'disabled');
+            $("#txtSalaryRange").val(element.ExpectedSalary).attr('disabled', 'disabled');
+            $("#DDLCurrency1").val(element.Currency).attr('disabled', 'disabled');
+            //$("#DDLStatus").val(data.Status).select2();
+            $("#txtAppliedFrom").val(element.AppliedFrom).attr('disabled', 'disabled')
+            $("#txtSkills").val(element.Skills).attr('disabled', 'disabled');
+           
+            $('#ApplyDate1').val(element.ApplyDate).attr('disabled', 'disabled');
+            $('#AvailableDate1').val(element.AvailableDate).attr('disabled', 'disabled');
+           /* $('#ApplyDate').datepicker({ dateformat: "yy-mm-dd" }).find('input').val(element.applydate);*/
+        /*    $('#AvailableDate').datepicker({ dateformat: "yy-mm-dd" }).find('input').val(element.availabledate);*/
+           
+
+
+
+
+
+
+
+            $("#txtImg").show();
+            $("#txtFile").show();
+
+            var fullDatestart = new Date(data.CreatedBy);
+            var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
+            if (twoDigitMonthstart.length == 1)
+                twoDigitMonthstart = "0" + twoDigitMonthstart;
+            var twoDigitDatestart = fullDatestart.getDate() + "";
+            if (twoDigitDatestart.length == 1)
+                twoDigitDatestart = "0" + twoDigitDatestart;
+
+            var currentDatestart = fullDatestart.getFullYear() + "/" + twoDigitMonthstart + "/" + twoDigitDatestart;
+
+            var fullDatestart = new Date(data.LastModifiedBy);
+            var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
+            if (twoDigitMonthstart.length == 1)
+                twoDigitMonthstart = "0" + twoDigitMonthstart;
+            var twoDigitDatestart = fullDatestart.getDate() + "";
+            if (twoDigitDatestart.length == 1)
+                twoDigitDatestart = "0" + twoDigitDatestart;
+
+            // var currentDatestart1 = twoDigitDatestart + "/" + twoDigitMonthstart + "/" + fullDatestart.getFullYear();
+            var currentDatestart1 = fullDatestart.getFullYear() + "/" + twoDigitMonthstart + "/" + twoDigitDatestart;
+
+            // $("#VWdivfileupload").empty();
+      
+            $('#appliedId').val(element.Id);
+            /* $('#AppliedId').val(data.AppliedId);*/
+       
+            $('#designation').val(element.DesignationId);
+            $('#department').val(element.DepartmentId);
+
+            //var splitdata = data.Skills.split(',');
+            //$('#DDLSkills').val(splitdata).change().attr('disabled', 'disabled');
+
+           
+       
+           // $("#txtFatherName").val(element.FatherName).attr('disabled', 'disabled');
+           // $("#txtEmail").val(element.Email).attr('disabled', 'disabled');
+           // $("#txtCNIC").val(element.CNIC).attr('disabled', 'disabled');
+           
+           // $("#txtContactNumber").val(element.ContactNumber).attr('disabled', 'disabled');
+           // $("#txtJobTitle").val(element.JobTitle).attr('disabled', 'disabled');
+           // $("#txtAddvertiseNo").val(element.AddvertiseNo).attr('disabled', 'disabled');
+           // $("#DDLJobType").val(element.JobType).select2().attr('disabled', 'disabled');
+           // $("#DDLShift").val(element.ShiftId).select2().attr('disabled', 'disabled');
+           // $("#DDLDepartment").val(element.DepartmentId).select2().attr('disabled', 'disabled');
+           // $("#DDLDesignation").val(element.DesignationId).select2().attr('disabled', 'disabled');
+           //// $("#txtSkills").val(data.Skills).attr('disabled', 'disabled');
+           // $("#txtJobLocation").val(element.Location).attr('disabled', 'disabled');
+           // $("#DDLGender").val(element.Gender).select2().attr('disabled', 'disabled');
+           // $("#txtAge").val(element.Age).attr('disabled', 'disabled');
+           // $("#txtMinExpereince").val(element.MinExpereince).attr('disabled', 'disabled');
+           // $("#txtMaxExpereince").val(element.MaxExpereince).attr('disabled', 'disabled');
+           // $("#txtMInQualification").val(element.MInQualification).select2().attr('disabled', 'disabled');
+           // $("#txtSalaryRange").val(element.ExpectedSalary).attr('disabled', 'disabled');
+           // $("#DDLCurrency").val(element.Currency).select2().attr('disabled', 'disabled');
+           // //$("#DDLStatus").val(data.Status).select2();
+           // $("#txtAppliedFrom").val(element.AppliedFrom).attr('disabled', 'disabled');
+            //$('#ApplyDate').datepicker({ dateformat: "yy-mm-dd" }).find('input').val(currentDatestart);
+            //$('#AvailableDate').datepicker({ dateformat: "yy-mm-dd" }).find('input').val(currentDatestart1);
+
+            $("#txtImg").val(element.Photo);
+            $("#VWdivfileupload").append("<a href=" + element.Attachment + " target='_blank'>View File</a>");
+            $("#IamgeView").append("<a href=" + element.Photo + " target='_blank'>View Image</a>");
+            /* <a href=" + data[i].Attachment + " target='_blank' class='btn  btn-sm' title='File' style='cursor: pointer;'></a>*/
+            // $("#IamgeView").append("<img src=" + data.Photo+" alt='no image found'>");
+            $("#txtFile").val(element.Attachment);
+            $("#Activechk").prop('checked', element.Active);
+        }
+    }
+
+
+
+
+        function populate(data) {
+            $.each(data, function (key, value) {
+                var $el = $(`[name="${key}"]`),
+                    type = $el.attr('type');
+                if ($el.length > 0)
+                    switch (type) {
+                        case 'checkbox':
+                            $el.attr('checked', 'checked');
+                            break;
+                        case 'radio':
+                            $el.filter('[value="' + val + '"]').attr('checked', 'checked');
+                            break;
+                        default:
+                            $el.val(value);
+                    }
+            });
+        }
+        function onSuccessEmployeeDetails(data) {
+
+            // JSON.parse(JSON.stringify(data))
+            populate(JSON.parse(JSON.stringify(data)));
+        }
+
+        function AddInterView() {
+            var AppliedId = $("#appliedId").val();
+            var Comments = $("#Comments").val();
+            var Education = $("input[name='Education']:checked").val();
+            var ComputerLiteracy = $("input[name='ComputerLiteracy']:checked").val();
+            var Intelligence = $("input[name='Intelligence']:checked").val();
+            var ExperienceInterviewed = $("input[name='ExperienceInterviewed']:checked").val();
+            var ExperienceCompanyBusiness = $("input[name='ExperienceCompanyBusiness']:checked").val();
+            var JobKnowledgeSkill = $("input[name='JobKnowledgeSkill']:checked").val();
+            var Personality = $("input[name='Personality']:checked").val();
+            var CommunicationSkills = $("input[name='CommunicationSkills']:checked").val();
+            var DevelopmentMotivation = $("input[name='DevelopmentMotivation']:checked").val();
+            var PersonalAptitude = $("input[name='PersonalAptitude']:checked").val();
+
+            var Data = JSON.stringify(
+                {
+                    AppliedId: AppliedId,
+                    Education: Education,
+                    ComputerLiteracy: ComputerLiteracy,
+                    Intelligence: Intelligence,
+                    ExperienceInterviewed: ExperienceInterviewed,
+                    ExperienceCompanyBusiness: ExperienceCompanyBusiness,
+                    JobKnowledgeSkill: JobKnowledgeSkill,
+                    Personality: Personality,
+                    CommunicationSkills: CommunicationSkills,
+                    DevelopmentMotivation: DevelopmentMotivation,
+                    PersonalAptitude: PersonalAptitude,
+                    Comments: Comments
+                });
+
+            $.ajax({
+                type: "POST",
+                data: Data,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/Recruitment/AddInterView",
+                success: onSuccessManagement,
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong to Insert new Country!',
+                    });
+                },
+                cache: false
+            });
+
+        }
+
+        function onSuccessManagement(data) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Info',
+                text: 'Your work has been Save.',
+            }).then(function () {
+              /*  location.reload(true);*/
+            });
+            //Mode = "";
+            //clearfields();
+
+            //LoadingCountryDetails();
+
+        }
+
+        function SaveData() {
+
+
+
+            var formdata = new FormData();
+
+            var candidatename = $("#txtCandidateName").val()
+            var fathername = $("#txtFatherName").val();
+            var email = $("#txtEmail").val();
+            var cnic = $("#txtCNIC").val();
+            var contactnumber = $("#txtContactNumber").val();
+            var jobtitle = $("#txtJobTitle").val();
+            var addvertiseno = $("#txtAddvertiseNo").val();
+            var JobType = $("#DDLJobType").val();
+            var shift = $("#DDLShift").val();
+            var department = $("#DDLDepartment").val();
+            var designation = $("#DDLDesignation").val();
+            var skills = $("#DDLSkills").val();
+            var joblocation = $("#txtJobLocation").val();
+            var gender = $("#DDLGender").val();
+            var currency = $("#DDLCurrency").val();
+            //var status = $("#DDLStatus").val();
+            var appliedfrom = $("#txtAppliedFrom").val();
+            var age = $("#txtAge").val();
+            var minexpereince = $("#txtMinExpereince").val();
+            var maxexpereince = $("#txtMaxExpereince").val();
+            var minqualification = $("#txtMInQualification").val();
+            var salaryrange = $("#txtSalaryRange").val();
+            var applydate = $('#ApplyDate').datepicker({ dateformat: "yy-mm-dd" }).find('input').val();
+            var availabledate = $('#AvailableDate').datepicker({ dateformat: "yy-mm-dd" }).find('input').val();
+            var active = $('#Activechk').is(":checked");
+
+            if (candidatename == null || candidatename == 'string' || !candidatename.trim()) {
+
+                swal.fire({
+                    icon: 'warning',
+                    dangermode: true,
+                    text: 'please fill Candidate Name!'
+                });
+                return false;
+            }
+
+            if (jobtitle == null || jobtitle == 'string' || !jobtitle.trim()) {
+
+                swal.fire({
+                    icon: 'warning',
+                    dangermode: true,
+                    text: 'please fill job title!'
+                });
+                return false;
+            }
+            if (JobType == null || JobType == -1 || JobType == "") {
+                swal.fire({
+                    icon: 'warning',
+                    text: 'please select jobtype!'
+                });
+                return false;
+            }
+
+            if (department == null || department == -1 || department == "") {
+                swal.fire({
+                    icon: 'warning',
+                    text: 'please select department!'
+                });
+                return false;
+            }
+
+            if (designation == null || designation == -1 || designation == "") {
+                swal.fire({
+                    icon: 'warning',
+                    text: 'please select designation!'
+                });
+                return false;
+            }
+
+            if (shift == null || shift == -1 || shift == "") {
+                swal.fire({
+                    icon: 'warning',
+                    text: 'please select shift!'
+                });
+                return false;
+            }
+            if (skills == null || skills == -1 || skills == "") {
+                swal.fire({
+                    icon: 'warning',
+                    text: 'please select skills!'
+                });
+                return false;
+            }
+
+
+
+            var files = $("#UploadImg").get(0).files;
+            if (files.length > 0) {
+                formdata.append("Photo", files[0]);
+            }
+
+            var uploadfile = $("#UploadFile").get(0).files;
+            if (uploadfile.length > 0) {
+                formdata.append("Attachment", uploadfile[0]);
+            }
+
+
+
+            formdata.append("CandidateName", candidatename);
+            formdata.append("FatherName", fathername);
+            formdata.append("CNIC", cnic);
+            formdata.append("Email", email);
+            formdata.append("ContactNumber", contactnumber);
+            formdata.append("JobTitle", jobtitle);
+            formdata.append("JobType", JobType);
+            formdata.append("ShiftId", shift);
+            formdata.append("DepartmentId", department);
+            formdata.append("DesignationId", designation);
+            formdata.append("MinExpereince", minexpereince);
+            formdata.append("MaxExpereince", maxexpereince);
+            formdata.append("MInQualification", minqualification);
+            formdata.append("AddvertiseNo", addvertiseno);
+            //formdata.append("addvertiseno", addvertiseno);
+            formdata.append("Location", joblocation);
+            formdata.append("Gender", gender);
+            formdata.append("Currency", currency);
+            /*   formdata.append("Status", status);*/
+            formdata.append("Age", age);
+     /*       formdata.append("Skills", skills.toString());*/
+            formdata.append("expectedsalary", salaryrange);
+            formdata.append("AppliedFrom", appliedfrom);
+            formdata.append("ApplyDate", applydate);
+            formdata.append("AvailableDate", availabledate);
+            formdata.append("Active", active);
+
+
+
+            //var formData = $("#EmployeeForm").serialize();
+            //var data = JSON.stringify(formData);
+            //var result = JSON.stringify($("#EmployeeForm").serializeArray());
+            //$('#responseTextDivId').html(result.responseText)
+
+            $.ajax({
+                type: "POST",
+                data: formdata,
+                contentType: false, // not to set any content header
+                processData: false, // not to process data
+                //contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/Recruitment/AddAppliedCandidate",
+                success: onSuccessApplied,
+                error: function (error) {
+                    swal.fire({
+                        icon: 'error',
+                        title: 'oops...',
+                        text: 'something went wrong!',
+                    });
+                },
+                cache: false
+            });
+
+            //$.ajax({
+            //    type: "POST",
+            //    data: formdata,
+            //    contenttype: false, // not to set any content header
+            //    processdata: false, // not to process data
+            //    datatype: "json",
+            //    url: "/Recruitment/AddAppliedCandidate",
+            //    success: onSuccessUpsertEmployee,
+            //    error: function (error) {
+            //        Swal.fire({
+            //            icon: 'error',
+            //            title: 'Oops...',
+            //            text: 'Something went wrong to Upsert new Employee!',
+            //        });
+            //    },
+            //    cache: false
+            //});
+
+        }
+
+        function onSuccessApplied(response) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Info',
+                text: 'Applied Candidate Save Successfuly.',
+            }).then(function () {
+                //window.location.replace(`/EmployeeProfile/EmployeeInformation/${response.Id}`);
+
+                window.location.href = '/Recruitment/HrmAppliedCandidate';
+            });
+        }
+
+    function updatestate(obj) {
+        var id = $(obj).attr("data");
+        var Status = $(obj).attr("Value");
+
+            mode = "update";
+           
+            var formdata = new FormData();
+
+            var candidatename = $("#txtCandidateName").val();
+            var fathername = $("#txtFatherName").val();
+            var email = $("#txtEmail").val();
+            var cnic = $("#txtCNIC").val();
+            var contactnumber = $("#txtContactNumber").val();
+            var jobtitle = $("#txtJobTitle").val();
+            var addvertiseno = $("#txtAddvertiseNo").val();
+            var JobType = $("#DDLJobType").val();
+            var shift = $("#DDLShift").val();
+            var department = $("#DDLDepartment").val();
+            var designation = $("#DDLDesignation").val();
+            var skills = $("#DDLSkills").val();
+            var joblocation = $("#txtJobLocation").val();
+            var gender = $("#DDLGender").val();
+            var currency = $("#DDLCurrency").val();
+            var status = Status; // $("#updatetask").val();  //saif
+            var appliedfrom = $("#txtAppliedFrom").val();
+            var age = $("#txtAge").val();
+            var minexpereince = $("#txtMinExpereince").val();
+            var maxexpereince = $("#txtMaxExpereince").val();
+            var minqualification = $("#txtMInQualification").val();
+            var salaryrange = $("#txtSalaryRange").val();
+            var applydate = $("#ApplyDate").datepicker({ dateformat: "yy-mm-dd" }).find('input').val();
+            var availabledate = $("#AvailableDate").datepicker({ dateformat: "yy-mm-dd" }).find('input').val();
+            var active = $('#Activechk').is(":checked");
+            $("#DDLAssign option").each(function () {
+                asigneeID = $('#DDLAssign').val();
+            });
+
+            var img = $("#txtImg").val();   //.get(0).files;
+            formdata.append("Photo", img);
+
+            //if (files.length > 0) {
+            //    formdata.append("Photo", files[0]);
+            //}
+
+            var uploadfile = $("#txtFile").val();  //.get(0).files;
+            formdata.append("Attachment", uploadfile);
+
+            //if (uploadfile.length > 0) {
+            //    formdata.append("Attachment", uploadfile[0]);
+            //}
+
+            var Education = $("input[name='Education']:checked").val();
+            var ComputerLiteracy = $("input[name='ComputerLiteracy']:checked").val();
+            var Intelligence = $("input[name='Intelligence']:checked").val();
+            var ExperienceInterviewed = $("input[name='ExperienceInterviewed']:checked").val();
+            var ExperienceCompanyBusiness = $("input[name='ExperienceCompanyBusiness']:checked").val();
+            var JobKnowledgeSkill = $("input[name='JobKnowledgeSkill']:checked").val();
+            var Personality = $("input[name='Personality']:checked").val();
+            var CommunicationSkills = $("input[name='CommunicationSkills']:checked").val();
+            var DevelopmentMotivation = $("input[name='DevelopmentMotivation']:checked").val();
+            var PersonalAptitude = $("input[name='PersonalAptitude']:checked").val();
+            var Comments = $("#Comments").val();
+            if (Education > 0) {
+
+                formdata.append("Education", Education);
+                formdata.append("ComputerLiteracy", ComputerLiteracy);
+                formdata.append("Intelligence", Intelligence);
+                formdata.append("ExperienceInterviewed", ExperienceInterviewed);
+                formdata.append("ExperienceCompanyBusiness", ExperienceCompanyBusiness);
+                formdata.append("JobKnowledgeSkill", JobKnowledgeSkill);
+                formdata.append("Personality", Personality);
+                formdata.append("CommunicationSkills", CommunicationSkills);
+                formdata.append("DevelopmentMotivation", DevelopmentMotivation);
+                formdata.append("PersonalAptitude", PersonalAptitude);
+                formdata.append("Comments", Comments);
+
+            }
+
+
+            formdata.append("AppliedId", id);
+            formdata.append("CandidateName", candidatename);
+            formdata.append("FatherName", fathername);
+            formdata.append("CNIC", cnic);
+            formdata.append("Email", email);
+            formdata.append("ContactNumber", contactnumber);
+            formdata.append("JobTitle", jobtitle);
+            formdata.append("JobType", JobType);
+            formdata.append("ShiftId", shift);
+            formdata.append("DepartmentId", department);
+            formdata.append("DesignationId", designation);
+            formdata.append("MinExpereince", minexpereince);
+            formdata.append("MaxExpereince", maxexpereince);
+            formdata.append("MInQualification", minqualification);
+            formdata.append("AddvertiseNo", addvertiseno);
+            //formdata.append("addvertiseno", addvertiseno);
+            formdata.append("Location", joblocation);
+            formdata.append("Gender", gender);
+            formdata.append("Currency", currency);
+            formdata.append("Status", status); //saif uncommitt
+            formdata.append("Age", age);
+           /* formdata.append("Skills", skills.toString());*/
+            formdata.append("expectedsalary", salaryrange);
+            formdata.append("AppliedFrom", appliedfrom);
+            formdata.append("ApplyDate", applydate);
+            formdata.append("AvailableDate", availabledate);
+            formdata.append("Active", active);
+
+            console.log("FormData", formdata);
+
+            //var formData = $("#EmployeeForm").serialize();
+            //var data = JSON.stringify(formData);
+            //var result = JSON.stringify($("#EmployeeForm").serializeArray());
+            //$('#responseTextDivId').html(result.responseText)
+            debugger
+            $.ajax({
+                type: "POST",
+                data: formdata,
+                contentType: false, // not to set any content header
+                processData: false, // not to process data
+                //contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/Recruitment/UpdateAppliedCandidate",
+                success: onSuccessUpdate,
+                error: function (error) {
+                    swal.fire({
+                        icon: 'error',
+                        title: 'oops...',
+                        text: 'something went wrong to insert new applied candidate!',
+                    });
+                },
+                cache: false
+            });
+        }
+
+
+        function onSuccessUpdate(response) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Info',
+                text: 'Applied Candidate Updated Successfuly.',
+            }).then(function () {
+                //window.location.replace(`/EmployeeProfile/EmployeeInformation/${response.Id}`);
+                if (Url == "HrmAppliedCandidate") {
+
+                    window.location.href = '/Recruitment/ShortList';
+                }
+                if (Url == "ShortList") {
+
+                    window.location.href = '/Recruitment/Interview';
+                }
+
+                if (Url == "Interview") {
+
+                    window.location.href = '/Recruitment/Selected';
+                }
+            });
+        }
+
+
+        function getjobtypeddl() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Master/GetJobTypeList",
+                success: function (data, status) {
+
+                    if (data != "") {
+
+                        $('#DDLJobType').empty();
+                        $('#DDLJobType').append('<option value="-1" selected disabled>Select JobType</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#DDLJobType').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+                async: false
+
+            });
+        }
+
+        function getdepartmentddl() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Master/GetDepartmentList",
+                success: function (data, status) {
+
+                    if (data != "") {
+
+                        $('#DDLDepartment').empty();
+                        $('#DDLDepartment').append('<option value="-1" selected disabled>Select Department</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#DDLDepartment').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+                async: false
+            });
+        }
+
+        function getdesignationddl() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Master/GetDesignationList",
+                success: function (data, status) {
+
+                    if (data != "") {
+
+                        $('#DDLDesignation').empty();
+                        $('#DDLDesignation').append('<option value="-1" selected disabled>Select Designation</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#DDLDesignation').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+                async: false
+            });
+        }
+
+
+        function getJobTitle() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Recruitment/GetJobList",
+                success: function (data, status) {
+
+                    if (data != "") {
+
+                        $('#txtJobTitle').empty();
+                        $('#txtJobTitle').append('<option value="-1" selected disabled>Select Job Title</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#txtJobTitle').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+                async: false
+            });
+        }
+
+
+       function gethrmskillsddl() {
+
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Master/GetHrmSkillsList",
+                        success: function (data, status) {
+
+                            if (data != "") {
+
+                                $('#DDLSkills').empty();
+                                //$('#txtSkills').append('<option value="-1" selected disabled>Select Skills</option>');
+                                $.each(data, function (i, tweet) {
+                                    $('#DDLSkills').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                                });
+
+                            }
+
+                        },
+                        error: function (error) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong!',
+                            });
+                        },
+                        cache: false,
+                        async: false
+                    });
+                }
+
+
+</script>
+
+
+
+}

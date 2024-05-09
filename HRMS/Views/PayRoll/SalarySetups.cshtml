@@ -1,0 +1,763 @@
+﻿
+@{
+    ViewBag.Title = "SalarySetups";
+}
+
+<h2>@*SalarySetups*@</h2>
+
+
+<style>
+
+    .datepicker table {
+        width: 100%;
+    }
+
+    /*    .datepicker{
+        width: 100px!important;
+    }*/
+</style>
+
+
+<!-- base:css -->
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css">
+    <!-- endinject -->
+    <link href="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css"> *@
+<!-- End plugin css for this page -->
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Content/Assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css"> *@
+
+<!-- inject:css -->
+@* <link href="~/Content/Assets/css/vertical-layout-light/style.css" rel="stylesheet" />
+    <link href="~/Content/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> *@
+<link href="~/Content/Assets/css/Applied.css" rel="stylesheet" />
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+<div class="container-fluid">
+
+    <div class="__blk" style="padding:20px;">
+        @*<form class="forms-sample" id="EmployeeForm">*@
+        <h2>Salary Setups</h2>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group g-mb-30">
+                    <label class="g-mb-10 bg-classification" for="inputGroupStatus">Employee</label> <span style="color:red">*</span>
+                    <div class="form-group u-select--v3 g-pos-rel g-brd-gray-light-v7 g-rounded-4 mb-0">
+                        <select id="EmployeeId" name="EmployeeId" class="form-control classification-select" onchange="EmployeeChange(this.value)">
+                            <option value="-1" selected="selected">Select Employee</option>
+                        </select>
+                        <input id="EmployeeId" type="hidden" value="" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="col-sm-2">
+                <div class="form-group g-mb-30">
+                    <label class="g-mb-10 md-name" for="inputGroup-1_1"> Employee Name </label> <span style="color:red">*</span>
+                    <div class="g-pos-rel">
+                        <input id="EmployeeNumber" style="height:44px;" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder=" Enter Employee Name" readonly>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="col-sm-2">
+                <div class="form-group g-mb-30">
+                    <label class="g-mb-10 md-name" for="inputGroup-1_1"> Designation </label> <span style="color:red">*</span>
+                    <div class="g-pos-rel">
+                        <input id="Designation" style="height:44px;" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder=" Enter Designation" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group g-mb-30">
+                    <label class="g-mb-10 md-name" for="inputGroup-1_1"> Department </label> <span style="color:red">*</span>
+                    <div class="g-pos-rel">
+                        <input id="Department" style="height:44px;" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder=" Enter Department" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group g-mb-30">
+                    <label class="g-mb-10 md-name" for="inputGroup-1_1"> Basic Salary </label> <span style="color:red">*</span>
+                    <div class="g-pos-rel">
+                        <input id="BasicSalary" style="height:44px;" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder=" Enter BasicSalary" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container-fluid" id="EmployyCostList">
+
+    <div id="mainDiv2" class="__blk">
+        @*<form class="forms-sample" id="EmployeeForm">*@
+        <h3 style="padding:0px 21px"> Salary Setups</h3>
+        <hr />
+        <div id="mainDiv" style="padding:0 21px;">
+            @*<div class="col-sm-3">
+                    <div class="form-group g-mb-30">
+                        <label class="g-mb-10 bg-classification" for="inputGroupStatus"> Allowance </label> <span style="color:red">*</span>
+                        <div class="form-group u-select--v3 g-pos-rel g-brd-gray-light-v7 g-rounded-4 mb-0">
+                            <select id="AllowanceId" name="AllowanceId" class="form-control classification-select" onchange="AllowncesChange(this.value)">
+                                <option value="-1" selected="selected">Select Allowance </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group g-mb-30">
+                            <label class="g-mb-10 md-name" for="inputGroup-1_1"> Total Amount </label> <span style="color:red">*</span>
+                            <div class="g-pos-rel">
+                                <input id="TotalAmount" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="number" value=0>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            @*<div id="copyDiv" style="display:none;">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 bg-classification" for="inputGroupStatus"> Employee Cost</label> <span style="color:red">*</span>
+                                <div class="form-group u-select--v3 g-pos-rel g-brd-gray-light-v7 g-rounded-4 mb-0">
+                                    <select id="EmployeeCost" name="EmployeeCost" class="form-control classification-select">
+                                        <option value="-1" selected="selected">Select Cost</option>
+                                    </select>
+                                </div>
+                                <input type="hidden" class="EmpId" value="" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 md-name" for="inputGroup-1_1"> Cost Amount </label> <span style="color:red">*</span>
+                                <div class="g-pos-rel">
+                                    <input id="CostAmount" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder=" Enter Employee Cost Amount">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3" style="margin-top:25px">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    Active
+                                    <input type="checkbox" class="form-check-input" name="Active" checked="" id="Activechk">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            <div id="appendDiv"></div>
+        </div>
+
+        <div id="tamnt" style="font-size:25px;font-weight:bold;padding:0 0 0 22px;display:none;color:blue;">
+            Amount Total : <span id="totalCost"></span>
+        </div>
+
+        <div style="padding:20px 10px;">
+            <div id="divAddTask" style="display:none;">
+                <div class="col-md-2 float-left">
+                    <button type="button" class="btn btn-block btn-primary" onclick="AddElement();"><i class="fas fa-plus tm-fa-plus"></i> Add More </button>
+                </div>
+                <button type="button" style="font-size:15px;height:43px;" class="btn btn-inverse-primary u-btn-3d  my-auto ml-auto" id="AddTask" onclick="SaveData();"> Save </button>
+            </div>
+        </div>
+        @*</form>*@
+
+    </div>
+
+</div>
+
+
+@section scripts{
+    <!-- base:js -->
+    @* <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script> *@
+    <!-- endinject -->
+    <!-- inject:js -->
+    @* <script src="~/Content/Assets/js/off-canvas.js"></script>
+        <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+        <script src="~/Content/Assets/js/template.js"></script>
+        <script src="~/Content/Assets/js/settings.js"></script> *@
+    <!-- endinject -->
+    @* <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+        <script src="~/Content/Assets/js/todolist.js"></script>
+        <script src="~/Content/Assets/js/formpickers.js"></script> *@
+    <!-- plugin js for this page -->
+    @* <script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script>
+        <script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> *@
+    <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/Content/Assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Content/Assets/js/select2.js"></script>
+    <script src="~/Content/Assets/js/formpickers.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+
+    <script>
+
+        var EmployeeIdVar = 0;
+
+        function DisplayTotalCost() {
+            debugger;
+
+            var CostArray = [];
+
+            var tr = $("#TableBody").find("tr").each(function (index, obj) {
+
+                debugger;
+
+                var TotalCost = $(obj).find("td:nth-child(4)").find(".TotalAmount").val();
+
+                var Active = $(obj).find("td:nth-child(6)").find(".Active").prop("checked");
+
+                if (Active) {
+
+                    CostArray.push(parseFloat(TotalCost));
+                }
+            });
+
+            var totalCost = CostArray.reduce((x, y) => (x + y), 0).toFixed(2);
+
+            $("#totalCost").html(totalCost);
+
+            $("#tamnt").css("display", "block");
+        }
+
+        function SaveData() {
+            debugger;
+
+            var validation = true;
+
+            $("#TableBody").find("tr").each(function (index, obj) {
+
+                debugger;
+
+                var AllowncesId = $(obj).find("td:nth-child(3)").find(".Allownces").val();
+
+                var TotalAmount = $(obj).find("td:nth-child(4)").find(".TotalAmount").val();
+
+                if (AllowncesId == -1) {
+
+                    //alert("Please Select DropDown");
+                    Swal.fire({
+                        icon: 'warning',
+                        text: "Please Select DropDown."
+                    });
+                    validation = false;
+                }
+
+                if (TotalAmount == "") {
+
+                    //alert("Please Insert Value in TextBox.");
+                    Swal.fire({
+                        icon: 'warning',
+                        text: "Please Insert Value in TextBox."
+                    });
+                    validation = false;
+                }
+            });
+
+            if (validation == false) {
+
+                return false;
+            }
+
+            var salarySetupArray = [];
+
+            var tr = $("#TableBody").find("tr").each(function (index, obj) {
+
+                debugger;
+
+                var empObj = {};
+
+                empObj.Id = $(obj).find("td:nth-child(1)").find(".Id").val();
+
+                empObj.EmployeeId = $(obj).find("td:nth-child(2)").find(".EmployeeId").val();
+
+                empObj.AllonDeductId = $(obj).find("td:nth-child(3)").find(".Allownces").val();
+
+                empObj.Allowances = $(obj).find("td:nth-child(3)").find(".Allownces option:selected").text();
+
+                empObj.TotalAmount = $(obj).find("td:nth-child(4)").find(".TotalAmount").val();
+
+                empObj.OverTime = $(obj).find("td:nth-child(5)").find(".Overtime").prop("checked");
+
+                empObj.Active = $(obj).find("td:nth-child(6)").find(".Active").prop("checked");
+
+                salarySetupArray.push(empObj);
+            });
+
+            if (salarySetupArray.length > 0) {
+
+                $("#AddTask").attr("disabled", "disabled");
+                $("#AddTask").text("Please Wait...");
+                $("#AddTask").css("background-color", "blue");
+                $("#AddTask").css("color", "white");
+
+                $.ajax({
+
+                    type: "POST",
+
+                    url: "/PayRoll/SaveSalarysetupData",
+
+                    data: { salarySetup: salarySetupArray },
+
+                    success: function (response) {
+                        debugger;
+
+                        if (response.Success == true) {
+
+                            DisplayTotalCost();
+
+                            EmployeeChange();
+
+                            Swal.fire({
+                                icon: 'success',
+                                text: response.Message
+                            });
+                        }
+
+                        if (response.Success == false) {
+
+                            Swal.fire({
+                                icon: 'warning',
+                                text: response.Message
+                            });
+                        }
+                        $("#AddTask").prop("disabled", false);
+                        $("#AddTask").text("Save");
+                        $("#AddTask").css("background-color", "rgba(37, 55, 139, 0.2)");
+                        $("#AddTask").css("color", "#25378b");
+                    },
+                    error: function () {
+                        $("#AddTask").prop("disabled", false);
+                        $("#AddTask").text("Save");
+                        $("#AddTask").css("background-color", "rgba(37, 55, 139, 0.2)");
+                        $("#AddTask").css("color", "#25378b");
+                    }
+                });
+
+            }
+            else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'There Is No Data To Save!'
+                });
+            }
+        }
+
+
+        $(document).ready(function () {
+            GetAllowanceId();
+            debugger;
+
+            GetStringForDropDown();
+
+            GetEmployeeDDL();
+
+            //$("#DateTo").datepicker({
+            //    autoclose: true,
+            //    orientation: "bottom",
+            //    todayHighlight: true,
+            //});
+
+            //GetCostDDL();
+            //LoadingCostDetails();
+            //var full_url = document.URL; // Get current url
+            //var url_array = full_url.split('/') // Split the string into an array with / as separator
+            //var ID = url_array[url_array.length - 1];  // Get the last part of the array (-1)
+
+            $('#DDLEmployee').select2({
+                selectOnClose: true
+            });
+        });
+
+        var count = 1;
+
+        var dropDownIndex = 1;
+
+        function AddElement() {
+            debugger;
+
+            var str = '<tr>' +
+                '<td><input type="hidden" class="Id" value="" /></td>' +
+                '<td><input type="hidden" class="EmployeeId" value="' + EmployeeIdVar + '" /></td>' +
+                '<td><select id = "Emp888" onchange="DorpDownValueToTextBox(this);" class="form-control classification-select Allownces" > ' +
+                '<option value="-1" disabled selected>Select Allownce</option>';
+
+            str += stringOption;
+
+            str += '</select>' +
+                '</td>' +
+                '<td>' +
+                '<input id="TotalAmount" style="height:44px;" disabled class="TotalAmount form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" value="" type="number" placeholder="Allowance Amount">' +
+                '</td>' +
+                '<td style="text-align:center;">' +
+                '<input type="checkbox" style="width:20px;height:20px;" class="Overtime">' +
+                '</td >' +
+                '<td style="text-align:center;">' +
+                '<input type="checkbox" style="width:20px;height:20px;" class="Active" name="Active" id="Chk">' +
+                '</td >' +
+                '</tr>';
+
+            $("#TableBody").append(str);
+        }
+
+        function DorpDownValueToTextBox(DDL) {
+            debugger;
+
+            var Amount = 0;
+
+            var id = $(DDL).val();
+
+            $.ajax({
+                url: "/PayRoll/GetAllowancesDeductionsTotalAmount",
+                data: { Id: id },
+                success: function (data) {
+                    debugger;
+                    Amount = data.Amount;
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong emp!',
+                    });
+                },
+                cache: false,
+                async: false
+            });
+
+            $(DDL).closest("tr").find("td:nth-child(4)").find(".TotalAmount").val(Amount);
+        }
+
+        var stringOption = '';
+
+        function GetStringForDropDown() {
+            debugger;
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/PayRoll/GetDDLForSalarysetupList",
+                success: function (data, status) {
+
+                    $.each(data, function (index, obj) {
+
+                        stringOption += '<option value="' + obj.Id + '">' + obj.Name + '</option>';
+                    });
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong emp!',
+                    });
+                },
+                cache: false,
+                async: false
+            });
+        }
+
+
+        function GetCostDDL() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/PayRoll/GetSalarysetupList",
+                success: function (data, status) {
+
+                    if (data != "") {
+
+                        $('#TotalAmount').empty();
+
+                        $('#TotalAmount').append('<option value="-1" selected disabled>Select Allownce </option>');
+                        $.each(data, function (i, tweet) {
+
+                            $('#TotalAmount').append('<option value="' + data[i]?.Id + '">' + data[i]?.Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong emp!',
+                    });
+                },
+                cache: false,
+                async: false
+            });
+        }
+
+        function GetEmployeeDDL() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/LeaveManagment/getEmployeeList",
+                success: function (data, status) {
+
+                    if (data != "") {
+
+                        $('#EmployeeId').empty();
+
+                        $('#EmployeeId').append('<option value="-1" selected disabled>Select Employee</option>');
+                        $.each(data, function (i, tweet) {
+
+                            $('#EmployeeId').append('<option value="' + data[i]?.Id + '">' + data[i]?.EmployeeCode + " - " + data[i]?.FirstName + " " + data[i]?.LastName + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong emp!',
+                    });
+                },
+                cache: false,
+                async: false
+            });
+        }
+
+
+
+        function EmployeeChange() {
+            debugger;
+
+            var empId = document.getElementById("EmployeeId").value;
+
+            EmployeeIdVar = empId;
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                data: { "JobId": empId },
+                url: "/PayRoll/EmployeeChangeSalary",
+                success: function (data) {
+                    debugger;
+
+                    AutoFillTextBox(data);
+                    GetEmployeeCost(empId);
+                },
+                error: function (error) {
+
+                },
+                cache: false
+            });
+
+        }
+        function GetEmployeeCost(empId) {
+            debugger;
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                data: { "empId": empId },
+                url: "/PayRoll/GetSalarysetupListData",
+                success: function (data) {
+
+                    console.log(data);
+
+                    var str2 = '';
+
+                    str2 += '<table style="border:1px solid black;width:80%;">' +
+                        '<thead>' +
+                        '<tr>' +
+                        '<td></td>' +
+                        '<td></td>' +
+                        '<th> Allownce* </th>' +
+                        '<th>Allownce Amount* </th>' +
+                        '<th style="text-align:center;">Over Time</th>' +
+                        '<th style="text-align:center;">Active</th>' +
+                        '</tr>' +
+                        '</thead>' +
+                        '<tbody id="TableBody">';
+
+                    $.each(data, function (index, obj) {
+
+                        str2 += '<tr>' +
+                            '<td><input type="hidden" class="Id" value="' + obj.Id + '" /></td>' +
+                            '<td><input type="hidden" class="EmployeeId" value="' + obj.EmployeeId + '" /></td>' +
+                            '<td><select id = "Emp' + index + '" onchange="DorpDownValueToTextBox(this);" class="form-control classification-select Allownces" > ' +
+                            '<option value="-1" disabled> Select Allownces </option>' +
+                            '</select>' +
+                            '</td>' +
+                            '<td>' +
+                            '<input style="height:44px;" disabled class="TotalAmount form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" value="' + obj.TotalAmount + '" type="number" placeholder="Total Amount">' +
+                            '</td>' +
+                            '<td style="text-align:center;">' +
+                            '<input type="checkbox" style="width:20px;height:20px;" class="Overtime" id="Overtime' + index + '">' +
+                            '</td >' +
+                            '<td style="text-align:center;">' +
+                            '<input type="checkbox" style="width:20px;height:20px;" class="Active" name="Active" id="Chk' + index + '">' +
+                            '</td >' +
+                            '</tr>';
+                    });
+
+                    str2 += '</tbody>' +
+                        '</table>';
+
+                    $("#appendDiv").empty();
+
+                    $("#appendDiv").append(str2);
+
+                    GetCostDDLForClass();
+
+                    $("#divAddTask").css("display", "block");
+
+                    $.each(data, function (index, obj) {
+
+                        console.log("index is " + index);
+
+                        $("#Emp" + index).val(obj.AllonDeductId);
+
+                        $("#Overtime" + index).prop("checked", obj.OverTime);
+
+                        $("#Chk" + index).prop("checked", obj.Active);
+
+                    });
+
+                    DisplayTotalCost();
+                },
+                error: function (error) {
+
+                },
+                cache: false
+            });
+
+        }
+
+
+        function GetCostDDLForClass() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/PayRoll/GetDDLForSalarysetupList",
+                success: function (data) {
+
+                    $.each(data, function (index, obj) {
+
+                        $('.Allownces').append('<option value="' + obj.Id + '">' + obj.Name + '</option>');
+                    });
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong emp!',
+                    });
+                },
+                cache: false,
+                async: false
+            });
+        }
+
+
+        function AutoFillTextBox(data) {
+            debugger;
+            for (const element of data) {
+
+                $('#EmployeeNumber').val(element.EmployeeName);
+                $("#Designation").val(element.Designation).attr('disabled', 'disabled');
+                $("#Department").val(element.Department).attr('disabled', 'disabled');
+                $("#BasicSalary").val(element.BasicSalary).attr('disabled', 'disabled');
+            }
+        }
+
+
+        function GetAllowanceId() {
+            debugger;
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/PayRoll/Allowanceddl",
+                success: function (data) {
+
+                    if (data != 0) {
+
+                        $('#AllowanceId').empty();
+                        $('#AllowanceId').append('<option value="-1" selected disabled>Select Allowance</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#AllowanceId').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+                    AutoFillData(data);
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+
+            });
+        }
+
+        function AutoFillData(data) {
+            debugger;
+            for (const element of data) {
+
+                $('#TotalAmount').val(element.Amount );
+            }
+        }
+        function AllowncesChange() {
+            debugger;
+
+            var AllownceId = document.getElementById("AllowanceId").value;
+
+            EmployeeIdVar = AllownceId;
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                data: { "JobId": AllownceId },
+                url: "/PayRoll/AllowanceChange",
+                success: function (data) {
+                    debugger;
+
+                    AutoFillData(data);
+                },
+                error: function (error) {
+
+                },
+                cache: false
+            });
+
+        }
+
+
+
+
+
+    </script>
+
+}

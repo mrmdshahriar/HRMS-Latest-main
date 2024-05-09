@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "ObjectionCertificate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/Assets/css/Region.css" rel="stylesheet" />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="__top_head">
+                <h3 class="all-md">Objection Certificate</h3>
+                <div class="btn_blk">
+                    <a href="/NotificationRequests/CreateOC" class="btn btn-inverse-primary u-btn-3d ml-auto">
+                        Apply for NOC
+                    </a>
+                </div>
+            </div>
+            <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllObjectionCertificateList"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+    <script>
+        debugger
+        $(document).ready(function () {
+            LoadingAllOCDetails();
+        });
+        function LoadingAllOCDetails() {
+            $.ajax({
+                type: "GET",
+                url: "/NotificationRequests/GetAllOC",
+                success: onSuccessGetAllOC,
+                error: function (error) {
+                    alert($.parseJSON(error))
+                },
+                cache: false
+            });
+        }
+
+        function onSuccessGetAllOC(data) {
+            data = $.parseJSON(data);
+            $("#AllObjectionCertificateList").empty();
+            $("#AllObjectionCertificateList").append("<table id='AlldatadetailTable' class='table u-table--v3 g-color-black'>");
+            $("#AlldatadetailTable").empty();
+            $("#AlldatadetailTable").append("<thead>" +
+                "<tr class='ob_gC'>" +
+                "<th>S.NO</th>" +
+                "<th>Name</th>" +
+                "<th>Designation</th>" +
+                "<th>Department</th>" +
+                "<th>Date</th>" +
+                "<th>Subject</th>" +
+                "<th>Application</th>" +
+                "<th class='last-td'>Action</th> " +
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='values1'>");
+            if (data.length > 0) {
+                $.each(data, function (key, value) {
+                    var { OCList, Name, Date, Subject, Application, Designation, Department } = value;
+                    debugger
+                    var val = '';
+                    val = "<tr>" +
+                        "<td class='first-td'>" + parseInt(key + 1) + "</td>" +
+                        "<td>" + Name + "</td>" +
+                        "<td>" + Designation + "</td>" +
+                        "<td>" + Department + "</td>" +
+                        "<td>" + Date.substring(0, 10) + "</td>" +
+                        "<td>" + Subject + "</td>" +
+                        "<td>" + Application + "</td>" +
+                        "<td class='last-td'><a href='/NotificationRequests/CreateOC/" + OCList.OCID + "' class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' ><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = DeleteOC(" + OCList.OCID + ") > <i class='fa fa-trash'></i></a > "
+                        + "</tr></tbody>";
+
+
+                    $('#values1').append(val);
+                });
+            }
+
+            $('#AlldatadetailTable').dataTable({
+                "bProcessing": true,
+                "bPaginate": true,
+                "sPaginationType": "full_numbers",
+                "responsive": true,
+                "ordering": true
+            });
+
+        }
+
+
+        function DeleteOC(ID) {
+            if (confirm('Are you sure to Delete this record ?')) {
+
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: "/NotificationRequests/DeleteOC/" + ID,
+                    success: function (data) {
+                        LoadingAllOCDetails();
+                    },
+                    error: function (e) {
+                        LoadingAllOCDetails();
+                    }
+
+
+                });
+            }
+
+        }
+    </script>
+}

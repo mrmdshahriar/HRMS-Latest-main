@@ -1,0 +1,982 @@
+﻿@using HRMS.Models
+
+@model IEnumerable<KeyObjResultViewModel>
+
+
+@{
+    ViewBag.Title = "KeyResults";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var result33 = (IEnumerable <KeyObjResultViewModel>)Model;
+}
+
+
+
+
+<center>
+    <h2 style="margin-top:50px;">
+        Key Results For :
+
+        @if (Session["DeptName"] != null)
+        {
+            <span>@Session["DeptName"].ToString()</span>
+        }
+    </h2>
+</center>
+<!-- base:css -->
+<link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css">
+
+<!-- endinject -->
+<!-- plugin css for this page -->
+@*
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />*@
+<link href="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" rel="stylesheet" />
+
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<link href="~/Content/Assets/css/vertical-layout-light/style.css" rel="stylesheet" />
+
+<link href="~/Content/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link href="~/Content/Assets/css/Country.css" rel="stylesheet" />
+<br />
+<br />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+
+
+@*<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+
+
+
+
+<div class="container">
+
+    <a href="/Performance/KeyObjective" class="btn btn-success"><i class="fa fa-reply"></i> Go Back</a>
+
+
+
+    <!-- Button trigger modal -->
+    @*<div class="row my-3">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-inverse-primary u-btn-3d  d-block ml-auto" data-toggle="modal" data-target="#CountryModal" onclick="clearfields()"><i class="fas fa-pen md-fa-pen"></i> Create</button>
+            </div>
+        </div>*@
+
+
+    @*<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#CountryModal" onclick="clearfields()"><i class="fas fa-pen md-fa-pen"></i> Create</button>*@
+
+    @* <center>
+            <div>
+                <h3>Departments</h3>
+                <div>
+                    @foreach (var dept in (List<Department>)ViewBag.deptName)
+                    {-->
+
+                        <button id="GetDeptChange" onclick="DeptChange();" btn btn-link>@dept.Name </button>
+
+                        <!--<input type="button" id="GetDeptChange" value="@dept.Name" onclick="DeptChange(this);" />
+
+                    }
+                </div>
+
+            </div>
+        </center>*@
+
+    <!-- Modal -->
+    <div class="modal fade" id="DeductionModal" tabindex="-1" role="dialog" aria-labelledby="CountryModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header modal-header">
+                    <h4 class="modal-title" style="color:white">Add/Update Key Results</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 md-name" for="inputGroup-1_1"> Define Objective </label> <span style="color:red">*</span>
+                                <div class="g-pos-rel">
+                                    <input id="DefineKeyResult" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder=" Enter Objective">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 bg-classification" for="inputGroupStatus">Employee</label> <span style="color:red">*</span>
+                                <div class="form-group u-select--v3 g-pos-rel g-brd-gray-light-v7 g-rounded-4 mb-0">
+                                    <select id="KeyObjectiveId" name="DepId" class="form-control classification-select" onchange="EmployeeChange(this.value)">
+                                        <option value="-1" selected="selected">Select Department</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 bg-classification" for="inputGroupStatus">Employee</label> <span style="color:red">*</span>
+                                <div class="form-group u-select--v3 g-pos-rel g-brd-gray-light-v7 g-rounded-4 mb-0">
+                                    <select id="AssignedTo" name="AssignedTo" class="form-control classification-select" onchange="EmployeeChange(this.value)">
+                                        <option value="-1" selected="selected">Select Employee</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 md-name" for="inputGroup-1_1"> Assign Date</label> <span style="color:red">*</span>
+                                <div class="g-pos-rel">
+                                    <input id="AssignDate" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="date" placeholder="mm/dd/yyyy">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 md-name" for="inputGroup-1_1"> Finish Date</label> <span style="color:red">*</span>
+                                <div class="g-pos-rel">
+                                    <input id="EndDate" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="date" placeholder="mm/dd/yyyy">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 md-name" for="inputGroup-1_1"> Priority </label> <span style="color:red">*</span>
+                                <div class="form-group u-select--v3 g-pos-rel g-brd-gray-light-v7 g-rounded-4 mb-0">
+                                    <select id="Priority" name="Effect" class="form-control classification-select">
+
+                                        <option selected="selected"> Select Priority  </option>
+                                        <option value="High">High</option>
+                                        <option value="Medium"> Medium </option>
+                                        <option value="Low"> Low </option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 md-name" for="inputGroup-1_1"> Status </label> <span style="color:red">*</span>
+                                <div class="form-group u-select--v3 g-pos-rel g-brd-gray-light-v7 g-rounded-4 mb-0">
+                                    <select id="Status" name="Effect" class="form-control classification-select">
+
+                                        <option selected="selected"> Select Priority  </option>
+                                        <option value="InProgress">InProgress</option>
+                                        <option value="Stuck"> Stuck </option>
+                                        <option value="Completed">Completed</option>
+                                        <option value="NotDone"> NotDone </option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-sm-12">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 md-name" for="inputGroup-1_1"> Assigned Percentage </label> <span style="color:red">*</span>
+                                <div class="g-pos-rel">
+                                    <input id="AssignedPercentage" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="number" placeholder=" Enter Assigned Percentage">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group g-mb-30">
+                                <label class="g-mb-10 md-name" for="inputGroup-1_1"> Completed Percentage </label> <span style="color:red">*</span>
+                                <div class="g-pos-rel">
+                                    <input id="CompletedPercentage" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="number" placeholder=" Enter Completed Percentage">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12 col-md-2">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" checked="" id="Activechk">
+                                    Active
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer" id="divAddTask">
+                    <button type="button" class="btn btn-inverse-primary u-btn-3d  my-auto ml-auto" id="AddTask" onclick="SaveData();"><i class="fas fa-plus tm-fa-plus"></i>Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Country List -->
+    <div class="row">
+        <div class="col-12">
+
+            <div id="resultsDiv">
+
+
+
+
+
+                @foreach (var x in Model.GroupBy(z => z.DefineObjective))
+                {
+                    <div style="background-color:cornflowerblue;color:white;text-align:center;margin-top:50px;">
+                        @x.Key
+                    </div>
+
+                    <table class="table table-bordered table-striped table-condensed">
+
+                        <tr>
+
+                            <th>Key Result</th>
+                            <th>Assigned To</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Assigned Percentage</th>
+                            <th>Completed Percentage</th>
+                            <th>Action</th>
+
+                        </tr>
+
+                        @foreach (var y in x)
+                        {
+                            <tr>
+
+                                <td>@y.DefineKeyResult</td>
+                                @*<td>@y.AssignedTo</td>*@
+
+                                <td>@y.FirstName</td>
+
+                                <td>@y.Priority</td>
+                                <td>@y.Status</td>
+                                <td>@y.AssignedPercentage</td>
+                                <td>@y.CompletedPercentage</td>
+                                <td>
+                                    <button style="border:none; font-size:11px;" onclick="editData(@y.Id);"><i class="fa fa-pencil"></i></button>
+                                    <button style="border: none; font-size: 12px;" onclick="deleteData(@y.Id);"> <i class="fa fa-trash"></i></button>
+
+                                </td>
+
+
+
+                            </tr>
+
+                        }
+
+                    </table>
+                }
+
+            </div>
+
+
+            <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllDeductionList"></div>
+
+            <div>
+                <button class="btn btn-primary" onclick="addNewItem();"> Add New Item </button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@*<div>
+
+    <div style="margin-left:90px;">
+        <button class="btn btn-primary" onclick="addNewItem();"> Add New Item </button>
+    </div>
+
+</div>*@
+
+<!--Modal-->
+
+<div id="partialModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width:80%;margin-top:20px;">
+        <div class="modal-content" style="padding: 20px; background-color: lightskyblue; border-radius: 20px;">
+            <!--<div class="modal-header">-->
+            @*<h3 class="modal-title">Customer Details Form</h3>*@
+            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>-->
+            <div class="modal-body" style="overflow:auto;">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---  -->
+<!-- base:js -->
+<script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="~/Content/Assets/js/off-canvas.js"></script>
+<script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+<script src="~/Content/Assets/js/template.js"></script>
+<script src="~/Content/Assets/js/settings.js"></script>
+<!-- endinject -->
+<script src="~/Content/Assets/js/todolist.js"></script>
+
+<!-- plugin js for this page -->
+@*
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>*@
+
+<script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script>
+<script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="~/Content/Assets/vendors/select2/select2.min.js"></script>
+
+
+<script>
+
+            debugger;
+
+       // var msg = "@TempData["Message"]";
+
+
+        if ("@ViewBag.OutputMsg" != "") {
+
+            if ("@ViewBag.OutputMsg" == "Saved Successfully") {
+
+                swal("Saved Successfully!", "Your Data is Saved!", "success");
+            }
+
+            if ("@ViewBag.OutputMsg" == "Updated Successfully") {
+
+                swal("Updated Successfully!", "Your Data is Updated!", "success");
+            }
+
+            if ("@ViewBag.OutputMsg" == "Deleted Successfully") {
+
+                swal("Deleted Successfully!", "Your Data is Deleted!", "success");
+            }
+       }
+
+
+        $(document).ready(function () {
+            $("#AddTask").show();
+            $(".updateTask").hide();
+            LoadingEmployeeCostDetails();
+            GetEmployeeId();
+            //GetDepartmentList();
+        });
+
+        $('#AssignedTo').select2({
+            selectOnClose: true
+        });
+        //$('#DepId').select2({
+        //    selectOnClose: true
+        //});
+
+        $('#Priority').select2({
+            selectOnClose: true
+        });
+        $('#Status').select2({
+            selectOnClose: true
+        });
+
+
+
+        function editData(Id) {
+
+            debugger;
+
+            $.ajax({
+
+                url: "/KeyResults/Edit",
+
+                data: { id: Id },
+
+                success: function (data) {
+                    debugger;
+
+                    console.log(data);
+
+                    $("#partialModal .modal-body").html(data);
+
+                    $("#partialModal").modal('show');
+                }
+            });
+        }
+
+
+        function deleteData(Id) {
+
+            debugger;
+
+            $.ajax({
+
+                url: "/KeyResults/Delete",
+
+                data: { id: Id },
+
+                success: function (data) {
+                    debugger;
+
+                    console.log(data);
+
+                    $("#partialModal .modal-body").html(data);
+
+                    $("#partialModal").modal('show');
+                }
+            });
+
+    }
+
+    function addNewItem() {
+
+        debugger;
+
+        $.ajax({
+
+            url: "/KeyResults/Create",
+
+            success: function (data) {
+                debugger;
+
+                console.log(data);
+
+                $("#partialModal .modal-body").html(data);
+
+                $("#partialModal").modal('show');
+            }
+        });
+
+    }
+
+    function LoadingEmployeeCostDetails() {
+            debugger;
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Performance/GetKeyResultsList",
+                success: onSuccessEmployeeCostDetails,
+                error: function (error) {
+
+                },
+                cache: false
+            });
+        }
+        function onSuccessEmployeeCostDetails(data) {
+
+            //debugger;
+
+            //console.log(data);
+
+            //$("#AllDeductionList").empty();
+            //$("#AllDeductionList").append("<table id='AllCountrydatadetailTable' class='table u-table--v3 g-color-black'>");
+            //$("#AllCountrydatadetailTable").empty();
+            //$("#AllCountrydatadetailTable").append("<thead>" +
+            //    "<tr class='ob_gC'>" +
+            //    "<th> Objective </th>" +
+            //    "<th> Assigned To  </th>" +
+            //    //"<th> TimeLine </th>" +
+            //    "<th> Priority </th>" +
+            //    "<th> Status </th>" +
+            //    "<th> Assigned Percentage </th>" +
+            //    "<th> Completed Percentage </th>" +
+            //    "<th class='last-td' style='width:35px'>Action</th> " +
+            //    "</tr>" +
+            //    "</thead>" +
+            //    "<tbody id='values1'>");
+            //if (data.length > 0) {
+            //    var val = '';
+
+            //    for (var i = 0; i < data.length; i++) {
+
+
+
+
+            //        val = "<tr>" +
+            //            // "<td>" + <input /> + "</td>" +
+            //            "<td class='first-td'>" + data[i].DefineKeyResult + "</td>" +
+            //            "<td class='first-td'>" + data[i].EmployeeName + "</td>" +
+            //            "<td>" + data[i].Priority + "</td>" +
+            //            "<td>" + data[i].Status + "</td>" +
+            //            // "<td>" + data[i].AssignDate + "</td>" +
+            //            "<td>" + data[i].AssignedPercentage + "</td>" +
+            //            "<td>" + data[i].CompletedPercentage + "</td>" +
+
+
+
+
+            //            "<td class='last-td'><a class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' onclick='LoadingEditData(" + data[i].Id + ")' data-toggle='modal' data-target='#DeductionModal'><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = Delete(" + data[i].Id + ") > <i class='fa fa-trash'></i></a > "
+            //            // "<td class='last-td'><label class='form-check-inline u-check g-mr-20 mx-0 mb-0'> <input class='g-hidden-xs-up g-pos-abs g-top-0 g-right-0' id='btnEdit' onclick='LoadingEditData(" + data.data[i].pK_MetaDataID + ")' name = 'radGroup1_1' data-toggle='modal' data-target='#myModal'><i class='fa fa-pencil'></i></label ></td>" +
+            //            + "</tr></tbody>";
+
+
+            //        $('#values1').append(val);
+            //}
+        }
+
+
+        $('#AllCountrydatadetailTable').dataTable({
+            "bProcessing": true,
+            "bPaginate": true,
+            "sPaginationType": "full_numbers",
+            "responsive": true,
+            "ordering": true
+        });
+
+
+
+        function LoadingEditData(ID) {
+
+            debugger;
+
+            console.log(ID);
+
+            Mode = "Update";
+            $("#AddTask").hide();
+            $(".updateTask").hide();
+            $("#divAddTask").append(" <button type='button' class='btn btn-inverse-primary  my-auto ml-auto updateTask' id='updateTask' onclick='UpdateMetaData(" + ID + ");'>Update</button>");
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8", 
+                url: "/Performance/EditKeyResults/" + ID,
+                success: onSuccessMetaDetaDetails,
+
+                error: function (error) {
+                    alert("error", error);
+                },
+                cache: false
+
+            });
+
+        }
+
+        function onSuccessMetaDetaDetails(data) {
+            debugger
+            for (const element of data) {
+
+                var fullDatestart = new Date(data[i].AssignDate);
+
+                var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
+                if (twoDigitMonthstart.length == 1)
+                    twoDigitMonthstart = "0" + twoDigitMonthstart;
+                var twoDigitDatestart = fullDatestart.getDate() + "";
+                if (twoDigitDatestart.length == 1)
+                    twoDigitDatestart = "0" + twoDigitDatestart;
+
+                var currentDatestart = twoDigitDatestart + "/" + twoDigitMonthstart + "/" + fullDatestart.getFullYear();
+
+                var fullDatestart1 = new Date(data[i].EndDate);
+                var twoDigitMonthstart = (fullDatestart1.getMonth() + 1) + "";
+                if (twoDigitMonthstart.length == 1)
+                    twoDigitMonthstart = "0" + twoDigitMonthstart;
+                var twoDigitDatestart = fullDatestart.getDate() + "";
+                if (twoDigitDatestart.length == 1)
+                    twoDigitDatestart = "0" + twoDigitDatestart;
+
+                var currentDatestart1 = twoDigitDatestart + "/" + twoDigitMonthstart + "/" + fullDatestart.getFullYear();
+
+                $("#DefineKeyResult").val(element.DefineKeyResult);
+                $('#KeyObjectiveId').val(element.KeyObjectiveId).select2();
+                $('#AssignedTo').val(element.AssignedTo).select2();
+                $('#AssignDate').val(currentDatestart);
+                $('#EndDate').val(currentDatestart1);
+                $("#Priority").val(element.Priority).select2();
+                $("#Status").val(element.Status).select2();
+                $('#AssignedPercentage').val(element.AssignedPercentage);
+                $('#CompletedPercentage').val(element.CompletedPercentage);
+            }
+
+            $("#Activechk").prop('checked', data.Active);
+        }
+
+        function SaveData() {
+            debugger
+            var DefineKeyResult = $("#DefineKeyResult").val();
+            var KeyObjectiveId = $("#KeyObjectiveId").val();
+            var AssignedTo = $("#AssignedTo").val();
+            var AssignDate = $('#AssignDate').val();
+            var EndDate = $('#EndDate').val();
+            var Priority = $('#Priority').val();
+            var Status = $('#Status').val();
+            var AssignedPercentage = $('#AssignedPercentage').val();
+            var CompletedPercentage = $('#CompletedPercentage').val();
+            var Active = $('#Activechk').is(":checked");
+
+            if (DefineKeyResult == null || DefineKeyResult == 'string' || !DefineKeyResult.trim()) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    dangerMode: true,
+                    text: 'Please Add valid value!'
+                });
+                return false;
+            }
+            if (AssignedTo == null || AssignedTo == -1 || AssignedTo == "") {
+                Swal.fire({
+                    icon: 'warning',
+                    text: 'Please Select EmployeeId!'
+                });
+                return false;
+            }
+
+
+            var Data = JSON.stringify(
+                {
+                    DefineKeyResult: DefineKeyResult,
+                    KeyObjectiveId: KeyObjectiveId,
+                    AssignedTo: AssignedTo,
+                    AssignDate: AssignDate,
+                    EndDate: EndDate,
+                    Priority: Priority,
+                    Status: Status,
+                    AssignedPercentage: AssignedPercentage,
+                    CompletedPercentage: CompletedPercentage,
+                    Active: Active
+                });
+            $.ajax({
+                type: "POST",
+                data: Data,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/Performance/AddKeyResults",
+                success: onSuccessAddManagement,
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong to Insert new Record!',
+                    });
+                },
+                cache: false
+            });
+
+        }
+
+        function onSuccessAddManagement(data) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Info',
+                text: 'Your work has been Save.',
+            }).then(function () {
+                location.reload(true);
+            });
+            Mode = "";
+            clearfields();
+
+            LoadingEmployeeCostDetails();
+
+        }
+
+        function UpdateMetaData(ID) {
+            Mode = "Update";
+            var DefineKeyResult = $("#DefineKeyResult").val();
+            var KeyObjectiveId = $("#KeyObjectiveId").val();
+            var AssignedTo = $("#AssignedTo").val();
+            var AssignDate = $('#AssignDate').val();
+            var EndDate = $('#EndDate').val();
+            var Priority = $('#Priority').val();
+            var Status = $('#Status').val();
+            var AssignedPercentage = $('#AssignedPercentage').val();
+            var CompletedPercentage = $('#CompletedPercentage').val();
+            var Active = $('#Activechk').is(":checked");
+
+            var Data = JSON.stringify(
+                {
+                    Id: ID,
+                    DefineKeyResult: DefineKeyResult,
+                    KeyObjectiveId: KeyObjectiveId,
+                    AssignedTo: AssignedTo,
+                    AssignDate: AssignDate,
+                    EndDate: EndDate,
+                    Priority: Priority,
+                    Status: Status,
+                    AssignedPercentage: AssignedPercentage,
+                    CompletedPercentage: CompletedPercentage,
+                    Active: Active
+
+                });
+            /* $("#CountryModal").modal('hide')*/
+            $.ajax({
+                type: "POST",
+                data: Data,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/Performance/UpdateKeyResults",
+                success: onSuccessUpdateManagement,
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong to Insert new Reord!',
+                    });
+                },
+                cache: false,
+            });
+        }
+        function onSuccessUpdateManagement(data) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Info',
+                text: 'Your work has been Save.',
+            }).then(function () {
+                location.reload(true);
+            });
+            Mode = "";
+            clearfields();
+
+            LoadingEmployeeCostDetails();
+
+        }
+
+
+        function Delete(ID) {
+
+            debugger;
+
+            if (confirm('Are you sure to Delete this record ?')) {
+
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    url: "/Performance/DeleteKeyResults/" + ID,
+                    success: function (data) {
+
+                        LoadingEmployeeCostDetails();
+
+                    }
+
+                });
+            }
+        }
+
+    function GetEmployeeId() {
+        debugger;
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/EmployeeProfile/Employeesddl",
+                success: function (data) {
+                    debugger;
+
+                    if (data != 0) {
+
+                        $('#AssignedTo').empty();
+                        $('#AssignedTo').append('<option value="-1" selected disabled>Select Employee</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#AssignedTo').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+
+            });
+        }
+
+        //function GetDepartmentList() {
+
+        //    $.ajax({
+        //        type: "GET",
+        //        contentType: "application/json; charset=utf-8",
+        //        url: "/Performance/DepartmentList",
+        //        success: function (data) {
+
+        //            if (data != 0) {
+
+        //                $('#DepId').empty();
+        //                $('#DepId').append('<option value="-1" selected disabled>Select Department</option>');
+        //                $.each(data, function (i, tweet) {
+        //                    $('#DepId').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+        //                });
+
+        //            }
+
+        //        },
+        //        error: function (error) {
+        //            Swal.fire({
+        //                icon: 'error',
+        //                title: 'Oops...',
+        //                text: 'Something went wrong!',
+        //            });
+        //        },
+        //        cache: false,
+
+        //    });
+        //}
+
+
+        function clearfields() {
+            $(".updateTask").hide();
+            $("#AddTask").show();
+
+
+            $("#DefineKeyResult").val("");
+            $("#AssignedTo").val("-1").select2();
+            $("#Priority").val("-1").select2();
+            $("#Status").val("-1").select2();
+            $("#AssignDate").val("");
+            $("#EndDate").val("");
+            $("#AssignedPercentage").val("");
+            $("#CompletedPercentage").val("");
+
+
+        }
+
+
+        //function DeptChange(btn) {
+
+        //    debugger;
+
+        //    var JobId = btn.value;
+
+        //    $.ajax({
+        //        type: "GET",
+        //        contentType: "application/json; charset=utf-8",
+        //        data: { "DepName": JobId },
+        //        url: "/Performance/GetKeyObjectiveForDepartment",
+        //        success: function (data) {
+
+        //            debugger;
+
+        //            onSuccessEmployeeCostDetails(data);
+        //        },
+        //        error: function (error) {
+
+        //        },
+        //        cache: false
+        //    });
+
+
+
+
+        //}
+
+
+        //function isNumberKey(evt) {
+        //    var charCode = (evt.which) ? evt.which : evt.keyCode;
+        //    if (charCode != 46 && charCode > 31
+        //        && (charCode < 48 || charCode > 57))
+        //        return false;
+
+        //    return true;
+        //}
+
+
+        //function EmployeeChange() {
+
+
+        //    var JobId = document.getElementById("EmployeeId").value;
+
+        //    $.ajax({
+        //        type: "GET",
+        //        contentType: "application/json; charset=utf-8",
+        //        data: { "JobId": JobId },
+        //        url: "/PayRoll/EmployeeChangeSalarySetup",
+        //        success: function (data) {
+        //            AutoFillTextBox(data);
+
+        //        },
+        //        error: function (error) {
+
+        //        },
+        //        cache: false
+        //    });
+
+
+        //}
+
+        //function AutoFillTextBox(data) {
+        //    for (const element of data) {
+
+        //        $('#EmployeeNumber').val(element.EmployeeNumber);
+        //        $("#Designation").val(element.Designation).attr('disabled', 'disabled');
+        //        $("#Department").val(element.Department).attr('disabled', 'disabled');
+        //        $("#BasicSalary").val(element.BasicSalary).attr('disabled', 'disabled');
+
+        //    }
+        //}
+
+
+        function DeptResults(btn) {
+
+            debugger;
+
+            var JobId = btn.value;
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                data: { "DepName": JobId },
+                url: "/Performance/GetKeyObjectiveForDepartment",
+                success: function (data) {
+
+                    /// DisplayResults();
+
+                    onSuccessEmployeeCostDetails(data);
+                },
+                error: function (error) {
+
+                },
+                cache: false
+            });
+
+        }
+
+
+        function DisplayResults() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                data: { "DepName": JobId1 },
+                url: "/Performance/GetKeyResultsForDepartment",
+                success: function (data) {
+
+                    onSuccessEmployeeCostDetails(data);
+
+                }
+
+            })
+      }
+
+
+</script>

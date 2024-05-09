@@ -1,0 +1,379 @@
+﻿@{
+    ViewBag.Title = "Shifts"; Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+<!-- base:css --> @* <link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css"> <link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css"> *@
+<!-- inject:css --> @* <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> <link rel="stylesheet" href="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css"> *@
+<link href="~/Content/Assets/css/State.css" rel="stylesheet" />
+<div class="container-fluid">
+    <div class="__top_head">
+        <h3 class="all-md">Shifts</h3>
+    </div>
+    <div class="__blk">
+        <div id="responseTextDivId" style="color:red"></div>
+        <form id="ShiftForm">
+            <input type="hidden" name="ShiftId" />
+            <div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-form-label">Code</label>
+                                    <input type="text" class="form-control" aria-describedby="emailHelp" id="txtCode" name="Code" value="@ViewBag.Code" readonly placeholder="Enter Employee Code">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-form-label">Shift Name</label>
+                                    <input type="text" class="form-control" aria-describedby="emailHelp" id="ShiftName" name="ShiftName" placeholder="Enter Shift Code">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-form-label">Start Time</label>
+                                    <input name="StartTime" id="StartTime" type="time" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-form-label">End Time</label>
+                                    <input name="EndTime" id="EndTime" type="time" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-form-label">Grace Time</label>
+                                    <input name="GressTime" id="GressTime" type="time" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-form-label">Early Leave</label>
+                                    <input name="EarlyLeave" id="EarlyLeave" type="time" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-form-label">Half Day</label>
+                                    <input name="HalfDay" id="HalfDay" type="time" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-form-label">Break Time(Hours)</label>
+                                    <input type="number" class="form-control" aria-describedby="emailHelp" id="Breakhour" name="Breakhour">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row" style=" margin-left: 23px;">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-group">
+                                        <input type="checkbox" class="form-check-input"  id="IsFriday" name="IsFriday">
+                                        Friday Off
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="col-sm-12 col-form-label">
+                                        <input type="checkbox" class="form-check-input"  id="IsSaturday" name="IsSaturday">
+                                        Saturday Off
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+
+                                    <label class="form-group">
+
+                                        <input type="checkbox" class="form-check-input"  id="IsSunday" name="IsSunday">
+                                        Sunday Off
+                                    </label>
+                                </div>
+                            </div>
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-2">
+                    <button class="btn btn-primary u-btn-3d  d-block " id="btnAddShift">
+                        <i class="fa fa-list" aria-hidden="true"></i> Save </button>
+                </div>
+                <div class="col-md-8"></div>
+                <div class="col-sm-2" style="display:none">
+                    <button class="btn btn-primary u-btn-3d  d-block ml-auto">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save & Next </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- base:js --> @* <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script> <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script> *@
+<!-- endinject -->
+<!-- inject:js --> @* <script src="~/Content/Assets/js/off-canvas.js"></script> <script src="~/Content/Assets/js/hoverable-collapse.js"></script> <script src="~/Content/Assets/js/template.js"></script> <script src="~/Content/Assets/js/settings.js"></script> <script src="~/Content/Assets/js/todolist.js"></script> *@
+<script src="~/Content/Assets/js/formpickers.js"></script>
+<!-- endinject -->
+<!-- plugin js for this page -->
+<script src="~/Content/Assets/vendors/jquery-steps/jquery.steps.min.js"></script>
+<script src="~/Content/Assets/vendors/jquery-validation/jquery.validate.min.js"></script>
+<!-- End plugin js for this page -->
+<!-- Custom js for this page-->
+<script src="~/Content/Assets/js/wizard.js"></script>
+<!-- End custom js for this page-->
+<script src="~/Content/Assets/js/formpickers.js"></script>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        
+
+   
+        var full_url = document.URL; // Get current url
+        var url_array = full_url.split('/') // Split the string into an array with / as separator
+        var ID = url_array[url_array.length - 1];  // Get the last part of the array (-1)
+        if (!isNaN(ID)) {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/ShiftMaster/GetShiftById/" + ID,
+                success: onSuccessEmployeeDetails,
+                error: function (error) {
+                    debugger
+                    $('#responseTextDivId').html(error.responseText)
+                    alert(JSON.stringify(error));
+                },
+                cache: false
+            });
+        }
+    });
+
+    function CheckBoxSelect() {
+        var IsFriday = document.getElementById('IsFriday');
+        if (IsFriday.checked) {
+            alert("checked");
+        } else {
+            alert("You didn't check it! Let me check it for you.")
+        }
+        var IsSaturday = document.getElementById('IsSaturday');
+        if (IsSaturday.checked) {
+            alert("checked");
+        } else {
+            alert("You didn't check it! Let me check it for you.")
+        }
+        var IsSunday = document.getElementById('IsSunday');
+        if (IsSunday.checked) {
+            alert("checked");
+        } else {
+            alert("You didn't check it! Let me check it for you.")
+        }
+    }
+    //function ValidateForm(data) {
+    //    var counter = 0;
+    //    var isValid = true;
+    //    debugger
+    //    for (var i = 0; i < data.length; i++) {
+    //        counter = +counter + 1;
+    //        if (data[i].value === "" && counter > 1) {
+
+    //            debugger
+    //            if (counter <= 19) {
+
+    //                alert(`Please Fill "${data[i].name}" field under Basic Information`)
+    //                i = data.length + 2;
+    //            }
+    //            else if (counter >= 20 && counter <= 27) {
+    //                alert(`Please Fill "${data[i].name}" field under Position`)
+    //                i = data.length + 2;
+    //            } else if (counter >= 28 && counter <= 39) {
+    //                alert(`Please Fill "${data[i].name}" field under Contact Information`)
+    //                i = data.length + 2;
+    //            } else {
+    //                alert(`Please Fill "${data[i].name}" field under Bank Information`)
+    //                i = data.length + 2;
+    //            }
+    //            isValid = false;
+    //            break;
+    //        }
+    //    }
+    //    return isValid;
+    //}
+    function populate(frm, data) {
+        $.each(data, function (key, value) {
+            var $el = $(`[name="${key}"]`),
+                type = $el.attr('type');
+            if ($el.length > 0)
+                switch (type) {
+                    case 'checkbox':
+                        $el.attr('checked', 'checked');
+                        break;
+                    case 'radio':
+                        $el.filter('[value="' + val + '"]').attr('checked', 'checked');
+                        break;
+                    case 'time':
+                        debugger
+                        $el.val(value);
+                        break;
+                    default:
+                        $el.val(value);
+                }
+        });
+    }
+    function onSuccessEmployeeDetails(Data) {
+       debugger
+    /*    for (const element of Data) {*/
+
+       //     $('#txtCode').val(Data.Code);
+       // $('#txtShiftName').val(Data.ShiftName);
+      
+        
+       ///* date = date.substring(0, 5);*/
+
+       // $('#StartTime').val(Data.StartTime);
+       // $('#EndTime').val(Data.EndTime);
+       // $('#GressTime').val(Data.GressTime);
+       // $('#EarlyLeave').val(Data.EarlyLeave);
+       // $('#HalfDay').val(Data.HalfDay);
+       // if (Data.IsIsFridayOff == true) {
+       //         $("#IsFriday").prop("checked");
+       //     }
+
+       // if (Data.IsIsSaturdayOff == true) {
+       //         $("#IsSaturday").prop("checked");
+       //     }
+       // if (Data.IsIsSundayOff == true) {
+       //         $("#IsSunday").prop("checked");
+       //     }
+          
+            
+        var { data, Code, ShiftName, StartTime, EndTime, GressTime, EarlyLeave, HalfDay, IsFriday, IsSaturday, IsSunday } = $.parseJSON(Data);
+            
+       
+
+     /*   var { data, StartTime, EndTime, GressTime, EarlyLeave, HalfDay } = $.parseJSON(Data);*/
+        data.Code = Code;
+        data.ShiftName = ShiftName;
+        data.StartTime = StartTime;
+        data.EndTime = EndTime;
+        data.GressTime = GressTime;
+        data.EarlyLeave = EarlyLeave;
+        data.HalfDay = HalfDay;
+      
+        if (data.IsFriday == true) {
+            $("#IsFriday").prop("checked", true);
+        }
+        else {
+            $("#IsFriday").prop("checked", false);
+        }
+
+        if (data.IsSaturday == true) {
+            $("#IsSaturday").prop("checked", true);
+        }
+        else {
+            $("#IsSaturday").prop("checked", false);
+        }
+        if (data.IsSunday == true) {
+            $("#IsSunday").prop("checked", true);
+        }
+        else {
+            $("#IsSunday").prop("checked", false);
+        }
+
+        data.IsFriday = IsFriday;
+        data.IsSaturday = IsSaturday;
+        data.IsSunday = IsSunday;
+        populate("#ShiftForm", data);
+    }
+    $('#ShiftForm').submit(function (e) {
+        InsertUpdateShift();
+        debugger
+        window.location.href = '/ShiftMaster/GetAllShifts'
+
+    });
+    function InsertUpdateShift() {
+        debugger
+        var formData = $("#ShiftForm").serializeArray();
+        //if (ValidateForm(formData) === false) {
+        //    return;
+        //}
+        var url = window.location.pathname;
+        var id = url.substring(url.lastIndexOf('/') + 1);
+        
+        var ShiftId = 0;
+
+        var data = {};
+        data.ShiftId = id;
+        data.Code = $('#txtCode').val();
+        data.ShiftName = $('#ShiftName').val();
+        data.StartTime = $('#StartTime').val();
+        data.EndTime = $('#EndTime').val();
+        data.GressTime = $('#GressTime').val();
+        data.EarlyLeave = $('#EarlyLeave').val();
+        data.Breakhour = $('#Breakhour').val();
+        data.HalfDay = $('#HalfDay').val();
+
+        if ($('#IsFriday').is(":checked")) {
+            data.IsFriday = 'true';
+         
+        }
+        else {
+            data.IsFriday = 'false';
+        }
+        if ($('#IsSaturday').is(":checked")) {
+            data.IsSaturday = 'true';
+        }
+        else {
+            data.IsSaturday = 'false';
+        }
+        if ($('#IsSunday').is(":checked")) {
+            data.IsSunday = 'true';
+        }
+        else {
+            data.IsSunday = 'false';
+        }
+ 
+      
+        $.ajax({
+            async: false,
+            cache: false,
+            type: "POST",
+            data: data,
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',            
+            dataType: "json",
+            url: "/ShiftMaster/InsertUpdateShift",
+            success: onSuccessUpsertEmployee,
+            error: function (error) {
+                debugger
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong to insert new Employee!',
+                });
+            }
+        });
+        //-------------------------------------------------------------------
+
+
+
+
+    }
+    function onSuccessUpsertEmployee(response) {
+        debugger
+        Swal.fire({
+            icon: 'info',
+            title: 'Info',
+            text: 'Shift Save Successfuly.',
+        }).then(function () {
+            window.location.replace(`/ShiftMaster`);
+
+        });
+    }
+</script>

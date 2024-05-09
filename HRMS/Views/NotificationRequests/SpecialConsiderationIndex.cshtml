@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "SpecialConsiderationIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/Assets/css/Region.css" rel="stylesheet" />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="__top_head">
+                <h3 class="all-md">Special Consideration</h3>
+                <div class="btn_blk">
+                    <a href="/NotificationRequests/CreateSC" class="btn btn-inverse-primary u-btn-3d ml-auto">
+                        Special Consideration
+                    </a>
+                </div>
+            </div>
+            <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="NotificationRequest"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            LoadingSCDetails();
+        });
+        function LoadingSCDetails() {
+            $.ajax({
+                type: "GET",
+                url: "/NotificationRequests/GetAllSC",
+                success: onSuccessSCList,
+                error: function (error) {
+                    alert($.parseJSON(error))
+                },
+                cache: false
+            });
+        }
+
+        function onSuccessSCList(data) {
+            data = $.parseJSON(data);
+            $("#NotificationRequest").empty();
+            $("#NotificationRequest").append("<table id='AlldatadetailTable' class='table u-table--v3 g-color-black'>");
+            $("#AlldatadetailTable").empty();
+            $("#AlldatadetailTable").append("<thead>" +
+                "<tr class='ob_gC'>" +
+                "<th>S.NO</th>" +
+                "<th>Name</th>" +
+                "<th>Designation</th>" +
+                "<th>Department</th>" +
+                "<th>Date</th>" +
+                "<th>Subject</th>" +
+                "<th>Request</th>" +
+                "<th class='last-td'>Action</th> " +
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='values1'>");
+            if (data.length > 0) {
+                $.each(data, function (key, value) {
+                    var { SCList, Date, Name, Subject, Request, Designation, Department } = value;
+                    debugger
+                    var val = '';
+                    val = "<tr>" +
+                        "<td class='first-td'>" + parseInt(key + 1) + "</td>" +
+                        "<td>" + Name + "</td>" +
+                        "<td>" + Designation + "</td>" +
+                        "<td>" + Department + "</td>" +
+                        "<td>" + Date.substring(0, 10) + "</td>" +
+                        "<td>" + Subject + "</td>" +
+                        "<td>" + Request + "</td>" +
+                        "<td class='last-td'><a href='/NotificationRequests/CreateSC/" + SCList.SCID + "' class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' ><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = DeleteSC(" + SCList.SCID + ") > <i class='fa fa-trash'></i></a > "
+                        + "</tr></tbody>";
+
+
+                    $('#values1').append(val);
+                });
+            }
+
+            $('#AlldatadetailTable').dataTable({
+                "bProcessing": true,
+                "bPaginate": true,
+                "sPaginationType": "full_numbers",
+                "responsive": true,
+                "ordering": true
+            });
+
+        }
+
+
+        function DeleteSC(ID) {
+            if (confirm('Are you sure to Delete this record ?')) {
+
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: "/NotificationRequests/DeleteSC/" + ID,
+                    success: function (data) {
+                        LoadingSCDetails();
+                    },
+                    error: function (e) {
+                        LoadingSCDetails();
+                    }
+
+
+                });
+            }
+
+        }
+    </script>
+}
+
+
+
+
+
+@*<div class="col-lg-12">
+        <h2>Special Consideration</h2>
+        <div class=" float-right">
+            <a type="button" class="btn btn-inverse-primary u-btn-3d  ml-auto" href="/NotificationRequests/CreateSC">Special Consideration</a>
+        </div>
+        <br />
+        <hr style=" border: 3px solid;" />
+    </div>*@
+

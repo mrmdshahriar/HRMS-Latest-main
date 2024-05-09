@@ -1,0 +1,2035 @@
+﻿@model HRMS.Common
+@{
+    ViewBag.Title = "EmployeeInformation";
+}
+
+<link href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css">
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+<link href="~/Content/Assets/css/Region.css" rel="stylesheet" />
+
+<link href="~/Content/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="~/Content/Assets/vendors/jsgrid/jsgrid.min.css">
+<link rel="stylesheet" href="~/Content/Assets/vendors/jsgrid/jsgrid-theme.min.css">
+
+<link rel="stylesheet" href="~/Content/Assets/css/vertical-layout-light/style.css">
+
+<link rel="shortcut icon" href="~/Content/Assets/images/favicon.png" />
+
+
+<div class="content-wrapper">
+    <div class="row mt-3 mb-2">
+        <h2 class="mb-5">Employee Information</h2>
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <div id="stepsID">
+                        <div>
+                            <h3>Academic Qualification</h3>
+                            <section>
+                                <h3>Academic Qualification</h3>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <form id="qualificationFormID">
+                                            <input type="hidden" name="Id" />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Degree</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" aria-describedby="Degree" id="txtDegree" required name="Degree" placeholder="Enter Degree">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Division</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" required name="Division" class="form-control" aria-describedby="Division" id="txtDivision" maxlength="5" placeholder="Enter Division">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Institutes</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" aria-describedby="Institutes" id="txtInstitutes" required name="Institutes" placeholder="Enter Institutes">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Attachment</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="file" name="Attachment" accept=".pdf" class="form-control" aria-describedby="Attachment" id="txtAttachment" placeholder="Enter Attachment">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="display:none;">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Subject</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text"  name="Subject" class="form-control" aria-describedby="Subject" id="txtSubject" placeholder="Enter Subject">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3" style="display:none;">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Grade</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text"  name="Grade" class="form-control" aria-describedby="Grade" id="txtGrade" maxlength="5" placeholder="Enter Grade">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            @*----------------------------------------*@
+                                            <div class="row" style="display:none;">
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">GPA</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" aria-describedby="GPA" id="txtGPA"  name="GPA" placeholder="Enter GPA" maxlength="5">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Total GPA</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text"  name="TotalGPA" class="form-control" aria-describedby="TotalGPA" id="txtTotalGPA" placeholder="Enter Total GPA" maxlength="5">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Percentage</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="number"  name="Percentage" class="form-control" aria-describedby="Percentage" min="0" id="txtPercentage" value="0">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Passing Year</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text"  name="PassingYear" class="form-control" aria-describedby="PassingYear" id="txtPassingYear" placeholder="Enter Passing Year" maxlength="4">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @*----------------------------------------*@
+                                            <div class="row">
+
+
+                                            </div>
+                                            @*----------------------------------------*@
+                                            <div class="row mb-1">
+                                                <div class="col-12 text-right">
+                                                    <button id="qualificationBtn" class="btn btn-primary">
+                                                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllqualificatoinList"></div>
+                                    </div>
+                                </div>
+                            </section>
+                            @*----------------------------------------Qualification Section End*@
+                            <h3>Experience Information</h3>
+                            <section>
+                                <h3>Experience Information</h3>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <form id="experienceFormID">
+                                            <input type="hidden" name="Id" />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Job Type</label>
+                                                        <div class="col-sm-12">
+                                                            <select class="form-control" required name="JobType">
+                                                                <option value="" disabled selected="selected">Select Job Type</option>
+                                                                @foreach (var item in Model.JobTypeList)
+                                                                {
+                                                                    <option value="@item.Id">@item.Name</option>
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Organization</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" required name="Organization" class="form-control" aria-describedby="Subject" id="txtOrganization" placeholder="Enter Organization">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Organization Address</label>
+                                                        <div class="col-sm-12">
+                                                            <textarea class="form-control" required name="OrganizationAddress" placeholder="Enter Organization Address"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Start Date</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="date" required name="StartDate" class="form-control" aria-describedby="StartDate" id="StartDate" placeholder="Enter Start Date">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @*----------------------------------------*@
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">End Date</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="date" required name="EndDate" class="form-control" aria-describedby="EndDate" id="EndDate" placeholder="Enter End Date">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Reason For Leaaving</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" required name="ReasonForLeaaving" class="form-control" aria-describedby="ReasonForLeaaving" id="txtTotalGPA" placeholder="Enter Reason For Leaaving">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Last Salary</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="number" required name="LastSalary" class="form-control" aria-describedby="LastSalary" value="0.00" min="0" id="LastSalary" placeholder="Enter Last Salary">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Currency</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" required name="Currency" class="form-control" aria-describedby="Currency" id="Currency" placeholder="Enter Currency">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @*----------------------------------------*@
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Job Description</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" aria-describedby="JobDescription" id="JobDescription" required name="JobDescription" placeholder="Enter Job Description" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Attachment</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="file" name="Attachment" accept="application/pdf" class="form-control" aria-describedby="Attachment" id="txtAttachmentExperience" placeholder="Enter Attachment" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            @*----------------------------------------*@
+                                            <div class="row mb-1">
+                                                <div class="col-12 text-right">
+                                                    <button id="experienceBtn" class="btn btn-primary">
+                                                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllexperienceList"></div>
+                                    </div>
+                                </div>
+                            </section>
+                            @*----------------------------------------Experience Section End*@
+                            <h3>Skill Information</h3>
+                            <section>
+                                <h3>Skill Information</h3>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <form id="skillFormID">
+                                            <input type="hidden" name="Id" />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Name</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" class="form-control" aria-describedby="Degree" id="Name" required name="Name" placeholder="Enter skill Name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @*----------------------------------------*@
+                                            <div class="row mb-1">
+                                                <div class="col-12 text-right">
+                                                    <button class="btn btn-primary">
+                                                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllskillList"></div>
+                                    </div>
+                                </div>
+                            </section>
+                            @*----------------------------------------Skill Section End*@
+                            <h3>Health Information</h3>
+                            <section>
+                                <h3>Health Information</h3>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <form id="healthFormID">
+                                            <input type="hidden" name="Id" />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Diseas Name</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text"  name="DiseasName" class="form-control" placeholder="Enter Diseas Name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @*<div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Result</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text"  name="Result" class="form-control" placeholder="Enter Result">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">From Suffering</label>
+                                                        <div class="col-sm-12">
+                                                            <input class="form-control"  name="FromSuffering" placeholder="Enter From Suffering" />
+                                                        </div>
+                                                    </div>
+                                                </div>*@
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Treatment</label>
+                                                        <div class="col-sm-12">
+                                                            <input name="Treatment"  class="form-control" placeholder="Enter Treatment">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @*----------------------------------------*@
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Attachment</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="file" name="Attachment" accept="application/pdf" class="form-control" aria-describedby="Attachment" id="txtAttachmentHealth" placeholder="Enter Attachment" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            @*----------------------------------------*@
+                                            <div class="row mb-1">
+                                                <div class="col-12 text-right">
+                                                    <button class="btn btn-primary">
+                                                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllhealthList"></div>
+                                    </div>
+                                </div>
+                            </section>
+                            @*----------------------------------------Health Section End*@
+                            <h3>Relation Information</h3>
+                            <section>
+                                <h3>Relation Information</h3>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <form id="relationFormID">
+                                            <input type="hidden" name="Id" />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Job Type</label>
+                                                        <div class="col-sm-12">
+                                                            <select class="form-control" required name="RelationType">
+                                                                <option value="" disabled selected="selected">Select Relation Type</option>
+                                                                <option value="1">Brother</option>
+                                                                <option value="2">Sister</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Full Name</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" required name="FullName" class="form-control" placeholder="Enter Full Name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Contact Number</label>
+                                                        <div class="col-sm-12">
+                                                            <input class="form-control" required name="ContactNumber" placeholder="Enter Contact Number" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Email</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="email" required name="Email" class="form-control" placeholder="Enter Email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @*----------------------------------------*@
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Address</label>
+                                                        <div class="col-sm-12">
+                                                            <textarea required name="Address" class="form-control" placeholder="Enter Address"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @*----------------------------------------*@
+                                            <div class="row mb-1">
+                                                <div class="col-12 text-right">
+                                                    <button class="btn btn-primary">
+                                                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllrelationList"></div>
+                                    </div>
+                                </div>
+                            </section>
+                            @*----------------------------------------Relation Section End*@
+
+                            <h3>Reference Information</h3>
+                            <section>
+                                <h3>Reference Information</h3>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <form id="referenceFormID">
+                                            <input type="hidden" name="Id" />
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Reference Type</label>
+                                                        <div class="col-sm-12">
+                                                            <select class="form-control" required name="ReferenceType">
+                                                                <option value="" disabled selected="selected">Select Reference Type</option>
+                                                                <option value="1">Manager</option>
+                                                                <option value="2">Senior Employee</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Full Name</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="text" required name="FullName" class="form-control" placeholder="Enter Full Name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Designation</label>
+                                                        <div class="col-sm-12">
+                                                            <select class="form-control" required name="Designation">
+                                                                <option value="" disabled selected="selected">Select Designation</option>
+                                                                @foreach (var item in Model.DesignationList)
+                                                                {
+                                                                    <option value="@item.Id">@item.Name</option>
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Organization</label>
+                                                        <div class="col-sm-12">
+                                                            <input required name="Organization" class="form-control" placeholder="Enter Organization">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @*----------------------------------------*@
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Contact Number</label>
+                                                        <div class="col-sm-12">
+                                                            <input required name="ContactNumber" class="form-control" placeholder="Enter Contact Number">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Email</label>
+                                                        <div class="col-sm-12">
+                                                            <input type="email" required name="Email" class="form-control" placeholder="Enter Email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Period Of Kowing</label>
+                                                        <div class="col-sm-12">
+                                                            <input required name="PeriodOfKowing" class="form-control" placeholder="Enter Period Of Kowing">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-8 col-form-label">Address</label>
+                                                        <div class="col-sm-12">
+                                                            <textarea required name="Address" class="form-control" placeholder="Enter Address"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @*----------------------------------------*@
+                                            <div class="row mb-1">
+                                                <div class="col-12 text-right">
+                                                    <button class="btn btn-primary">
+                                                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllreferenceList"></div>
+                                    </div>
+                                </div>
+                            </section>
+                            @*----------------------------------------Reference Section End*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="responseText">
+
+</div>
+
+@section scripts{
+    <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script>
+    <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/Content/Assets/js/off-canvas.js"></script>
+    <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+    <script src="~/Content/Assets/js/template.js"></script>
+    <script src="~/Content/Assets/js/settings.js"></script>
+    <script src="~/Content/Assets/js/todolist.js"></script>
+    <script src="~/Content/Assets/js/formpickers.js"></script>
+    <script src="~/Content/Assets/vendors/jquery-steps/jquery.steps.min.js"></script>
+    <script src="~/Content/Assets/vendors/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="~/Content/Assets/js/formpickers.js"></script>
+    <script src="~/Content/Assets/js/moment.js"></script>
+
+    <script>
+        //Arrays
+        var Qualifications = [];
+        var Experiences = [];
+        var Skills = [];
+        var Healths = [];
+        var Relations = [];
+        var References = [];
+        //Objects
+        var QualificationObject = {};
+        var ExperienceObject = {};
+        var SkillObject = {};
+        var HealthObject = {};
+        var RelationObject = {};
+        var ReferenceObject = {};
+        var EditItemID = 0;
+
+        var full_url = document.URL; // Get current url
+        var url_array = full_url.split('/') // Split the string into an array with / as separator
+        var EmployeeId = url_array[url_array.length - 1];  // Get the last part of the array (-1)
+        if (isNaN(EmployeeId)) EmployeeId = 0;
+
+        $(window).on("load", function () {
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                type: "POST",
+                dataType: "json",
+                url: `/EmployeeProfile/LoadEmployeeInformation/${EmployeeId}`,
+                success: function (response) {
+                    debugger
+                    const { educations, experiences, healths, message, references, relations, skills, success, JobTypes, Designation } = response;
+                    Qualifications = Array.from(educations);
+                    Experiences = Array.from(experiences);
+                    Healths = Array.from(healths);
+                    References = Array.from(references);
+                    Relations = Array.from(relations);
+                    Skills = Array.from(skills);
+                    Experiences.JobTypes = JobTypes;
+                    References.Designation = Designation;
+                },
+                error: function (error) {
+                    $('#responseText').html(error.responseText);
+                    debugger
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong.',
+                    });
+                },
+                cache: false
+            }).then(function (r) {
+                loadQualificationsInDataTable();
+                loadExperiencesInDataTable();
+                loadSkillsInDataTable();
+                loadHealthsInDataTable();
+                loadRelationsInDataTable();
+                loadReferencesInDataTable();
+            })
+        });
+
+        var steps = $('#stepsID');
+        steps.children("div").steps({
+            headerTag: "h3",
+            bodyTag: "section",
+            transitionEffect: "slideLeft",
+            enableCancelButton: true,
+            onStepChanging: function (event, currentIndex, newIndex) {
+
+                //#region OnPageChange
+                if (currentIndex === 0 || newIndex === 0)//Accademic Qualification
+                {
+                    debugger
+                    if (Qualifications.length < 1) {
+                        Swal.fire({
+                            async: false,
+                            cache: false,
+                            icon: 'error',
+                            title: 'Invalid Form',
+                            text: 'Please Enter  Form.',
+                        })
+                        return;
+                    }
+                    else return 'valid';
+
+                }
+                else if (currentIndex === 1 || newIndex === 1)//Experience Informatin
+                {
+                    if (Experiences.length < 1) {
+                        Swal.fire({
+                            async: false,
+                            cache: false,
+                            icon: 'error',
+                            title: 'Invalid Form',
+                            text: 'Please Enter Form.',
+                        })
+                        return;
+                    }
+                    else return 'valid';
+                }
+                else if (currentIndex === 2 || newIndex === 2)//Skill Information
+                {
+                    if (Skills.length < 1) {
+                        Swal.fire({
+                            async: false,
+                            cache: false,
+                            icon: 'error',
+                            title: 'Invalid Form',
+                            text: 'Please Enter Form.',
+                        })
+                        return;
+                    }
+                    else return 'valid';
+                }
+                //else if (currentIndex === 3 || newIndex === 3)//Health information
+                //{
+                //    if (Healths.length < 1) {
+                //        Swal.fire({
+                //            async: false,
+                //            cache: false,
+                //            icon: 'error',
+                //            title: 'Invalid Form',
+                //            text: 'Please Enter Health Form.',
+                //        })
+                //        return;
+                //    }
+                //    else return 'valid';
+                //}
+                if (currentIndex != 3)
+                {
+                }
+                else if (currentIndex === 4 || newIndex === 4 && currentIndex != 3)//Relational Information
+                {
+                    if (Relations.length < 1) {
+                        Swal.fire({
+                            async: false,
+                            cache: false,
+                            icon: 'error',
+                            title: 'Invalid Form',
+                            text: 'Please Enter Form.',
+                        })
+                        return;
+                    }
+                    else return 'valid';
+                }
+
+                else {
+                   
+                }
+                return 'valid';
+                //#endregion
+
+
+                //#region Ignore_Validation
+                //form.val({
+                //    ignore: [":disabled", ":hidden"]
+                //})
+                //return form.val();
+                //return 'default';
+                //#endregion
+            },
+            onFinished: function (event, currentIndex) {
+                debugger
+                if (References.length < 1) {
+                    Swal.fire({
+                        async: false,
+                        cache: false,
+                        icon: 'error',
+                        title: 'Invalid Form',
+                        text: 'Please Enter Form.',
+                    });
+                    return;
+                }
+                if (Qualifications) {
+                        $.each(Qualifications, function (key, value) {
+                            value.EmployeeId = EmployeeId;
+                        });
+                        $.ajax({
+                            async: false,
+                            traditional: true,
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify(Qualifications),
+                            type: "POST",
+                            dataType: "json",
+                            url: "/EmployeeProfile/InsertUpdateEmployeeQualification",
+                            success: function (response) {
+                            },
+                            error: function (error) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Something went wrong.',
+                                });
+                            },
+                            cache: false
+                        });
+
+                }
+                /*------------------------------------------------------------------------Qualifications End--------------------*/
+
+                if (Experiences) {
+                    debugger
+                    $.each(Experiences, function (key, value) {
+                        value.EmployeeId = EmployeeId;
+                    });
+                    $.ajax({
+                        async: false,
+                        traditional: true,
+                        type: "POST",
+                        data: JSON.stringify(Experiences),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        url: "/EmployeeProfile/InsertUpdateEmployeeExperience",
+                        success: function (response) {
+                        },
+                        error: function (error) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong.',
+                            });
+                        },
+                        cache: false
+                    });
+
+                }
+                /*------------------------------------------------------------------------Experiences End--------------------*/
+                $.each(Skills, function (key, value) {
+                    value.EmployeeId = EmployeeId;
+                });
+                if (Skills) {
+                    $.ajax({
+                        async: false,
+                        traditional: true,
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(Skills),
+                        type: "POST",
+                        dataType: "json",
+                        url: "/EmployeeProfile/InsertUpdateEmployeeSkill",
+                        success: function (response) {
+                            debugger
+                        },
+                        error: function (error) {
+                            debugger
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong.',
+                            });
+                        },
+                        cache: false
+                    });
+                }
+                /*------------------------------------------------------------------------Skills End--------------------*/
+                if (Healths) {
+
+                    $.each(Healths, function (key, value) {
+                        value.EmployeeId = EmployeeId;
+                    });
+
+                    $.ajax({
+                        async: false,
+                        traditional: true,
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(Healths),
+                        type: "POST",
+                        dataType: "json",
+                        url: "/EmployeeProfile/InsertUpdateEmployeeHealth",
+                        success: function (response) {
+                            debugger
+                        },
+                        error: function (error) {
+                            debugger
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong.',
+                            });
+                        },
+                        cache: false
+                    });
+                }
+                /*------------------------------------------------------------------------Healths End--------------------*/
+                $.each(Relations, function (key, value) {
+                    value.EmployeeId = EmployeeId;
+                });
+                if (Relations) {
+                    $.ajax({
+                        async: false,
+                        traditional: true,
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(Relations),
+                        type: "POST",
+                        dataType: "json",
+                        url: "/EmployeeProfile/InsertUpdateEmployeeRelation",
+                        success: function (response) {
+                            debugger
+                        },
+                        error: function (error) {
+                            debugger
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong.',
+                            });
+                        },
+                        cache: false
+                    });
+                }
+                /*------------------------------------------------------------------------Relations End--------------------*/
+                $.each(References, function (key, value) {
+                    value.EmployeeId = EmployeeId;
+                });
+                if (References) {
+                    $.ajax({
+                        async: false,
+                        traditional: true,
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(References),
+                        type: "POST",
+                        dataType: "json",
+                        url: "/EmployeeProfile/InsertUpdateEmployeeReference",
+                        success: function (response) {
+                            debugger
+                        },
+                        error: function (error) {
+                            debugger
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong.',
+                            });
+                        },
+                        cache: false
+                    });
+                }
+                /*------------------------------------------------------------------------References End--------------------*/
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Info',
+                    text: 'Record Save Successfuly.',
+                }).then(function () {
+                    window.location.replace(`/EmployeeProfile`);
+                });
+            },
+            onCanceled: function (e) {
+                if (Qualifications) {
+
+                        debugger
+                        $.each(Qualifications, function (key, value) {
+                            value.EmployeeId = EmployeeId;
+                        });
+                        $.ajax({
+                            async: false,
+                            traditional: true,
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify(Qualifications),
+                            type: "POST",
+                            dataType: "json",
+                            url: "/EmployeeProfile/InsertUpdateEmployeeQualification",
+                            success: function (response) {
+                            },
+                            error: function (error) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Something went wrong.',
+                                });
+                            },
+                            cache: false
+                        });
+                }
+                /*------------------------------------------------------------------------Qualifications End--------------------*/
+
+                if (Experiences) {
+                    var formData = new FormData();
+                    var totalFiles = Experiences.length;
+                    for (var j = 0; j < totalFiles; j++) {
+                        var file = Experiences[j].Attachment;
+                        formData.append('file', file);
+                        $.ajax({
+                            async: false,
+                            cache: false,
+                            type: "POST",
+                            url: '/EmployeeProfile/Upload',
+                            data: formData,
+                            dataType: 'json',
+                            contentType: false,
+                            processData: false,
+                            success: function (response) {
+                                if (j < Experiences.length && response.savedFilePath.length > 0)
+                                    Experiences[j].Attachment = response.savedFilePath;
+                            },
+                            error: function (error) {
+                                alert("File Upload Error");
+                            }
+                        }).then(function () {
+                            if (j === Experiences.length) {
+                                j = j + 1;
+                                sendExperienceCall();
+                            }
+                        });
+                        function sendExperienceCall() {
+                            debugger
+                            $.each(Experiences, function (key, value) {
+                                value.EmployeeId = EmployeeId;
+                            });
+                            $.ajax({
+                                async: false,
+                                traditional: true,
+                                type: "POST",
+                                data: JSON.stringify(Experiences),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                url: "/EmployeeProfile/InsertUpdateEmployeeExperience",
+                                success: function (response) {
+                                },
+                                error: function (error) {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: 'Something went wrong.',
+                                    });
+                                },
+                                cache: false
+                            });
+                        }
+                    }
+                }
+                /*------------------------------------------------------------------------Experiences End--------------------*/
+                if (Skills) {
+                    $.each(Skills, function (key, value) {
+                        value.EmployeeId = EmployeeId;
+                    });
+                    $.ajax({
+                        async: false,
+                        traditional: true,
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(Skills),
+                        type: "POST",
+                        dataType: "json",
+                        url: "/EmployeeProfile/InsertUpdateEmployeeSkill",
+                        success: function (response) {
+                            debugger
+                        },
+                        error: function (error) {
+                            debugger
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong.',
+                            });
+                        },
+                        cache: false
+                    });
+                }
+                /*------------------------------------------------------------------------Skills End--------------------*/
+                if (Healths) {
+                    var formData = new FormData();
+                    var totalFiles = Healths.length;
+                    for (var k = 0; k < totalFiles; k++) {
+                        var file = Healths[k].Attachment;
+                        formData.append('file', file);
+                        $.ajax({
+                            async: false,
+                            cache: false,
+                            type: "POST",
+                            url: '/EmployeeProfile/Upload',
+                            data: formData,
+                            dataType: 'json',
+                            contentType: false,
+                            processData: false,
+                            success: function (response) {
+                                if (k < Healths.length && response.savedFilePath.length > 0)
+                                    Healths[k].Attachment = response.savedFilePath;
+                            },
+                            error: function (error) {
+                                alert("File Upload Error");
+                            }
+                        }).then(function () {
+                            if (k === Healths.length) {
+                                k = k + 1;
+                                sendHealthCall();
+                            }
+                        });
+                        function sendHealthCall() {
+                            $.each(Healths, function (key, value) {
+                                value.EmployeeId = EmployeeId;
+                            });
+                            if (Healths) {
+                                $.ajax({
+                                    async: false,
+                                    traditional: true,
+                                    contentType: "application/json; charset=utf-8",
+                                    data: JSON.stringify(Healths),
+                                    type: "POST",
+                                    dataType: "json",
+                                    url: "/EmployeeProfile/InsertUpdateEmployeeHealth",
+                                    success: function (response) {
+                                        debugger
+                                    },
+                                    error: function (error) {
+                                        debugger
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: 'Something went wrong.',
+                                        });
+                                    },
+                                    cache: false
+                                });
+                            }
+                        }
+                    }
+                }
+                /*------------------------------------------------------------------------Healths End--------------------*/
+                if (Relations) {
+                    $.each(Relations, function (key, value) {
+                        value.EmployeeId = EmployeeId;
+                    });
+                    $.ajax({
+                        async: false,
+                        traditional: true,
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(Relations),
+                        type: "POST",
+                        dataType: "json",
+                        url: "/EmployeeProfile/InsertUpdateEmployeeRelation",
+                        success: function (response) {
+                            debugger
+                        },
+                        error: function (error) {
+                            debugger
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong.',
+                            });
+                        },
+                        cache: false
+                    });
+                }
+                /*------------------------------------------------------------------------Relations End--------------------*/
+                if (References) {
+                    $.each(References, function (key, value) {
+                        value.EmployeeId = EmployeeId;
+                    });
+                    $.ajax({
+                        async: false,
+                        traditional: true,
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(References),
+                        type: "POST",
+                        dataType: "json",
+                        url: "/EmployeeProfile/InsertUpdateEmployeeReference",
+                        success: function (response) {
+                            debugger
+                        },
+                        error: function (error) {
+                            debugger
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Something went wrong.',
+                            });
+                        },
+                        cache: false
+                    });
+                }
+                /*------------------------------------------------------------------------References End--------------------*/
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Info',
+                    text: 'Record Save Successfuly.',
+                }).then(function () {
+                    window.location.replace(`/EmployeeProfile`);
+                });
+            },
+            labels: {
+                cancel: "Save & Exit", finish: "Submit", next: "Save & Next", previous: "Previous"
+            }
+        });
+
+        function PopulateStepsForm(data) {
+            $.each(data, function (key, value) {
+                var $el = $(`[name="${key}"]`),
+                    type = $el.attr('type');
+                if ($el.length > 0)
+                    switch (type) {
+                        case 'checkbox':
+                            $el.attr('checked', 'checked');
+                            break;
+                        case 'radio':
+                            $el.filter('[value="' + val + '"]').attr('checked', 'checked');
+                            break;
+                        case 'date':
+                            debugger
+
+                            var dateNumber = value.substr(6, 13);
+                            var d = new Date(+dateNumber);
+                            var month = d.getMonth() + 1;
+                            var day = d.getDate();
+                            var year = d.getFullYear();
+                            var DateString = year+"-0" + month+"-" + day;
+                            $el.val(DateString);
+                            break;
+                        default:
+                            debugger
+                            if (key == 'PassingYear')
+                                $el.val(value.substr(0, 4));
+                            else
+                                $el.val(value);
+                    }
+            });
+        }
+
+        function DownloadFile(fileName) {
+            $.ajax({
+                traditional: true,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ fileName: fileName }),
+                type: "POST",
+                dataType: "text",
+                url: `/EmployeeProfile/DownloadFile`,
+                success: function (r) {
+                    var bytes = Base64ToBytes(r);
+                    //Convert Byte Array to BLOB.
+                    var blob = new Blob([bytes], { type: "application/octetstream" });
+                    //Check the Browser type and download the File.
+                    var isIE = false || !!document.documentMode;
+                    if (isIE) {
+                        window.navigator.msSaveBlob(blob, fileName);
+                    } else {
+                        var url = window.URL || window.webkitURL;
+                        link = url.createObjectURL(blob);
+                        //Open PDF in NEw Tab
+                        var win = window.open();
+                        win.document.write('<iframe src="' + "data:application/pdf;base64," + r + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
+
+                        //Download PDF
+                        //var a = $("<a />");
+                        //a.attr("download", fileName);
+                        //a.attr("href", link);
+                        //$("body").append(a);
+                        //a[0].click();
+                        //$("body").remove(a);
+                    }
+                },
+                error: function (error) {
+                    debugger
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Still file not Upload.',
+                    });
+                },
+                cache: false
+            });
+        }
+        function Base64ToBytes(base64) {
+            var s = window.atob(base64);
+            var bytes = new Uint8Array(s.length);
+            for (var i = 0; i < s.length; i++) {
+                bytes[i] = s.charCodeAt(i);
+            }
+            return bytes;
+        }
+
+        /*------------------------------------------------------------------------General End--------------------*/
+        $('#qualificationFormID').submit(function (e) {
+            e.preventDefault();
+            onAddQualificationEmployee();
+        });
+        function onAddQualificationEmployee() {
+            var QualificationFormDataArray = $("#qualificationFormID").serializeArray();
+            QualificationObject = {};
+
+            $.each(QualificationFormDataArray, function () {
+                var nameParts = this.name.split('[');
+                if (nameParts.length == 1) {
+                    if (QualificationObject[this.name] !== undefined) {
+                        if (!QualificationObject[this.name].push) {
+                            QualificationObject[this.name] = [QualificationObject[this.name]];
+                        }
+                        QualificationObject[this.name].push(this.value || '');
+                    } else {
+                        QualificationObject[this.name] = this.value || '';
+                    }
+                }
+                else {
+                    $.each(nameParts, function (index) {
+                        nameParts[index] = this.replace(/\]$/, '');
+                    });
+                    var arrItem = this;
+                    var temp = QualificationObject;
+                    $.each(nameParts, function (index) {
+                        var next;
+                        var nextNamePart;
+                        if (index >= nameParts.length - 1)
+                            next = arrItem.value || '';
+                        else {
+                            nextNamePart = nameParts[index + 1];
+                            if (trim(this) != '' && temp[this] !== undefined)
+                                next = temp[this];
+                            else {
+                                if (trim(nextNamePart) == '')
+                                    next = [];
+                                else
+                                    next = {};
+                            }
+                        }
+
+                        if (trim(this) == '') {
+                            temp.push(next);
+                        } else
+                            temp[this] = next;
+
+                        temp = next;
+                    });
+                }
+            });
+            var fileUpload = $("#txtAttachment").get(0);
+            var file = fileUpload.files[0];
+            debugger
+            var formData = new FormData();
+            formData.append('file', file);
+            $.ajax({
+                async: false,
+                cache: false,
+                type: "POST",
+                url: '/EmployeeProfile/Upload',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response.success)
+                        QualificationObject.Attachment = response.savedFilePath;
+                },
+                error: function (error) {
+                    alert("File Upload Error");
+                }
+            })
+            //QualificationObject.Attachment = file;
+            QualificationObject.Id = EditItemID;
+            if (Qualifications.find(element => element.Id === +QualificationObject.Id)) {
+                Qualifications.splice(Qualifications.indexOf(Qualifications.find(element => element.Id === +QualificationObject.Id)), 1);
+            }
+            Qualifications.push(QualificationObject);
+            $("#qualificationFormID")[0].reset()
+            loadQualificationsInDataTable();
+            EditItemID = 0;
+
+        }
+        function loadQualificationsInDataTable() {
+            $("#AllqualificatoinList").empty();
+            $("#AllqualificatoinList").append("<table id='AlldatadetailTable' class='table u-table--v3 g-color-black'>");
+            $("#AlldatadetailTable").empty();
+            $("#AlldatadetailTable").append("<thead>" +
+                "<tr class='ob_gC'>" +
+                "<th>S.NO</th>" +
+                "<th>Degree</th>" +
+                "<th>Institutes</th>" +
+
+                //"<th>Subject</th>" +
+                //"<th>Grade</th>" +
+                "<th>Division</th>" +
+                "<th colspan='2'>Actions</th>" +
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='values1'>");
+            if (Qualifications.length > 0) {
+                var val = ''; debugger
+
+                for (var i = 0; i < Qualifications.length; i++) {
+                    Qualifications[i].Id = parseInt(i + 1);
+                    val = "<tr>" +
+                        "<td class='first-td'>" + parseInt(i + 1) + "</td>" +
+
+                        "<td>" + Qualifications[i].Degree + "</td>" +
+                        "<td>" + Qualifications[i].Institutes + "</td>" +
+                        //"<td>" + Qualifications[i].Subject + "</td>" +
+                        //"<td>" + Qualifications[i].Grade + "</td>" +
+                        "<td>" + Qualifications[i].Division + "</td>" +
+                        `<td><a onclick='DownloadFile("${Qualifications[i].Attachment}")'  title='Open PDF File' style='cursor: pointer;'><i style="cursor: pointer;" class="fa fa-file-pdf-o text-primary" aria-hidden="true"></i></a> </td>` +
+                        "<td class='last-td'><a onclick='EditQualification(Qualifications[" + i + "].Id)' class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' ><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = RemoveQualification(" + Qualifications[i].Id + ") > <i class='fa fa-trash'></i></a > "
+                        + "</tr></tbody>";
+                    $('#values1').append(val);
+                }
+            }
+        }
+        function EditQualification(id) {
+            EditItemID = id;
+            const found = Qualifications.find(element => element.Id === id);
+            PopulateStepsForm($.parseJSON(JSON.stringify(found)));
+        }
+        function RemoveQualification(id) {
+            debugger
+            if (Qualifications.find(element => element.Id === id)) {
+                var obj = Qualifications.find(element => element.Id === id);
+                var u = `/EmployeeProfile/DeleteFile/"${obj.Attachment}"`;
+                debugger
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteFile")',
+                    data: {
+                        fileName: obj.Attachment
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                    }
+                }).then(function () {
+                    Qualifications.splice(Qualifications.indexOf(Qualifications.find(element => element.Id === id)), 1);
+                    loadQualificationsInDataTable();
+                });
+
+            }
+        }
+        /*------------------------------------------------------------------------Qualifications End--------------------*/
+        $('#experienceFormID').submit(function (e) {
+            e.preventDefault();
+            onAddExperienceEmployee();
+        });
+        function onAddExperienceEmployee() {
+            var ExperienceFormDataArray = $("#experienceFormID").serializeArray();
+            ExperienceObject = {};
+
+            $.each(ExperienceFormDataArray, function () {
+                var nameParts = this.name.split('[');
+                if (nameParts.length == 1) {
+                    if (ExperienceObject[this.name] !== undefined) {
+                        if (!ExperienceObject[this.name].push) {
+                            ExperienceObject[this.name] = [ExperienceObject[this.name]];
+                        }
+                        ExperienceObject[this.name].push(this.value || '');
+                    } else {
+                        ExperienceObject[this.name] = this.value || '';
+                    }
+                }
+                else {
+                    $.each(nameParts, function (index) {
+                        nameParts[index] = this.replace(/\]$/, '');
+                    });
+                    var arrItem = this;
+                    var temp = ExperienceObject;
+                    $.each(nameParts, function (index) {
+                        var next;
+                        var nextNamePart;
+                        if (index >= nameParts.length - 1)
+                            next = arrItem.value || '';
+                        else {
+                            nextNamePart = nameParts[index + 1];
+                            if (trim(this) != '' && temp[this] !== undefined)
+                                next = temp[this];
+                            else {
+                                if (trim(nextNamePart) == '')
+                                    next = [];
+                                else
+                                    next = {};
+                            }
+                        }
+
+                        if (trim(this) == '') {
+                            temp.push(next);
+                        } else
+                            temp[this] = next;
+
+                        temp = next;
+                    });
+                }
+            });
+            debugger
+            var formData = new FormData();
+            var fileUpload = $("#txtAttachmentExperience").get(0);
+            var file = fileUpload.files[0];
+            formData.append('file', file);
+            $.ajax({
+                async: false,
+                cache: false,
+                type: "POST",
+                url: '/EmployeeProfile/Upload',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response.success)
+                        ExperienceObject.Attachment = response.savedFilePath;
+                },
+                error: function (error) {
+                    alert("File Upload Error");
+                }
+            })
+
+
+            //ExperienceObject.Attachment = file;
+            ExperienceObject.Id = EditItemID;
+            if (Experiences.find(element => element.Id === +ExperienceObject.Id)) {
+                Experiences.splice(Experiences.indexOf(Experiences.find(element => element.Id === +ExperienceObject.Id)), 1);
+            }
+            Experiences.push(ExperienceObject);
+            $("#experienceFormID")[0].reset()
+            loadExperiencesInDataTable();
+            EditItemID = 0;
+        }
+
+        function loadExperiencesInDataTable() {
+            $("#AllexperienceList").empty();
+            $("#AllexperienceList").append("<table id='AlldatadetailTableExperience' class='table u-table--v3 g-color-black'>");
+            $("#AlldatadetailTableExperience").empty();
+            $("#AlldatadetailTableExperience").append("<thead>" +
+                "<tr class='ob_gC'>" +
+                "<th>S.NO</th>" +
+                "<th>JobType</th>" +
+                "<th>Organization</th>" +
+                "<th>ReasonForLeaaving</th>" +
+                "<th>LastSalary</th>" +
+                "<th>Start Date</th>" +
+                "<th>End Date</th>" +
+                "<th colspan='2'>Actions</th>" +
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='values2'>");
+            if (Experiences.length > 0) {
+                var val = ''; debugger
+
+                for (var i = 0; i < Experiences.length; i++) {
+                    Experiences[i].Id = parseInt(i + 1);
+                    var jobType = Experiences.JobTypes.find(element => element.Id == Experiences[i].JobType);
+                    debugger
+                    var startDate;
+                    var endDate;
+                    var dateValStart;
+                    var dateValEnd;
+                    if (Experiences[i].StartDate.length > 10) {
+
+                        dateValStart = parseInt(Experiences[i].StartDate.substr(6));
+                        dateValEnd = parseInt(Experiences[i].EndDate.substr(6));
+                        startDate = new Date(dateValStart);
+                        endDate = new Date(dateValEnd);
+                    } else {
+                        dateValStart = Experiences[i].StartDate;
+                        dateValEnd = Experiences[i].EndDate;
+                        startDate = new Date(dateValStart);
+                        endDate = new Date(dateValEnd);
+                    }
+                    val = "<tr>" +
+                        "<td class='first-td'>" + parseInt(i + 1) + "</td>" +
+                        "<td>" + jobType.Name + "</td>" +
+                        "<td>" + Experiences[i].Organization + "</td>" +
+                        "<td>" + Experiences[i].ReasonForLeaaving + "</td>" +
+                        "<td>" + Experiences[i].LastSalary + "</td>" +
+                        "<td>" + startDate.toDateString() + "</td>" +
+                        "<td>" + endDate.toDateString() + "</td>" +
+                        `<td><a onclick='DownloadFile("${Experiences[i].Attachment}")'  title='Open PDF File' style='cursor: pointer;'><i style="cursor: pointer;" class="fa fa-file-pdf-o text-primary" aria-hidden="true"></i></a> </td>` +
+                        "<td class='last-td'><a onclick='EditExperience(Experiences[" + i + "].Id)' class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' ><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = RemoveExperience(" + Experiences[i].Id + ") > <i class='fa fa-trash'></i></a > "
+                        + "</tr></tbody>";
+                    $('#values2').append(val);
+                }
+            }
+        }
+        function EditExperience(id) {
+            EditItemID = id;
+            const found = Experiences.find(element => element.Id === id);
+            PopulateStepsForm($.parseJSON(JSON.stringify(found)));
+        }
+        function RemoveExperience(id) {
+              debugger
+            if (Experiences.find(element => element.Id === id)) {
+                var obj = Experiences.find(element => element.Id === id);
+                debugger
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteFile")',
+                    data: {
+                        fileName: obj.Attachment
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                    }
+                }).then(function () {
+                    Experiences.splice(Experiences.indexOf(Experiences.find(element => element.Id === id)), 1);
+                    loadExperiencesInDataTable();
+                });
+            }
+        }
+        /*------------------------------------------------------------------------Experiences End--------------------*/
+        $('#skillFormID').submit(function (e) {
+            e.preventDefault();
+            onAddSkillEmployee();
+        });
+        function onAddSkillEmployee() {
+            var SkillFormDataArray = $("#skillFormID").serializeArray();
+            SkillObject = {};
+
+            $.each(SkillFormDataArray, function () {
+                var nameParts = this.name.split('[');
+                if (nameParts.length == 1) {
+                    if (SkillObject[this.name] !== undefined) {
+                        if (!SkillObject[this.name].push) {
+                            SkillObject[this.name] = [SkillObject[this.name]];
+                        }
+                        SkillObject[this.name].push(this.value || '');
+                    } else {
+                        SkillObject[this.name] = this.value || '';
+                    }
+                }
+                else {
+                    $.each(nameParts, function (index) {
+                        nameParts[index] = this.replace(/\]$/, '');
+                    });
+                    var arrItem = this;
+                    var temp = SkillObject;
+                    $.each(nameParts, function (index) {
+                        var next;
+                        var nextNamePart;
+                        if (index >= nameParts.length - 1)
+                            next = arrItem.value || '';
+                        else {
+                            nextNamePart = nameParts[index + 1];
+                            if (trim(this) != '' && temp[this] !== undefined)
+                                next = temp[this];
+                            else {
+                                if (trim(nextNamePart) == '')
+                                    next = [];
+                                else
+                                    next = {};
+                            }
+                        }
+
+                        if (trim(this) == '') {
+                            temp.push(next);
+                        } else
+                            temp[this] = next;
+
+                        temp = next;
+                    });
+                }
+            });
+            debugger
+            SkillObject.Id = EditItemID;
+            if (Skills.find(element => element.Id === +SkillObject.Id)) {
+                Skills.splice(Experiences.indexOf(Skills.find(element => element.Id === +SkillObject.Id)), 1);
+            }
+            Skills.push(SkillObject);
+            $("#skillFormID")[0].reset()
+            loadSkillsInDataTable();
+            EditItemID = 0;
+        }
+        function loadSkillsInDataTable() {
+            $("#AllskillList").empty();
+            $("#AllskillList").append("<table id='AlldatadetailTableSkill' class='table u-table--v3 g-color-black'>");
+            $("#AlldatadetailTableSkill").empty();
+            $("#AlldatadetailTableSkill").append("<thead>" +
+                "<tr class='ob_gC'>" +
+                "<th>S.NO</th>" +
+                "<th>Skill Name</th>" +
+                "<th colspan='2'>Actions</th>" +
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='values3'>");
+            if (Skills.length > 0) {
+                var val = ''; debugger
+
+                for (var i = 0; i < Skills.length; i++) {
+                    Skills[i].Id = parseInt(i + 1);
+                    val = "<tr>" +
+                        "<td class='first-td'>" + parseInt(i + 1) + "</td>" +
+                        "<td>" + Skills[i].Name + "</td>" +
+                        "<td class='last-td'><a onclick='EditSkill(Skills[" + i + "].Id)' class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' ><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = RemoveSkill(" + Skills[i].Id + ") > <i class='fa fa-trash'></i></a > "
+                        + "</tr></tbody>";
+                    $('#values3').append(val);
+                }
+            }
+        }
+        function EditSkill(id) {
+            EditItemID = id;
+            const found = Skills.find(element => element.Id === id);
+            PopulateStepsForm($.parseJSON(JSON.stringify(found)));
+        }
+        function RemoveSkill(id) {
+            if (Skills.find(element => element.Id === id)) {
+                Skills.splice(Skills.indexOf(Skills.find(element => element.Id === id)), 1);
+                loadSkillsInDataTable();
+            }
+        }
+        /*------------------------------------------------------------------------Skill End--------------------*/
+        $('#healthFormID').submit(function (e) {
+            e.preventDefault();
+            onAddHealthEmployee();
+        });
+        function onAddHealthEmployee() {
+            var HealthFormDataArray = $("#healthFormID").serializeArray();
+            HealthObject = {};
+
+            $.each(HealthFormDataArray, function () {
+                var nameParts = this.name.split('[');
+                if (nameParts.length == 1) {
+                    if (HealthObject[this.name] !== undefined) {
+                        if (!HealthObject[this.name].push) {
+                            HealthObject[this.name] = [HealthObject[this.name]];
+                        }
+                        HealthObject[this.name].push(this.value || '');
+                    } else {
+                        HealthObject[this.name] = this.value || '';
+                    }
+                }
+                else {
+                    $.each(nameParts, function (index) {
+                        nameParts[index] = this.replace(/\]$/, '');
+                    });
+                    var arrItem = this;
+                    var temp = HealthObject;
+                    $.each(nameParts, function (index) {
+                        var next;
+                        var nextNamePart;
+                        if (index >= nameParts.length - 1)
+                            next = arrItem.value || '';
+                        else {
+                            nextNamePart = nameParts[index + 1];
+                            if (trim(this) != '' && temp[this] !== undefined)
+                                next = temp[this];
+                            else {
+                                if (trim(nextNamePart) == '')
+                                    next = [];
+                                else
+                                    next = {};
+                            }
+                        }
+
+                        if (trim(this) == '') {
+                            temp.push(next);
+                        } else
+                            temp[this] = next;
+
+                        temp = next;
+                    });
+                }
+            });
+            debugger
+            var formData = new FormData();
+            var fileUpload = $("#txtAttachmentHealth").get(0);
+            var file = fileUpload.files[0];
+            formData.append('file', file);
+            $.ajax({
+                async: false,
+                cache: false,
+                type: "POST",
+                url: '/EmployeeProfile/Upload',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response.success)
+                        HealthObject.Attachment = response.savedFilePath;
+                },
+                error: function (error) {
+                    alert("File Upload Error");
+                }
+            })
+
+
+            //HealthObject.Attachment = file;
+            HealthObject.Id = EditItemID;
+            if (Healths.find(element => element.Id === +HealthObject.Id)) {
+                Healths.splice(Healths.indexOf(Healths.find(element => element.Id === +HealthObject.Id)), 1);
+            }
+            Healths.push(HealthObject);
+            $("#healthFormID")[0].reset()
+            loadHealthsInDataTable();
+            EditItemID = 0;
+        }
+
+        function loadHealthsInDataTable() {
+            $("#AllhealthList").empty();
+            $("#AllhealthList").append("<table id='AlldatadetailTableHealth' class='table u-table--v3 g-color-black'>");
+            $("#AlldatadetailTableHealth").empty();
+            $("#AlldatadetailTableHealth").append("<thead>" +
+                "<tr class='ob_gC'>" +
+                "<th>S.NO</th>" +
+                "<th>Diseas Name</th>" +
+                //"<th>Result</th>" +
+                //"<th>From Suffering</th>" +
+                "<th>Treatment</th>" +
+                "<th colspan='2'>Actions</th>" +
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='values4'>");
+            if (Healths.length > 0) {
+                var val = ''; debugger
+
+                for (var i = 0; i < Healths.length; i++) {
+                    Healths[i].Id = parseInt(i + 1);
+
+                    val = "<tr>" +
+                        "<td class='first-td'>" + parseInt(i + 1) + "</td>" +
+                        "<td>" + Healths[i].DiseasName + "</td>" +
+                        //"<td>" + Healths[i].Result + "</td>" +
+                        //"<td>" + Healths[i].FromSuffering + "</td>" +
+                        "<td>" + Healths[i].Treatment + "</td>" +
+                        `<td><a onclick='DownloadFile("${Healths[i].Attachment}")'  title='Open PDF File' style='cursor: pointer;'><i style="cursor: pointer;" class="fa fa-file-pdf-o text-primary" aria-hidden="true"></i></a> </td>` +
+                        "<td class='last-td'><a onclick='EditHealth(Healths[" + i + "].Id)' class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' ><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = RemoveHealth(" + Healths[i].Id + ") > <i class='fa fa-trash'></i></a > "
+                        + "</tr></tbody>";
+                    $('#values4').append(val);
+                }
+            }
+        }
+        function EditHealth(id) {
+            EditItemID = id;
+            const found = Healths.find(element => element.Id === id);
+            PopulateStepsForm($.parseJSON(JSON.stringify(found)));
+        }
+        function RemoveHealth(id) {
+            if (Healths.find(element => element.Id === id)) {
+                var obj = Healths.find(element => element.Id === id);
+                debugger
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteFile")',
+                    data: {
+                        fileName: obj.Attachment
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                    }
+                }).then(function () {
+                    Healths.splice(Healths.indexOf(Healths.find(element => element.Id === id)), 1);
+                    loadHealthsInDataTable();
+                });
+            }
+        }
+        /*------------------------------------------------------------------------Health End--------------------*/
+        $('#relationFormID').submit(function (e) {
+            e.preventDefault();
+            onAddRelationEmployee();
+        });
+        function onAddRelationEmployee() {
+            var RelationFormDataArray = $("#relationFormID").serializeArray();
+            RelationObject = {};
+
+            $.each(RelationFormDataArray, function () {
+                var nameParts = this.name.split('[');
+                if (nameParts.length == 1) {
+                    if (RelationObject[this.name] !== undefined) {
+                        if (!RelationObject[this.name].push) {
+                            RelationObject[this.name] = [RelationObject[this.name]];
+                        }
+                        RelationObject[this.name].push(this.value || '');
+                    } else {
+                        RelationObject[this.name] = this.value || '';
+                    }
+                }
+                else {
+                    $.each(nameParts, function (index) {
+                        nameParts[index] = this.replace(/\]$/, '');
+                    });
+                    var arrItem = this;
+                    var temp = RelationObject;
+                    $.each(nameParts, function (index) {
+                        var next;
+                        var nextNamePart;
+                        if (index >= nameParts.length - 1)
+                            next = arrItem.value || '';
+                        else {
+                            nextNamePart = nameParts[index + 1];
+                            if (trim(this) != '' && temp[this] !== undefined)
+                                next = temp[this];
+                            else {
+                                if (trim(nextNamePart) == '')
+                                    next = [];
+                                else
+                                    next = {};
+                            }
+                        }
+
+                        if (trim(this) == '') {
+                            temp.push(next);
+                        } else
+                            temp[this] = next;
+
+                        temp = next;
+                    });
+                }
+            });
+            RelationObject.Id = EditItemID;
+            if (Relations.find(element => element.Id === +RelationObject.Id)) {
+                Relations.splice(Healths.indexOf(Relations.find(element => element.Id === +RelationObject.Id)), 1);
+            }
+            Relations.push(RelationObject);
+            $("#relationFormID")[0].reset()
+            loadRelationsInDataTable();
+            EditItemID = 0;
+        }
+
+        function loadRelationsInDataTable() {
+            $("#AllrelationList").empty();
+            $("#AllrelationList").append("<table id='AlldatadetailTableRelation' class='table u-table--v3 g-color-black'>");
+            $("#AlldatadetailTableRelation").empty();
+            $("#AlldatadetailTableRelation").append("<thead>" +
+                "<tr class='ob_gC'>" +
+                "<th>S.NO</th>" +
+                "<th>Full Name</th>" +
+                "<th>Relation Type</th>" +
+                "<th>Contact Number</th>" +
+                "<th>Email</th>" +
+                "<th>Address</th>" +
+                "<th colspan='2'>Actions</th>" +
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='valuesRelation'>");
+            if (Relations.length > 0) {
+                var val = ''; debugger
+
+                for (var i = 0; i < Relations.length; i++) {
+                    Relations[i].Id = parseInt(i + 1);
+                    var relation = '';
+                    if (Relations[i].RelationType == 1) {
+                        relation = "Brother";
+                    } else if (Relations[i].RelationType == 2) {
+                        relation = "Sister";
+                    }
+                    val = "<tr>" +
+                        "<td class='first-td'>" + parseInt(i + 1) + "</td>" +
+                        "<td>" + Relations[i].FullName + "</td>" +
+                        "<td>" + relation + "</td>" +
+                        "<td>" + Relations[i].ContactNumber + "</td>" +
+                        "<td>" + Relations[i].Email + "</td>" +
+                        "<td>" + Relations[i].Address + "</td>" +
+
+                        "<td class='last-td'><a onclick='EditRelation(Relations[" + i + "].Id)' class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' ><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = RemoveRelation(" + Relations[i].Id + ") > <i class='fa fa-trash'></i></a > "
+                        + "</tr></tbody>";
+                    $('#valuesRelation').append(val);
+                }
+            }
+        }
+        function EditRelation(id) {
+
+            EditItemID = id;
+            const found = Relations.find(element => element.Id === id);
+            PopulateStepsForm($.parseJSON(JSON.stringify(found)));
+        }
+        function RemoveRelation(id) {
+            if (Relations.find(element => element.Id === id)) {
+                Relations.splice(Relations.indexOf(Relations.find(element => element.Id === id)), 1);
+                loadRelationsInDataTable();
+            }
+        }
+        /*------------------------------------------------------------------------Relation End--------------------*/
+        $('#referenceFormID').submit(function (e) {
+            e.preventDefault();
+            onAddReferenceEmployee();
+        });
+        function onAddReferenceEmployee() {
+            var ReferenceFormDataArray = $("#referenceFormID").serializeArray();
+            ReferenceObject = {};
+
+            $.each(ReferenceFormDataArray, function () {
+                var nameParts = this.name.split('[');
+                if (nameParts.length == 1) {
+                    if (ReferenceObject[this.name] !== undefined) {
+                        if (!ReferenceObject[this.name].push) {
+                            ReferenceObject[this.name] = [ReferenceObject[this.name]];
+                        }
+                        ReferenceObject[this.name].push(this.value || '');
+                    } else {
+                        ReferenceObject[this.name] = this.value || '';
+                    }
+                }
+                else {
+                    $.each(nameParts, function (index) {
+                        nameParts[index] = this.replace(/\]$/, '');
+                    });
+                    var arrItem = this;
+                    var temp = ReferenceObject;
+                    $.each(nameParts, function (index) {
+                        var next;
+                        var nextNamePart;
+                        if (index >= nameParts.length - 1)
+                            next = arrItem.value || '';
+                        else {
+                            nextNamePart = nameParts[index + 1];
+                            if (trim(this) != '' && temp[this] !== undefined)
+                                next = temp[this];
+                            else {
+                                if (trim(nextNamePart) == '')
+                                    next = [];
+                                else
+                                    next = {};
+                            }
+                        }
+
+                        if (trim(this) == '') {
+                            temp.push(next);
+                        } else
+                            temp[this] = next;
+
+                        temp = next;
+                    });
+                }
+            });
+            debugger
+            ReferenceObject.Id = EditItemID;
+            if (References.find(element => element.Id === +ReferenceObject.Id)) {
+                References.splice(References.indexOf(References.find(element => element.Id === +ReferenceObject.Id)), 1);
+            }
+            References.push(ReferenceObject);
+            $("#referenceFormID")[0].reset()
+            loadReferencesInDataTable();
+            EditItemID = 0;
+        }
+
+        function loadReferencesInDataTable() {
+            $("#AllreferenceList").empty();
+            $("#AllreferenceList").append("<table id='AlldatadetailTableReference' class='table u-table--v3 g-color-black'>");
+            $("#AlldatadetailTableReference").empty();
+            $("#AlldatadetailTableReference").append("<thead>" +
+                "<tr class='ob_gC'>" +
+                "<th>S.NO</th>" +
+                "<th>Full Name</th>" +
+                "<th>Designation</th>" +
+                "<th>Reference</th>" +
+                "<th>Contact Number</th>" +
+                "<th>Email</th>" +
+                "<th>Address</th>" +
+                "<th colspan='2'>Actions</th>" +
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='valuesReference'>");
+            if (References.length > 0) {
+                var val = ''; debugger
+
+                for (var i = 0; i < References.length; i++) {
+                    References[i].Id = parseInt(i + 1);
+                    var designation = References.Designation.find(element => element.Id == References[i].Designation);
+                    var reference = '';
+                    if (References[i].ReferenceType == 1) {
+                        reference = "Manager";
+                    } else if (References[i].ReferenceType == 2) {
+                        reference = "Senior Employee";
+                    }
+                    val = "<tr>" +
+                        "<td class='first-td'>" + parseInt(i + 1) + "</td>" +
+                        "<td>" + References[i].FullName + "</td>" +
+                        "<td>" + designation.Name + "</td>" +
+                        "<td>" + reference + "</td>" +
+                        "<td>" + References[i].ContactNumber + "</td>" +
+                        "<td>" + References[i].Email + "</td>" +
+                        "<td>" + References[i].Address + "</td>" +
+
+                        "<td class='last-td'><a onclick='EditReference(References[" + i + "].Id)' class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' ><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = RemoveReference(" + References[i].Id + ") > <i class='fa fa-trash'></i></a > "
+                        + "</tr></tbody>";
+                    $('#valuesReference').append(val);
+                }
+            }
+        }
+        function EditReference(id) {
+
+            EditItemID = id;
+            const found = References.find(element => element.Id === id);
+            PopulateStepsForm($.parseJSON(JSON.stringify(found)));
+        }
+        function RemoveReference(id) {
+            if (References.find(element => element.Id === id)) {
+                References.splice(References.indexOf(References.find(element => element.Id === id)), 1);
+                loadReferencesInDataTable();
+            }
+        }
+                            /*------------------------------------------------------------------------Reference End--------------------*/
+    </script>
+}

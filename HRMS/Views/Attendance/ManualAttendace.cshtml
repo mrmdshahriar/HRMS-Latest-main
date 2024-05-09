@@ -1,0 +1,660 @@
+﻿
+@{
+    ViewBag.Title = "ManualAttendace";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>HiliteUI Admin</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/Content/Assets/css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/Content/Assets/images/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+</head>
+<style>
+    .prevent-select {
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    }
+</style>
+
+<script type="text/javascript">
+  var _arrManualAttendence = [];
+    var _arrBetweenDates = [];
+    $(document).ready(function () {
+        let _arrEmployeeLeaveRequests = @Html.Raw(ViewBag.EmployeeLeaveRequests);
+        let _arrPublicHolidays = @Html.Raw(ViewBag.GetPublicHolidays);
+        let _arroffdays = @Html.Raw(ViewBag.GetOffDays);
+        _arrManualAttendence.push({ Name: 'IsLeave', ArrEmployeeHolidays: _arrEmployeeLeaveRequests },
+                                  { Name: 'isHoliDay', ArrEmployeeHolidays: _arrPublicHolidays },
+            { Name: 'isOffDays', ArrEmployeeHolidays: _arroffdays }
+        )
+    });
+
+    $(document).on('change', '#TimeIn,#TimeOut', function () {
+        debugger;
+
+        let _startTime = $(this).attr('id') == "TimeIn" ? $(this).val() : $(this).closest('tr').find("#TimeIn").val();
+        let _endTime = $(this).attr('id') == "TimeOut" ? $(this).val() : $(this).closest('tr').find("#TimeOut").val();
+        if (_startTime != "" && _endTime != "") {
+            var x = document.getElementById("IsLeave");
+
+            document.getElementById("IsLeave").disabled = true;
+
+            CalculateTime(_startTime, _endTime, $(this));
+        }
+    });
+
+    function DepartmentChange() {
+
+        var selection = "ghazi@gmail.com";
+        if (selection.length > 0) {
+            $.post("/Attendance/DepartmentChange", { email: selection },
+                function (data) {
+                    alert(data);
+                })
+        }
+    };
+
+    function DateChange() {
+        var EmpId = $("#ddlEmployee").val();
+        var Date = $("#date").val();
+
+        var Data = JSON.stringify(
+            {
+                Date: Date,
+                EmpId: EmpId,
+
+            });
+        $.ajax({
+            type: "POST",
+            data: Data,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: "/Attendance/GetLeaveByEmployee",
+            success:
+                function (response) {
+
+                    var responseData = jQuery.parseJSON(response);
+
+
+                },
+            error:
+                function (response) {
+                    alert("Error: " + response);
+                }
+        });
+
+
+    }
+    function FunTimeIn() {
+        zombieTime1 = $("#TimeIn").val();
+        alert(zombieTime1);
+     
+    }
+   
+   function DepartmentsChange() {
+        var Id = document.getElementById("ddlDepartment").value;
+        $('#ddlEmployee').empty();
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            data: { "Id": Id },
+            url: "/EmployeeProfile/DepartmentChange",
+            success: function (data) {
+                if (data != "") {
+
+
+                    $('#ddlEmployee').append('<option value="-1" selected disabled> Select Employee </option>');
+                    $.each(data, function (i, tweet) {
+                        $('#ddlEmployee').append('<option value="' + data[i].Id + '">' + data[i].FirstName + " " + data[i].LastName + '</option>');
+
+                    });
+
+                }
+
+            },
+            error: function (error) {
+
+            },
+            cache: false
+        });
+
+
+
+
+    }
+    function DepartmentChange1() {
+        debugger;
+
+        //var Ecs = JSON.stringify(
+        //    {
+        //        Id: $('#ddlDepartment').val(),
+        //       // Name: "ghazi"
+
+        //    });
+        //$.ajax({
+        //    type: "POST",
+        //    data: Ecs,
+        //    url: "/Attendance/DepartmentChange",
+        //    dataType: 'json',
+        //    contentType: "application/json", dataType: "json",
+        //    processData: false,
+        //    success: function (response) {
+        //        if (response.success) {
+        //            alert(response.responseText);
+        //        } else {
+        //            // DoSomethingElse()
+        //            alert(response.responseText);
+        //        }
+        //    },
+        //    error: function (response) {
+        //        alert("error!");  //
+        //    }
+
+        //});
+
+
+        //$.ajax({
+        //    type: "POST",
+        //    data: Data,
+        //    contentType: "application/json", dataType: "json",
+        //    dataType: "json",
+        //    url: "/Attendance/DepartmentChange",
+        //    success:
+        //        function (response) {
+
+        //            var responseData = jQuery.parseJSON(response);
+
+
+        //        },
+        //    error:
+        //        function (response) {
+        //            alert("Error: " + response);
+        //        }
+        //});
+    }
+
+    //  Will be called on Click of Signin Button
+    function onSigninClick() {
+        var now = new Date(); //  javascript datetime object
+        var time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();  // Time in HH:MM:SS format
+        document.getElementById("month").value = now.getMonth()  // Set the value of Select Tag
+        getMonth(now.getMonth())  // Update the table based on current month
+        document.getElementById("signin_" + now.getDate()).innerHTML = time  // print the signin date on respective date
+    }
+
+    // function to get total days in a particular month
+    function get_days_in_month(month, year) {
+        return new Date(year, month, 0).getDate();
+    };
+
+    function ConvertArrayToObj(arr) {
+        var result = {};
+        for (var i = 0; i < arr.length; i++) {
+            result[arr[i].key] = arr[i].value;
+        }
+    }
+
+    function daysInMonth(month, year) {
+        return new Date(year, month, 0).getDate();
+    }
+    // function to render the month table
+    function getMonth(selected_month) {
+        debugger;
+        var current_year = new Date().getFullYear() // current year
+        var selected_month = (parseInt(selected_month) + 1)  // selected month
+        if (!month)  // if month not selected alert user
+            alert("Please select Month");
+        else {
+
+            for (var i = 0; i < _arrManualAttendence.length; i++) {
+                if (_arrManualAttendence[i].Name == 'isOffDays') {
+                    var name = _arrManualAttendence[i].Name;
+                    var getTot = daysInMonth(selected_month, current_year);
+                    if (_arrManualAttendence[i].ArrEmployeeHolidays != null) {
+
+                    var _arr = _arrManualAttendence[i].ArrEmployeeHolidays[0];
+                    for (var i = 1; i <= getTot; i++) {    //looping through days in month
+                        var newDate = new Date(current_year, selected_month -1, i)
+                        if (_arr.IsSunday) {
+                            if (newDate.getDay() == 0) {   //if Sunday
+                                _arrBetweenDates.push({ HolidayDate: new Date(current_year, selected_month - 1, i).toDateString(), Name: name });
+                            }
+                        }
+                        if (_arr.IsSaturday) {
+                            if (newDate.getDay() == 6) {   //if Saturday
+                                _arrBetweenDates.push({ HolidayDate: new Date(current_year, selected_month - 1, i).toDateString(), Name: name });
+                            }
+                        }
+                        if (_arr.IsFriday) {
+                            if (newDate.getDay() == 5) {   //if Friday
+                                _arrBetweenDates.push({ HolidayDate: new Date(current_year, selected_month - 1, i).toDateString(), Name: name });
+                            }
+                        }
+                    }
+                        continue;
+                    }
+
+                }
+
+                if (_arrManualAttendence[i].Name == 'IsLeave')
+                    _arrManualAttendence[i].ArrEmployeeHolidays = _arrManualAttendence[i].ArrEmployeeHolidays.filter(x => x.Employee == $("#ddlEmployee").val());
+                if (_arrManualAttendence[i].ArrEmployeeHolidays != null)
+                for (var j = 0; j < _arrManualAttendence[i].ArrEmployeeHolidays.length; j++) {
+                    GetDatesInRange(new Date(Date.parse(_arrManualAttendence[i].ArrEmployeeHolidays[j].DateFrom, "MM/dd/yyyy")),
+                        new Date(Date.parse(_arrManualAttendence[i].ArrEmployeeHolidays[j].DateTo, "MM/dd/yyyy")),
+                        _arrManualAttendence[i].Name,
+                        selected_month
+                    );
+                }
+            }
+            var finTab = "<tr><th>Date</th><th>Time In</th><th>Time Out</th><th>Is Present</th><th> Is Absent</th><th>Is Leave</th><th>Leave Type</th><th>Is HoliDay</th><th>Holi Day</th><th>Is Half Day</th><th>Is Late</th><th>Is Early</th><th>Actions</th></tr> ";
+            var days_in_month = get_days_in_month(selected_month, current_year);
+            for (i = 1; i <= days_in_month; i++) {
+                var _class;
+                let _arrFilter = _arrBetweenDates.filter(x => x.HolidayDate == new Date(current_year, selected_month - 1, i).toDateString());
+                if (_arrFilter.length > 0)
+                    _class = $.map(_arrFilter, function (n, j) {
+                        return n.Name;
+                    });
+                var ddd = i + "/" + selected_month + "/" + current_year;
+              
+                //+ (_arrFilter.length != (j + 1) ? " " : "")
+                finTab += "<tr class='trEmployeeAttendance" + (_arrFilter.length > 0 ? " " + _class.join(" ") : "") + "'>";
+
+                //finTab += "<tr " + (_arrBetweenDates.indexOf(new Date(current_year, selected_month - 1, i).toDateString()) != -1 ? "name='" + _name + "'" : "") + ">";
+                finTab += "<td id=AttendanceDate>" + i + "/" + selected_month + "/" + current_year + "</td>";
+              
+                finTab += "<td id=Date><input id=TimeIn class=form-control type=time name=TimeIn required></td>";
+                finTab += "<td><input id=TimeOut class=form-control type=time name=TimeOut required></td>";              
+                  
+                finTab += "<td id=IsPresent><input type='checkbox' id=IsPresent name=IsPresent></td>";
+                finTab += "<td id=IsAbsent><input class=spDays type='checkbox' id=IsAbsent name=IsAbsent></td>";
+                finTab += "<td id=IsLeave><input class=spDays type='checkbox' id=IsLeave name=IsLeave></td>";
+                finTab += "<td id=LeaveType><input  class=spDays type='textbox' disabled=disabled id=LeaveType name=LeaveType></td>";
+                finTab += "<td id=isHoliDay><input class=spDays type='checkbox' id=isHoliDay name=isHoliDay></td>";
+                finTab += "<td id=HoliDay><input class=spDays type='textbox' disabled=disabled id=HoliDay name=HoliDay></td>";
+                finTab += "<td id=isHalfDay><input class=spDays type='checkbox' id=isHalfDay name=isHalfDay></td>";
+                finTab += "<td id=isLate><input class=spDays type='checkbox' id=isLate name=isLate></td>";
+                finTab += "<td id=isEarly><input class=spDays type='checkbox' id=isEarly name=isEarly></td>";
+                finTab += "<td id=signin_><i class='fas fa-pen'></i><i class='fas fa-trash' style='margin - left: 18px;'></i></td>";
+                finTab += "<tr>";
+            }
+            document.getElementById("monData").innerHTML = finTab;  // will push the string in the element.
+
+            debugger;
+            let _arrClasses = $.map(_arrManualAttendence, function (obj) { return obj.Name; });
+            for (var i = 0; i < _arrClasses.length; i++) {
+                let _trToBeDisabled = $('table').find('.' + _arrClasses[i]);
+                $(_trToBeDisabled).css('background-color', 'peachpuff');
+                $(_trToBeDisabled).find('input').attr('disabled', 'disabled');
+                $(_trToBeDisabled).find('input[name=' + _arrClasses[i] + ']').prop('checked', true);
+                if (_arrClasses[i] == "isOffDays")
+                    $(_trToBeDisabled).find('input[name=isHoliDay]').prop('checked', true);
+
+
+                if (_arrClasses[i] == 'IsLeave') {
+                    let _arrLeaveRequest = _arrManualAttendence.filter(x => x.Name == _arrClasses[i]);
+                    let _leaveType = _arrLeaveRequest[0].ArrEmployeeHolidays[0].Name;
+                    $(_trToBeDisabled).find('input[name="LeaveType"]').val(_leaveType);
+                }
+            }
+        }
+    }
+
+    function GetDatesInRange(startDate, endDate, name, selected_month) {
+        const date = new Date(startDate.getTime());
+        while (date <= endDate) {
+            if (selected_month == date.getMonth() + 1)
+                _arrBetweenDates.push({ HolidayDate: new Date(date).toDateString(), Name: name });
+            date.setDate(date.getDate() + 1);
+        }
+    }
+
+    function CalculateTime(_startTime, _endTime, _this) {
+        debugger;
+        var _thisRow = _this;
+        var _empId = $("#ddlEmployee").val();
+        if (_empId != "") {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                data: "{'EmpId':'" + _empId + "','StartTime':'" + _startTime + "',EndTime:'" + _endTime + "'}",
+                dataType: "json",
+                url: "/Attendance/CheckEmployeeTimeFacility",
+                success:
+                    function (response) {
+                        debugger;
+                        //Enabledcontrols();
+                        var responseData = jQuery.parseJSON(response);
+                        if (responseData) {
+                            if (responseData != null) {
+                                $(_thisRow).closest('tr').find("input#IsPresent").prop("checked", true);
+                                $(_thisRow).closest('tr').find("input#IsLeave").prop("checked", false);
+                                //$(_thisRow).closest('tr').find("input#isHalfDay").prop("checked", false);
+                                //$(_thisRow).closest('tr').find("input#isLate").prop("checked", false);
+                                //$(_thisRow).closest('tr').find("input#isEarly").prop("checked", false);
+
+                                $(_thisRow).closest('tr').find('.spDays').prop("checked", false);
+                                $(_thisRow).closest('tr').find('.spDays').prop("disabled", true);
+                                $(_thisRow).closest('tr').find("input#isLate").prop("checked", responseData.IsLate);
+                                $(_thisRow).closest('tr').find("input#isEarly").prop("checked", responseData.IsEarly);
+                                $(_thisRow).closest('tr').find("input#isHalfDay").prop("checked", responseData.IsHalfDay);
+                            }
+                        }
+                    },
+                error:
+                    function (response) {
+                    }
+            });
+        }
+
+    }
+ 
+    function InsertEmployeeAttendence() {
+        debugger;
+      //  var d = $("#AttendanceDate").datepicker('getDate');
+        //var date1 = $("#AttendanceDate").val();
+        //date1 = $("input").datepicker({ dateFormat: 'dd, mm, yy' });
+        //var date = $("#AttendanceDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
+
+
+        var Year = document.getElementById("AttendanceDate").innerHTML = new Date().getFullYear();
+       
+     
+
+        var tm = $("#TimeIn").val();
+        var EmployeeAttendances = [];
+        if ($('#monData > tbody  > .trEmployeeAttendance').length > 0) {
+            $('#monData > tbody  > .trEmployeeAttendance').each(function () {
+                var _obj = {};
+               // var currentTime = date.toISOString().substring(11, 16);
+                //var TimeIn = 
+                  
+
+
+                _obj.Department = parseInt($("#ddlDepartment").val());
+                _obj.EmployeeId = parseInt($("#ddlEmployee").val());
+        
+                _obj.Month = $('#month').find('option:selected').text();//document.getElementById("month").value; //$(this).find('#month').val();
+                _obj.AttendanceDate = $(this).find('#AttendanceDate').text();
+               // _obj.Date = new Date($(" #AttendanceDate").text());
+
+                _obj.TimeIn = $(this).find('td #TimeIn').val();// document.getElementById("TimeIn").value;// $(this).find('#TimeIn').text().trim();
+                _obj.TimeOut = $(this).find('td #TimeOut').val();//document.getElementById("TimeOut").value;// $(this).find('#TimeOut').text().trim();
+
+                _obj.IsPresent = $(this).find('td #IsPresent').is(":checked");
+                _obj.IsAbsent = $(this).find('td #IsAbsent').is(":checked");
+                _obj.IsLeave = $(this).find('td #IsLeave').is(":checked");
+                _obj.LeaveType = parseInt($("#LeaveType").val());// $(this).find('td #LeaveType').val();
+                _obj.IsHoliday = $(this).find('td #isHoliDay').is(":checked");
+                _obj.Holiday = $(this).find('td #HoliDay').val();
+                _obj.IsHalfDay = $(this).find('td #isHalfDay').is(":checked");
+                _obj.IsLate = $(this).find('td #isLate').is(":checked");
+                _obj.IsEarly = $(this).find('td #isEarly').is(":checked");
+                _obj.Year = Year;
+                EmployeeAttendances.push(_obj);
+            });
+            
+            var data = JSON.stringify({ dataa: { EmployeeAttendances } });
+
+            $.ajax({
+
+                type: "POST",
+                data: data,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/Attendance/AddAttendance",
+
+                success: function (response) {
+
+                    if (response == true) {
+                        $("#table-information tbody").empty();
+                        Swal.fire({
+                            icon: 'Success',
+                            text: "Data Has been saved Successfully"
+                        });
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'warning',
+                            text: "SomeThing went Wrong!!!!!"
+                        });
+                    }
+                },
+                failure: function (response) {
+                    Swal.fire({
+                        icon: 'warning',
+                        text: "SomeThing went Wrong!!!!!"
+                    });
+                },
+                error: function (response) {
+                    Swal.fire({
+                        icon: 'warning',
+                        text: "SomeThing went Wrong!!!!!"
+                    });
+                }
+            });
+        }
+        else {
+            Swal.fire({
+                icon: 'error',
+                text: "Noting to Save"
+            });
+            return false;
+        }
+    }
+</script>
+<body>
+    <div class="container-scroller">
+        <!-- partial:../../partials/_navbar.html -->
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:../../partials/_settings-panel.html -->
+
+
+            <div class="main-panel">
+                <div class="content-wrapper" id="dt" style="width:1450px">
+                    <h2>Manual Attendace </h2>
+                    <div class="row grid-margin">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body" id="MainBody">
+                                    @*@using (Html.BeginForm("AddAttendance", "Attendance", FormMethod.Post))
+                                        {*@
+                                    <form class="cmxform" id="commentForm" method="get" action="#">
+                                        <fieldset>
+                                            <div class="row">
+                                                @*<input type="time" id="zombieTimeInput" />
+            <button onclick="TimeIn();"> Check</button>*@
+                                                @*<div class="form-group col-lg-3" id="Employeeddl" style="display:block">
+                <label for="cname">Employee Group</label>
+                @Html.DropDownList("EmployeeGroupDLL", new SelectList(ViewBag.EmployeeGroupDLL, "Id", "Name"), "--Select Employee Group--", new { @style = "color:black;", @class = "form-control", id = "ddlEmployeeGroup",name= "ddlEmployeeGroup" })
+
+            </div>*@
+                                                <div class="form-group col-lg-3" id="Departmentdiv" style="display:block">
+                                                    <label for="cname">Department</label>
+                                                    @Html.DropDownList("DepartmentDLL", new SelectList(ViewBag.DepartmentDLL, "Id", "Name"), "--Select Department--", new { @style = "color:black;", @class = "form-control", id = "ddlDepartment", name = "ddlDepartment", @onchange = "DepartmentsChange(this.value)" })
+
+                                                </div>
+                                                <div class="form-group col-lg-3" id="Employeediv" style="display:block">
+                                                    <label for="cname">Employee</label>
+                                                    @Html.DropDownList("EmployeeDLL", new SelectList(ViewBag.EmployeeDLL, "Id", "FirstName"), "--Select Employee--", new { @style = "color:black;", @class = "form-control", id = "ddlEmployee", name = "ddlEmployee" })
+
+                                                </div>
+                                                <div class="form-group col-lg-3" id="month" style="display:block">
+                                                    <label for="cname">Month</label>
+                                                    <select name="month" id="month" class="form-control" onchange="getMonth(this.value)">
+                                                        <option value="">Select Month</option>
+                                                        <option value="0">January</option>
+                                                        <option value="1">February</option>
+                                                        <option value="2">March</option>
+                                                        <option value="3">April</option>
+                                                        <option value="4">May</option>
+                                                        <option value="5">June</option>
+                                                        <option value="6">July</option>
+                                                        <option value="7">August</option>
+                                                        <option value="8">September</option>
+                                                        <option value="9">October</option>
+                                                        <option value="10">Novermber</option>
+                                                        <option value="11">December</option>
+                                                    </select>
+
+                                                </div>
+
+
+                                                <div class="form-group col-lg-3">
+
+                                                    @*<label for="cemail">Date From</label>
+                <input id="datefrom" class="form-control" type="date" onchange="DateChange()" name="date" required>*@
+                                                </div>
+
+                                                @*<div class="form-group col-lg-3">
+                <label for="cemail">Date To</label>
+                <input id="dateto" class="form-control" onchange="chdate()" type="date" name="date" required>
+            </div>*@
+
+                                            </div>
+
+                                            <input class="btn btn-primary" type="submit" id="BtnAddRecord" value="Submit" onclick="InsertEmployeeAttendence()">
+                                            <input class="btn btn-primary" type="submit" id="btncheck" value="Check" onclick="FunTimeIn();">
+                                        </fieldset>
+                                    </form>
+                                    @*}*@
+
+
+
+
+
+
+                                    <div align="right" style="display:none">
+                                        <button onclick="onSigninClick()">Sign In</button>
+                                        <button>Sign out</button>
+                                    </div>
+
+
+                                    <table id="monData" class="table" cellpadding="15">
+                                        @*<tr background-color:cornflowerblue>
+
+                                                <th>Date</th>
+                                                <th>Time In</th>
+                                                <th>Time Out</th>
+                                                <th>Is Present</th>
+                                                <th>Is Absent</th>
+                                                <th>Is Leave</th>
+                                                <th>Leave Type</th>
+                                                <th>Is HoliDay</th>
+                                                <th>Holi Day</th>
+                                                <th>Is Half Day</th>
+                                                <th>Is Late</th>
+                                                <th>Is Early</th>
+                                                <th>Actions</th>
+                                            </tr>*@
+                                    </table>
+
+
+
+
+
+
+
+
+
+                                    <div class="row" style="margin-top: 30px;display:none">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">#</th>
+                                                        <th class="text-center">Day</th>
+                                                        <th class="text-center">Number of Clients</th>
+                                                        <th class="text-center"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="text-center">
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td><input name="amountOfClients[]" type="number"></td>
+                                                        <td>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Grid code here-->
+                            <div class="main-panel" id="griddata" style="display:none">
+                                <div class="content-wrapper">
+                                    <div class="row grid-margin">
+                                        <div class="col-12">
+                                            <div class="card" style="margin-left: -35px; }">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Basic Table</h4>
+                                                    <p class="card-description">A basic example of js-grid</p>
+                                                    <div id="js-grid" class="pt-3"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <!-- content-wrapper ends -->
+
+                            </div>
+                            <!---End Grid Code here-->
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- content-wrapper ends -->
+
+            </div>
+            <!-- main-panel ends -->
+
+        </div>
+
+        <!-- page-body-wrapper ends -->
+    </div>
+
+    <!-- container-scroller -->
+    <!-- base:js -->
+    <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="~/Content/Assets/js/off-canvas.js"></script>
+    <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+    <script src="~/Content/Assets/js/template.js"></script>
+    <script src="~/Content/Assets/js/settings.js"></script>
+    <script src="~/Content/Assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- plugin js for this page -->
+    <script src="~/Content/Assets/vendors/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/Content/Assets/vendors/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    <script src="~/Content/Assets/js/form-validation.js"></script>
+    <script src="~/Content/Assets/js/bt-maxLength.js"></script>
+</body>
+

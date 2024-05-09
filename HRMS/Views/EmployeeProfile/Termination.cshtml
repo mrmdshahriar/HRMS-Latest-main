@@ -1,0 +1,399 @@
+﻿@model HRMS.Common
+@{
+    ViewBag.Title = "Termination";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+
+<div class="container-fluid">
+    <div class="__top_head">
+        <h3 class="all-md">Termination</h3>
+    </div>
+    <div class="__blk">
+        <form id="terminationFormID">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Employee</label>
+                        <div class="col-sm-12">
+                            <select class="form-control" required name="EmployeeId" id="Type" onchange = "myFunction(this.value);">
+                                <option disabled value="" selected="selected">Select Employee</option>
+                                @foreach (var item in Model.EmployeeList)
+                                {
+                                    <option value="@item.Id">@item.FirstName @item.LastName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Designation</label>
+                        <div class="col-sm-12">
+                            @*<input type="text" name="DesignationId" id="DesignationId" class="form-control" readonly>*@
+                            <input type="text" name="txtDesignation" id="txtDesignation" class="form-control" readonly>
+                            <input type="hidden" value="" name="DesignationId" id="DesignationId" class="form-control">
+
+                            @*<select class="form-control" required name="DesignationId" id="DesignationId">
+            <option disabled value="" selected="selected">Designation</option>
+            @foreach (var item in Model.DesignationList)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+
+        </select>*@
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Department</label>
+                        <div class="col-sm-12">
+                           @* <input type="text" name="DepartmentId" id="DepartmentId" class="form-control" readonly>*@
+
+                            <input type="text" name="txtDepartmentId" id="txtDepartmentId" class="form-control" readonly>
+                            <input type="hidden" value="" name="DepartmentId" id="DepartmentId">
+                            @*<select class="form-control" required name="DepartmentId" id="DepartmentId">
+            <option disabled value="" selected="selected">Department</option>
+            @foreach (var item in Model.DepartmentList)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>*@
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Type</label>
+                        <div class="col-sm-12">
+                            <select class="form-control" required name="Type" id="selectType">
+                                <option disabled value="" selected="selected">Type</option>
+                                <option value="1">Termination</option>
+                                <option value="2" selected>Resign</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" id="lastWorkingDateID">
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-form-label">Last Working Date</label>
+                        <div class="col-sm-12">
+                            <input required id="lastWorkingDateInputId" name="LastWorkingDate" type="date" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" id="dateId">
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-form-label">Date</label>
+                        <div class="col-sm-12">
+                            <input id="dateInputId" required name="Date" type="date" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4" id="terminationById">
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Termination By</label>
+                        <div class="col-sm-12">
+                            <select class="form-control" id="terminationBYSelectId" required name="TerminationBy">
+                                <option disabled value="" selected="selected">Select Employee</option>
+                                @foreach (var item in Model.EmployeeList)
+                                {
+                                    <option value="@item.Id">@item.FirstName @item.LastName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label">Reason</label>
+                        <div class="col-sm-12">
+                            <textarea type="text" required name="Reason" class="form-control" placeholder="Enter Reason"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-12 text-right">
+                    <button id="qualificationBtn" class="btn btn-primary">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@* <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script>
+    <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script> *@
+<!-- endinject -->
+<!-- inject:js -->
+@* <script src="~/Content/Assets/js/off-canvas.js"></script>
+    <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+    <script src="~/Content/Assets/js/template.js"></script>
+    <script src="~/Content/Assets/js/settings.js"></script>
+    <script src="~/Content/Assets/js/todolist.js"></script> *@
+<script src="~/Content/Assets/js/formpickers.js"></script>
+<!-- endinject -->
+<!-- plugin js for this page -->
+@* <script src="~/Content/Assets/vendors/jquery-steps/jquery.steps.min.js"></script>
+    <script src="~/Content/Assets/vendors/jquery-validation/jquery.validate.min.js"></script> *@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+<script>
+
+    var TerminationObject = {};
+
+    var full_url = document.URL; // Get current url
+    var url_array = full_url.split('/') // Split the string into an array with / as separator
+    var TerminationId = url_array[url_array.length - 1];  // Get the last part of the array (-1)
+    if (isNaN(TerminationId)) TerminationId = 0;
+    $(document).ready(function () {
+        //$(window).on("load", function () {
+        if (TerminationId > 0)
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                type: "POST",
+                dataType: "json",
+                url: `/EmployeeProfile/LoadTerminationEmployee/${TerminationId}`,
+                success: function (response) {
+                    debugger
+                    const { Termination, Date, LastWorkingDate } = response;
+                    TerminationObject = Termination;
+                    TerminationObject.Date = Date;
+                    TerminationObject.LastWorkingDate = LastWorkingDate;
+
+                    $("#txtDesignation").val(response.Designation);
+                    $("#DesignationId").val(response.Termination.DesignationId);
+
+                    $("#txtDepartmentId").val(response.DeptName);
+                    $("#DepartmentId").val(response.Termination.DepartmentId);
+
+                    ToggleInputs();
+                },
+                error: function (error) {
+                    $('#responseText').html(error.responseText);
+                    debugger
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong.',
+                    });
+                },
+                cache: false
+            }).then(function (r) {
+                PopulateTerminationForm($.parseJSON(JSON.stringify(TerminationObject)));
+
+            })
+
+        ToggleInputs();
+    });
+
+    function myFunction() {
+        debugger
+        var JobId = document.getElementById("Type").value;
+
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            data: { "JobId": JobId },
+            url: "/EmployeeProfile/LoadTerminationEmployeeChange",
+            success: function (data) {
+                AutoFillTextBox(data);
+
+            },
+            error: function (error) {
+
+            },
+            cache: false
+        });
+        ToggleInputs();
+        // ToggleInputs();
+    };
+
+    function AutoFillTextBox(data) {
+        for (const element of data) {
+            $("#txtDesignation").val(element.Name).attr('disabled', 'disabled');
+            $("#txtDepartmentId").val(element.dName).attr('disabled', 'disabled');
+            $("#DesignationId").val(element.DesigId).attr('disabled', 'disabled');
+            $("#DepartmentId").val(element.DepartId).attr('disabled', 'disabled');
+        }
+
+
+    }
+
+
+
+    function PopulateTerminationForm(data) {
+        $.each(data, function (key, value) {
+            var $el = $(`[name="${key}"]`),
+                type = $el.attr('type');
+            if ($el.length > 0)
+                switch (type) {
+                    case 'checkbox':
+                        $el.attr('checked', value);
+                        break;
+                    case 'radio':
+                        $el.attr('checked', value);
+                        break;
+                    case 'date':
+                        debugger
+                        $el.val(value);
+                        break;
+                    default:
+                        $el.val(value);
+                }
+        });
+        debugger
+
+    }
+
+    //$('#selectType').on('change', function (e) {
+    //    debugger
+    //    var optionSelected = $("option:selected", this);
+    //    var valueSelected = this.value;
+    //    if (valueSelected == 1) {
+    //        $("#lastWorkingDateInputId").attr('required', false);
+    //        debugger
+    //        $('#lastWorkingDateID').hide();
+
+
+    //        $('#dateId').show();
+    //        $('#dateId').attr('required', true);
+    //        $('#terminationById').show();
+    //        $('#terminationById').attr('required', true);
+    //    } else {
+    //        $('#dateInputId').attr('required', false);
+    //        debugger
+    //        $('#dateId').hide();
+    //        $('#terminationBYSelectId').attr('required', false);
+    //        $('#terminationById').hide();
+
+    //        $('#lastWorkingDateID').show();
+    //        $('#lastWorkingDateID').attr('required', true);
+    //    }
+    //});
+
+
+    function ToggleInputs() {
+        if (TerminationObject.Type == 1) {
+            $("#lastWorkingDateInputId").attr('required', false);
+            debugger
+            $('#lastWorkingDateID').hide();
+
+
+            $('#dateId').show();
+            $('#dateId').attr('required', true);
+            $('#terminationById').show();
+            $('#terminationById').attr('required', true);
+        } else {
+            $('#dateInputId').attr('required', false);
+            debugger
+            $('#dateId').hide();
+            $('#terminationBYSelectId').attr('required', false);
+            $('#terminationById').hide();
+
+            $('#lastWorkingDateID').show();
+            $('#lastWorkingDateID').attr('required', true);
+        }
+    }
+    $('#terminationFormID').submit(function (e) {
+        debugger
+        e.preventDefault();
+        onAddTerminationEmployee();
+    });
+    function onAddTerminationEmployee() {
+        debugger
+        var TerminationFormDataArray = $("#terminationFormID").serializeArray();
+        TerminationObject = {};
+
+        $.each(TerminationFormDataArray, function () {
+            var nameParts = this.name.split('[');
+            if (nameParts.length == 1) {
+                if (TerminationObject[this.name] !== undefined) {
+                    if (!TerminationObject[this.name].push) {
+                        TerminationObject[this.name] = [TerminationObject[this.name]];
+                    }
+                    TerminationObject[this.name].push(this.value || '');
+                } else {
+                    TerminationObject[this.name] = this.value || '';
+                }
+            }
+            else {
+                $.each(nameParts, function (index) {
+                    nameParts[index] = this.replace(/\]$/, '');
+                });
+                var arrItem = this;
+                var temp = TerminationObject;
+                $.each(nameParts, function (index) {
+                    var next;
+                    var nextNamePart;
+                    if (index >= nameParts.length - 1)
+                        next = arrItem.value || '';
+                    else {
+                        nextNamePart = nameParts[index + 1];
+                        if (trim(this) != '' && temp[this] !== undefined)
+                            next = temp[this];
+                        else {
+                            if (trim(nextNamePart) == '')
+                                next = [];
+                            else
+                                next = {};
+                        }
+                    }
+
+                    if (trim(this) == '') {
+                        temp.push(next);
+                    } else
+                        temp[this] = next;
+
+                    temp = next;
+                });
+            }
+        });
+
+        var desid = document.getElementById("DesignationId").value;
+        var FromDepartmentId = document.getElementById("DepartmentId").value;
+        TerminationObject.TerminatinId = TerminationId;
+        TerminationObject.DesignationId = desid;
+        TerminationObject.DepartmentId = FromDepartmentId;
+        debugger
+        $.ajax({
+            async: false,
+            traditional: true,
+            type: "POST",
+            data: JSON.stringify(TerminationObject),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: "/EmployeeProfile/InsertUpdateEmployeeTermination",
+            success: function (response) {
+                Swal.fire({
+                    icon: 'Info',
+                    title: 'Record Saved',
+                    text: 'Record Save Successfuly.',
+                }).then(function () {
+                    window.location.replace(`/EmployeeProfile/Terminations`);
+                });
+            },
+            error: function (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong.',
+                });
+            },
+            cache: false
+        });
+    }
+</script>

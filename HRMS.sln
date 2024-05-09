@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRMS", "HRMS\HRMS.csproj", "{8B67FDE0-63A2-4A9C-AF94-BF662C44EE58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalenBAL", "TalenBAL\TalenBAL.csproj", "{AE8F9C44-95D4-4455-A72C-894D747D2E59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiProject", "ApiProject\ApiProject.csproj", "{4DC72295-CD17-4222-BA74-CA920775F0ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B67FDE0-63A2-4A9C-AF94-BF662C44EE58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B67FDE0-63A2-4A9C-AF94-BF662C44EE58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B67FDE0-63A2-4A9C-AF94-BF662C44EE58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B67FDE0-63A2-4A9C-AF94-BF662C44EE58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE8F9C44-95D4-4455-A72C-894D747D2E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE8F9C44-95D4-4455-A72C-894D747D2E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE8F9C44-95D4-4455-A72C-894D747D2E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE8F9C44-95D4-4455-A72C-894D747D2E59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DC72295-CD17-4222-BA74-CA920775F0ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DC72295-CD17-4222-BA74-CA920775F0ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DC72295-CD17-4222-BA74-CA920775F0ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DC72295-CD17-4222-BA74-CA920775F0ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0DAA1607-1EBF-4D57-8E0C-113CF51E1ABA}
+	EndGlobalSection
+EndGlobal

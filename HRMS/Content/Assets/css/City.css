@@ -1,0 +1,161 @@
+﻿.create-md {
+    background-color: #cbb778;
+    border-color: #cbb778;
+    border-bottom: 5px solid rgba(110, 94, 43, .6) !important;
+}
+
+    .create-md:active, .create-md:hover {
+        background-color: #cbb778 !important;
+        border-color: #cbb778 !important;
+    }
+
+.create-ml:active, .create-ml:hover {
+    background-color: #cbb778 !important;
+    border-color: #cbb778 !important;
+}
+
+.create-md.focus, .create-md:focus {
+    color: #fff;
+    background-color: #cbb778;
+    border-color: #cbb778;
+    box-shadow: 0;
+}
+
+.all-md {
+    font-weight: 500;
+    color: #373737;
+}
+
+span.select2-selection.select2-selection--single {
+    height: 51px;
+    border-color: rgb(246, 242, 242);
+    width: 295px;
+    /* max-width: 100%; */
+    display: none;
+}
+
+
+#AllCitydatadetailTable thead {
+    background-color: #5c71d4;
+    color: #fff;
+}
+
+#AllCitydatadetailTable tbody tr td {
+    text-align: left;
+}
+
+#AllCitydatadetailTable thead {
+    background-color: #5c71d4;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5 !important;
+}
+
+#AllCitydatadetailTable tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+    text-align: left;
+}
+
+#AllCitydatadetailTable tbody tr:nth-child(even) {
+    background-color: #fbf6f6;
+    text-align: left;
+}
+
+/*AllRegionsdatadetailTable {
+    table-layout: fixed;
+}*/
+
+#AllCitydatadetailTable thead tr th {
+    font-weight: bold;
+}
+
+#AllCitydatadetailTable tbody tr td:nth-child(1) {
+    max-width: 150px;
+}
+
+.add-md {
+    color: #fff;
+    background-color: #cbb778;
+    border-color: #cbb778;
+    border-bottom: 5px solid rgba(110, 94, 43, .6) !important;
+}
+
+    .add-md:hover {
+        color: #fff;
+        background-color: #cbb778;
+        border-color: #cbb778;
+    }
+
+    .add-md.focus, .add-md:focus {
+        background-color: #cbb778;
+        border-color: #cbb778;
+        border-bottom: #cbb778 !important;
+    }
+
+.modal-header {
+    padding: 9px 15px;
+    border-bottom: 1px solid #eee;
+    background-color: #5c71d4;
+}
+
+    .modal-header .close {
+        margin-top: 2px
+    }
+
+    .modal-header h3 {
+        margin: 0;
+        line-height: 30px
+    }
+
+
+.md-name, .bg-language, .md-description, .bg-datatype, .md-size, .range-of-values, .bg-classification {
+    margin-bottom: 0px !important;
+}
+
+.md-name-input, .md-description-box, .bg-language-select, .bg-datatype-select, .md-size-input, .range-of-values-input, .classification-select {
+    border: 1px solid #d4d4d4 !important;
+    background-color: #fff !important;
+}
+
+.bg-language-select, .bg-datatype-select, .classification-select {
+    height: 43px !important;
+}
+
+.md-description-box {
+    border-color: #d4d4d4 !important;
+    resize: vertical;
+    overflow: auto;
+}
+
+/* Media Query */
+
+@media screen and (max-width: 767px) {
+    .all-md {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .all-md {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+    .all-md {
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width: 1440px) and (max-width: 1599px) {
+    .all-md {
+        font-size: 26px;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .all-md {
+        font-size: 26px;
+    }
+}

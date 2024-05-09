@@ -1,0 +1,910 @@
+﻿
+@{
+    ViewBag.Title = "Jobs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- base:css -->
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css"> *@
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css"> *@
+<!-- endinject -->
+
+@* <link href="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" rel="stylesheet" /> *@
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css"> *@
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+@* <link href="~/Content/Assets/css/vertical-layout-light/style.css" rel="stylesheet" /> *@
+
+@* <link href="~/Content/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" /> *@
+
+
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/select2/select2.min.css"> *@
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css"> *@
+
+<link href="~/Content/Assets/css/State.css" rel="stylesheet" />
+
+<div class="container-fluid">
+    <!-- Modal -->
+    <div class="modal fade" id="JobModal" tabindex="-1" role="dialog" aria-labelledby="JobModalLabel" aria-hidden="true">
+        <div class="modal-dialog mw-100 w-75" role="document">
+            <div class="modal-content">
+                <div class="modal-header modal-header">
+                    <h4 class="modal-title" style="color:white">Add/Update Job</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form id="commentForm" class="cmxform">
+                            <fieldset>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="txtJobTitle">Job Title</label>
+                                            <input type="text" class="form-control" id="txtJobTitle" placeholder="Enter Job Title" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">No Of position</label>
+                                            <input type="text" class="form-control" aria-describedby="NoOfposition" id="txtNoOfposition" placeholder="Enter No Of position" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="exampleFormControlSelect1">Job Type</label>
+                                            <select class="js-example-basic-single w-100" id="DDLJobType">
+                                                <option value="-1" selected="selected">Job Type</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="exampleFormControlSelect1">Joining Date</label>
+                                            <div id="datepickerJoining" class="input-group date datepicker">
+                                                <input type="text" class="form-control">
+                                                <span class="input-group-addon input-group-append border-left">
+                                                    <span class="mdi mdi-calendar input-group-text"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="exampleFormControlSelect2">Shift</label>
+                                            <select class="form-control" id="DDLShift">
+                                                <option value="-1" selected="selected">Shift</option>
+                                                <option value="night">Night</option>
+                                                <option value="day">Day</option>
+
+                                            </select>
+                                        </div>
+                                    </div>*@
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="exampleFormControlSelect3">Shift</label>
+                                            <select class="form-control" id="DDLShift">
+                                                <option value="-1" selected="selected">Select Shift</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">Job Location</label>
+                                            <input type="text" class="form-control" aria-describedby="JobLocation" id="txtJobLocation" placeholder="Enter Job Location">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="exampleFormControlSelect3">Department</label>
+                                            <select class="form-control" id="DDLDepartment">
+                                                <option value="-1" selected="selected">Select Department</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="exampleFormControlSelect3">Gender</label>
+                                            <select class="form-control" id="DDLGender" name="Gender">
+                                                <option value="-1" selected="selected">Select Gender</option>
+                                                <option value="1">Male</option>
+                                                <option value="2">Female</option>
+                                                <option value="2">Any</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="exampleFormControlSelect4">Designation</label>
+                                            <select class="form-control" id="DDLDesignation">
+                                                <option value="-1" selected="selected">Select Designation</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">Age</label>
+                                            <input type="text" class="form-control" aria-describedby="Age" id="txtAge" placeholder="Enter Age">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">Min Expereince(Years)</label>
+                                            <input type="text" class="form-control" aria-describedby="MinExpereince" id="txtMinExpereince" placeholder="Enter Min Expereince">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">Max Expereince(Years)</label>
+                                            <input type="text" class="form-control" aria-describedby="MaxExpereince" id="txtMaxExpereince" placeholder="Enter Max Expereince">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="exampleFormControlSelect7">MIn Qualification</label>
+                                            <select class="form-control" id="txtMInQualification" name="MInQualification">
+                                                <option value="-1" selected="selected">Select Qualification</option>
+                                                <option value="1">Primary</option>
+                                                <option value="3">Middle</option>
+                                                <option value="4">Secondary</option>
+                                                <option value="5">Inter</option>
+                                                <option value="6">Graduation</option>
+                                                <option value="7">Master</option>
+
+                                            </select>
+                                            @* <input type="text" class="form-control" aria-describedby="MInQualification" id="txtMInQualification" placeholder="Enter MIn Qualification">*@
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class=" col-form-label">Salary Budget(PKR)</label>
+                                            <input type="text" class="form-control" aria-describedby="SalaryRange" id="txtSalaryRange" placeholder="Enter Salary Range">
+                                 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for="exampleFormControlSelect5">Skills</label>
+                                            <select class="js-example-basic-multiple w-100" id="DDLSkills" multiple="multiple">
+                                                <option value="-1" selected="selected">@*Select Skills*@</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label">job Description</label>
+                                            <textarea class="form-control" id="txtjobDescription" placeholder="Enter job Description" rows="3" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-2">
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" checked="" id="Activechk">
+                                                Active
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer" id="divAddTask">
+                                    <button type="button" class="btn btn-inverse-primary u-btn-3d  my-auto ml-auto" id="AddTask" onclick="SaveData();"><i class="fas fa-plus tm-fa-plus"></i>Add</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Country List -->
+    <div class="row">
+        <div class="col-12">
+            <div class="__top_head">
+                <h3 class="all-md">Job Position List</h3>
+                <div class="btn_blk">
+                    <button type="button" class="btn btn-inverse-primary u-btn-3d  d-block ml-auto"  onclick="window.location= '@Url.Action( "JobCreate", "Recruitment")'"><i class="fas fa-plus tm-fa-plus"></i> Create</button>
+                </div>
+            </div>
+            <div class="table-responsive-xl table-bordered cell-border g-mb-40" id="AllSateList"></div>
+        </div>
+    </div>
+    <!-- Country List ends -->
+    <!-- container-scroller -->
+</div>
+
+
+@section scripts{
+    <!-- base:js -->
+    @* <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script> *@
+    <!-- endinject -->
+    <!-- inject:js -->
+    @* <script src="~/Content/Assets/js/off-canvas.js"></script> *@
+    @* <script src="~/Content/Assets/js/hoverable-collapse.js"></script> *@
+    @* <script src="~/Content/Assets/js/template.js"></script> *@
+    @* <script src="~/Content/Assets/js/settings.js"></script> *@
+    <!-- endinject -->
+     <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script> 
+    @* <script src="~/Content/Assets/js/todolist.js"></script> *@
+
+     <script src="~/Content/Assets/js/formpickers.js"></script> 
+    <!-- plugin js for this page -->
+
+    @* <script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script> *@
+    @* <script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script> *@
+
+    @* <script src="~/Content/Assets/vendors/typeahead.js/typeahead.bundle.min.js"></script> *@
+
+    @*<script src="~/Content/Assets/vendors/select2/select2.min.js"></script>*@
+
+    <!-- plugin js for this page -->
+    @* <script src="~/Content/Assets/vendors/jquery-validation/jquery.validate.min.js"></script> *@
+    @* <script src="~/Content/Assets/vendors/bootstrap-maxlength/bootstrap-maxlength.min.js"></script> *@
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+
+    <script src="~/Content/Assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Content/Assets/js/select2.js"></script>
+
+    @* <script src="~/Content/Assets/js/bt-maxLength.js"></script> *@
+    @* <script src="~/Content/Assets/js/form-validation.js"></script> *@
+    <script>
+
+
+
+        $(document).ready(function () {
+            $("#AddTask").show();
+            $(".updateTask").hide();
+            LoadingJobMasterDetails();
+            GetJobTypeDDL();
+            GetDepartmentDDL();
+            GetDesignationDDL();
+            GetHrmSkillsDDL();
+            GetShiftDDL();
+            //Only Number Allow Function
+            $('#txtAge').keypress(function (e) {
+
+                var charCode = (e.which) ? e.which : event.keyCode
+
+                if (String.fromCharCode(charCode).match(/[^0-9]/g))
+
+                    return false;
+
+            });
+
+            $('#txtMaxExpereince').keypress(function (e) {
+
+                var charCode = (e.which) ? e.which : event.keyCode
+
+                if (String.fromCharCode(charCode).match(/[^0-9]/g))
+
+                    return false;
+
+            });
+
+            $('#txtMinExpereince').keypress(function (e) {
+
+                var charCode = (e.which) ? e.which : event.keyCode
+
+                if (String.fromCharCode(charCode).match(/[^0-9]/g))
+
+                    return false;
+
+            });
+
+            //Change this code
+            $("#txtSalaryRange").on("input", function (evt) {
+                var self = $(this);
+                self.val(self.val().replace(/[^0-9\.]/g, ''));
+                if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+                    evt.preventDefault();
+                }
+            });
+
+            //$('#txtJobTitle').keypress(function (e) {
+            //    var regex = new RegExp("^[a-zA-Z]+$");
+            //    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            //    if (regex.test(str)) {
+            //        return true;
+            //    }
+            //    else {
+            //        e.preventDefault();
+            //        $('.error').show();
+            //        $('.error').text('Please Enter Alphabate');
+            //        return false;
+            //    }
+            //});
+
+        });
+
+        $('#DDLJobType').select2({
+            selectOnClose: true
+        });
+
+        //$('#DDLShift').select2({
+        //    selectOnClose: true
+        //});
+        $('#DDLDepartment').select2({
+            selectOnClose: true
+        });
+        $('#DDLDesignation').select2({
+            selectOnClose: true
+        });
+
+        $('#DDLSkills').select2({
+            //selectOnClose: true
+        });
+        $('#DDLShift').select2({
+            selectOnClose: true
+        });
+
+        function LoadingJobMasterDetails() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Recruitment/GetJobList",
+                success: onSuccessJobMasterDetails,
+                
+            });
+        }
+        function onSuccessJobMasterDetails(data) {
+            $("#AllSateList").empty();
+            $("#AllSateList").append("<table id='AllSatedatadetailTable' class='table u-table--v3 g-color-black'>");
+            $("#AllSatedatadetailTable").empty();
+            $("#AllSatedatadetailTable").append("<thead>" +
+                "<tr class='ob_gC'>" +
+                /*"<th>SNO</th>" +*/
+                "<th>job Title</th>" +
+                "<th>Department Name</th>" +
+                "<th>Designation Name</th>" +
+                "<th>Shift</th>" +
+                "<th>Closing Date</th>" +
+                "<th class='last-td'>Action</th> " +
+                "</tr>" +
+                "</thead>" +
+                "<tbody id='values1'>");
+            if (data.length > 0) {
+                var val = '';
+
+                for (var i = 0; i < data.length; i++) {
+                    var fullDatestart = new Date(data[i].ClosingDate);
+                    var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
+                    if (twoDigitMonthstart.length == 1)
+                        twoDigitMonthstart = "0" + twoDigitMonthstart;
+                    var twoDigitDatestart = fullDatestart.getDate() + "";
+                    if (twoDigitDatestart.length == 1)
+                        twoDigitDatestart = "0" + twoDigitDatestart;
+
+                    var currentDatestart = twoDigitDatestart + "/" + twoDigitMonthstart + "/" + fullDatestart.getFullYear();
+
+                    val = "<tr>" +
+                        /* "<td class='first-td'>" + data[i].Id + "</td>" +*/
+                        "<td>" + data[i].Name + "</td>" +
+                        "<td>" + data[i].DepertmentName + "</td>" +
+                        "<td>" + data[i].DesignationName + "</td>" +
+                        "<td>" + data[i].ShiftName + "</td>" +
+                        "<td>" + data[i].ClosingDate + "</td>" +
+                        "<td class='last-td'><a class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' onclick='LoadingFilForm(" + data[i].Id + ")' ><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = Delete(" + data[i].Id + ") > <i class='fa fa-trash'></i></a > "
+                        // "<td class='last-td'><label class='form-check-inline u-check g-mr-20 mx-0 mb-0'> <input class='g-hidden-xs-up g-pos-abs g-top-0 g-right-0' id='btnEdit' onclick='LoadingEditData(" + data.data[i].pK_MetaDataID + ")' name = 'radGroup1_1' data-toggle='modal' data-target='#myModal'><i class='fa fa-pencil'></i></label ></td>" +
+                        + "</tr></tbody>";
+
+
+                    $('#values1').append(val);
+                }
+            }
+
+
+            $('#AllSatedatadetailTable').dataTable({
+                "bProcessing": true,
+                "bPaginate": true,
+                "sPaginationType": "full_numbers",
+                "responsive": true,
+                "ordering": true
+            });
+
+        }
+        function LoadingFilForm(id) {
+            window.location.href = '/Recruitment/JobCreate' + '?Id=' + id;
+
+        }
+        function LoadingEditData(ID) {
+            Mode = "Update";
+            $("#AddTask").hide();
+            $(".updateTask").hide();
+            $("#divAddTask").append(" <button type='button' class='btn btn-inverse-primary  my-auto ml-auto updateTask' id='updateTask' onclick='UpdateState(" + ID + ");'>Update</button>");
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Recruitment/EditJobList/" + ID,
+                success: onSuccessEditDetails,
+                error: function (error) {
+                    alert("error", error);
+                },
+                cache: false
+            });
+
+        }
+
+        function onSuccessEditDetails(data) {
+
+
+            var fullDatestart = new Date(data.CreatedBy);
+            var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
+            if (twoDigitMonthstart.length == 1)
+                twoDigitMonthstart = "0" + twoDigitMonthstart;
+            var twoDigitDatestart = fullDatestart.getDate() + "";
+            if (twoDigitDatestart.length == 1)
+                twoDigitDatestart = "0" + twoDigitDatestart;
+
+            var currentDatestart = fullDatestart.getFullYear() + "/" + twoDigitMonthstart + "/" + twoDigitDatestart;
+
+            var splitdata = data.Skills.split(',');
+            $('#DDLSkills').val(splitdata).change();
+     
+            $("#txtJobTitle").val(data.JobTitle);
+            $("#txtNoOfposition").val(data.NoOfposition);
+            $("#DDLJobType").val(data.JobType).select2();
+            $("#DDLShift").val(data.ShiftId).select2();
+            $("#DDLDepartment").val(data.DepartmentId).select2();
+            $("#DDLDesignation").val(data.DesignationId).select2();
+            //$("#DDLSkills").val(data.Skills).select2();
+            $("#txtJobLocation").val(data.Location);
+            $("#DDLGender").val(data.Gender).select2();
+            $("#txtAge").val(data.Age);
+            $("#txtMinExpereince").val(data.MinExpereince);
+            $("#txtMaxExpereince").val(data.MaxExpereince);
+            $("#txtMInQualification").val(data.MInQualification).select2();
+            $("#txtSalaryRange").val(data.SalaryRange);
+            $("#txtjobDescription").val(data.jobDescription);
+            $('#datepickerJoining').datepicker({ dateFormat: "yy-mm-dd" }).find('input').val(currentDatestart);
+            $("#Activechk").prop('checked', data.Active);
+        }
+
+
+        function SaveData() {
+            var JobTitle = $("#txtJobTitle").val();
+            var NoOfposition = $("#txtNoOfposition").val();
+            var JobType = $("#DDLJobType").val();
+            var Shift = $("#DDLShift").val();
+            var Department = $("#DDLDepartment").val();
+            var Designation = $("#DDLDesignation").val();
+            var Skills = $("#DDLSkills").val();
+            var JobLocation = $("#txtJobLocation").val();
+            var Gender = $("#DDLGender").val();
+            var Age = $("#txtAge").val();
+            var MinExpereince = $("#txtMinExpereince").val();
+            var MaxExpereince = $("#txtMaxExpereince").val();
+            var MInQualification = $("#txtMInQualification").val();
+            var SalaryRange = $("#txtSalaryRange").val();
+            var jobDescription = $("#txtjobDescription").val();
+            var date = $('#datepickerJoining').datepicker({ dateFormat: "yy-mm-dd" }).find('input').val();
+            var Active = $('#Activechk').is(":checked");
+            $("#DDLSkills option").each(function () {
+                asigneeID = $('#DDLSkills').val();
+            });
+
+            if (JobTitle == null || JobTitle == 'string' || !JobTitle.trim()) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    dangerMode: true,
+                    text: 'Please Fill Job Title!'
+                });
+                return false;
+            }
+            if (JobType == null || JobType == -1 || JobType == "") {
+                Swal.fire({
+                    icon: 'warning',
+                    text: 'Please Select JobType!'
+                });
+                return false;
+            }
+
+            if (Department == null || Department == -1 || Department == "") {
+                Swal.fire({
+                    icon: 'warning',
+                    text: 'Please Select Department!'
+                });
+                return false;
+            }
+
+            if (Designation == null || Designation == -1 || Designation == "") {
+                Swal.fire({
+                    icon: 'warning',
+                    text: 'Please Select Designation!'
+                });
+                return false;
+            }
+
+            if (Shift == null || Shift == -1 || Shift == "") {
+                Swal.fire({
+                    icon: 'warning',
+                    text: 'Please Select Shift!'
+                });
+                return false;
+            }
+
+            if (Skills == null || Skills == -1 || Skills == "") {
+                Swal.fire({
+                    icon: 'warning',
+                    text: 'Please Select Skills!'
+                });
+                return false;
+            }
+            
+            if (jobDescription == null || jobDescription == 'string' || !jobDescription.trim()) {
+
+                Swal.fire({
+                    icon: 'warning',
+                    dangerMode: true,
+                    text: 'Please Fill Job job Description!'
+                });
+                return false;
+            }
+
+            var Data = JSON.stringify(
+                {
+                    JobTitle: JobTitle,
+                    JobType: JobType,
+                    ShiftId: Shift,
+                    DepartmentId: Department,
+                    DesignationId: Designation,
+                    MinExpereince: MinExpereince,
+                    MaxExpereince: MaxExpereince,
+                    MInQualification: MInQualification,
+                    NoOfposition: NoOfposition,
+                    ClosingDate: date,
+                    Location: JobLocation,
+                    Gender: Gender,
+                    Age: Age,
+                    Skills: Skills.toString(),
+                    SalaryRange: SalaryRange,
+                    jobDescription: jobDescription,
+                    Active: Active
+                });
+
+            $.ajax({
+                type: "POST",
+                data: Data,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/Recruitment/AddJobMaster",
+                success: onSuccessAddManagement,
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong to Insert new Job!',
+                    });
+                },
+                cache: false
+            });
+
+        }
+
+        function onSuccessAddManagement(data) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Info',
+                text: 'Your work has been saved.',
+            }).then(function () {
+                window.location.href = '/Recruitment/Job';
+                AllowancesDeduction
+            });
+
+            Mode = "";
+
+            clearfields();
+            LoadingJobMasterDetails();
+
+        }
+
+        function UpdateState(ID) {
+            Mode = "Update";
+            var JobTitle = $("#txtJobTitle").val();
+            var NoOfposition = $("#txtNoOfposition").val();
+            var JobType = $("#DDLJobType").val();
+            var Shift = $("#DDLShift").val();
+            var Department = $("#DDLDepartment").val();
+            var Designation = $("#DDLDesignation").val();
+            var Skills = $("#DDLSkills").val();
+            var JobLocation = $("#txtJobLocation").val();
+            var Gender = $("#DDLGender").val();
+            var Age = $("#txtAge").val();
+            var MinExpereince = $("#txtMinExpereince").val();
+            var MaxExpereince = $("#txtMaxExpereince").val();
+            var MInQualification = $("#txtMInQualification").val();
+            var SalaryRange = $("#txtSalaryRange").val();
+            var jobDescription = $("#txtjobDescription").val();
+            var date = $('#datepickerJoining').datepicker({ dateFormat: "yy-mm-dd" }).find('input').val();
+            var Active = $('#Activechk').is(":checked");
+
+            var Data = JSON.stringify(
+                {
+                    JobId: ID,
+                    JobTitle: JobTitle,
+                    JobType: JobType,
+                    ShiftId: Shift,
+                    DepartmentId: Department,
+                    DesignationId: Designation,
+                    MinExpereince: MinExpereince,
+                    MaxExpereince: MaxExpereince,
+                    MInQualification: MInQualification,
+                    NoOfposition: NoOfposition,
+                    ClosingDate: date,
+                    Location: JobLocation,
+                    Gender: Gender,
+                    Age: Age,
+                    Skills: Skills.toString(),
+                    SalaryRange: SalaryRange,
+                    jobDescription: jobDescription,
+                    Active: Active
+                });
+       
+            $.ajax({
+                type: "POST",
+                data: Data,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/Recruitment/UpdateJobMaster",
+                success: onSuccessUpdateManagement,
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong to Insert new State!',
+                    });
+                },
+                cache: false,
+            });
+        }
+        function onSuccessUpdateManagement(data) {
+           
+            Swal.fire({
+                icon: 'info',
+                title: 'Info',
+                text: 'Your work has been Updated.',
+            }).then(function () {
+                window.location.href = '/Recruitment/Job';
+            });
+            Mode = "";
+            globalImagesPath = "";
+            // location.reload(true);
+            clearfields();
+            LoadingJobMasterDetails();
+
+        }
+
+
+        function Delete(ID) {
+            if (confirm('Are you sure to Delete this record ?')) {
+
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    url: "/Recruitment/DeleteJobMaster/" + ID,
+                    success: function (data) {
+
+                        LoadingJobMasterDetails();
+
+                    }
+
+                });
+            }
+        }
+
+        function GetJobTypeDDL() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Master/GetJobTypeList",
+                success: function (data, status) {
+                    ;
+                    if (data != "") {
+
+                        $('#DDLJobType').empty();
+                        $('#DDLJobType').append('<option value="-1" selected disabled>Select JobType</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#DDLJobType').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+
+            });
+        }
+
+        function GetDepartmentDDL() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Master/GetDepartmentList",
+                success: function (data, status) {
+                    ;
+                    if (data != "") {
+
+                        $('#DDLDepartment').empty();
+                        $('#DDLDepartment').append('<option value="-1" selected disabled>Select Department</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#DDLDepartment').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+
+            });
+        }
+
+        function GetDesignationDDL() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Master/GetDesignationList",
+                success: function (data, status) {
+                    ;
+                    if (data != "") {
+
+                        $('#DDLDesignation').empty();
+                        $('#DDLDesignation').append('<option value="-1" selected disabled>Select Designation</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#DDLDesignation').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+
+            });
+        }
+
+        function GetHrmSkillsDDL() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Master/GetHrmSkillsList",
+                success: function (data, status) {
+                    ;
+                    if (data != "") {
+
+                        $('#DDLSkills').empty();
+                       // $('#DDLSkills').append('<option value="-1" selected disabled>Select Skills</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#DDLSkills').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+
+            });
+        }
+
+        function GetShiftDDL() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/Attendance/GetShiftAll",
+                success: function (data, status) {
+                    ;
+                    if (data != "") {
+
+                        $('#DDLShift').empty();
+                        $('#DDLShift').append('<option value="-1" selected disabled>Select Shift</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#DDLShift').append('<option value="' + data[i].ShiftId + '">' + data[i].ShiftName + '</option>');
+
+                        });
+
+                    }
+
+                },
+                //error: function (error) {
+                //    Swal.fire({
+                //        icon: 'error',
+                //        title: 'Oops...',
+                //        text: 'Something went wrong! fff',
+                //    });
+                //},
+                //cache: false,
+
+            });
+        }
+        function clearfields() {
+            $(".updateTask").hide();
+            $("#AddTask").show();
+
+            $("#txtJobTitle").val("");
+            $("#txtNoOfposition").val("");
+            $("#DDLJobType").val("-1").select2();
+            $("#DDLShift").val("-1").select2();
+            $("#DDLDepartment").val("-1").select2();
+            $("#DDLDesignation").val("-1").select2();
+            $("#DDLSkills").val("-1").select2();
+            $("#txtJobLocation").val("");
+            $("#DDLGender").val("-1").select2();
+            $("#txtAge").val("");
+            $("#txtMinExpereince").val("");
+            $("#txtMaxExpereince").val("");
+            $("#txtMInQualification").val("-1").select2();
+            $("#txtSalaryRange").val("");
+            $("#txtjobDescription").val("");
+            $("#datepickerJoining").val("");
+
+        }
+
+
+    </script>
+}
+

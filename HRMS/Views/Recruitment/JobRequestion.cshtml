@@ -1,0 +1,546 @@
+﻿@model HRMS.Common
+@{
+    ViewBag.Title = "Transfer";
+}
+
+<link rel="stylesheet" href="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+<div class="container">
+    <div class="__top_head">
+        <h3 class="all-md">Hiring Requisition</h3>
+    </div>
+
+    @using (Html.BeginForm("AddUpdateJobsRequestion", "Recruitment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="__blk">
+            <form id="jobRequestionFormID">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-8 col-form-label">Advertise No</label>
+                            <div class="col-sm-12">
+                                <input type="text" required name="AddvertiseNo" id="txtAddvertiseNo" class="form-control" placeholder="Enter Advertise No" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-8 col-form-label">Job Title</label>
+                            <div class="col-sm-12">
+                                @Html.DropDownList("JobTitleDDL", new SelectList(ViewBag.JobTitleDDL, "JobId", "JobTitle"), "--Select Job Title--", new { @style = "color:black;width:350px;", @class = "form-control", id = "JobTitled", name = "JobTitled", onchange = "JobTitleChange(this.value);" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<div class="col-md-4">
+        <div class="form-group row">-->
+                    @*<div class="form-group" id="JobTitleddl">*@
+                    <!--<label for="cname">Job Title</label>
+    @Html.DropDownList("JobTitleDDL", new SelectList(ViewBag.JobTitleDDL, "JobId", "JobTitle"), "--Select Job Title--", new { @style = "color:black;width:350px;", @class = "form-control", id = "JobTitled", name = "JobTitled", onchange = "JobTitleChange(this.value);" })-->
+                    @*<label class="col-sm-8 col-form-label">Job Title</label>
+        <div class="col-sm-12">
+            <input type="text" required name="JobTitle" class="form-control" placeholder="Enter Job Title">
+        </div>*@
+                    <!--</div>
+    </div>-->
+
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Job Type</label>
+                            <div class="col-sm-12">
+                                <input type="text" name="txtJobType" id="txtJobType" class="form-control" placeholder="Enter Advertise No" readonly>
+                                @*<select class="form-control" required name="JobType" id="Type">
+                        <option disabled value="" selected="selected">Select Job Type</option>
+                        @foreach (var item in Model.JobTypeList)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>*@
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Designation</label>
+
+                            <div class="col-sm-12">
+                                <input type="text" name="txtDesignationId" id="txtDesignationId" class="form-control" readonly>
+                                @*<select class="form-control" required name="DesignationId" id="DesignationId">
+                        <option disabled value="" selected="selected">Designation</option>
+                        @foreach (var item in Model.DesignationList)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+
+                    </select>*@
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Department</label>
+                            <div class="col-sm-12">
+                                <input type="text" name="txtDepartmentId" id="txtDepartmentId" class="form-control" readonly>
+                                @*<select class="form-control" required name="DepartmentId" id="DepartmentId">
+                        <option disabled value="" selected="selected">Department</option>
+                        @foreach (var item in Model.DepartmentList)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>*@
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Shift</label>
+                            <div class="col-sm-12">
+                                <input type="text" name="txtShiftId" id="txtShiftId" class="form-control" readonly>
+                                @*<select class="form-control" required name="ShiftId" id="DepartmentId">
+                        <option disabled value="" selected="selected">Select Shift</option>
+                        <option value="1">Morning</option>
+                        <option value="2">Evening</option>
+
+                    </select>*@
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-8 col-form-label">Min Expereince</label>
+                            <div class="col-sm-12">
+                                <input type="number" name="MinExpereince" id="txtMinExpereince" class="form-control" placeholder="Enter Min Expereince in year" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-8 col-form-label">Max Expereince</label>
+                            <div class="col-sm-12">
+                                <input type="number" name="MaxExpereince" id="txtMaxExpereince" class="form-control" placeholder="Enter Max Expereince in year" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-8 col-form-label">Min Qualification</label>
+                            <div class="col-sm-12">
+                                <input type="text" name="MInQualification" id="txtMInQualification" class="form-control" placeholder="Enter Min Qualification" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-8 col-form-label">Location</label>
+                            <div class="col-sm-12">
+                                <input type="text" name="txtLocation" id="txtLocation" class="form-control" placeholder="Enter Location" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-8 col-form-label">Gender</label>
+                            <div class="col-sm-12">
+                                <input type="text" name="txtGender" id="txtGender" class="form-control" placeholder="Enter Location" readonly>
+                                @*<select required name="Gender" class="form-control">
+                        <option selected disabled value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-8 col-form-label">Age</label>
+                            <div class="col-sm-12">
+                                <input type="number" name="txtAge" id="txtAge" class="form-control" placeholder="Enter Age" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-8 col-form-label">Skills</label>
+                            <div class="col-sm-12">
+                                <input type="text" name="Skills" id="txtSkills" class="form-control" placeholder="Enter Skill" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-form-label">job Description</label>
+                                <textarea class="form-control" id="txtjobDescription" placeholder="Enter job Description" style="width: 370px;" rows="3" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-form-label">Expected Salary</label>
+                            <div class="col-sm-12">
+                                <input id="txtExpectedSalary" placeholder="Enter Expected Salary" name="txtExpectedSalary" type="number" class="form-control" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-form-label">Currency</label>
+                            <div class="col-sm-12">
+                                <input id="txtCurrency" placeholder="Enter Currency" name="txtCurrency" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="display:none">
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-form-label">JobRequestId</label>
+                            <div class="col-sm-12">
+                                <input id="JobRequestId" placeholder="Enter Currency" name="JobRequestId" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-form-label" for="exampleFormControlSelect1">Last Date</label>
+                            <div id="datepickerJoining" name="datepickerJoining" class="input-group date datepicker">
+                                <input type="text" class="form-control" name="txtLastDate1" id="txtLastDate1">
+                                <span class="input-group-addon input-group-append border-left">
+                                    <span class="mdi mdi-calendar input-group-text"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4" style="display:none">
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-form-label">Attachment</label>
+                            <div class="col-sm-12">
+                                <input id="jobAttachmentID" type="file" name="Attachment" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row ">
+                    <div class="col-12 text-right">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i> Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    }
+</div>
+
+<script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script>
+<script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="~/Content/Assets/js/off-canvas.js"></script>
+<script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+<script src="~/Content/Assets/js/template.js"></script>
+<script src="~/Content/Assets/js/settings.js"></script>
+<script src="~/Content/Assets/js/todolist.js"></script>
+<script src="~/Content/Assets/js/formpickers.js"></script>
+<!-- endinject -->
+<!-- plugin js for this page -->
+<script src="~/Content/Assets/vendors/jquery-steps/jquery.steps.min.js"></script>
+<script src="~/Content/Assets/vendors/jquery-validation/jquery.validate.min.js"></script>
+<script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        LoadingCode();
+        var full_url = document.URL; // Get current url
+        var url_array = full_url.split('/') // Split the string into an array with / as separator
+        var JobRequestionId = url_array[url_array.length - 1];  // Get the last part of the array (-1)
+        LoadDatafromEdit(JobRequestionId)
+    });
+
+    function LoadingCode() {
+
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            url: "/Recruitment/AutoCodeGenrate",
+            success: function (data) {
+                console.log(data);
+                $("#txtAddvertiseNo").val(data);
+            },
+            error: function (error) {
+
+            },
+            cache: false
+        });
+    }
+
+    function JobTitleChange() {
+
+        var JobId = document.getElementById("JobTitled").value;
+
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            data: { "JobId": JobId },
+            url: "/Recruitment/JobTitleChange",
+            success: function (data) {
+                AutoFillTextBox(data);
+
+            },
+            error: function (error) {
+
+            },
+            cache: false
+        });
+
+
+      
+
+    }
+
+   
+
+    function LoadDatafromEdit(JobRequestionId) {
+        if (JobRequestionId > 0)
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                type: "POST",
+                dataType: "json",
+                url: `/Recruitment/LoadJobsRequestion/${JobRequestionId}`,
+                success: function (response) {
+                    AutoFillTextBox(response);
+                    
+                },
+                error: function (error) {
+                    $('#responseText').html(error.responseText);
+                    debugger
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong.',
+                    });
+                },
+                cache: false
+            }).then(function (r) {
+                PopulateTransferForm($.parseJSON(JSON.stringify(JobRequestionObject)));
+
+            })
+    }
+
+    function AutoFillTextBox(data) {
+        for (const element of data) {
+            
+            $('#JobRequestId').val(element.RequestId);
+            //$("#JobTitleDDL").val(element.Id).select2().attr('disabled', 'disabled');
+            $('#JobTitled').val(element.Id);
+            /*    $("#DDLJobType").val(data.JobType).select2().attr('disabled', 'disabled');*/
+            $("#txtJobType").val(element.JobTypeName).attr('disabled', 'disabled');
+            $("#txtDesignationId").val(element.DesignationName).attr('disabled', 'disabled');
+            $("#txtDepartmentId").val(element.DepartmentName).attr('disabled', 'disabled');
+            $("#txtShiftId").val(element.ShiftName).attr('disabled', 'disabled');
+            $("#txtMinExpereince").val(element.MinExpereince).attr('disabled', 'disabled');
+            $("#txtMaxExpereince").val(element.MaxExpereince).attr('disabled', 'disabled');
+            $("#txtMInQualification").val(element.MInQualification).attr('disabled', 'disabled');
+            $("#txtLocation").val(element.Location).attr('disabled', 'disabled');
+            $("#txtGender").val(element.Gender).attr('disabled', 'disabled');
+            $("#txtAge").val(element.Age).attr('disabled', 'disabled');
+            $("#txtSkills").val(element.SkillsName).attr('disabled', 'disabled');
+          
+            $("#txtExpectedSalary").val(element.ExpectedSalary).attr('disabled', 'disabled');
+
+            $("#txtCurrency").val(element.Currency);
+            $("#txtjobDescription").val(element.JobDescription).attr('disabled', 'disabled');
+        
+            $("#datepickerJoining").val(element.Date);
+            $("#txtLastDate1").val(element.Date);
+
+        }
+
+
+    }
+</script>
+@*<script type="text/javascript">
+
+        var JobRequestionObject = {};
+
+        var full_url = document.URL; // Get current url
+        var url_array = full_url.split('/') // Split the string into an array with / as separator
+        var JobRequestionId = url_array[url_array.length - 1];  // Get the last part of the array (-1)
+        if (isNaN(JobRequestionId)) JobRequestionId = 0;
+        var LastDateModified = '';
+        $(window).on("load", function () {
+            if (JobRequestionId > 0)
+                $.ajax({
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    type: "POST",
+                    dataType: "json",
+                    url: `/Recruitment/LoadJobsRequestion/${JobRequestionId}`,
+                    success: function (response) {
+                        debugger
+                        const { jobRequstion, LastDate } = response;
+                        JobRequestionObject = jobRequstion;
+                        LastDateModified = LastDate;
+                    },
+                    error: function (error) {
+                        $('#responseText').html(error.responseText);
+                        debugger
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong.',
+                        });
+                    },
+                    cache: false
+                }).then(function (r) {
+                    PopulateTransferForm($.parseJSON(JSON.stringify(JobRequestionObject)));
+
+                })
+
+            ToggleInputs();
+        });
+
+
+        function PopulateTransferForm(data) {
+            $.each(data, function (key, value) {
+                var $el = $(`[name="${key}"]`),
+                    type = $el.attr('type');
+                if ($el.length > 0)
+                    switch (type) {
+                        case 'checkbox':
+                            $el.attr('checked', value);
+                            break;
+                        case 'radio':
+                            $el.attr('checked', value);
+                            break;
+                        case 'date':
+                            debugger
+                            $el.val(LastDateModified);
+                            break;
+                        default:
+                            $el.val(value);
+                    }
+            });
+            debugger
+
+        }
+
+        $('#jobRequestionFormID').submit(function (e) {
+            debugger
+            e.preventDefault();
+            onAddJobRequstion();
+        });
+        function onAddJobRequstion() {
+            debugger
+            var JobRequestionFormDataArray = $("#jobRequestionFormID").serializeArray();
+            JobRequestionObject = {};
+
+            $.each(JobRequestionFormDataArray, function () {
+                var nameParts = this.name.split('[');
+                if (nameParts.length == 1) {
+                    if (JobRequestionObject[this.name] !== undefined) {
+                        if (!JobRequestionObject[this.name].push) {
+                            JobRequestionObject[this.name] = [JobRequestionObject[this.name]];
+                        }
+                        JobRequestionObject[this.name].push(this.value || '');
+                    } else {
+                        JobRequestionObject[this.name] = this.value || '';
+                    }
+                }
+                else {
+                    $.each(nameParts, function (index) {
+                        nameParts[index] = this.replace(/\]$/, '');
+                    });
+                    var arrItem = this;
+                    var temp = JobRequestionObject;
+                    $.each(nameParts, function (index) {
+                        var next;
+                        var nextNamePart;
+                        if (index >= nameParts.length - 1)
+                            next = arrItem.value || '';
+                        else {
+                            nextNamePart = nameParts[index + 1];
+                            if (trim(this) != '' && temp[this] !== undefined)
+                                next = temp[this];
+                            else {
+                                if (trim(nextNamePart) == '')
+                                    next = [];
+                                else
+                                    next = {};
+                            }
+                        }
+
+                        if (trim(this) == '') {
+                            temp.push(next);
+                        } else
+                            temp[this] = next;
+
+                        temp = next;
+                    });
+                }
+            });
+
+            var fileUpload = $("#jobAttachmentID").get(0);
+            var file = fileUpload.files[0];
+            debugger
+            var formData = new FormData();
+            formData.append('file', file);
+            $.ajax({
+                async: false,
+                cache: false,
+                type: "POST",
+                url: '/Recruitment/Upload',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response.success)
+                        JobRequestionObject.Attachment = response.savedFilePath;
+                },
+                error: function (error) {
+                    alert("File Upload Error");
+                }
+            })
+
+
+            JobRequestionObject.ReqId = JobRequestionId;
+
+            $.ajax({
+                async: false,
+                traditional: true,
+                type: "POST",
+                data: JSON.stringify(JobRequestionObject),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/Recruitment/InsertUpdateJobsRequestion",
+                success: function (response) {
+                    Swal.fire({
+                        icon: 'Info',
+                        title: 'Record Saved',
+                        text: 'Record Save Successfuly.',
+                    }).then(function () {
+                        window.location.replace(`/Recruitment/JobsRequestion`);
+                    });
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong.',
+                    });
+                },
+                cache: false
+            });
+        }
+    </script>*@

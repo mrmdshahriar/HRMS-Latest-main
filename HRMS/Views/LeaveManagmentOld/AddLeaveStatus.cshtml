@@ -1,0 +1,522 @@
+﻿
+@{
+    ViewBag.Title = "AddLeaveStatus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- base:css -->
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/Content/Assets/vendors/base/vendor.bundle.base.css"> *@
+<!-- endinject -->
+@* <link href="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css"> *@
+<!-- End plugin css for this page -->
+@* <link rel="stylesheet" href="~/Content/Assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Content/Assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css"> *@
+
+<!-- inject:css -->
+@* <link href="~/Content/Assets/css/vertical-layout-light/style.css" rel="stylesheet" />
+
+    <link href="~/Content/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> *@
+<link href="~/Content/Assets/css/Applied.css" rel="stylesheet" />
+
+
+
+<div class="container-fluid">
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <div id="btnDive">
+                                    <button type="button" id="Btnapproved" value="approved" class="btn btn-inverse-primary btn-lg float-right">Approved</button>&nbsp;
+                                    <button type="button" id="Btnrejected" value="rejected" class="btn btn-inverse-success btn-lg float-right">Rejected</button>&nbsp;
+                                    <button type="button" id="Btnadjusment" value="adjusment" class="btn btn-inverse-danger btn-lg float-right">Adjustment</button>
+
+                                </div>
+                                <h4>Leave Status</h4>
+                            </div><br />
+
+
+                            @*<form class="forms-sample" id="EmployeeForm">*@
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-8 col-form-label">Employee</label>
+                                        <input type="hidden" name="SatusId" id="SatusId" />
+                                        <select class="form-control" id="DDLEmployee">
+                                            <option value="-1" selected="selected">Select Employee</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-8 col-form-label">Leave Type</label>
+                                        <select class="form-control" id="DDLLeaveType">
+                                            <option value="-1" selected="selected">Select Leave Type</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="exampleFormControlSelect1">Date From</label>
+                                        <div id="DateFrom" class="input-group date datepicker">
+                                            <input type="text" class="form-control" name="DateFrom">
+                                            <span class="input-group-addon input-group-append border-left">
+                                                <span class="mdi mdi-calendar input-group-text"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="exampleFormControlSelect1">Date To</label>
+                                        <div id="DateTo" class="input-group date datepicker">
+                                            <input type="text" class="form-control" name="DateTo">
+                                            <span class="input-group-addon input-group-append border-left">
+                                                <span class="mdi mdi-calendar input-group-text"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Leave Days</label>
+                                        <input type="text" class="form-control" name="LeaveDays" id="txtLeaveDays" maxlength="2" placeholder="Enter Leave Days">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label">Reason</label>
+                                        <textarea id="txtReasion" class="form-control md-description-box" rows="1" placeholder="Reason"></textarea>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" name="Active" checked="" id="Activechk">
+                                            Active
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div id="divAddTask">
+                                <button type="button" class="btn btn-inverse-primary u-btn-3d  my-auto ml-auto" id="AddTask" onclick="SaveData();"><i class="fas fa-plus tm-fa-plus"></i>Add</button>
+                            </div>
+                            @*</form>*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <!-- base:js -->
+    @*<script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script>*@
+    <!-- endinject -->
+    <!-- inject:js -->
+    @* <script src="~/Content/Assets/js/off-canvas.js"></script>
+        <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+        <script src="~/Content/Assets/js/template.js"></script>
+        <script src="~/Content/Assets/js/settings.js"></script> *@
+    <!-- endinject -->
+    @* <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+        <script src="~/Content/Assets/js/todolist.js"></script> *@
+    <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/Content/Assets/js/formpickers.js"></script>
+    <!-- plugin js for this page -->
+    @* <script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script>
+        <script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> *@
+
+    <script src="~/Content/Assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Content/Assets/js/select2.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            GetLeaveTypeDDL();
+            GetEmployeeDDL();
+            $('#Btnapproved').hide();
+            $('#Btnrejected').hide();
+            $('#Btnadjusment').hide();
+
+
+            var full_url = document.URL; // Get current url
+            var url_array = full_url.split('/') // Split the string into an array with / as separator
+            var ID = url_array[url_array.length - 1];  // Get the last part of the array (-1)
+
+            $('#DDLEmployee').select2({
+                selectOnClose: true
+            });
+            $('#DDLLeaveType').select2({
+                selectOnClose: true
+            });
+
+            if (!isNaN(ID)) {
+                Mode = "Update";
+                $("#AddTask").hide();
+                $('#Btnapproved').hide();
+                $('#Btnrejected').hide();
+                $('#Btnadjusment').hide();
+                //$(".updateTask").hide();class="btn btn-inverse-primary btn-lg float-right"
+                $("#btnDive").append(" <button type='button' class='btn btn-inverse-primary btn-lg float-right updateTask' id='updateTask' onclick='ApprovedStatus(" + ID + ");'>Approved</button>");
+                $("#btnDive").append(" <button type='button' class='btn btn-inverse-success btn-lg float-right updateTask' id='updateTask' onclick='RejectedRequest(" + ID + ");'>Rejected</button>");
+                $("#btnDive").append(" <button type='button' class='btn btn-inverse-danger btn-lg float-right updateTask' id='updateTask' onclick='AdjustmentRequest(" + ID + ");'>Adjustment</button>&nbsp");
+
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: "/LeaveManagment/LeaveTypeEdit/" + ID,
+                    success: onSuccessEditDetails,
+                    error: function (error) {
+                        alert("error", error);
+                    },
+                    cache: false
+                });
+
+            }
+
+        });
+
+        function onSuccessEditDetails(data) {
+            var fullDatestart = new Date(data.CreatedBy);
+            var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
+            if (twoDigitMonthstart.length == 1)
+                twoDigitMonthstart = "0" + twoDigitMonthstart;
+            var twoDigitDatestart = fullDatestart.getDate() + "";
+            if (twoDigitDatestart.length == 1)
+                twoDigitDatestart = "0" + twoDigitDatestart;
+
+            var currentDatestart = fullDatestart.getFullYear() + "/" + twoDigitMonthstart + "/" + twoDigitDatestart;
+
+            var fullDatestart = new Date(data.LastModifiedBy);
+            var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
+            if (twoDigitMonthstart.length == 1)
+                twoDigitMonthstart = "0" + twoDigitMonthstart;
+            var twoDigitDatestart = fullDatestart.getDate() + "";
+            if (twoDigitDatestart.length == 1)
+                twoDigitDatestart = "0" + twoDigitDatestart;
+
+            var currentDatestart1 = fullDatestart.getFullYear() + "/" + twoDigitMonthstart + "/" + twoDigitDatestart;
+            $('#SatusId').val(data.Pk_LeaveStatus);
+            $("#DDLEmployee").val(data.Employee).select2().attr('disabled', 'disabled');;
+            $("#DDLLeaveType").val(data.LeaveTypeId).select2().attr('disabled', 'disabled');;
+            $("#txtLeaveDays").val(data.LeaveDays).attr('disabled', 'disabled');;
+            $("#txtReasion").val(data.Reason);
+            $('#DateFrom').datepicker({ dateformat: "yy-mm-dd" }).find('input').val(currentDatestart);
+            $('#DateTo').datepicker({ dateformat: "yy-mm-dd" }).find('input').val(currentDatestart1);
+            $("#Activechk").prop('checked', data.IsActive);
+        }
+        $("#DateTo").bind('change keyup', function () {
+            var date1 = $('#DateFrom').datepicker('getDate');
+            var date2 = $(this).datepicker('getDate');
+
+
+            var fullDatestart = new Date(date1);
+            var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
+            if (twoDigitMonthstart.length == 1)
+                twoDigitMonthstart = "0" + twoDigitMonthstart;
+            var twoDigitDatestart = fullDatestart.getDate() + "";
+            if (twoDigitDatestart.length == 1)
+                twoDigitDatestart = "0" + twoDigitDatestart;
+
+            var currentDatestart = fullDatestart.getFullYear() + "/" + twoDigitMonthstart + "/" + twoDigitDatestart;
+
+            var fullDatestart = new Date(date2);
+            var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
+            if (twoDigitMonthstart.length == 1)
+                twoDigitMonthstart = "0" + twoDigitMonthstart;
+            var twoDigitDatestart = fullDatestart.getDate() + "";
+            if (twoDigitDatestart.length == 1)
+                twoDigitDatestart = "0" + twoDigitDatestart;
+
+            var currentDatestart1 = fullDatestart.getFullYear() + "/" + twoDigitMonthstart + "/" + twoDigitDatestart;
+            if (currentDatestart == currentDatestart1) {
+                var dayDiff = 1;
+                $("#txtLeaveDays").val(dayDiff).attr('disabled', 'disabled');
+            } else {
+                var dayDiff = Math.ceil((date2 - date1) / (1000 * 60 * 60 * 24));
+                $("#txtLeaveDays").val(dayDiff).attr('disabled', 'disabled');
+            }
+        });
+
+
+
+
+        function ApprovedStatus(id) {
+
+            var DDLEmployee = $("#DDLEmployee").val();
+            var DDLLeaveType = $("#DDLLeaveType").val();
+            var DateFrom = $("#DateFrom").datepicker({ dateFormat: "yy-mm-dd" }).find('input').val();
+            var DateTo = $('#DateTo').datepicker({ dateFormat: "yy-mm-dd" }).find('input').val();
+            var LeaveDays = $('#txtLeaveDays').val();
+            var Reason = $('#txtReasion').val();
+            var Active = $('#Activechk').is(":checked");
+
+            var Data = JSON.stringify(
+                {
+                    Pk_LeaveRequest: id,
+                    Employee: DDLEmployee,
+                    LeaveTypeId: DDLLeaveType,
+                    DateFrom: DateFrom,
+                    DateTo: DateTo,
+                    LeaveDays: LeaveDays,
+                    Reason: Reason,
+                    IsActive: Active
+                });
+            $.ajax({
+                type: "POST",
+                data: Data,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/LeaveManagment/ApprovedLeaveRequest",
+                success: onSuccessUpdateManagement,
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false
+            });
+
+        }
+
+        function onSuccessUpdateManagement(data) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Info',
+                text: 'Approved Leaved!.',
+            }).then(function () {
+               
+                window.location.href = '/LeaveManagment/LeaveStatus';
+
+            });
+            Mode = "";
+            //clearfields();
+
+
+        }
+
+
+        function RejectedRequest(id) {
+
+            var DDLEmployee = $("#DDLEmployee").val();
+            var DDLLeaveType = $("#DDLLeaveType").val();
+            var DateFrom = $("#DateFrom").datepicker({ dateFormat: "yy-mm-dd" }).find('input').val();
+            var DateTo = $('#DateTo').datepicker({ dateFormat: "yy-mm-dd" }).find('input').val();
+            var LeaveDays = $('#txtLeaveDays').val();
+            var Reason = $('#txtReasion').val();
+            var Active = $('#Activechk').is(":checked");
+
+            var Data = JSON.stringify(
+                {
+                    Pk_LeaveRequest: id,
+                    Employee: DDLEmployee,
+                    LeaveTypeId: DDLLeaveType,
+                    DateFrom: DateFrom,
+                    DateTo: DateTo,
+                    LeaveDays: LeaveDays,
+                    Reason: Reason,
+                    IsActive: Active
+                });
+            $.ajax({
+                type: "POST",
+                data: Data,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/LeaveManagment/RejectedLeaveRequest",
+                success: onSuccessRejectedManagement,
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false
+            });
+
+        }
+
+        function onSuccessRejectedManagement(data) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Info',
+                text: 'Rejected Leave!.',
+            }).then(function () {
+                window.location.href = '/LeaveManagment/LeaveStatus';
+
+            });
+            Mode = "";
+            //clearfields();
+
+            //LoadingCountryDetails();
+
+        }
+
+
+
+        function AdjustmentRequest(id) {
+
+            var DDLEmployee = $("#DDLEmployee").val();
+            var DDLLeaveType = $("#DDLLeaveType").val();
+            var DateFrom = $("#DateFrom").datepicker({ dateFormat: "yy-mm-dd" }).find('input').val();
+            var DateTo = $('#DateTo').datepicker({ dateFormat: "yy-mm-dd" }).find('input').val();
+            var LeaveDays = $('#txtLeaveDays').val();
+            var Reason = $('#txtReasion').val();
+            var Active = $('#Activechk').is(":checked");
+
+            var Data = JSON.stringify(
+                {
+                    Pk_LeaveRequest: id,
+                    Employee: DDLEmployee,
+                    LeaveTypeId: DDLLeaveType,
+                    DateFrom: DateFrom,
+                    DateTo: DateTo,
+                    LeaveDays: LeaveDays,
+                    Reason: Reason,
+                    IsActive: Active
+                });
+            $.ajax({
+                type: "POST",
+                data: Data,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                url: "/LeaveManagment/AdjustmentLeaveRequest",
+                success: onSuccessAdjustmentManagement,
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false
+            });
+
+        }
+
+        function onSuccessAdjustmentManagement(data) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Info',
+                text: 'Adjustment in Leave!.',
+            }).then(function () {
+                window.location.href = '/LeaveManagment/LeaveStatus';
+
+            });
+            Mode = "";
+            //clearfields();
+
+            //LoadingCountryDetails();
+
+        }
+
+
+        function GetLeaveTypeDDL() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/LeaveManagment/LeaveTypeList",
+                success: function (data, status) {
+
+                    if (data != "") {
+
+                        $('#DDLLeaveType').empty();
+                        $('#DDLLeaveType').append('<option value="-1" selected disabled>Select Leave Type</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#DDLLeaveType').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+
+                        });
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+                async: false
+
+            });
+        }
+
+        function GetEmployeeDDL() {
+
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/employeeprofile/GetAllEmployees",
+                // url: "/LeaveManagment/getEmployeeList",
+                success: function (data, status) {
+                    Data = $.parseJSON(data);
+
+                    if (Data != "") {
+
+                        $('#DDLEmployee').empty();
+                        $.each(Data, function (key, value) {
+
+                            var { data, JoiningDate } = value;
+                            $('#DDLEmployee').append('<option value="' + data?.Id + '">' + data?.FirstName + '</option>');
+                        });
+                        // $('#DDLSkills').append('<option value="-1" selected disabled>Select Skills</option>');
+                        //$.each(Data, function (i, tweet) {
+                        //    var { data } = tweet;
+                        //    $('#DDLEmployee').append('<option value="' + data?.Id + '">' + data?.FirstName + '</option>');
+
+                        //});
+
+                    }
+
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
+                async: false
+            });
+        }
+
+    </script>
+
+}
+

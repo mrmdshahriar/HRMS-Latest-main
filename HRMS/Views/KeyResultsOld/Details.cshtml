@@ -1,0 +1,163 @@
+﻿@model HRMS.Models.KeyResult
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>KeyResult</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HrmEmployee.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HrmEmployee.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KeyObjective.DefineObjective)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KeyObjective.DefineObjective)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DefineKeyResult)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DefineKeyResult)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Priority)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Priority)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignedPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignedPercentage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletedPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletedPercentage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PendingDays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PendingDays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastModifiedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastModifiedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deleted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

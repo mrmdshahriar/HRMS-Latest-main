@@ -1,0 +1,383 @@
+﻿@model HRMS.Common
+@{
+    ViewBag.Title = "Transfer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+
+<div class="container-fluid">
+    <div class="__top_head">
+        <h3 class="all-md">Transfer</h3>
+    </div>
+    <div class="__blk">
+        <form id="transferFormID">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Employee</label>
+                        <div class="col-sm-12">
+                            <select class="form-control" required name="EmployeeId" id="Type" onchange="myFunction(this.value);">
+                                <option disabled value="" selected="selected">Select Employee</option>
+                                @foreach (var item in Model.EmployeeList)
+                                {
+                                    <option value="@item.Id">@item.FirstName @item.LastName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Designation</label>
+                        <div class="col-sm-12">
+
+                           @* <select class="form-control" required name="txtDesignationId" id="txtDesignationId">
+                                <option disabled value="" selected="selected">Designation</option>
+                                @foreach (var item in Model.DesignationList)
+                                {
+                                    <option value="@item.Id">
+                                        
+                                    </option>
+                                }
+
+                            </select>*@
+                             <input type="text" name="txtDesignation" id="txtDesignation"  class="form-control" readonly>
+                                <input type="hidden" value=""  name="DesignationId" id="DesignationId"  class="form-control" >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">New Designation</label>
+                        <div class="col-sm-12">
+                            <select class="form-control" required name="NewDesignationId" id="DesignationId">
+                                  <option disabled value="" selected="selected">Designation</option>
+                                @foreach (var item in Model.DesignationList)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">From Department</label>
+                        <div class="col-sm-12">
+                              <input type="text" name="DepartmentId" id="DepartmentId" class="form-control" readonly>
+                              <input type="hidden"  value="" name="FromDepartmentId" id="FromDepartmentId">
+                            @*<select class="form-control" required name="FromDepartmentId" id="txtDepartmentId">
+                                <option disabled value="" selected="selected">Department</option>
+                                @foreach (var item in Model.DepartmentList)
+                                {
+                                    <option value="@item.Id" id="txtDepartmentId">@item.Name</option>
+                                }
+                            </select>*@
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">To Department</label>
+                        <div class="col-sm-12">
+                            <select class="form-control" required name="ToDepartmentId" id="DepartmentId">
+                                <option disabled value="" selected="selected">Department</option>
+                                @foreach (var item in Model.DepartmentList)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-form-label">Trasnfer Date</label>
+                        <div class="col-sm-12">
+                            <input id="dateInputId" required name="TrasnferDate" type="date" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Transfer By</label>
+                        <div class="col-sm-12">
+                            <select class="form-control" id="terminationBYSelectId" required name="TrasnferedBy">
+                                <option disabled value="" selected="selected">Select Employee</option>
+                                @foreach (var item in Model.EmployeeList)
+                                {
+                                    <option value="@item.Id">@item.FirstName @item.LastName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label">Transfer Reason</label>
+                        <div class="col-sm-12">
+                            <textarea type="text" required name="TrasnferReason" class="form-control" placeholder="Enter Reason"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-12 text-right">
+                    <button class="btn btn-primary">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@* <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script>
+    <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script> *@
+<!-- endinject -->
+<!-- inject:js -->
+@* <script src="~/Content/Assets/js/off-canvas.js"></script>
+    <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+    <script src="~/Content/Assets/js/template.js"></script>
+    <script src="~/Content/Assets/js/settings.js"></script>
+    <script src="~/Content/Assets/js/todolist.js"></script> *@
+<script src="~/Content/Assets/js/formpickers.js"></script>
+<!-- endinject -->
+<!-- plugin js for this page -->
+<script src="~/Content/Assets/vendors/jquery-steps/jquery.steps.min.js"></script>
+<script src="~/Content/Assets/vendors/jquery-validation/jquery.validate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+<script type="text/javascript">
+
+    var TransferObject = {};
+
+    var full_url = document.URL; // Get current url
+    var url_array = full_url.split('/') // Split the string into an array with / as separator
+    var TransferId = url_array[url_array.length - 1];  // Get the last part of the array (-1)
+    if (isNaN(TransferId)) TransferId = 0;
+
+
+    function myFunction() {
+        //debugger
+        var JobId = document.getElementById("Type").value;
+
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            data: { "JobId": JobId },
+            url: "/EmployeeProfile/JobTitleChange",
+            success: function (data) {
+                AutoFillTextBox(data);
+
+            },
+            error: function (error) {
+
+            },
+            cache: false
+        });
+
+        //TransferId = document.getElementById("Type").value;
+        //if (TransferId > 0)
+        //    $.ajax({
+        //        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        //        type: "GET",
+        //        dataType: "json",
+        //        url: `/EmployeeProfile/getTransferEmployee/${TransferId}`,
+        //        success: function (data) {
+        //            AutoFillTextBox(data);
+
+        //        },
+        //        error: function (error) {
+        //            $('#responseText').html(error.responseText);
+        //            debugger
+        //            Swal.fire({
+        //                icon: 'error',
+        //                title: 'Oops...',
+        //                text: 'Something went wrong.',
+        //            });
+        //        },
+        //        cache: false
+        //    })
+        // ToggleInputs();
+    };
+
+    function AutoFillTextBox(data) {
+        for (const element of data) {
+            $("#txtDesignation").val(element.Name).attr('disabled', 'disabled');
+            $("#DepartmentId").val(element.dName).attr('disabled', 'disabled');
+            $("#DesignationId").val(element.DesigId).attr('disabled', 'disabled');
+            $("#FromDepartmentId").val(element.DepartId).attr('disabled', 'disabled');
+        }
+
+
+    }
+
+
+    function onSuccessEmployeeDetails(Data) {
+        var { data, FromDepartment, Designation } = $.parseJSON(Data);
+        TransferObject = data;
+        TransferObject.FromDepartment = FromDepartment;
+        TransferObject.Designation = Designation;
+    }
+
+    // $(window).on("load", function () {
+    $(document).ready(function () {
+        if (TransferId > 0)
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                type: "POST",
+                dataType: "json",
+                url: `/EmployeeProfile/LoadTransferEmployee/${TransferId}`,
+                success: function (response) {
+                    debugger;
+                    const { Transfer, TrasnferDate } = response;
+                    TransferObject = Transfer;
+                    TransferObject.TrasnferDate = TrasnferDate;
+                    $("#DepartmentId").val(response.FromDepartmentName);
+                    $("#txtDesignation").val(response.DesignationName);
+                },
+                error: function (error) {
+                    $('#responseText').html(error.responseText);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong.',
+                    });
+                },
+                cache: false
+            }).then(function (r) {
+                PopulateTransferForm($.parseJSON(JSON.stringify(TransferObject)));
+
+            })
+        // ToggleInputs();
+    });
+
+
+    function PopulateTransferForm(data) {
+        $.each(data, function (key, value) {
+            var $el = $(`[name="${key}"]`),
+                type = $el.attr('type');
+            if ($el.length > 0)
+                switch (type) {
+                    case 'checkbox':
+                        $el.attr('checked', value);
+                        break;
+                    case 'radio':
+                        $el.attr('checked', value);
+                        break;
+                    case 'date':
+                        debugger
+                        $el.val(value);
+                        break;
+                    default:
+                        $el.val(value);
+                }
+        });
+        //debugger
+
+    }
+
+    $('#transferFormID').submit(function (e) {
+        //debugger
+        e.preventDefault();
+        onAddTransferEmployee();
+    });
+    function onAddTransferEmployee() {
+      /*  debugger*/
+        var TransferFormDataArray = $("#transferFormID").serializeArray();
+        TransferObject = {};
+
+        $.each(TransferFormDataArray, function () {
+            var nameParts = this.name.split('[');
+            if (nameParts.length == 1) {
+                if (TransferObject[this.name] !== undefined) {
+                    if (!TransferObject[this.name].push) {
+                        TransferObject[this.name] = [TransferObject[this.name]];
+                    }
+                    TransferObject[this.name].push(this.value || '');
+                } else {
+                    TransferObject[this.name] = this.value || '';
+                }
+            }
+            else {
+                $.each(nameParts, function (index) {
+                    nameParts[index] = this.replace(/\]$/, '');
+                });
+                var arrItem = this;
+                var temp = TransferObject;
+                $.each(nameParts, function (index) {
+                    var next;
+                    var nextNamePart;
+                    if (index >= nameParts.length - 1)
+                        next = arrItem.value || '';
+                    else {
+                        nextNamePart = nameParts[index + 1];
+                        if (trim(this) != '' && temp[this] !== undefined)
+                            next = temp[this];
+                        else {
+                            if (trim(nextNamePart) == '')
+                                next = [];
+                            else
+                                next = {};
+                        }
+                    }
+
+                    if (trim(this) == '') {
+                        temp.push(next);
+                    } else
+                        temp[this] = next;
+
+                    temp = next;
+                });
+            }
+        });
+
+        var desid = document.getElementById("DesignationId").value;
+        var FromDepartmentId = document.getElementById("FromDepartmentId").value;
+        TransferObject.TransferId = TransferId;
+        TransferObject.DesignationId = desid;
+        TransferObject.FromDepartmentId = FromDepartmentId;
+
+        $.ajax({
+            async: false,
+            traditional: true,
+            type: "POST",
+            data:JSON.stringify(TransferObject),
+          // '{ "EmployeeId": 19,"NewDesignationId": 4,"DesignationId":1,"ToDepartmentId": 3,"FromDepartmentId": 1,"TransferId": 0,"TrasnferDate": "02/05/2003","TrasnferReason": "abc","TrasnferedBy": "aijaz"}', 
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: "/EmployeeProfile/InsertUpdateEmployeeTransfer",
+            success: function (response) {
+                Swal.fire({
+                    icon: 'Info',
+                    title: 'Record Saved',
+                    text: 'Record Save Successfuly.',
+                }).then(function () {
+                    window.location.replace(`/EmployeeProfile/Transfers`);
+                   // console.log(TransferObject);
+                    
+                });
+            },
+            error: function (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong.',
+                });
+                console.log(error);
+            },
+            cache: false
+        });
+       
+    }
+</script>

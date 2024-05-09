@@ -1,0 +1,1235 @@
+﻿
+@{
+    ViewBag.Title = "PayrollCalculation";
+}
+
+<link href="~/Content/Assets/css/vertical-layout-light/style.css" rel="stylesheet" />
+<link href="~/Content/Assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link href="~/Content/Assets/css/Country.css" rel="stylesheet" />
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<script src="~/Content/Assets/vendors/datatables.net/jquery.dataTables.js"></script>
+<script src="~/Content/Assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+
+
+<div class="container-fluid">
+
+    <div class="row" style="margin-top:7px;">
+        <div class="col-sm-5">
+            <h2 style="color:crimson">@DateTime.Now.ToString("MMMM")</h2>
+        </div>
+        <div class="col-sm-7">
+            <h2>Payroll Calculation</h2>
+        </div>
+    </div>
+
+    <center>
+
+        <input type="button" value="View Payroll" onclick="viewPayroll(this);" class="btn btn-primary" />
+
+        <input type="button" value="Submit" onclick="viewPayroll(this);" class="btn btn-primary" />
+
+        <input type="button" value="Allowances Details" onclick="allowancesDetails();" class="btn btn-primary" />
+
+        <input type="button" value="Overtime Details" onclick="overtimeDetails();" class="btn btn-primary" />
+
+        <input type="button" value="Deduction Details" onclick="deductionDetails();" class="btn btn-primary" />
+
+        <input type="button" value="Process Payroll" onclick="ProcessPayroll();" class="btn btn-primary" />
+
+        <input type="button" value="Download Sheet" onclick="DownloadSheetForEmployee();" class="btn btn-primary" />
+
+    </center>
+
+</div>
+
+
+<div style="width: 90%; overflow: auto; margin: 10px; padding-right: 80px; height: 90%;">
+
+    <table id="salaryCal" class="table table-bordered table-striped table-hover" style="white-space:nowrap;">
+        <thead>
+            <tr>
+                <th colspan="11" style="background-color:lightgreen;text-align:center;">Fixed Section Per Month</th>
+                <th colspan="10" style="background-color:lightpink;text-align:center;">Total Salary</th>
+                <th colspan="6" style="background-color:yellow;text-align:center;">Deductions</th>
+                <th rowspan="2" style="background-color:lightblue;text-align:center;">Gross Payable Salary</th>
+            </tr>
+            <tr style="background-color:lightskyblue;text-align:center;">
+                <th>No.</th>
+                <th>Emp ID</th>
+                <th>Emp Name</th>
+                <th>Date of Joining</th>
+                <th>Designation</th>
+                <th>Department</th>
+                <th>Basic Salary</th>
+                <th>Allowances</th>
+                <th>Salary With Allowances</th>
+                <th>Salary Month</th>
+                <th>Total Payable Days</th>
+                <th>Monthly Salary</th>
+                <th>Normal OT Hours</th>
+                <th>Normal OT Salary</th>
+                <th>Weekend OT</th>
+                <th>Weekend OT Salary</th>
+                <th>Public Holiday OT Hours</th>
+                <th>Public Holiday OT Salary</th>
+                <th>Arrears</th>
+                <th>Bonus</th>
+                <th>Total Salary</th>
+                <th>Deductions</th>
+                <th>Advance</th>
+                <th>Loan</th>
+                <th>Income Tax</th>
+                <th>EOBI</th>
+                <th>Provident Fund</th>
+            </tr>
+        </thead>
+        <tbody id="FixedSectionPerMonth">
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+@*Modal*@
+<div class="modal fade" id="PayrollCalculationModal" tabindex="-1" role="dialog" aria-labelledby="CountryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="display:flex;justify-content:center;align-items:center;">
+        <div class="modal-content" style="width: 1850px;">
+
+            <div class="modal-header modal-header" style="padding-top:0px;padding-bottom:0px;padding-left:0px;">
+                <div style="width:80px;height:50px;overflow:hidden;"><img src="~/Logo.jpg" style="width:50px;height:50px;zoom:2;position:relative;top:-8px;left:-7px;" /></div>
+                <div style="width:100%;text-align:center;"><h5 class="modal-title" style="color:white">Salary Sheet Details</h5></div>
+                <button type="button" class="close" data-bs-dismiss="modal" style="margin-top:-23px;">&times;</button>
+            </div>
+            <div class="modal-body" style="width: 1700px; overflow: auto; height: 700px;">
+
+                <table id="salaryCal" class="table table-bordered table-striped table-hover" style="white-space:nowrap;">
+                    <thead>
+                        <tr>
+                            <th colspan="12" style="background-color:lightgreen;text-align:center;">Fixed Section Per Month</th>
+                            <th colspan="10" style="background-color:lightpink;text-align:center;">Total Salary</th>
+                            <th colspan="6" style="background-color:yellow;text-align:center;">Deductions</th>
+                            <th rowspan="2" style="background-color:lightblue;text-align:center;">Gross Payable Salary</th>
+                        </tr>
+                        <tr style="background-color:lightskyblue;text-align:center;">
+                            <th><input type="checkbox" id="checkAll" onchange="SelectAll();" />All</th>
+                            <th>No.</th>
+                            <th>Emp ID</th>
+                            <th>Emp Name</th>
+                            <th>Date of Joining</th>
+                            <th>Designation</th>
+                            <th>Department</th>
+                            <th>Basic Salary</th>
+                            <th>Allowances</th>
+                            <th>Salary With Allowances</th>
+                            <th>Salary Month</th>
+                            <th>Total Payable Days</th>
+                            <th>Monthly Salary</th>
+                            <th>Normal OT Hours</th>
+                            <th>Normal OT Salary</th>
+                            <th>Weekend OT</th>
+                            <th>Weekend OT Salary</th>
+                            <th>Public Holiday OT Hours</th>
+                            <th>Public Holiday OT Salary</th>
+                            <th>Arrears</th>
+                            <th>Bonus</th>
+                            <th>Total Salary</th>
+                            <th>Deductions</th>
+                            <th>Advance</th>
+                            <th>Loan</th>
+                            <th>Income Tax</th>
+                            <th>EOBI</th>
+                            <th>Provident Fund</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="PayrollCalculationModalData">
+                    </tbody>
+                </table>
+                @*</div>*@
+
+            </div>
+            <div class="modal-footer" id="divAddTask">
+                <button type="button" class="btn btn-primary" id="Process" onclick="Process();"><i class="fas fa-plus tm-fa-plus"></i>Process</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Modal*@
+<div class="modal fade" id="DownloadSheetForEmployee" tabindex="-1" role="dialog" aria-labelledby="CountryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="display:flex;justify-content:center;align-items:center;">
+        <div class="modal-content" style="height: 950px; width: 1400px;">
+            <div class="modal-header modal-header" style="padding-top:0px;padding-bottom:0px;padding-left:0px;">
+                <div style="width:80px;height:50px;overflow:hidden;"><img src="~/Logo.jpg" style="width:50px;height:50px;zoom:2;position:relative;top:-8px;left:-7px;" /></div>
+                <div style="width:100%;text-align:center;"><h5 class="modal-title" style="color:white">Salary Slip</h5></div>
+                <button type="button" class="close" data-bs-dismiss="modal" style="margin-top:-23px;">&times;</button>
+            </div>
+            <div class="modal-body" style="width:1200px;overflow:auto;">
+                <div style="height:100%; width: 100%; overflow: auto;padding:0;" id="SalarySlipData">
+                    @*<div style="text-align:center;font-size:25px;font-weight:bold;background-color:yellow;">Salary Slip</div>*@
+                    @*<table class="table table-bordered">
+
+                            <tr>
+                                <th style="width:25%;">Employee ID</th>
+                                <th style="width:25%;"></th>
+                                <th style="width:25%;">Employee Name</th>
+                                <th style="width:25%;"></th>
+                            </tr>
+                            <tr>
+                                <th>Designation</th>
+                                <th></th>
+                                <th>Department</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>Date of Joining</th>
+                                <th></th>
+                                <th>Salary Month</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>Basic Salary</th>
+                                <th></th>
+                                <th>Allowance 1</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>Allowance 2</th>
+                                <th></th>
+                                <th>Other Payment</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>Total Monthly Salary</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>Present Days</th>
+                                <th></th>
+                                <th>Absent Days</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>Bank Name</th>
+                                <th></th>
+                                <th>Account Number</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th colspan="4" style="background-color: yellow; text-align: center;">*If applicable for Overtime add in OT colums and hours</th>
+                            </tr>
+                            <tr style="background-color: yellow;">
+                                <th>Normal OT hours</th>
+                                <th></th>
+                                <th>Fri OT hours</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th colspan="4" style="background-color:lightgrey; text-align:center;">CALCULATION</th>
+                            </tr>
+                            <tr>
+                                <th colspan="2" style="text-align:center;">Salary (A)</th>
+                                <th colspan="2" style="text-align:center;">Deductions (B)</th>
+                            </tr>
+                            <tr>
+                                <th>Monthly Salary</th>
+                                <th></th>
+                                <th>Income Tax</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>Normal OT</th>
+                                <th></th>
+                                <th>Loan</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>Friday OT</th>
+                                <th></th>
+                                <th>EOBI</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>Bonus</th>
+                                <th></th>
+                                <th>Provident</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Advance</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Other Deduction</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>Total Salary</th>
+                                <th></th>
+                                <th>Gross Salary (A-B)</th>
+                                <th></th>
+                            </tr>
+
+                        </table>*@
+                </div>
+
+            </div>
+            <div class="modal-footer" id="divAddTask">
+                <button type="button" class="btn btn-primary" id="Process" onclick="Download();">Download</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*Modal*@
+<div class="modal fade" id="AllowancesDetailsModal" tabindex="-1" role="dialog" aria-labelledby="CountryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="display:flex;justify-content:center;align-items:center;">
+        <div class="modal-content" style="height: 950px; width: 1400px;">
+            <div class="modal-header modal-header" style="padding-top:0px;padding-bottom:0px;padding-left:0px;">
+                <div style="width:80px;height:50px;overflow:hidden;"><img src="~/Logo.jpg" style="width:50px;height:50px;zoom:2;position:relative;top:-8px;left:-7px;" /></div>
+                <div style="width:100%;text-align:center;"><h5 class="modal-title" style="color:white">Allowances Details</h5></div>
+                <button type="button" class="close" data-bs-dismiss="modal" style="margin-top:-23px;">&times;</button>
+            </div>
+            <div class="modal-body" style="width:1200px;overflow:auto;">
+                <div style="height:100%; width: 100%; overflow: auto;padding:0;" id="AllowancesDetailsDiv">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*Modal*@
+<div class="modal fade" id="DeductionDetailsModal" tabindex="-1" role="dialog" aria-labelledby="CountryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="display:flex;justify-content:center;align-items:center;">
+        <div class="modal-content" style="height: 950px; width: 1400px;">
+            <div class="modal-header modal-header" style="padding-top:0px;padding-bottom:0px;padding-left:0px;">
+                <div style="width:80px;height:50px;overflow:hidden;"><img src="~/Logo.jpg" style="width:50px;height:50px;zoom:2;position:relative;top:-8px;left:-7px;" /></div>
+                <div style="width:100%;text-align:center;"><h5 class="modal-title" style="color:white">Deduction Details</h5></div>
+                <button type="button" class="close" data-bs-dismiss="modal" style="margin-top:-23px;">&times;</button>
+            </div>
+            <div class="modal-body" style="width:1200px;overflow:auto;">
+                <div style="height:100%; width: 100%; overflow: auto;padding:0;" id="DeductionDetailsDiv">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Modal*@
+<div class="modal fade" id="OvertimeDetailsModal" tabindex="-1" role="dialog" aria-labelledby="CountryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="display:flex;justify-content:center;align-items:center;">
+        <div class="modal-content" style="height: 950px; width: 1400px;">
+            <div class="modal-header modal-header" style="padding-top:0px;padding-bottom:0px;padding-left:0px;">
+                <div style="width:80px;height:50px;overflow:hidden;"><img src="~/Logo.jpg" style="width:50px;height:50px;zoom:2;position:relative;top:-8px;left:-7px;" /></div>
+                <div style="width:100%;text-align:center;"><h5 class="modal-title" style="color:white">Overtime Details</h5></div>
+                <button type="button" class="close" data-bs-dismiss="modal" style="margin-top:-23px;">&times;</button>
+            </div>
+            <div class="modal-body" style="width:1200px;overflow:auto;">
+                <div style="height:100%; width: 100%; overflow: auto;padding:0;" id="OvertimeDetailsDiv">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+    function overtimeDetails() {
+        debugger;
+
+        $.ajax({
+
+            url: "/PayRoll/GetOvertimeDetails",
+            type: "GET",
+            success: function (data) {
+                debugger;
+
+                var allowStr = '';
+
+                allowStr += '<div style="width:100%;height:100%;overflow:auto;">';
+
+                allowStr += '<table style="white-space:nowrap;" class="table table-bordered table-condensed table-hover table-striped">' +
+                    '<thead>' +
+                    '<tr style="background-color:cornflowerblue;color:white;">' +
+                    '<th style="width:50px;">No</th>' +
+                    '<th style="width:130px;">Employee Id</th>' +
+                    '<th>Employee Name</th>' +
+                    '<th>Normal OT Hours</th>' +
+                    '<th>Normal OT Salary</th>' +
+                    '<th>Weekend OT</th>' +
+                    '<th>Weekend OT Salary</th>' +
+                    '<th>Public Holiday OT Hours</th>' +
+                    '<th>Public Holiday OT Salary</th>' +
+                    '</tr>' +
+                    '</thead>' +
+                    '<tbody>';
+
+                $.each(data, function (index, obj) {
+
+                    allowStr += '<tr>' +
+                        '<td>' + (index + 1) + '</td>' +
+                        '<td>' + obj.EmployeeId + '</td>' +
+                        '<td>' + obj.EmployeeName + '</td>' +
+                        '<td>' + obj.NormalOTHours + '</td>' +
+                        '<td>' + obj.NormalOTSalary + '</td>' +
+                        '<td>' + obj.WeekendOT + '</td>' +
+                        '<td>' + obj.WeekendOTSalary + '</td>' +
+                        '<td>' + obj.PublicHolidayOTHours + '</td>' +
+                        '<td>' + obj.PublicHolidayOTSalary + '</td>' +
+                        '</tr>';
+                });
+
+                allowStr += '</tbody></table>';
+
+                allowStr += '</div>';
+
+                $("#OvertimeDetailsDiv").html(allowStr);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        })
+
+        $("#OvertimeDetailsModal").modal("show");
+    }
+
+
+
+    function deductionDetails() {
+        debugger;
+
+        $.ajax({
+
+            url: "/PayRoll/GetDeductionDetails",
+            type: "GET",
+            success: function (data) {
+                debugger;
+
+                var allowStr = '';
+
+                allowStr += '<div style="width:100%;overflow:auto;">';
+
+                allowStr += '<table class="table table-bordered table-condensed table-hover table-striped">' +
+                    '<thead>' +
+                    '<tr style="background-color:cornflowerblue;color:white;">' +
+                    '<th style="width:50px;">No</th>' +
+                    '<th style="width:130px;">Employee Id</th>' +
+                    '<th>Employee Name</th>' +
+                    '<th>Deductions</th>' +
+                    '<th>Advance</th>' +
+                    '<th>Loan</th>' +
+                    '<th>Income Tax</th>' +
+                    '<th>EOBI</th>' +
+                    '<th>Provident Fund</th>' +
+                    '</tr>' +
+                    '</thead>' +
+                    '<tbody>';
+
+                $.each(data, function (index, obj) {
+
+                    allowStr += '<tr>' +
+                        '<td>' + (index + 1) + '</td>' +
+                        '<td>' + obj.EmployeeId + '</td>' +
+                        '<td>' + obj.EmployeeName + '</td>' +
+                        '<td>' + obj.Deductions + '</td>' +
+                        '<td>' + obj.Advance + '</td>' +
+                        '<td>' + obj.Loan + '</td>' +
+                        '<td>' + obj.IncomeTax + '</td>' +
+                        '<td>' + obj.EOBI + '</td>' +
+                        '<td>' + obj.ProvidentFund + '</td>' +
+                        '</tr>';
+                });
+
+                allowStr += '</tbody></table>';
+
+                allowStr += '</div>';
+
+                $("#DeductionDetailsDiv").html(allowStr);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        })
+
+        $("#DeductionDetailsModal").modal("show");
+    }
+
+
+    function allowancesDetails() {
+        debugger;
+
+        $.ajax({
+
+            url: "/PayRoll/GetAllowancesDetails",
+            type: "GET",
+            success: function (data) {
+                debugger;
+
+                var allowStr = '';
+
+                allowStr += '<div style="width:100%;overflow:auto;">';
+
+                allowStr += '<table class="table table-bordered table-condensed table-hover table-striped">' +
+                    '<thead>' +
+                    '<tr style="background-color:cornflowerblue;color:white;">' +
+                    '<th style="width:50px;">No</th>' +
+                    '<th style="width:130px;">Employee Id</th>' +
+                    '<th>Allowances</th>' +
+                    '<th>Amount</th>' +
+                    '</tr>' +
+                    '</thead>' +
+                    '<tbody>';
+
+                var No = 1;
+
+                $.each(data, function (index, obj) {
+
+                    var allowanceAmountArray = [];
+
+                    $.each(obj.Allowances, function (index, val) {
+
+                        allowStr += '<tr>' +
+                            '<td>' + (No++) + '</td>' +
+                            '<td>' + val.EmployeeId + '</td>' +
+                            '<td>' + val.Allowances + '</td>' +
+                            '<td>' + val.TotalAmount + '</td>' +
+                            '</tr>';
+
+                        allowanceAmountArray.push(val.TotalAmount);
+                    });
+
+                    allowStr += '<tr style="background-color:lightgreen;"><td colspan="3" style="text-align:right;font-weight:bold;">Total : </td><td>' + allowanceAmountArray.reduce((x, y) => x + y, 0).toFixed(2) + '</td></tr>';
+                });
+
+                allowStr += '</tbody></table>';
+
+                allowStr += '</div>';
+
+                $("#AllowancesDetailsDiv").html(allowStr);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        })
+
+        $("#AllowancesDetailsModal").modal("show");
+    }
+
+
+    function Process() {
+        debugger;
+
+        var EmployeesArray = [];
+
+        var tr = $("#PayrollCalculationModalData").find("tr").each(function (index, obj) {
+
+            if ($(obj).find("td:nth-child(1)").find(".checkRow").prop("checked")) {
+
+                var empObj = {};
+
+                empObj.EmpID = $(obj).find("td:nth-child(3)").html();
+
+                empObj.EmpName = $(obj).find("td:nth-child(4)").html();
+
+                empObj.DateofJoining = $(obj).find("td:nth-child(5)").html();
+
+                empObj.Designation = $(obj).find("td:nth-child(6)").html();
+
+                empObj.Department = $(obj).find("td:nth-child(7)").html();
+
+                empObj.BasicSalary = $(obj).find("td:nth-child(8)").html();
+
+                empObj.Allowances = $(obj).find("td:nth-child(9)").html();
+
+                empObj.TotalSalaryWithAllowances = $(obj).find("td:nth-child(10)").html();
+
+                empObj.SalaryMonth = $(obj).find("td:nth-child(11)").html();
+
+                empObj.TotalPayableDays = $(obj).find("td:nth-child(12)").html();
+
+                empObj.TotalMonthlySalary = $(obj).find("td:nth-child(13)").html();
+
+                empObj.NormalOTHours = $(obj).find("td:nth-child(14)").html();
+
+                empObj.NormalOTSalary = $(obj).find("td:nth-child(15)").html();
+
+                empObj.WeekendOT = $(obj).find("td:nth-child(16)").html();
+
+                empObj.WeekendOTSalary = $(obj).find("td:nth-child(17)").html();
+
+                empObj.PublicHolidayOTHours = $(obj).find("td:nth-child(18)").html();
+
+                empObj.PublicHolidayOTSalary = $(obj).find("td:nth-child(19)").html();
+
+                empObj.Arrears = $(obj).find("td:nth-child(20)").html();
+
+                empObj.Bonus = $(obj).find("td:nth-child(21)").html();
+
+                empObj.TotalSalary = $(obj).find("td:nth-child(22)").html();
+
+                empObj.Deductions = $(obj).find("td:nth-child(23)").html();
+
+                empObj.Advance = $(obj).find("td:nth-child(24)").html();
+
+                empObj.Loan = $(obj).find("td:nth-child(25)").html();
+
+                empObj.IncomeTax = $(obj).find("td:nth-child(26)").html();
+
+                empObj.EOBI = $(obj).find("td:nth-child(27)").html();
+
+                empObj.ProvidentFund = $(obj).find("td:nth-child(28)").html();
+
+                empObj.GrossPayableSalary = $(obj).find("td:nth-child(29)").html();
+
+                EmployeesArray.push(empObj);
+            }
+        });
+
+        console.log(EmployeesArray);
+
+        if (EmployeesArray.length > 0) {
+
+            $.ajax({
+
+                type: "POST",
+
+                url: "/PayRoll/SavePaidPayrollData",
+
+                data: { salaryArray: EmployeesArray },
+
+                success: function (response) {
+                    debugger;
+
+                    if (response.Success == true) {
+
+                        Swal.fire({
+                            icon: 'success',
+                            text: response.Data
+                        });
+                    }
+
+                    if (response.Success == false) {
+
+                        Swal.fire({
+                            icon: 'warning',
+                            text: response.Data
+                        });
+                    }
+
+                    $("#PayrollCalculationModalData").html("");
+
+                    $("#PayrollCalculationModal").modal('hide');
+                }
+            });
+
+        }
+        else {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'There Is No Data To Process!'
+            });
+        }
+    }
+
+    function Download() {
+        debugger;
+
+    }
+
+    function SelectAll() {
+        debugger;
+
+        var checkAll = $("#checkAll").prop("checked");
+
+        if (checkAll) {
+            $(".checkRow").prop("checked", true);
+        }
+        else {
+            $(".checkRow").prop("checked", false);
+        }
+    }
+
+    function RemoveCheck() {
+        debugger;
+
+        $("#checkAll").prop("checked", false);
+
+        if ($(".checkRow").filter(":checked").length == $(".checkRow").length) {
+
+            $("#checkAll").prop("checked", true);
+        }
+    }
+
+    function ProcessPayroll() {
+        debugger;
+
+        $("#PayrollCalculationModalData").html("");
+
+        var currentDate = new Date();
+
+        var CalendarDaysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+
+        var str = '';
+
+        $.ajax({
+
+            type: "GET",
+            url: "/PayRoll/GetPayrollCalculationProcessTableData",
+            success: function (data) {
+                debugger;
+
+                var overTimeSetupsList = data.OverTimeSetupsList;
+
+                var NormalOTHourRate = overTimeSetupsList.filter(x => x.OverTimeType.trim() == "Normal Overtime")[0].OverTimeRate;
+
+                var WeekendOTHourRate = overTimeSetupsList.filter(x => x.OverTimeType == "Weekend OT")[0].OverTimeRate;
+
+                var PublicHolidayOTHourRate = overTimeSetupsList.filter(x => x.OverTimeType.trim() == 'Public Holiday OT')[0].OverTimeRate;
+
+
+                var SL = 1;
+
+                $.each(data.Data, function (index, obj) {
+
+                    var PublicHolidayOTSalary = ((((obj.BasicSalary + obj.Allowances) / 30) / 8) * obj.PublicHolidaysOTHours * PublicHolidayOTHourRate);
+
+                    var WeekendOTSalary = ((((obj.BasicSalary + obj.Allowances) / 30) / 8) * obj.WeekendOTHours * WeekendOTHourRate);
+
+                    var NormalOTSalary = ((((obj.BasicSalary + obj.Allowances) / 30) / 8) * obj.NormalOTHours * NormalOTHourRate);
+
+                    var MonthlySalary = (((obj.BasicSalary + obj.Allowances) / CalendarDaysInMonth) * obj.TotalPayableDays);
+
+                    var TotalSalary = MonthlySalary + NormalOTSalary + WeekendOTSalary + PublicHolidayOTSalary + obj.ArrearsAmount + obj.BonusAmount;
+
+                    str += '<tr>' +
+                        '<td>' +
+                        '<input type="checkbox" class="checkRow" onchange="RemoveCheck();"/>' +
+                        '</td>' +
+                        '<td>' +
+                        (SL++) +
+                        '</td>' +
+                        '<td>' +
+                        obj.EmployeeId +
+                        '</td>' +
+                        '<td>' +
+                        obj.EmployeeName +
+                        '</td>' +
+                        '<td>' +
+                        obj.DateofJoining +
+                        '</td>' +
+                        '<td>' +
+                        obj.Designation +
+                        '</td>' +
+                        '<td>' +
+                        obj.Department +
+                        '</td>' +
+                        '<td>' +
+                        obj.BasicSalary +
+                        '</td>' +
+                        '<td>' +
+                        obj.Allowances +
+                        '</td>' +
+                        '<td>' +
+                        (obj.BasicSalary + obj.Allowances) +
+                        '</td>' +
+                        '<td>' +
+                        obj.SalaryMonth +
+                        '</td>' +
+                        '<td>' +
+                        obj.TotalPayableDays +
+                        '</td>' +
+                        '<td>' +
+                        (((obj.BasicSalary + obj.Allowances) / CalendarDaysInMonth) * obj.TotalPayableDays).toFixed(2) +
+                        '</td>' +
+                        '<td>' +
+                        obj.NormalOTHours +
+                        '</td>' +
+                        '<td>' +
+                        ((((obj.BasicSalary + obj.Allowances) / 30) / 8) * obj.NormalOTHours * NormalOTHourRate).toFixed(2) +
+                        '</td>' +
+                        '<td>' +
+                        obj.WeekendOTHours +
+                        '</td>' +
+                        '<td>' +
+                        ((((obj.BasicSalary + obj.Allowances) / 30) / 8) * obj.WeekendOTHours * WeekendOTHourRate).toFixed(2) +
+                        '</td>' +
+                        '<td>' +
+                        obj.PublicHolidaysOTHours +
+                        '</td>' +
+                        '<td>' +
+                        ((((obj.BasicSalary + obj.Allowances) / 30) / 8) * obj.PublicHolidaysOTHours * PublicHolidayOTHourRate).toFixed(2) +
+                        '</td>' +
+                        '<td>' +
+                        obj.ArrearsAmount +
+                        '</td>' +
+                        '<td>' +
+                        obj.BonusAmount +
+                        '</td>' +
+                        '<td>' +
+                        parseFloat(TotalSalary).toFixed(2) +
+                        '</td>' +
+                        '<td>' +
+                        obj.Deductions +
+                        '</td>' +
+                        '<td>' +
+                        obj.Advance +
+                        '</td>' +
+                        '<td>' +
+                        obj.Loan +
+                        '</td>' +
+                        '<td>' +
+                        obj.IncomeTax +
+                        '</td>' +
+                        '<td>' +
+                        obj.EOBI +
+                        '</td>' +
+                        '<td>' +
+                        obj.ProvidentFund +
+                        '</td>' +
+                        '<td>' +
+                        ((TotalSalary - (obj.Deductions + obj.Advance + obj.Loan + obj.IncomeTax + obj.EOBI + obj.ProvidentFund)) < 0 ? 0 : (TotalSalary - (obj.Deductions + obj.Advance + obj.Loan + obj.IncomeTax + obj.EOBI + obj.ProvidentFund))).toFixed(2) +
+                        '</td>' +
+                        '</tr>';
+                });
+
+
+                if (data.Data.length > 0) {
+
+                    $("#PayrollCalculationModalData").html(str);
+                }
+                else {
+
+                    $("#PayrollCalculationModalData").html('<tr><td colspan ="29" style="background-color:yellow;color:red;font-size:20px;font-weight:bold;">No More Data To Process Payroll...</td></tr>');
+                }
+
+
+            },
+            error: function (data) {
+                debugger;
+
+                alert("Error Occured! Please Review Console Log.");
+
+                console.log(data);
+            }
+        });
+
+        $("#checkAll").prop("checked", false);
+
+        $("#PayrollCalculationModal").modal('show');
+    }
+
+
+    function DownloadSheetForEmployee() {
+        debugger;
+
+        var salarySlipStr = '';
+
+        $.ajax({
+            type: "GET",
+
+            url: "/PayRoll/GetDataForDownloadSheetForEmployee",
+
+            success: function (data) {
+                debugger;
+
+                $.each(data, function (index, obj) {
+
+                    salarySlipStr += '<div style="text-align:center;font-size:25px;font-weight:bold;background-color:yellow;">Salary Slip</div>' +
+
+                        '<table class="table table-bordered">' +
+
+                        '<tr>' +
+                        '<th style="width:20%;">Employee ID</th>' +
+                        '<th style="width:25%;">' + obj.EmployeeId + '</th>' +
+                        '<th style = "width:20%;"> Employee Name</th >' +
+                        '<th style="width:25%;">' + obj.EmployeeName + '</th >' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<th>Designation</th>' +
+                        '<th>' + obj.Designation + '</th>' +
+                        '<th>Department</th>' +
+                        '<th>' + obj.Department + '</th>' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<th>Date of Joining</th>' +
+                        '<th>' + moment(obj.DateofJoining).format("DD-MMM-YYYY") + '</th>' +
+                        '<th>Salary Month</th>' +
+                        '<th>' + obj.SalaryMonth + '</th>' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<th>Basic Salary</th>' +
+                        '<th>' + obj.BasicSalary + '</th>' +
+                        '<th>Allowances</th>' +
+                        '<th>' + obj.Allowances + '</th>' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<th>Total Monthly Salary</th>' +
+                        '<th>' + obj.TotalSalaryWithAllowances + '</th>' +
+                        '<th></th>' +
+                        '<th></th>' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<th>Present Days</th>' +
+                        '<th>' + obj.PresentDays + '</th>' +
+                        '<th>Absent Days</th>' +
+                        '<th>' + obj.AbsentDays + '</th>' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<th>Bank Name</th>' +
+                        '<th></th>' +
+                        '<th>Account Number</th>' +
+                        '<th></th>' +
+                        '</tr>' +
+                        //'<tr>' +
+                        //'<th colspan="4" style="background-color: yellow; text-align: center;">*If applicable for Overtime add in OT colums and hours</th>' +
+                        //'</tr>' +
+                        //'<tr style="background-color: yellow;">' +
+                        //'<th>Normal OT hours</th>' +
+                        //'<th>' + obj.OThours + '</th>' +
+                        //'<th>Fri OT hours</th>' +
+                        //'<th></th>' +
+                        //'</tr>' +
+                        '<tr>' +
+                        '<th colspan="4" style="background-color:lightgrey; text-align:center;">CALCULATION</th>' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<th colspan="2" style="text-align:center;">Salary (A)</th>' +
+                        '<th colspan="2" style="text-align:center;">Deductions (B)</th>' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<th>Monthly Salary</th>' +
+                        '<th></th>' +
+                        '<th>Income Tax</th>' +
+                        '<th>' + obj.IncomeTax + '</th>' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<th>Normal OT</th>' +
+                        '<th>' + obj.NormalOTHours + '</th>' +
+                        '<th>Loan</th>' +
+                        '<th>' + obj.Loan + '</th>' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<th>Friday OT</th>' +
+                        '<th>' + obj.WeekendOTHours + '</th>' +
+                        '<th>EOBI</th>' +
+                        '<th>' + obj.EOBI + '</th>' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<th>Bonus</th>' +
+                        '<th>' + obj.Bonus + '</th>' +
+                        '<th>Provident</th>' +
+                        '<th>' + obj.ProvidentFund + '</th>' +
+                        '</tr>' +
+                        '<tr>' +
+                        '<th></th>' +
+                        '<th></th>' +
+                        '<th>Advance</th>' +
+                        '<th>' + obj.Advance + '</th>' +
+                        '</tr>' +
+                        //'<tr>' +
+                        //'<th></th>' +
+                        //'<th></th>' +
+                        //'<th>Other Deduction</th>' +
+                        //'<th></th>' +
+                        //'</tr>' +
+                        '<tr>' +
+                        '<th>Total Salary</th>' +
+                        '<th>' + obj.TotalSalary + '</th>' +
+                        '<th>Gross Salary (A-B)</th>' +
+                        '<th>' + obj.GrossPayableSalary + '</th>' +
+                        '</tr>' +
+
+                        '</table>';
+                });
+
+                $("#SalarySlipData").html(salarySlipStr);
+            },
+
+            error: function (data) {
+                console.log(data);
+            }
+        });
+
+        $("#DownloadSheetForEmployee").modal('show');
+    }
+
+
+    function viewPayroll(btn) {
+        debugger;
+
+        $(btn).prop("disabled", true);
+
+        $(btn).removeClass("btn-primary");
+
+        $(btn).addClass("btn-danger");
+
+        $(btn).val("Please Wait...");
+
+        var currentDate = new Date();
+
+        var CalendarDaysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+
+        var str = '';
+        debugger;
+        $.ajax({
+
+            type: "GET",
+            url: "/PayRoll/GetPayrollCalculationTableData",
+
+            success: function (data) {
+                debugger;
+
+                var overTimeSetupsList = data.OverTimeSetupsList;
+
+                var NormalOTHourRate = overTimeSetupsList.filter(x => x.OverTimeType.trim() == "Normal Overtime")[0].OverTimeRate;
+
+                var WeekendOTHourRate = overTimeSetupsList.filter(x => x.OverTimeType == "Weekend OT")[0].OverTimeRate;
+
+                var PublicHolidayOTHourRate = overTimeSetupsList.filter(x => x.OverTimeType.trim() == 'Public Holiday OT')[0].OverTimeRate;
+
+
+                $(btn).prop("disabled", false);
+
+                $(btn).removeClass("btn-danger");
+
+                $(btn).addClass("btn-primary");
+
+                $(btn).val("View Payroll");
+
+                var SL = 1;
+
+                $.each(data.Data, function (index, obj) {
+
+                    debugger;
+
+                    var PublicHolidayOTSalary = ((((obj.BasicSalary + obj.Allowances) / 30) / 8) * obj.PublicHolidaysOTHours * PublicHolidayOTHourRate);
+
+                    var WeekendOTSalary = ((((obj.BasicSalary + obj.Allowances) / 30) / 8) * obj.WeekendOTHours * WeekendOTHourRate);
+
+                    var NormalOTSalary = ((((obj.BasicSalary + obj.Allowances) / 30) / 8) * obj.NormalOTHours * NormalOTHourRate);
+
+                    var MonthlySalary = (((obj.BasicSalary + obj.Allowances) / CalendarDaysInMonth) * obj.TotalPayableDays);
+
+                    var TotalSalary = MonthlySalary + NormalOTSalary + WeekendOTSalary + PublicHolidayOTSalary + obj.ArrearsAmount + obj.BonusAmount;
+
+                    str += '<tr>' +
+                        '<td>' +
+                        (SL++) +
+                        '</td>' +
+                        '<td>' +
+                        obj.EmployeeId +
+                        '</td>' +
+                        '<td>' +
+                        obj.EmployeeName +
+                        '</td>' +
+                        '<td>' +
+                        obj.DateofJoining +
+                        '</td>' +
+                        '<td>' +
+                        obj.Designation +
+                        '</td>' +
+                        '<td>' +
+                        obj.Department +
+                        '</td>' +
+                        '<td>' +
+                        obj.BasicSalary +
+                        '</td>' +
+                        '<td>' +
+                        obj.Allowances +
+                        '</td>' +
+                        '<td>' +
+                        (obj.BasicSalary + obj.Allowances) +
+                        '</td>' +
+                        '<td>' +
+                        obj.SalaryMonth +
+                        '</td>' +
+                        '<td>' +
+                        obj.TotalPayableDays +
+                        '</td>' +
+                        '<td>' +
+                        (((obj.BasicSalary + obj.Allowances) / CalendarDaysInMonth) * obj.TotalPayableDays).toFixed(2) +
+                        '</td>' +
+                        '<td>' +
+                        obj.NormalOTHours +
+                        '</td>' +
+                        '<td>' +
+                        ((((obj.BasicSalary + obj.Allowances) / 30) / 8) * obj.NormalOTHours * NormalOTHourRate).toFixed(2) +
+                        '</td>' +
+                        '<td>' +
+                        obj.WeekendOTHours +
+                        '</td>' +
+                        '<td>' +
+                        ((((obj.BasicSalary + obj.Allowances) / 30) / 8) * obj.WeekendOTHours * WeekendOTHourRate).toFixed(2) +
+                        '</td>' +
+                        '<td>' +
+                        obj.PublicHolidaysOTHours +
+                        '</td>' +
+                        '<td>' +
+                        ((((obj.BasicSalary + obj.Allowances) / 30) / 8) * obj.PublicHolidaysOTHours * PublicHolidayOTHourRate).toFixed(2) +
+                        '</td>' +
+                        '<td>' +
+                        obj.ArrearsAmount +
+                        '</td>' +
+                        '<td>' +
+                        obj.BonusAmount +
+                        '</td>' +
+                        '<td>' +
+                        parseFloat(TotalSalary).toFixed(2) +
+                        '</td>' +
+                        '<td>' +
+                        obj.Deductions +
+                        '</td>' +
+                        '<td>' +
+                        obj.Advance +
+                        '</td>' +
+                        '<td>' +
+                        obj.Loan +
+                        '</td>' +
+                        '<td>' +
+                        obj.IncomeTax +
+                        '</td>' +
+                        '<td>' +
+                        obj.EOBI +
+                        '</td>' +
+                        '<td>' +
+                        obj.ProvidentFund +
+                        '</td>' +
+                        '<td>' +
+                        //(TotalSalary - (obj.Deductions + obj.Advance + obj.Loan + obj.IncomeTax + obj.EOBI + obj.ProvidentFund)).toFixed(2) +
+
+                        ((TotalSalary - (obj.Deductions + obj.Advance + obj.Loan + obj.IncomeTax + obj.EOBI + obj.ProvidentFund)) < 0 ? 0 : (TotalSalary - (obj.Deductions + obj.Advance + obj.Loan + obj.IncomeTax + obj.EOBI + obj.ProvidentFund))).toFixed(2) +
+                        '</td>' +
+                        '</tr>';
+                });
+
+                $("#FixedSectionPerMonth").html(str);
+
+
+                //var allowStr = '';
+
+                //$.each(data.SalarySetupList, function (index, obj) {
+
+                //    allowStr += '<div style="margin:5px;">';
+
+                //    var allowanceAmountArray = [];
+
+                //    allowStr += '<table class="table table-bordered table-condensed table-hover table-striped">' +
+                //        '<thead>' +
+                //        '<tr><td colspan="3" style="color:red;font-size:16px;font-weight:bold;background-color:yellow;">Employee Id : ' + obj.EmployeeId + '</td></tr>' +
+                //        '<tr style="background-color:cornflowerblue;">' +
+                //        '<th style="width:50px;">No</th>' +
+                //        '<th>Allowances</th>' +
+                //        '<th>Amount</th>' +
+                //        '</tr>' +
+                //        '</thead>' +
+                //        '<tbody>';
+
+                //    $.each(obj.Allowances, function (index, val) {
+
+                //        allowStr += '<tr>' +
+                //            '<td>' + (index + 1) + '</td>' +
+                //            '<td>' + val.Allowances + '</td>' +
+                //            '<td>' + val.TotalAmount + '</td>' +
+                //            '</tr>';
+
+                //        allowanceAmountArray.push(val.TotalAmount);
+                //    });
+
+                //    allowStr += '<tr><td colspan="2" style="text-align:right;font-weight:bold;">Total : </td><td>' + allowanceAmountArray.reduce((x, y) => x + y, 0) + '</td></tr>';
+
+                //    allowStr += '</tbody></table>';
+
+                //    allowStr += '</div>';
+                //});
+
+                //var allowStr = '';
+
+                //allowStr += '<div style="margin:5px;width:40%;">';
+
+                //allowStr += '<table class="table table-bordered table-condensed table-hover table-striped">' +
+                //    '<thead>' +
+                //    '<tr style="background-color:cornflowerblue;">' +
+                //    '<th style="width:50px;">No</th>' +
+                //    '<th style="width:130px;">Employee Id</th>' +
+                //    '<th>Allowances</th>' +
+                //    '<th>Amount</th>' +
+                //    '</tr>' +
+                //    '</thead>' +
+                //    '<tbody>';
+
+                //$.each(data.SalarySetupList, function (index, obj) {
+
+                //    var allowanceAmountArray = [];
+
+                //    $.each(obj.Allowances, function (index, val) {
+
+                //        allowStr += '<tr>' +
+                //            '<td>' + (index + 1) + '</td>' +
+                //            '<td>' + val.EmployeeId + '</td>' +
+                //            '<td>' + val.Allowances + '</td>' +
+                //            '<td>' + val.TotalAmount + '</td>' +
+                //            '</tr>';
+
+                //        allowanceAmountArray.push(val.TotalAmount);
+                //    });
+
+                //    allowStr += '<tr style="background-color:lightgreen;"><td colspan="3" style="text-align:right;font-weight:bold;">Total : </td><td>' + allowanceAmountArray.reduce((x, y) => x + y, 0).toFixed(2) + '</td></tr>';
+                //});
+
+                //allowStr += '</tbody></table>';
+
+                //allowStr += '</div>';
+
+                //$("#allowancesDiv").html(allowStr);
+            },
+            error: function (data) {
+                debugger;
+
+                alert("Error Occured! Please Review Console Log.");
+
+                console.log(data);
+
+                $(btn).prop("disabled", false);
+
+                $(btn).removeClass("btn-danger");
+
+                $(btn).addClass("btn-primary");
+
+                $(btn).val("View Payroll");
+            }
+        });
+    }
+
+</script>
