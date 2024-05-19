@@ -1003,6 +1003,21 @@ namespace HRMS.Controllers
         }
         #endregion
 
+        public string AutoEmployeeCode(string stringCode)
+        {
+            stringCode = stringCode.Substring(0, 3);
+
+            int intCode = Convert.ToInt32(stringCode.Substring(3));
+
+            intCode++;
+
+            var threeDidgit = intCode.ToString("000"); 
+
+            stringCode += threeDidgit;
+          
+            return stringCode;
+        }
+
 
         [HttpPost]
         public ActionResult UploadExcel(HrmEmployee employee, HttpPostedFileBase FileUpload)
@@ -1013,6 +1028,30 @@ namespace HRMS.Controllers
                 {
                     try
                     {
+                        var LastEmp = _hrms.HrmEmployees.Where(x => x.Active == true).ToList().LastOrDefault();
+
+                        string stringCode = "";
+
+                        if (LastEmp != null)
+                        {
+                            stringCode = LastEmp.EmployeeCode.Substring(0, 3);
+
+                            int intCode = Convert.ToInt32(LastEmp.EmployeeCode.Substring(3));
+
+                            intCode++;
+
+                            var threeDidgit = intCode.ToString("000");
+
+                            stringCode += threeDidgit;
+                        }
+                        else
+                        {
+                            stringCode = "Emp" + 1.ToString("000");
+                        }
+
+                        bool firstTimeCode = true;
+
+
                         ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
                         using (var pac = new ExcelPackage(FileUpload.InputStream))
@@ -1090,13 +1129,17 @@ namespace HRMS.Controllers
                                             TU.LastName = table.Rows[i]["LastName"].ToString();
                                         }
 
-                                        if (table.Rows[i]["EmployeeCode"] == DBNull.Value || table.Rows[i]["EmployeeCode"].ToString() == "NULL")
+                                        if(firstTimeCode == true)
                                         {
-                                            TU.EmployeeCode = null;
+                                            firstTimeCode = false;
+
+                                            TU.EmployeeCode = stringCode;
                                         }
                                         else
                                         {
-                                            TU.EmployeeCode = table.Rows[i]["EmployeeCode"].ToString();
+                                            stringCode = AutoEmployeeCode(stringCode);
+
+                                            TU.EmployeeCode = stringCode;
                                         }
 
                                         if (table.Rows[i]["Gender"] == DBNull.Value || table.Rows[i]["Gender"].ToString() == "NULL")
