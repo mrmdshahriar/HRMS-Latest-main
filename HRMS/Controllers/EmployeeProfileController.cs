@@ -1005,7 +1005,7 @@ namespace HRMS.Controllers
 
         public string AutoEmployeeCode(string stringCode)
         {
-            stringCode = stringCode.Substring(0, 3);
+            var str = stringCode.Substring(0, 3);
 
             int intCode = Convert.ToInt32(stringCode.Substring(3));
 
@@ -1013,9 +1013,9 @@ namespace HRMS.Controllers
 
             var threeDidgit = intCode.ToString("000"); 
 
-            stringCode += threeDidgit;
+            str += threeDidgit;
           
-            return stringCode;
+            return str;
         }
 
 
