@@ -1160,17 +1160,6 @@ namespace HRMS.Controllers
                                             TU.FatherHusbandName = table.Rows[i]["FatherHusbandName"].ToString();
                                         }
 
-                                        //if (table.Rows[i]["DateOfBirth"] == DBNull.Value || table.Rows[i]["DateOfBirth"].ToString() == "NULL")
-                                        //{
-                                        //    TU.DateOfBirth = null;
-                                        //}
-                                        //else
-                                        //{
-                                        //    //TU.DateOfBirth = DateTime.FromOADate(Convert.ToDouble(table.Rows[i]["DateOfBirth"]));
-
-                                        //    TU.DateOfBirth = Convert.ToDateTime(table.Rows[i]["DateOfBirth"].ToString());
-                                        //}
-
                                         if (table.Rows[i]["DateOfBirth"] == DBNull.Value || table.Rows[i]["DateOfBirth"].ToString() == "NULL")
                                         {
                                             TU.DateOfBirth = null;
@@ -1197,17 +1186,6 @@ namespace HRMS.Controllers
                                         {
                                             TU.IdentityCardNo = table.Rows[i]["IdentityCardNo"].ToString();
                                         }
-
-                                        //if (table.Rows[i]["IdentityExpiryDate"] == DBNull.Value || table.Rows[i]["IdentityExpiryDate"].ToString() == "NULL")
-                                        //{
-                                        //    TU.IdentityExpiryDate = null;
-                                        //}
-                                        //else
-                                        //{
-                                        //    //TU.IdentityExpiryDate = DateTime.FromOADate(Convert.ToDouble(table.Rows[i]["IdentityExpiryDate"]));
-
-                                        //    TU.IdentityExpiryDate = Convert.ToDateTime(table.Rows[i]["IdentityExpiryDate"]);
-                                        //}
 
                                         if (table.Rows[i]["IdentityExpiryDate"] == DBNull.Value || table.Rows[i]["IdentityExpiryDate"].ToString() == "NULL")
                                         {
@@ -1380,17 +1358,6 @@ namespace HRMS.Controllers
                                             TU.MachineId = table.Rows[i]["MachineId"].ToString();
                                         }
 
-                                        //if (table.Rows[i]["dteJoiningDate"] == DBNull.Value || table.Rows[i]["dteJoiningDate"].ToString() == "NULL")
-                                        //{
-                                        //    TU.dteJoiningDate = null;
-                                        //}
-                                        //else
-                                        //{
-                                        //    //TU.JoiningDate = DateTime.FromOADate(Convert.ToDouble(table.Rows[i]["JoiningDate"]));
-
-                                        //    TU.dteJoiningDate = Convert.ToDateTime(table.Rows[i]["dteJoiningDate"]);
-                                        //}
-
                                         if (table.Rows[i]["dteJoiningDate"] == DBNull.Value || table.Rows[i]["dteJoiningDate"].ToString() == "NULL")
                                         {
                                             TU.dteJoiningDate = null;
@@ -1418,17 +1385,6 @@ namespace HRMS.Controllers
                                             TU.ProbationPeriod = Convert.ToInt32(table.Rows[i]["ProbationPeriod"]);
                                         }
 
-                                        //if (table.Rows[i]["ConfirmationDate"] == DBNull.Value || table.Rows[i]["ConfirmationDate"].ToString() == "NULL")
-                                        //{
-                                        //    TU.ConfirmationDate = null;
-                                        //}
-                                        //else
-                                        //{
-                                        //    //TU.ConfirmationDate = DateTime.FromOADate(Convert.ToDouble(table.Rows[i]["ConfirmationDate"]));
-
-                                        //    TU.ConfirmationDate = Convert.ToDateTime(table.Rows[i]["ConfirmationDate"]);
-                                        //}
-
                                         if (table.Rows[i]["ConfirmationDate"] == DBNull.Value || table.Rows[i]["ConfirmationDate"].ToString() == "NULL")
                                         {
                                             TU.ConfirmationDate = null;
@@ -1446,17 +1402,6 @@ namespace HRMS.Controllers
                                                 TU.ConfirmationDate = Convert.ToDateTime(table.Rows[i]["ConfirmationDate"]);
                                             }
                                         }
-
-                                        //if (table.Rows[i]["ContractExpiryDate"] == DBNull.Value || table.Rows[i]["ContractExpiryDate"].ToString() == "NULL")
-                                        //{
-                                        //    TU.ContractExpiryDate = null;
-                                        //}
-                                        //else
-                                        //{
-                                        //    //TU.ContractExpiryDate = DateTime.FromOADate(Convert.ToDouble(table.Rows[i]["ContractExpiryDate"]));
-
-                                        //    TU.ContractExpiryDate = Convert.ToDateTime(table.Rows[i]["ContractExpiryDate"]);
-                                        //}
 
                                         if (table.Rows[i]["ContractExpiryDate"] == DBNull.Value || table.Rows[i]["ContractExpiryDate"].ToString() == "NULL")
                                         {
@@ -1617,9 +1562,15 @@ namespace HRMS.Controllers
                                         }
                                         else
                                         {
-                                            TU.IswebloginAllowed = Convert.ToBoolean(table.Rows[i]["IswebloginAllowed"].ToString() == "1" ? true : false);
+                                            if (table.Rows[i]["IswebloginAllowed"].ToString() == "1" || table.Rows[i]["IswebloginAllowed"].ToString() == "True")
+                                            {
+                                                TU.IswebloginAllowed = true;
+                                            }
+                                            else
+                                            {
+                                                TU.IswebloginAllowed = false;
+                                            }
                                         }
-
 
                                         if (table.Rows[i]["SoftRoleinformation"].ToString() == "NULL" || table.Rows[i]["SoftRoleinformation"] == DBNull.Value)
                                         {
@@ -1654,7 +1605,14 @@ namespace HRMS.Controllers
                                         }
                                         else
                                         {
-                                            TU.Active = Convert.ToBoolean(table.Rows[i]["Active"].ToString() == "1" ? true : false);
+                                            if (table.Rows[i]["Active"].ToString() == "1" || table.Rows[i]["Active"].ToString() == "True")
+                                            {
+                                                TU.Active = true;
+                                            }
+                                            else
+                                            {
+                                                TU.Active = false;
+                                            }
                                         }
 
                                         if (table.Rows[i]["Country_Id"] == DBNull.Value || table.Rows[i]["Country_Id"].ToString() == "NULL")
@@ -1665,17 +1623,6 @@ namespace HRMS.Controllers
                                         {
                                             TU.Country_Id = Convert.ToInt32(table.Rows[i]["Country_Id"]);
                                         }
-
-                                        //if (table.Rows[i]["PassportExpiryDate"] == DBNull.Value || table.Rows[i]["PassportExpiryDate"].ToString() == "NULL")
-                                        //{
-                                        //    TU.PassportExpiryDate = null;
-                                        //}
-                                        //else
-                                        //{
-                                        //    //TU.PassportExpiryDate = DateTime.FromOADate(Convert.ToDouble(table.Rows[i]["PassportExpiryDate"]));
-
-                                        //    TU.PassportExpiryDate = Convert.ToDateTime(table.Rows[i]["PassportExpiryDate"]);
-                                        //}
 
                                         if (table.Rows[i]["PassportExpiryDate"] == DBNull.Value || table.Rows[i]["PassportExpiryDate"].ToString() == "NULL")
                                         {
@@ -1847,14 +1794,16 @@ namespace HRMS.Controllers
                                         {
                                             TU.AccountType = table.Rows[i]["AccountType"].ToString();
                                         }
+
                                         if (table.Rows[i]["ShiftId"] == DBNull.Value || table.Rows[i]["ShiftId"].ToString() == "NULL")
                                         {
                                             TU.ShiftId = null;
                                         }
                                         else
                                         {
-                                            TU.ShiftId = Convert.ToInt32(table.Rows[i]["ShiftId"]);
+                                            TU.ShiftId = Convert.ToInt64(table.Rows[i]["ShiftId"]);
                                         }
+
                                         if (table.Rows[i]["VisaTitle"] == DBNull.Value || table.Rows[i]["VisaTitle"].ToString() == "NULL")
                                         {
                                             TU.VisaTitle = null;
@@ -1863,14 +1812,16 @@ namespace HRMS.Controllers
                                         {
                                             TU.VisaTitle = table.Rows[i]["VisaTitle"].ToString();
                                         }
+
                                         if (table.Rows[i]["VisaNumber"] == DBNull.Value || table.Rows[i]["VisaNumber"].ToString() == "NULL")
                                         {
                                             TU.VisaNumber = null;
                                         }
                                         else
                                         {
-                                            TU.VisaNumber = Convert.ToInt32(table.Rows[i]["VisaNumber"]);
+                                            TU.VisaNumber = Convert.ToInt64(table.Rows[i]["VisaNumber"]);
                                         }
+
                                         if (table.Rows[i]["VisaIssuanceDate"] == DBNull.Value || table.Rows[i]["VisaIssuanceDate"].ToString() == "NULL")
                                         {
                                             TU.VisaIssuanceDate = null;
@@ -1906,14 +1857,16 @@ namespace HRMS.Controllers
                                                 TU.VisaExpiryDate = Convert.ToDateTime(table.Rows[i]["VisaExpiryDate"]);
                                             }
                                         }
+
                                         if (table.Rows[i]["LabourCardNumber"] == DBNull.Value || table.Rows[i]["LabourCardNumber"].ToString() == "NULL")
                                         {
                                             TU.VisaNumber = null;
                                         }
                                         else
                                         {
-                                            TU.LabourCardNumber = Convert.ToInt32(table.Rows[i]["LabourCardNumber"]);
+                                            TU.LabourCardNumber = Convert.ToInt64(table.Rows[i]["LabourCardNumber"]);
                                         }
+
                                         if (table.Rows[i]["LabourCardCode"] == DBNull.Value || table.Rows[i]["LabourCardCode"].ToString() == "NULL")
                                         {
                                             TU.LabourCardCode = null;
@@ -1922,6 +1875,7 @@ namespace HRMS.Controllers
                                         {
                                             TU.LabourCardCode = table.Rows[i]["LabourCardCode"].ToString();
                                         }
+
                                         if (table.Rows[i]["LabourCardExpiry"] == DBNull.Value || table.Rows[i]["LabourCardExpiry"].ToString() == "NULL")
                                         {
                                             TU.LabourCardExpiry = null;
@@ -1939,21 +1893,30 @@ namespace HRMS.Controllers
                                                 TU.LabourCardExpiry = Convert.ToDateTime(table.Rows[i]["LabourCardExpiry"]);
                                             }
                                         }
+
                                         if (table.Rows[i]["InsuranceCardNumber"] == DBNull.Value || table.Rows[i]["InsuranceCardNumber"].ToString() == "NULL")
                                         {
                                             TU.InsuranceCardNumber = null;
                                         }
                                         else
                                         {
-                                            TU.InsuranceCardNumber = Convert.ToInt32(table.Rows[i]["InsuranceCardNumber"]);
+                                            TU.InsuranceCardNumber = Convert.ToInt64(table.Rows[i]["InsuranceCardNumber"]);
                                         }
+
                                         if (table.Rows[i]["ActiveVisa"] == DBNull.Value || table.Rows[i]["ActiveVisa"].ToString() == "NULL")
                                         {
                                             TU.ActiveVisa = null;
                                         }
                                         else
                                         {
-                                            TU.ActiveVisa = Convert.ToBoolean(table.Rows[i]["ActiveVisa"].ToString() == "1" ? true : false);
+                                            if(table.Rows[i]["ActiveVisa"].ToString() == "1" || table.Rows[i]["ActiveVisa"].ToString() == "True")
+                                            {
+                                                TU.ActiveVisa = true;
+                                            }
+                                            else
+                                            {
+                                                TU.ActiveVisa = false;
+                                            }
                                         }
 
                                         if (table.Rows[i]["EmployeeStatus"] == DBNull.Value || table.Rows[i]["EmployeeStatus"].ToString() == "NULL")
@@ -1964,9 +1927,6 @@ namespace HRMS.Controllers
                                         {
                                             TU.EmployeeStatus = table.Rows[i]["EmployeeStatus"].ToString();
                                         }
-
-
-
 
                                         list.Add(TU);
                                     }
