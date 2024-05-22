@@ -133,7 +133,9 @@
                         </td>
 
                         <td>
-                            @Html.DisplayFor(modelItem => item.dteJoiningDate)
+                            @string.Format("{0:dd-MMM-yyyy}", item.dteJoiningDate)
+
+                            @*@Html.DisplayFor(modelItem => item.dteJoiningDate)*@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ContacNo)
@@ -212,9 +214,6 @@
                 });
             }
         });
-
-
-
 
 
         //$(document).ready(function () {
@@ -306,8 +305,6 @@
                     error: function (e) {
                         LoadingEmployeeDetails();
                     }
-
-
                 });
             }
 

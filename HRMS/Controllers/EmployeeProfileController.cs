@@ -73,7 +73,7 @@ namespace HRMS.Controllers
         }
         public void CheckTerminations()
         {
-            var result = _hrms.Terminations.ToList();
+            //var result = _hrms.Terminations.ToList();
             // List<HrmEmployee> hrmEmp = new List<HrmEmployee>();
             //var hrmEmp = (List<HrmEmployee>)Session["hrmEmp"];
             var hrmEmp = _hrms.HrmEmployees.ToList();
@@ -1020,7 +1020,7 @@ namespace HRMS.Controllers
 
 
         [HttpPost]
-        public ActionResult UploadExcel(HrmEmployee employee, HttpPostedFileBase FileUpload)
+        public ActionResult UploadExcel(HttpPostedFileBase FileUpload)
         {
             if (FileUpload != null)
             {
@@ -1965,7 +1965,7 @@ namespace HRMS.Controllers
                             }
                             else
                             {
-                                TempData["Msg"] = "Excel File Format Has No Worksheet";
+                                TempData["Msg"] = "Excel File Has No Worksheet";
                             }
                         }
 
