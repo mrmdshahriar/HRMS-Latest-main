@@ -1028,7 +1028,7 @@ namespace HRMS.Controllers
                 {
                     try
                     {
-                        var LastEmp = _hrms.HrmEmployees.Where(x => x.Active == true).ToList().LastOrDefault();
+                        var LastEmp = _hrms.HrmEmployees.ToList().LastOrDefault();
 
                         string stringCode = "";
 
@@ -1185,6 +1185,15 @@ namespace HRMS.Controllers
                                         else
                                         {
                                             TU.IdentityCardNo = table.Rows[i]["IdentityCardNo"].ToString();
+                                        }
+
+                                        if (table.Rows[i]["ReportToPerson"] == DBNull.Value || table.Rows[i]["ReportToPerson"].ToString() == "NULL")
+                                        {
+                                            TU.ReportToPerson = null;
+                                        }
+                                        else
+                                        {
+                                            TU.ReportToPerson = Convert.ToInt32(table.Rows[i]["ReportToPerson"]);
                                         }
 
                                         if (table.Rows[i]["IdentityExpiryDate"] == DBNull.Value || table.Rows[i]["IdentityExpiryDate"].ToString() == "NULL")
@@ -1569,6 +1578,22 @@ namespace HRMS.Controllers
                                             else
                                             {
                                                 TU.IswebloginAllowed = false;
+                                            }
+                                        }
+
+                                        if (table.Rows[i]["IsDeleted"] == DBNull.Value || table.Rows[i]["IsDeleted"].ToString() == "NULL")
+                                        {
+                                            TU.IsDeleted = null;
+                                        }
+                                        else
+                                        {
+                                            if (table.Rows[i]["IsDeleted"].ToString() == "1" || table.Rows[i]["IsDeleted"].ToString() == "True")
+                                            {
+                                                TU.IsDeleted = true;
+                                            }
+                                            else
+                                            {
+                                                TU.IsDeleted = false;
                                             }
                                         }
 
