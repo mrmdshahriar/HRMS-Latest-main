@@ -7,8 +7,7 @@ namespace HRMS.Models
 {
     public partial class HRMS : DbContext
     {
-        public HRMS()
-            : base("name=Talenthrm")
+        public HRMS() : base("name=Talenthrm")
         {
         }
 

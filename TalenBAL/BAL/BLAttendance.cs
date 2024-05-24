@@ -423,26 +423,23 @@ namespace TalenBAL.BAL
         {
             try
             {
+              var ListRecord = (from emp in db.HrmEmployees
+                              where emp.Id == EmployeeId //&& Year == Year
+                              select new
+                              {
+                                  Employee = emp.Id,
+                                  EmployeeCode = emp.EmployeeCode,
+                                  EmployeeName = emp.FirstName + " " + emp.LastName,
+                                  MonthYear = Month + "," + Year,
+                                  TotalDays = db.Attendances.Where(x => x.Month == Month && x.Year == Year).Count(),
+                                  PresentDays = db.Attendances.Where(x => x.IsPresent == true && x.Month == Month).Count(),
+                                  AbsentDays = db.Attendances.Where(x => x.IsAbsent == true && x.Month == Month).Count(),
+                                  LeaveDays = db.Attendances.Where(x => x.IsLeave == true && x.Month == Month).Count(),
+                                  EarlyDays = db.Attendances.Where(x => x.IsEarly == true && x.Month == Month).Count(),
+                                  LateDays = db.Attendances.Where(x => x.IsLate == true && x.Month == Month).Count(),
+                                  HalfDays = db.Attendances.Where(x => x.IsHalfDay == true && x.Month == Month).Count()
 
-                var ListRecord =
-                         (from emp in db.HrmEmployees
-
-                          where emp.Id == EmployeeId //&& Year == Year
-                          select new
-                          {
-                              Employee = emp.Id,
-                              EmployeeCode = emp.EmployeeCode,
-                              EmployeeName = emp.FirstName + " " + emp.LastName,
-                              MonthYear = Month + "," + Year,
-                              TotalDays = db.Attendances.Where(x => x.Month == Month && x.Year == Year).Count(),
-                              PresentDays = db.Attendances.Where(x => x.IsPresent == true && x.Month == Month).Count(),
-                              AbsentDays = db.Attendances.Where(x => x.IsAbsent == true && x.Month == Month).Count(),
-                              LeaveDays = db.Attendances.Where(x => x.IsLeave == true && x.Month == Month).Count(),
-                              EarlyDays = db.Attendances.Where(x => x.IsEarly == true && x.Month == Month).Count(),
-                              LateDays = db.Attendances.Where(x => x.IsLate == true && x.Month == Month).Count(),
-                              HalfDays = db.Attendances.Where(x => x.IsHalfDay == true && x.Month == Month).Count()
-
-                          }).ToList();
+                              }).ToList();
              
                 return ListRecord;
 

@@ -14,17 +14,22 @@ namespace TalenBAL.BALModel
         //{
         //}
   
-        static BALHRMS()
-        {
-            Database.SetInitializer<BALHRMS>(null);
-        }
-        public BALHRMS()
-            : base("data source=DESKTOP-L3A1RRT;initial catalog=Talenthrm;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework providerName = System.Data.SqlClient")
-
-            //: base("workstation id=Talentdb.mssql.somee.com;packet size=4096;user id=ghazihur_SQLLogin_1;pwd=oq4f22l1hb;data source=Talentdb.mssql.somee.com;persist security info=False;initial catalog=Talentdb")
-            //: base("Data Source=167.235.228.209;Initial Catalog=Talenthrm;Persist Security Info=True;User ID=sa;Password=Talenthrm123")
+        //static BALHRMS()
+        //{
+        //    Database.SetInitializer<BALHRMS>(null);
+        //}
 
 
+        //public BALHRMS()
+        //: base("data source=.;initial catalog=Talenthrm;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework providerName = System.Data.SqlClient")
+
+        //: base("data source=sql.bsite.net\\MSSQL2016;initial catalog=mrmdshah_Talenthrm;User ID=mrmdshah_Talenthrm;Password=123456789;")
+
+
+        //: base("workstation id=Talentdb.mssql.somee.com;packet size=4096;user id=ghazihur_SQLLogin_1;pwd=oq4f22l1hb;data source=Talentdb.mssql.somee.com;persist security info=False;initial catalog=Talentdb")
+        //: base("Data Source=167.235.228.209;Initial Catalog=Talenthrm;Persist Security Info=True;User ID=sa;Password=Talenthrm123")
+
+        public BALHRMS() : base("name=Talenthrm")
         {
             var ensureDLLIsCopied =
                     System.Data.Entity.SqlServer.SqlProviderServices.Instance;
