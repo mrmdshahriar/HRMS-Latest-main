@@ -28,6 +28,22 @@ namespace HRMS
             }
             return Islogin;
         }
+
+        public dynamic GetEmployeeHolidays(int? id)
+        {
+           var obj = db.HrmEmployees.Where(x => x.Id == id).FirstOrDefault();
+
+            var ShiftId = obj?.ShiftId;
+
+            return  db.ShiftMasters.Where(x => x.ShiftId == ShiftId).Select(x => new
+            {
+                x.IsFriday,
+                x.IsSaturday,
+                x.IsSunday
+            }).ToList();
+        }
+
+
         public IList<HrmEmployee> GetAllEmployee()
         {
            

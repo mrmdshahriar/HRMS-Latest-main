@@ -109,6 +109,15 @@ namespace HRMS.Controllers
             ViewBag.GetOffDays = JsonConvert.SerializeObject(_objBLAttendance.GetOffDays());
             return View();
         }
+
+        public ActionResult GetEmployeeHolidays(int? id)
+        {
+
+            var result = ObjBAL.GetEmployeeHolidays(id);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult AttendanceCalculation()
         {
             ViewBag.DepartmentDLL = ObjBAL.GetAllDepartment();
