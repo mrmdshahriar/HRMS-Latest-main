@@ -203,7 +203,9 @@
 <script>
 
 
-        $(document).ready(function () {
+    $(document).ready(function () {
+
+        debugger;
 
             if ("@TempData["Msg"]" != "") {
 
@@ -211,6 +213,8 @@
                     icon: 'info',
                     title: 'Message',
                     text: "@TempData["Msg"]",
+                }).then(x => {
+                    window.location.reload();
                 });
             }
         });
