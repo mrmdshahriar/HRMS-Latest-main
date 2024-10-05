@@ -48,7 +48,7 @@
                     <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
                 <div class="modal-body">
-                    @using (Html.BeginForm("UploadExcel", "EmployeeProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("UploadExcel", "EmployeeProfile", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "displaySuccessMessage()" }))
                     {
                         <div class="form-group">
                             <div class="control-label col-md-2">Excel:</div>
@@ -62,7 +62,7 @@
                             </div>
                         </div>
 
-                    }
+                    }  
 
                 </div>
 
@@ -202,10 +202,20 @@
    
 <script>
 
+    function displaySuccessMessage() {
+        debugger;
+
+        sessionStorage.setItem("display", "true");
+    }
+
 
     $(document).ready(function () {
 
         debugger;
+
+        var display = sessionStorage.getItem("display");
+
+        if (display == "true") {
 
             if ("@TempData["Msg"]" != "") {
 
@@ -215,10 +225,15 @@
                     text: "@TempData["Msg"]",
                 }).then(x => {
 
-                    window.location.reload();
+                    sessionStorage.setItem("display", "false");
+
+                    //window.location.reload();
                 });
             }
-        });
+
+        }
+
+     });
 
 
         //$(document).ready(function () {
