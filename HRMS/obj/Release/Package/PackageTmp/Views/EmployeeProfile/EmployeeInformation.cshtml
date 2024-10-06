@@ -272,7 +272,7 @@
                                                     <div class="form-group row">
                                                         <label class="col-sm-8 col-form-label">Name</label>
                                                         <div class="col-sm-12">
-                                                            <input type="text" class="form-control" aria-describedby="Degree" id="Name" required name="Name" placeholder="Enter Name">
+                                                            <input type="text" class="form-control" aria-describedby="Degree" id="Name" required name="Name" placeholder="Enter skill Name">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -307,7 +307,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                @*<div class="col-md-3">
                                                     <div class="form-group row">
                                                         <label class="col-sm-8 col-form-label">Result</label>
                                                         <div class="col-sm-12">
@@ -322,7 +322,7 @@
                                                             <input class="form-control"  name="FromSuffering" placeholder="Enter From Suffering" />
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>*@
 
                                                 <div class="col-md-3">
                                                     <div class="form-group row">
@@ -1744,8 +1744,8 @@
                 "<tr class='ob_gC'>" +
                 "<th>S.NO</th>" +
                 "<th>Diseas Name</th>" +
-                "<th>Result</th>" +
-                "<th>From Suffering</th>" +
+                //"<th>Result</th>" +
+                //"<th>From Suffering</th>" +
                 "<th>Treatment</th>" +
                 "<th colspan='2'>Actions</th>" +
                 "</tr>" +
@@ -1760,8 +1760,8 @@
                     val = "<tr>" +
                         "<td class='first-td'>" + parseInt(i + 1) + "</td>" +
                         "<td>" + Healths[i].DiseasName + "</td>" +
-                        "<td>" + Healths[i].Result + "</td>" +
-                        "<td>" + Healths[i].FromSuffering + "</td>" +
+                        //"<td>" + Healths[i].Result + "</td>" +
+                        //"<td>" + Healths[i].FromSuffering + "</td>" +
                         "<td>" + Healths[i].Treatment + "</td>" +
                         `<td><a onclick='DownloadFile("${Healths[i].Attachment}")'  title='Open PDF File' style='cursor: pointer;'><i style="cursor: pointer;" class="fa fa-file-pdf-o text-primary" aria-hidden="true"></i></a> </td>` +
                         "<td class='last-td'><a onclick='EditHealth(Healths[" + i + "].Id)' class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' ><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = RemoveHealth(" + Healths[i].Id + ") > <i class='fa fa-trash'></i></a > "

@@ -21,120 +21,120 @@
             <div class="accordion" id="accordionExample">
                 <!-- Basic Information -->
                 <div class="accordion-item">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color: #f5f8fd; background: linear-gradient(45deg, #ff0dbc, #ff7d00);">
-                            Basic Information
-                            <p id="BtnClose" style="margin-left: 1129px !important; border: 1px solid; padding: 6px;font-weight:bold;display:none; " title="Exit" onclick="FunClose();">X</p>
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-8 col-form-label">Employee Code</label>
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" aria-describedby="emailHelp" id="txtEmployeeCode" name="EmployeeCode" value="@Model.EmployeeCode"
-                                                           readonly placeholder="Enter Employee Code">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color: #f5f8fd; background: linear-gradient(45deg, #ff0dbc, #ff7d00);">
+                                Basic Information
+                                <p id="BtnClose" style="margin-left: 1129px !important; border: 1px solid; padding: 6px;font-weight:bold;display:none; " title="Exit" onclick="FunClose();">X</p>
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-8 col-form-label">Employee Code</label>
+                                                    <div class="col-sm-12">
+                                                        <input type="text" class="form-control" aria-describedby="emailHelp" id="txtEmployeeCode" name="EmployeeCode" value="@Model.EmployeeCode"
+                                                               readonly placeholder="Enter Employee Code">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-8 col-form-label">Biometric Code</label>
-                                                <div class="col-sm-12">
-                                                    <input type="text" name="BiometricCode" class="form-control" aria-describedby="emailHelp" id="txtBiomatricCode" placeholder="Enter Biomatric Code">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-8 col-form-label">Biometric Code</label>
+                                                    <div class="col-sm-12">
+                                                        <input type="text" name="BiometricCode" class="form-control" aria-describedby="emailHelp" id="txtBiomatricCode" placeholder="Enter Biomatric Code">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-8 col-form-label">Title</label>
-                                                <div class="col-sm-12">
-                                                    <select class="form-control" name="Title">
-                                                        <option value="" selected disabled>Select Title</option>
-                                                        <option value="Mr.">Mr.</option>
-                                                        <option value="Mrs.">Mrs.</option>
-                                                    </select>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-8 col-form-label">Title</label>
+                                                    <div class="col-sm-12">
+                                                        <select class="form-control" name="Title">
+                                                            <option value="" selected disabled>Select Title</option>
+                                                            <option value="Mr.">Mr.</option>
+                                                            <option value="Mrs.">Mrs.</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-8 col-form-label">First Name</label>
-                                                <div class="col-sm-12">
-                                                    <input type="text" name="FirstName" class="form-control" aria-describedby="emailHelp" id="txtFirstName" placeholder="Enter First Name">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-8 col-form-label">First Name</label>
+                                                    <div class="col-sm-12">
+                                                        <input type="text" name="FirstName" class="form-control" aria-describedby="emailHelp" id="txtFirstName" placeholder="Enter First Name">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-input">
-                                        <div class="preview">
-                                            <img id="file-ip-1-preview" style=" width: 199px; height: 141px;">
+                                    <div class="col-md-4">
+                                        <div class="form-input">
+                                            <div class="preview">
+                                                <img id="file-ip-1-preview" style=" width: 199px; height: 141px;">
+                                            </div>
+                                            <label for="file-ip-1">Upload Image</label>
+                                            <input name="ProfilePicture" type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
+
                                         </div>
-                                        <label for="file-ip-1">Upload Image</label>
-                                        <input name="ProfilePicture" type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Middle Name</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" name="Middlename" class="form-control" aria-describedby="emailHelp" id="txtMiddleName" placeholder="Enter Middle Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Last Name</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" name="LastName" class="form-control" aria-describedby="emailHelp" id="txtLastName" placeholder="Enter Last Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">CNIC</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" name="IdentityCardNo" class="form-control" aria-describedby="emailHelp" id="txtCNIC" placeholder="Enter CNIC">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">CNIC Expiration</label>
+                                            <input name="IdentityExpiryDate" type="date" class="form-control">
+                                            @*<div id="datepicker-popup" class="input-group date datepicker">
+                                    <span class="input-group-addon input-group-append border-left">
+                                        <span class="mdi mdi-calendar input-group-text"></span>
+                                    </span>
+                                </div>*@
+                                        </div>
 
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Middle Name</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="Middlename" class="form-control" aria-describedby="emailHelp" id="txtMiddleName" placeholder="Enter Middle Name">
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Passport</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" name="Passport" class="form-control" aria-describedby="emailHelp" id="txtPassport" placeholder="Enter Passport">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Last Name</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="LastName" class="form-control" aria-describedby="emailHelp" id="txtLastName" placeholder="Enter Last Name">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">CNIC</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="IdentityCardNo" class="form-control" aria-describedby="emailHelp" id="txtCNIC" placeholder="Enter CNIC">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="col-form-label">CNIC Expiration</label>
-                                        <input name="IdentityExpiryDate" type="date" class="form-control">
-                                        @*<div id="datepicker-popup" class="input-group date datepicker">
-                <span class="input-group-addon input-group-append border-left">
-                    <span class="mdi mdi-calendar input-group-text"></span>
-                </span>
-            </div>*@
-                                    </div>
-
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Passport</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="Passport" class="form-control" aria-describedby="emailHelp" id="txtPassport" placeholder="Enter Passport">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="col-form-label">Passport Expiration</label>
-                                        <input name="PassportExpiryDate" type="date" class="form-control">
-                                        @*<div class="col-sm-12">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">Passport Expiration</label>
+                                            <input name="PassportExpiryDate" type="date" class="form-control">
+                                            @*<div class="col-sm-12">
                                     <div id="datepicker-popup" class="input-group date datepicker">
                                         <span class="input-group-addon input-group-append border-left">
                                             <span class="mdi mdi-calendar input-group-text"></span>
@@ -142,495 +142,613 @@
                                     </div>
 
                                 </div>*@
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Father/Husband Name</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="FatherHusbandName" class="form-control" aria-describedby="emailHelp" id="txtFatherHusbandName" placeholder="Enter Father/Husband Name">
                                         </div>
                                     </div>
+
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Driving Licence</label>
-                                        <div class="col-sm-12">
-                                            <select class="form-control" name="DrivingLicence" id="DDLDrivingLicence">
-                                                <option value="" disabled selected="selected">Driving Licence</option>
-                                                <option value="yes">yes</option>
-                                                <option value="No">No</option>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Father/Husband Name</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" name="FatherHusbandName" class="form-control" aria-describedby="emailHelp" id="txtFatherHusbandName" placeholder="Enter Father/Husband Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Driving Licence</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="DrivingLicence" id="DDLDrivingLicence">
+                                                    <option value="" disabled selected="selected">Driving Licence</option>
+                                                    <option value="yes">yes</option>
+                                                    <option value="No">No</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Gender</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="Gender" id="DDLGender">
+                                                    <option value="" disabled selected="selected">Gender</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Other">Other</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Marital Status</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="MaritalStatus" id="DDLMaritalStatus">
+                                                    <option value="" disabled selected="selected">Marital Status</option>
+                                                    <option value="Single">Single</option>
+                                                    <option value="Married">Married</option>
+                                                    <option value="Divorced">Divorced</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Birth Country</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="BirthCountryId" id="DDLCountry">
+                                                    <option value="" disabled selected="selected">Select Country</option>
+                                                    @foreach (var item in Model.CountriesList)
+                                                    {
+                                                        <option value="@item.Id">@item.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Nationality</label>
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="NationalCountryId" id="DDLCountry">
+                                                    <option value="" disabled selected="selected">Select Nationality</option>
+                                                    @foreach (var item in Model.CountriesList)
+                                                    {
+                                                        <option value="@item.Id">@item.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Blood Group</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" name="BloodGroup" class="form-control" aria-describedby="emailHelp" id="txtBloodGroup" placeholder="Enter Blood Group">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Mother Tounge</label>
+                                            <select class="form-control" name="HrmLanguageId" id="DDLMotherTounge">
+                                                <option value="" disabled selected="selected">Mother Tounge</option>
+                                                <option value="1">English</option>
+                                                <option value="2">Urdu</option>
+                                                <option value="3">Sindhi</option>
 
                                             </select>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Gender</label>
-                                        <div class="col-sm-12">
-                                            <select class="form-control" name="Gender" id="DDLGender">
-                                                <option value="" disabled selected="selected">Gender</option>
-                                                <option value="Male">Male</option>
-                                                <option value="Female">Female</option>
-                                                <option value="Other">Other</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Marital Status</label>
-                                        <div class="col-sm-12">
-                                            <select class="form-control" name="MaritalStatus" id="DDLMaritalStatus">
-                                                <option value="" disabled selected="selected">Marital Status</option>
-                                                <option value="Single">Single</option>
-                                                <option value="Married">Married</option>
-                                                <option value="Divorced">Divorced</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Birth Country</label>
-                                        <div class="col-sm-12">
-                                            <select class="form-control" name="BirthCountryId" id="DDLCountry">
-                                                <option value="" disabled selected="selected">Select Country</option>
-                                                @foreach (var item in Model.CountriesList)
-                                                {
-                                                    <option value="@item.Id">@item.Name</option>
-                                                }
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Nationality</label>
-                                        <div class="col-sm-12">
-                                            <select class="form-control" name="NationalCountryId" id="DDLCountry">
-                                                <option value="" disabled selected="selected">Select Nationality</option>
-                                                @foreach (var item in Model.CountriesList)
-                                                {
-                                                    <option value="@item.Id">@item.Name</option>
-                                                }
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Blood Group</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="BloodGroup" class="form-control" aria-describedby="emailHelp" id="txtBloodGroup" placeholder="Enter Blood Group">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Mother Tounge</label>
-                                        <select class="form-control" name="HrmLanguageId" id="DDLMotherTounge">
-                                            <option value="" disabled selected="selected">Mother Tounge</option>
-                                            <option value="1">English</option>
-                                            <option value="2">Urdu</option>
-                                            <option value="3">Sindhi</option>
-
-                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--Position-->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color: #f5f8fd; background: linear-gradient(45deg, #ff0dbc, #ff7d00);">
-                            Position
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Employee Type</label>
-                                        <div class="col-sm-12">
-                                            <select name="EmployeeType" class="form-control" id="DDLEmployeeType">
-                                                <option value="" disabled selected="selected">Select Employee Type</option>
-                                                @foreach (var type in Model.JobTypeList)
-                                                {
-                                                    <option value="@type.Name">@type.Name</option>
-                                                }
-                                            </select>
+                    <!--Position-->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color: #f5f8fd; background: linear-gradient(45deg, #ff0dbc, #ff7d00);">
+                                Position
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Employee Type</label>
+                                            <div class="col-sm-12">
+                                                <select name="EmployeeType" class="form-control" id="DDLEmployeeType">
+                                                    <option value="" disabled selected="selected">Select Employee Type</option>
+                                                    @foreach (var type in Model.JobTypeList)
+                                                    {
+                                                        <option value="@type.Name">@type.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Group</label>
-                                        <div class="col-sm-12">
-                                            <select name="EmployeeGroupId" class="form-control" id="DDLGroup">
-                                                <option value="" disabled selected="selected">Select Group</option>
-                                                @foreach (var type in Model.EmployeeGroupList)
-                                                {
-                                                    <option value="@type.Id">@type.Name</option>
-                                                }
-                                            </select>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Group</label>
+                                            <div class="col-sm-12">
+                                                <select name="EmployeeGroupId" class="form-control" id="DDLGroup">
+                                                    <option value="" disabled selected="selected">Select Group</option>
+                                                    @foreach (var type in Model.EmployeeGroupList)
+                                                    {
+                                                        <option value="@type.Id">@type.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Designation</label>
-                                        <div class="col-sm-12">
-                                            <select name="DesignationId" class="form-control" id="DDLDesignation">
-                                                <option value="" disabled selected="selected">Select Designation</option>
-                                                @foreach (var type in Model.DesignationList)
-                                                {
-                                                    <option value="@type.Id">@type.Name</option>
-                                                }
-                                            </select>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Designation</label>
+                                            <div class="col-sm-12">
+                                                <select name="DesignationId" class="form-control" id="DDLDesignation">
+                                                    <option value="" disabled selected="selected">Select Designation</option>
+                                                    @foreach (var type in Model.DesignationList)
+                                                    {
+                                                        <option value="@type.Id">@type.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Department</label>
-                                        <div class="col-sm-12">
-                                            <select name="DepartmentId" class="form-control" id="DDLDepartment" onchange="DepartmentChange()">
-                                                <option value="" disabled selected="selected">Select Department</option>
-                                                @foreach (var type in Model.DepartmentList)
-                                                {
-                                                    <option value="@type.Id">@type.Name</option>
-                                                }
-                                            </select>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Department</label>
+                                            <div class="col-sm-12">
+                                                <select name="DepartmentId" class="form-control" id="DDLDepartment" onchange="DepartmentChange()">
+                                                    <option value="" disabled selected="selected">Select Department</option>
+                                                    @foreach (var type in Model.DepartmentList)
+                                                    {
+                                                        <option value="@type.Id">@type.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
 
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Report To</label>
-                                        <div class="col-sm-12">
-                                            <select name="ReportToId" class="form-control" id="ReportToId">
-                                                <option value="" disabled selected="selected">Select Report To</option>
-                                                @foreach (var type in Model.DesignationList)
-                                                {
-                                                    <option value="@type.Id">@type.Name</option>
-                                                }
-                                            </select>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Report To</label>
+                                            <div class="col-sm-12">
+                                                <select name="ReportToId" class="form-control" id="ReportToId">
+                                                    <option value="" disabled selected="selected">Select Report To</option>
+                                                    @foreach (var type in Model.DesignationList)
+                                                    {
+                                                        <option value="@type.Id">@type.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Reporting Manager Name</label>
-                                        <div class="col-sm-12">
-                                            <select name="ReportToPerson" class="form-control" id="ReportToPerson" >
-                                                <option value="" disabled selected="selected">Select Report To Person</option>
-                                                @foreach (var type in Model.EmployeeList)
-                                                {
-                                                    <option value="@type.Id">@type.FirstName @type.LastName</option>
-                                                }
-                                            </select>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Reporting Manager Name</label>
+                                            <div class="col-sm-12">
+                                                <select name="ReportToPerson" class="form-control" id="ReportToPerson">
+                                                    <option value="" disabled selected="selected">Select Report To Person</option>
+                                                    @foreach (var type in Model.EmployeeList)
+                                                    {
+                                                        <option value="@type.Id">@type.FirstName @type.LastName</option>
+                                                    }
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label class="col-form-label">Joining Date</label>
-                                        <input name="dteJoiningDate" type="date" id="dteJoiningDate" class="form-control">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label class="col-form-label">Joining Date</label>
+                                            <input name="dteJoiningDate" type="date" id="dteJoiningDate" class="form-control">
+                                            @*<div id="datepicker-popup" class="input-group date datepicker">
+                                    <span class="input-group-addon input-group-append border-left">
+                                        <span class="mdi mdi-calendar input-group-text"></span>
+                                    </span>
+                                </div>*@
+                                        </div>
+                                        <!--<div class="form-group row">
+                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Joining Date</label>-->
                                         @*<div id="datepicker-popup" class="input-group date datepicker">
-                    <span class="input-group-addon input-group-append border-left">
-                        <span class="mdi mdi-calendar input-group-text"></span>
-                    </span>
-                </div>*@
-                                    </div>
-                                    <!--<div class="form-group row">
-        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Joining Date</label>-->
-                                    @*<div id="datepicker-popup" class="input-group date datepicker">
-                <span class="input-group-addon input-group-append border-left">
-                    <span class="mdi mdi-calendar input-group-text"></span>
-                </span>
-            </div>*@
-                                    <!--<input name="dteJoiningDate" id="dteJoiningDate" type="date" class="form-control" >
+                                <span class="input-group-addon input-group-append border-left">
+                                    <span class="mdi mdi-calendar input-group-text"></span>
+                                </span>
+                            </div>*@
+                                        <!--<input name="dteJoiningDate" id="dteJoiningDate" type="date" class="form-control" >
 
-        </div>-->
-                                </div>
-                                <div class="col-md-3" style="display:none">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Probation Type</label>
-                                        <div class="col-sm-12">
-                                            <select name="ProbationType" class="form-control js-example-basic-single w-100" id="DDLProbationType">
-                                                <option value="" disabled selected="selected">Probation Type</option>
-                                                <option value="Daily">Daily</option>
-                                                <option value="Weekly">Weekly</option>
-                                                <option value="Monthly">Monthly</option>
-                                                <option value="Yearly">Yearly</option>
-                                            </select>
+                        </div>-->
+                                    </div>
+                                    <div class="col-md-3" style="display:none">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Probation Type</label>
+                                            <div class="col-sm-12">
+                                                <select name="ProbationType" class="form-control js-example-basic-single w-100" id="DDLProbationType">
+                                                    <option value="" disabled selected="selected">Probation Type</option>
+                                                    <option value="Daily">Daily</option>
+                                                    <option value="Weekly">Weekly</option>
+                                                    <option value="Monthly">Monthly</option>
+                                                    <option value="Yearly">Yearly</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Probation Period (Months)</label>
-                                        <div class="col-sm-12">
-                                            <input name="ProbationPeriod" type="text" class="form-control" aria-describedby="emailHelp" id="txtProbationPeriod" placeholder="Enter Probation Period" onchange="PobationPeriod();">
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Probation Period (Months)</label>
+                                            <div class="col-sm-12">
+                                                <input name="ProbationPeriod" type="text" class="form-control" aria-describedby="emailHelp" id="txtProbationPeriod" placeholder="Enter Probation Period" onchange="PobationPeriod();">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Confirmation Date</label>
-                                        <input name="ConfirmationDate" type="date" class="form-control" id="ConfirmationDate" readonly>
-                                        @*<div id="datepicker-popup" class="input-group date datepicker">
-                    <span class="input-group-addon input-group-append border-left">
-                        <span class="mdi mdi-calendar input-group-text"></span>
-                    </span>
-                </div>*@
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Shift</label>
-                                        <div class="col-sm-12">
-                                            <select name="ShiftId" class="form-control" id="ShiftId">
-                                                <option value="" disabled selected="selected">Select Shift</option>
-                                                @foreach (var type in Model.ShiftMasterList)
-                                                {
-                                                    <option value="@type.ShiftId">@type.ShiftName</option>
-                                                }
-                                            </select>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Confirmation Date</label>
+                                            <input name="ConfirmationDate" type="date" class="form-control" id="ConfirmationDate" readonly>
+                                            @*<div id="datepicker-popup" class="input-group date datepicker">
+                                    <span class="input-group-addon input-group-append border-left">
+                                        <span class="mdi mdi-calendar input-group-text"></span>
+                                    </span>
+                                </div>*@
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Basic Salary</label>
-                                        <div class="col-sm-12">
-                                            <input name="BasicSalary" type="text" class="form-control" aria-describedby="emailHelp" id="BasicSalary" onkeypress="return isNumberKey(event)">
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Shift</label>
+                                            <div class="col-sm-12">
+                                                <select name="ShiftId" class="form-control" id="ShiftId">
+                                                    <option value="" disabled selected="selected">Select Shift</option>
+                                                    @foreach (var type in Model.ShiftMasterList)
+                                                    {
+                                                        <option value="@type.ShiftId">@type.ShiftName</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Basic Salary</label>
+                                            <div class="col-sm-12">
+                                                <input name="BasicSalary" type="text" class="form-control" aria-describedby="emailHelp" id="BasicSalary" onkeypress="return isNumberKey(event)">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Contact Information-->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="color: #f5f8fd; background: linear-gradient(45deg, #ff0dbc, #ff7d00);">
-                            Contact Information
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Contact No</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="ContacNo" class="form-control" aria-describedby="emailHelp" id="txtContactNo" placeholder="Enter Contact No">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Official No</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="OfficialNo" class="form-control" aria-describedby="emailHelp" id="txtOfficialNo" placeholder="Enter Official No">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Email</label>
-                                        <div class="col-sm-12">
-                                            <input type="email" name="Email" class="form-control" aria-describedby="emailHelp" id="txtEmail" placeholder="Enter Email">
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Official Email</label>
-                                        <div class="col-sm-12">
-                                            <input type="email" name="OfficialEmail" class="form-control" aria-describedby="emailHelp" id="txtOfficialEmail" placeholder="Enter Official Email">
+
+
+                    <!--Employee Visa -->
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="Visaheading">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVisa" aria-expanded="false" aria-controls="collapseTwo" style="color: #f5f8fd; background: linear-gradient(45deg, #ff0dbc, #ff7d00);">
+                                Visa Detail
+                            </button>
+                        </h2>
+                        <div id="collapseVisa" class="accordion-collapse collapse" aria-labelledby="Visaheading" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="row">
+
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1"> Visa Title<span style="color:red">*</span></label>
+                                            <div class="col-sm-12">
+                                                <div class="g-pos-rel">
+                                                    <input id="VisaTitle" name="VisaTitle" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder=" Visa Title">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1">Visa Number<span style="color:red">*</span> </label>
+                                            <div class="col-sm-12">
+                                                <div class="g-pos-rel">
+                                                    <input id="VisaNumber" name="VisaNumber" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder="Visa Number">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1">Visa Issuance Date<span style="color:red">*</span></label>
+                                            <div class="col-sm-12">
+                                                <div class="g-pos-rel">
+                                                    <input id="VisaIssuanceDate" name="VisaIssuanceDate" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="date" placeholder="mm/dd/yyyy">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1">Visa Expiry Date <span style="color:red">*</span> </label>
+                                            <div class="col-sm-12">
+                                                <div class="g-pos-rel">
+                                                    <input id="VisaExpiryDate" name="VisaExpiryDate" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="date" placeholder="mm/dd/yyyy">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Region</label>
-                                        <div class="col-sm-12">
-                                            <select name="RegionId" class="form-control" id="DDLRegion" onchange="RegionChange()">
-                                                <option value="" disabled selected="selected">Select Region</option>
-                                                @foreach (var type in Model.RegionsList)
-                                                {
-                                                    <option value="@type.Id">@type.Name</option>
-                                                }
-                                            </select>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1">Labour Card Number <span style="color:red">*</span></label>
+                                            <div class="col-sm-12">
+                                                <div class="g-pos-rel">
+                                                    <input id="LabourCardNumber" name="LabourCardNumber" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder="Labour Card Number">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Country</label>
-                                        <div class="col-sm-12">
-                                            <select name="Country_Id" class="form-control" id="DDLCountry1" onchange="CountryChange()">
-                                                <option value="" disabled selected="selected">Select Country</option>
-                                                @foreach (var type in Model.CountriesList)
-                                                {
-                                                    <option value="@type.Id">@type.Name</option>
-                                                }
-                                            </select>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1"> Labour Card Code <span style="color:red">*</span></label>
+                                            <div class="col-sm-12">
+                                                <div class="g-pos-rel">
+                                                    <input id="LabourCardCode" name="LabourCardCode" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder=" Labour Card Code">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">State</label>
-                                        <div class="col-sm-12">
-                                            <select name="StateId" class="form-control" id="DDLState" onchange="StateChange()">
-                                                <option value="" disabled selected="selected">Select State</option>
-                                                @foreach (var type in Model.StatesList)
-                                                {
-                                                    <option value="@type.Id">@type.Name</option>
-                                                }
-                                            </select>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1">Labour Card Expiry <span style="color:red">*</span> </label>
+                                            <div class="col-sm-12">
+                                                <div class="g-pos-rel">
+                                                    <input id="LabourCardExpiry" name="LabourCardExpiry" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="date" placeholder="mm/dd/yyyy">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">City</label>
-                                        <div class="col-sm-12">
-                                            <select name="CityId" class="form-control fd" id="DDLCity">
-                                                <option value="" disabled selected="selected">Select City</option>
-                                                @foreach (var type in Model.CitiesList)
-                                                {
-                                                    <option value="@type.Id">@type.Name</option>
-                                                }
-                                            </select>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1">Insurance Card Number <span style="color:red">*</span></label>
+                                            <div class="col-sm-12">
+                                                <div class="g-pos-rel">
+                                                    <input id="InsuranceCardNumber" name="InsuranceCardNumber" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder="Insurance Card Number">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Current Address</label>
-                                        <div class="col-sm-12">
-                                            <textarea name="CurrentAddress" class="form-control" id="txtCurrentAddress" placeholder="Enter Current Address"></textarea>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Permnant Address</label>
-                                        <div class="col-sm-12">
-                                            <textarea name="PermnantAddress" class="form-control" id="txtPermnantAddress" placeholder="Enter Permnant Address"></textarea>
-
+                                    <div class="col-sm-12 col-md-2">
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" checked="" id="Activechk" name="ActiveVisa" value="true">
+                                                Active
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-                </div>
-                <!-- Bank Information-->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFour">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="color: #f5f8fd; background: linear-gradient(45deg, #ff0dbc, #ff7d00);">
-                            Bank Information
-                        </button>
-                    </h2>
-                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Bank Name</label>
-                                        <div class="col-sm-12">
-                                            <input name="BankName" type="text" class="form-control" aria-describedby="emailHelp" id="txtBankName" placeholder="Enter Bank Name">
+
+
+                    <!-- Contact Information-->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="color: #f5f8fd; background: linear-gradient(45deg, #ff0dbc, #ff7d00);">
+                                Contact Information
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Contact No</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" name="ContacNo" class="form-control" aria-describedby="emailHelp" id="txtContactNo" placeholder="Enter Contact No">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Branch Code</label>
-                                        <div class="col-sm-12">
-                                            <input name="BranchCode" type="text" class="form-control" aria-describedby="emailHelp" id="txtBranchCode" placeholder="Enter Branch Code">
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Official No</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" name="OfficialNo" class="form-control" aria-describedby="emailHelp" id="txtOfficialNo" placeholder="Enter Official No">
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Email</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" name="Email" class="form-control" aria-describedby="emailHelp" id="txtEmail" placeholder="Enter Email">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Official Email</label>
+                                            <div class="col-sm-12">
+                                                <input type="email" name="OfficialEmail" class="form-control" aria-describedby="emailHelp" id="txtOfficialEmail" placeholder="Enter Official Email">
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Branch Name</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="BranchName" class="form-control" aria-describedby="emailHelp" id="txtBranchName" placeholder="Branch Name">
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Region</label>
+                                            <div class="col-sm-12">
+                                                <select name="RegionId" class="form-control" id="DDLRegion" onchange="RegionChange()">
+                                                    <option value="" disabled selected="selected">Select Region</option>
+                                                    @foreach (var type in Model.RegionsList)
+                                                    {
+                                                        <option value="@type.Id">@type.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Country</label>
+                                            <div class="col-sm-12">
+                                                <select name="Country_Id" class="form-control" id="DDLCountry1" onchange="CountryChange()">
+                                                    <option value="" disabled selected="selected">Select Country</option>
+                                                    @foreach (var type in Model.CountriesList)
+                                                    {
+                                                        <option value="@type.Id">@type.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">State</label>
+                                            <div class="col-sm-12">
+                                                <select name="StateId" class="form-control" id="DDLState" onchange="StateChange()">
+                                                    <option value="" disabled selected="selected">Select State</option>
+                                                    @foreach (var type in Model.StatesList)
+                                                    {
+                                                        <option value="@type.Id">@type.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">City</label>
+                                            <div class="col-sm-12">
+                                                <select name="CityId" class="form-control fd" id="DDLCity">
+                                                    <option value="" disabled selected="selected">Select City</option>
+                                                    @foreach (var type in Model.CitiesList)
+                                                    {
+                                                        <option value="@type.Id">@type.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Current Address</label>
+                                            <div class="col-sm-12">
+                                                <textarea name="CurrentAddress" class="form-control" id="txtCurrentAddress" placeholder="Enter Current Address"></textarea>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Permnant Address</label>
+                                            <div class="col-sm-12">
+                                                <textarea name="PermnantAddress" class="form-control" id="txtPermnantAddress" placeholder="Enter Permnant Address"></textarea>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Account Title</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="AccountTitle" class="form-control" aria-describedby="emailHelp" id="txtAccountTitle" placeholder="Enter Account Title">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Account Number</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="AccountNumber" class="form-control" aria-describedby="emailHelp" id="txtAccountNumber" placeholder="Enter Account Number">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group row">
-                                        <label class="col-sm-8 col-form-label">Account Type</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="AccountType" class="form-control" aria-describedby="emailHelp" id="txtAccountType" placeholder="Enter Account Type">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
                         </div>
                     </div>
-                </div>
+                    <!-- Bank Information-->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="color: #f5f8fd; background: linear-gradient(45deg, #ff0dbc, #ff7d00);">
+                                Bank Information
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Bank Name</label>
+                                            <div class="col-sm-12">
+                                                <input name="BankName" type="text" class="form-control" aria-describedby="emailHelp" id="txtBankName" placeholder="Enter Bank Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Branch Code</label>
+                                            <div class="col-sm-12">
+                                                <input name="BranchCode" type="text" class="form-control" aria-describedby="emailHelp" id="txtBranchCode" placeholder="Enter Branch Code">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Branch Name</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" name="BranchName" class="form-control" aria-describedby="emailHelp" id="txtBranchName" placeholder="Branch Name">
+                                            </div>
+                                        </div>
+                                    </div>
 
-            </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Account Title</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" name="AccountTitle" class="form-control" aria-describedby="emailHelp" id="txtAccountTitle" placeholder="Enter Account Title">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Account Number</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" name="AccountNumber" class="form-control" aria-describedby="emailHelp" id="txtAccountNumber" placeholder="Enter Account Number">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-8 col-form-label">Account Type</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" name="AccountType" class="form-control" aria-describedby="emailHelp" id="txtAccountType" placeholder="Enter Account Type">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             <br />
             <div class="row">
                 <div class="col-sm-2">
@@ -867,6 +985,8 @@
        
     }
     function populate(frm, data) {
+        debugger;
+
         $.each(data, function (key, value) {
             var $el = $(`[name="${key}"]`),
                 type = $el.attr('type');
@@ -894,6 +1014,8 @@
 
 
     function onSuccessEmployeeDetails(Data) {
+        debugger;
+
 
 
 
@@ -906,13 +1028,38 @@
         data.PassportExpiryDate = PassportExpiryDate;
 
         populate("#EmployeeForm", data);
+
+        var totalData = JSON.parse(Data);
+
+        $("#VisaTitle").val(totalData.data.VisaTitle);
+
+        $("#VisaNumber").val(totalData.data.VisaNumber);
+
+        $("#VisaIssuanceDate").val(totalData.VisaIssuanceDate);
+
+        $("#VisaExpiryDate").val(totalData.VisaExpiryDate);
+
+        $("#LabourCardNumber").val(totalData.data.LabourCardNumber);
+
+        $("#LabourCardCode").val(totalData.data.LabourCardCode);
+
+        $("#LabourCardExpiry").val(totalData.LabourCardExpiry);
+
+        $("#InsuranceCardNumber").val(totalData.data.InsuranceCardNumber);
+
+        $("#InsuranceCardNumber").val(totalData.data.InsuranceCardNumber);
+
+        $("#Activechk").prop("checked", totalData.data.ActiveVisa);
     }
+
     var isSaveAndNext = false;
+
     $('#EmployeeForm').submit(function (e) {
+        debugger;
 
         let text = e.originalEvent.submitter.textContent;
         if (text.trim() == "Save & Next")
-            isSaveAndNext = true;
+            isSaveAndNext = true;5
         e.preventDefault();
         var fileUpload = $("#file-ip-1").get(0);
         var file = fileUpload.files[0];
@@ -924,10 +1071,12 @@
             });
             return;
         }
+
         else InsertUpdateEmployee();
 
     });
     function InsertUpdateEmployee() {
+        debugger;
 
         var formData = $("#EmployeeForm").serializeArray();
         if (ValidateForm(formData) === false) {

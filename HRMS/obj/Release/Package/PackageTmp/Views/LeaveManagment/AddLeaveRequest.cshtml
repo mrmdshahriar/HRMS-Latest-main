@@ -98,7 +98,7 @@
                         <textarea id="txtReasion" class="form-control md-description-box" rows="1" placeholder="Reason"></textarea>
 
                         @*<label class="col-form-label">Reason</label>
-                    <textarea type="text" class="form-control" name="Reason" id="txtReasion" placeholder="Enter Reason"></textarea>*@
+                <textarea type="text" class="form-control" name="Reason" id="txtReasion" placeholder="Enter Reason"></textarea>*@
 
                     </div>
                 </div>
@@ -112,6 +112,20 @@
                     <div class="form-group">
                         <label class="col-form-label">Pending Days</label>
                         <input type="text" class="form-control" name="PendingDays" id="PendingDays" placeholder="Pending Days" disabled>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-form-label">Cash Out Date</label>
+                        <input type="date" class="form-control" name="CashOutDate" id="CashOutDate" placeholder="Cash Out Date" >
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-2">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="Encashment" checked="" id="Encashment">
+                            Encashment
+                        </label>
                     </div>
                 </div>
             </div>
@@ -273,6 +287,18 @@
                             //});
 
                             $("#EligibilityDays").val(data.EligibilityDays);
+
+                            if (data.Encashable.IsEncashable == true) {
+
+                                $("#Encashment").prop("checked", true);
+
+                            }
+                            if (data.Encashable.IsEncashable == false) {
+
+                                $("#Encashment").prop("checked", false);
+
+                                $("#Encashment").prop("disabled", true);
+                            }
                         }
 
                     },
@@ -321,6 +347,7 @@
             $("#EligibilityDays").val(data.EligibilityDays);
             $('#DateFrom').datepicker({ dateformat: "yy-mm-dd" }).find('input').val(currentDatestart);
             $('#DateTo').datepicker({ dateformat: "yy-mm-dd" }).find('input').val(currentDatestart1);
+            $("#CashOutDate").val(data.CashOutDate);
             $("#Activechk").prop('checked', data.IsActive);
         }
 
@@ -429,10 +456,13 @@
             var DateTo = $('#DateTo').datepicker({ dateFormat: "yy-mm-dd" }).find('input').val();
 
             var LeaveDays = $('#txtLeaveDays').val();
+            var CashOutDate = $('#CashOutDate').val();
+           
             var Reason = $('#txtReasion').val();
             var EligibilityDays = $('#EligibilityDays').val();
             var PendingDays = $('#PendingDays').val();
             var Active = $('#Activechk').is(":checked");
+            var Encashment = $('#Encashment').is(":checked");
 
 
             if (DDLEmployee == null || DDLEmployee == -1 || DDLEmployee == "") {
@@ -489,6 +519,9 @@
                     Reason: Reason,
                     PendingDays: PendingDays,
                     EligibilityDays: EligibilityDays,
+                    Encashment: Encashment,
+
+                    CashOutDate: CashOutDate,
                     IsActive: Active
                 });
             $.ajax({
@@ -549,7 +582,9 @@
             var Reason = $('#txtReasion').val();
             var EligibilityDays = $('#EligibilityDays').val();
             var PendingDays = $('#PendingDays').val();
+            var CashOutDate = $('#CashOutDate').val();
             var Active = $('#Activechk').is(":checked");
+            var Encashment = $('#Encashment').is(":checked");
 
             var Data = JSON.stringify(
                 {
@@ -561,7 +596,10 @@
                     LeaveDays: LeaveDays,
                     Reason: Reason,
                     PendingDays: PendingDays,
+                    CashOutDate: CashOutDate,
                     EligibilityDays: EligibilityDays,
+                    Encashment: Encashment,
+
                     IsActive: Active
                 });
             $.ajax({

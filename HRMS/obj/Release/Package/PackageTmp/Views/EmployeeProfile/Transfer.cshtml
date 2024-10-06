@@ -1,6 +1,7 @@
 ﻿@model HRMS.Common
 @{
     ViewBag.Title = "Transfer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <link rel="stylesheet" href="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
@@ -16,7 +17,7 @@
                     <div class="form-group row">
                         <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Employee</label>
                         <div class="col-sm-12">
-                            <select class="form-control" required name="EmployeeId" id="Type">
+                            <select class="form-control" required name="EmployeeId" id="Type" onchange="myFunction(this.value);">
                                 <option disabled value="" selected="selected">Select Employee</option>
                                 @foreach (var item in Model.EmployeeList)
                                 {
@@ -31,14 +32,19 @@
                     <div class="form-group row">
                         <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Designation</label>
                         <div class="col-sm-12">
-                            <select class="form-control" required name="DesignationId" id="DesignationId">
+
+                           @* <select class="form-control" required name="txtDesignationId" id="txtDesignationId">
                                 <option disabled value="" selected="selected">Designation</option>
                                 @foreach (var item in Model.DesignationList)
                                 {
-                                    <option value="@item.Id">@item.Name</option>
+                                    <option value="@item.Id">
+                                        
+                                    </option>
                                 }
 
-                            </select>
+                            </select>*@
+                             <input type="text" name="txtDesignation" id="txtDesignation"  class="form-control" readonly>
+                                <input type="hidden" value=""  name="DesignationId" id="DesignationId"  class="form-control" >
                         </div>
                     </div>
                 </div>
@@ -48,7 +54,7 @@
                         <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">New Designation</label>
                         <div class="col-sm-12">
                             <select class="form-control" required name="NewDesignationId" id="DesignationId">
-                                <option disabled value="" selected="selected">Designation</option>
+                                  <option disabled value="" selected="selected">Designation</option>
                                 @foreach (var item in Model.DesignationList)
                                 {
                                     <option value="@item.Id">@item.Name</option>
@@ -63,13 +69,15 @@
                     <div class="form-group row">
                         <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">From Department</label>
                         <div class="col-sm-12">
-                            <select class="form-control" required name="FromDepartmentId" id="DepartmentId">
+                              <input type="text" name="DepartmentId" id="DepartmentId" class="form-control" readonly>
+                              <input type="hidden"  value="" name="FromDepartmentId" id="FromDepartmentId">
+                            @*<select class="form-control" required name="FromDepartmentId" id="txtDepartmentId">
                                 <option disabled value="" selected="selected">Department</option>
                                 @foreach (var item in Model.DepartmentList)
                                 {
-                                    <option value="@item.Id">@item.Name</option>
+                                    <option value="@item.Id" id="txtDepartmentId">@item.Name</option>
                                 }
-                            </select>
+                            </select>*@
                         </div>
                     </div>
                 </div>
@@ -89,9 +97,6 @@
                     </div>
                 </div>
 
-
-
-
                 <div class="col-md-4">
                     <div class="form-group row">
                         <label class="col-sm-12 col-form-label">Trasnfer Date</label>
@@ -100,7 +105,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <div class="col-md-4">
                     <div class="form-group row">
@@ -139,20 +143,20 @@
 </div>
 
 @* <script src="~/Content/Assets/vendors/base/vendor.bundle.base.js"></script>
-<script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script> *@
+    <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script> *@
 <!-- endinject -->
 <!-- inject:js -->
 @* <script src="~/Content/Assets/js/off-canvas.js"></script>
-<script src="~/Content/Assets/js/hoverable-collapse.js"></script>
-<script src="~/Content/Assets/js/template.js"></script>
-<script src="~/Content/Assets/js/settings.js"></script>
-<script src="~/Content/Assets/js/todolist.js"></script> *@
+    <script src="~/Content/Assets/js/hoverable-collapse.js"></script>
+    <script src="~/Content/Assets/js/template.js"></script>
+    <script src="~/Content/Assets/js/settings.js"></script>
+    <script src="~/Content/Assets/js/todolist.js"></script> *@
 <script src="~/Content/Assets/js/formpickers.js"></script>
 <!-- endinject -->
 <!-- plugin js for this page -->
 <script src="~/Content/Assets/vendors/jquery-steps/jquery.steps.min.js"></script>
 <script src="~/Content/Assets/vendors/jquery-validation/jquery.validate.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
 <script type="text/javascript">
 
     var TransferObject = {};
@@ -162,7 +166,72 @@
     var TransferId = url_array[url_array.length - 1];  // Get the last part of the array (-1)
     if (isNaN(TransferId)) TransferId = 0;
 
-    $(window).on("load", function () {
+
+    function myFunction() {
+        //debugger
+        var JobId = document.getElementById("Type").value;
+
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            data: { "JobId": JobId },
+            url: "/EmployeeProfile/JobTitleChange",
+            success: function (data) {
+                AutoFillTextBox(data);
+
+            },
+            error: function (error) {
+
+            },
+            cache: false
+        });
+
+        //TransferId = document.getElementById("Type").value;
+        //if (TransferId > 0)
+        //    $.ajax({
+        //        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        //        type: "GET",
+        //        dataType: "json",
+        //        url: `/EmployeeProfile/getTransferEmployee/${TransferId}`,
+        //        success: function (data) {
+        //            AutoFillTextBox(data);
+
+        //        },
+        //        error: function (error) {
+        //            $('#responseText').html(error.responseText);
+        //            debugger
+        //            Swal.fire({
+        //                icon: 'error',
+        //                title: 'Oops...',
+        //                text: 'Something went wrong.',
+        //            });
+        //        },
+        //        cache: false
+        //    })
+        // ToggleInputs();
+    };
+
+    function AutoFillTextBox(data) {
+        for (const element of data) {
+            $("#txtDesignation").val(element.Name).attr('disabled', 'disabled');
+            $("#DepartmentId").val(element.dName).attr('disabled', 'disabled');
+            $("#DesignationId").val(element.DesigId).attr('disabled', 'disabled');
+            $("#FromDepartmentId").val(element.DepartId).attr('disabled', 'disabled');
+        }
+
+
+    }
+
+
+    function onSuccessEmployeeDetails(Data) {
+        var { data, FromDepartment, Designation } = $.parseJSON(Data);
+        TransferObject = data;
+        TransferObject.FromDepartment = FromDepartment;
+        TransferObject.Designation = Designation;
+    }
+
+    // $(window).on("load", function () {
+    $(document).ready(function () {
         if (TransferId > 0)
             $.ajax({
                 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -170,14 +239,15 @@
                 dataType: "json",
                 url: `/EmployeeProfile/LoadTransferEmployee/${TransferId}`,
                 success: function (response) {
-                    debugger
+                    debugger;
                     const { Transfer, TrasnferDate } = response;
                     TransferObject = Transfer;
                     TransferObject.TrasnferDate = TrasnferDate;
+                    $("#DepartmentId").val(response.FromDepartmentName);
+                    $("#txtDesignation").val(response.DesignationName);
                 },
                 error: function (error) {
                     $('#responseText').html(error.responseText);
-                    debugger
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
@@ -189,8 +259,7 @@
                 PopulateTransferForm($.parseJSON(JSON.stringify(TransferObject)));
 
             })
-
-        ToggleInputs();
+        // ToggleInputs();
     });
 
 
@@ -214,17 +283,17 @@
                         $el.val(value);
                 }
         });
-        debugger
+        //debugger
 
     }
 
     $('#transferFormID').submit(function (e) {
-        debugger
+        //debugger
         e.preventDefault();
         onAddTransferEmployee();
     });
     function onAddTransferEmployee() {
-        debugger
+      /*  debugger*/
         var TransferFormDataArray = $("#transferFormID").serializeArray();
         TransferObject = {};
 
@@ -273,13 +342,18 @@
             }
         });
 
+        var desid = document.getElementById("DesignationId").value;
+        var FromDepartmentId = document.getElementById("FromDepartmentId").value;
         TransferObject.TransferId = TransferId;
+        TransferObject.DesignationId = desid;
+        TransferObject.FromDepartmentId = FromDepartmentId;
 
         $.ajax({
             async: false,
             traditional: true,
             type: "POST",
-            data: JSON.stringify(TransferObject),
+            data:JSON.stringify(TransferObject),
+          // '{ "EmployeeId": 19,"NewDesignationId": 4,"DesignationId":1,"ToDepartmentId": 3,"FromDepartmentId": 1,"TransferId": 0,"TrasnferDate": "02/05/2003","TrasnferReason": "abc","TrasnferedBy": "aijaz"}', 
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             url: "/EmployeeProfile/InsertUpdateEmployeeTransfer",
@@ -290,6 +364,8 @@
                     text: 'Record Save Successfuly.',
                 }).then(function () {
                     window.location.replace(`/EmployeeProfile/Transfers`);
+                   // console.log(TransferObject);
+                    
                 });
             },
             error: function (error) {
@@ -298,8 +374,10 @@
                     title: 'Oops...',
                     text: 'Something went wrong.',
                 });
+                console.log(error);
             },
             cache: false
         });
+       
     }
 </script>

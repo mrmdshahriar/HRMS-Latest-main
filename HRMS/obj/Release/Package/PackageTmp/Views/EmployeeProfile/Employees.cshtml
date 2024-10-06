@@ -1,4 +1,4 @@
-﻿@model HRMS.Common 
+﻿@model HRMS.Common
 @{
     ViewBag.Title = "Employees";
 
@@ -119,10 +119,10 @@
                                         <label class="col-form-label">CNIC Expiration</label>
                                         <input name="IdentityExpiryDate" type="date" class="form-control">
                                         @*<div id="datepicker-popup" class="input-group date datepicker">
-                                                <span class="input-group-addon input-group-append border-left">
-                                                    <span class="mdi mdi-calendar input-group-text"></span>
-                                                </span>
-                                            </div>*@
+                                    <span class="input-group-addon input-group-append border-left">
+                                        <span class="mdi mdi-calendar input-group-text"></span>
+                                    </span>
+                                </div>*@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -138,13 +138,13 @@
                                         <label class="col-form-label">Passport Expiration</label>
                                         <input name="PassportExpiryDate" type="date" class="form-control">
                                         @*<div class="col-sm-12">
-                                                <div id="datepicker-popup" class="input-group date datepicker">
-                                                    <span class="input-group-addon input-group-append border-left">
-                                                        <span class="mdi mdi-calendar input-group-text"></span>
-                                                    </span>
-                                                </div>
+                                    <div id="datepicker-popup" class="input-group date datepicker">
+                                        <span class="input-group-addon input-group-append border-left">
+                                            <span class="mdi mdi-calendar input-group-text"></span>
+                                        </span>
+                                    </div>
 
-                                            </div>*@
+                                </div>*@
                                     </div>
                                 </div>
 
@@ -332,10 +332,10 @@
                                     <div class="form-group row">
                                         <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Joining Date</label>
                                         @*<div id="datepicker-popup" class="input-group date datepicker">
-                                                <span class="input-group-addon input-group-append border-left">
-                                                    <span class="mdi mdi-calendar input-group-text"></span>
-                                                </span>
-                                            </div>*@
+                                    <span class="input-group-addon input-group-append border-left">
+                                        <span class="mdi mdi-calendar input-group-text"></span>
+                                    </span>
+                                </div>*@
                                         <input name="JoiningDate" type="date" class="form-control">
 
                                     </div>
@@ -367,10 +367,10 @@
                                         <label class="col-sm-8 col-form-label" for="exampleFormControlSelect1">Confirmation Date</label>
                                         <input name="ConfirmationDate" type="date" class="form-control">
                                         @*<div id="datepicker-popup" class="input-group date datepicker">
-                                                <span class="input-group-addon input-group-append border-left">
-                                                    <span class="mdi mdi-calendar input-group-text"></span>
-                                                </span>
-                                            </div>*@
+                                    <span class="input-group-addon input-group-append border-left">
+                                        <span class="mdi mdi-calendar input-group-text"></span>
+                                    </span>
+                                </div>*@
                                     </div>
                                 </div>
 
@@ -402,6 +402,121 @@
                         </div>
                     </div>
                 </div>
+
+                <!--Employee Visa -->
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="Visaheading">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVisa" aria-expanded="false" aria-controls="collapseTwo" style="color: #f5f8fd; background-color: #44689b;">
+                            Visa Detail
+                        </button>
+                    </h2>
+                    <div id="collapseVisa" class="accordion-collapse collapse" aria-labelledby="Visaheading" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="row">
+
+                                <div class="col-md-3">
+                                    <div class="form-group row">
+                                        <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1"> Visa Title<span style="color:red">*</span></label>
+                                        <div class="col-sm-12">
+                                            <div class="g-pos-rel">
+                                                <input id="VisaTitle" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder=" Visa Title">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group row">
+                                        <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1">Visa Number<span style="color:red">*</span> </label>
+                                        <div class="col-sm-12">
+                                            <div class="g-pos-rel">
+                                                <input id="VisaNumber" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder="Visa Number">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group row">
+                                        <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1">Visa Issuance Date<span style="color:red">*</span></label>
+                                        <div class="col-sm-12">
+                                            <div class="g-pos-rel">
+                                                <input id="VisaIssuanceDate" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="date" placeholder="mm/dd/yyyy">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-3">
+                                    <div class="form-group row">
+                                        <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1">Visa Expiry Date <span style="color:red">*</span> </label>
+                                        <div class="col-sm-12">
+                                            <div class="g-pos-rel">
+                                                <input id="VisaExpiryDate" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="date" placeholder="mm/dd/yyyy">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group row">
+                                        <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1">Labour Card Number <span style="color:red">*</span></label>
+                                        <div class="col-sm-12">
+                                            <div class="g-pos-rel">
+                                                <input id="LabourCardNumber" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder="Labour Card Number">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group row">
+                                        <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1"> Labour Card Code <span style="color:red">*</span></label>
+                                        <div class="col-sm-12">
+                                            <div class="g-pos-rel">
+                                                <input id="LabourCardCode" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder=" Labour Card Code">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group row">
+                                        <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1">Labour Card Expiry <span style="color:red">*</span> </label>
+                                        <div class="col-sm-12">
+                                            <div class="g-pos-rel">
+                                                <input id="LabourCardExpiry" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="date" placeholder="mm/dd/yyyy">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group row">
+                                        <label class="col-sm-8 col-form-label md-name" for="inputGroup-1_1">Insurance Card Number <span style="color:red">*</span></label>
+                                        <div class="col-sm-12">
+                                            <div class="g-pos-rel">
+                                                <input id="InsuranceCardNumber" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder="Insurance Card Number">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 col-md-2">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" checked="" id="Activechk">
+                                            Active
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Contact Information-->
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThree">
@@ -601,25 +716,25 @@
                 </div>
 
             </div>
-            <br />
-            <div class="row">
-                <div class="col-sm-2">
-                    <button class="btn btn-primary u-btn-3d  d-block ">
-                        <i class="fa fa-list" aria-hidden="true"></i>
-                        Save & Exit
-                    </button>
-                </div>
-                <div class="col-md-8"></div>
-                <div class="col-sm-2">
-                    <button class="btn btn-primary u-btn-3d  d-block ml-auto">
-                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
-                        Save & Next
-                    </button>
-                </div>
-            </div>
-        </form>
-        <!-- page-body-wrapper ends -->
+    <br />
+    <div class="row">
+        <div class="col-sm-2">
+            <button class="btn btn-primary u-btn-3d  d-block ">
+                <i class="fa fa-list" aria-hidden="true"></i>
+                Save & Exit
+            </button>
+        </div>
+        <div class="col-md-8"></div>
+        <div class="col-sm-2">
+            <button class="btn btn-primary u-btn-3d  d-block ml-auto">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                Save & Next
+            </button>
+        </div>
     </div>
+    </form>
+    <!-- page-body-wrapper ends -->
+</div>
 </div>
 <!-- container-scroller -->
 <!-- base:js -->
@@ -682,7 +797,7 @@
     function RegionChange() {
 
         var Id = document.getElementById("DDLRegion").value;
-        
+
         $('#DDLCountry1').empty();
         $('#DDLState').empty();
         $('#DDLCity').empty();
@@ -696,8 +811,8 @@
             url: "/EmployeeProfile/RegionChange",
             success: function (data) {
                 if (data != "") {
-                   
-                 
+
+
                     $('#DDLCountry1').append('<option value="-1" selected disabled> Select Country </option>');
                     $.each(data, function (i, tweet) {
                         $('#DDLCountry1').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
@@ -953,8 +1068,6 @@
         //-------------------------------------------------------------------
 
 
-
-
     }
     function onSuccessUpsertEmployee(response) {
         debugger
@@ -1027,5 +1140,8 @@
 //For_Edit
 //JSON.stringify(data)
 //$("#companyForm").view(model);
+
+
+
 
 </script>

@@ -78,7 +78,7 @@
             $.ajax({
                 type: "GET",
                 contenttype: "application/json; charset=utf-8",
-                url: "/PayRoll/AllowancesDeductionList",
+                url: "/PayRoll/AllowancesDeductionList1",
 
                 success: onsuccessjobmasterdetails,
                 error: function (error) {
@@ -106,11 +106,11 @@
 
                 for (var i = 0; i < data.length; i++) {
                     val = "<tr>" +
-              
+
                         "<td>" + data[i].Code + "</td>" +
                         "<td>" + data[i].AllowanceName + "</td>" +
                         "<td>" + data[i].Effect + "</td>" +
-               
+
                         "<td class='last-td'><a href='/PayRoll/AddAllowancesDeduction/" + data[i].Id + "' class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;'><i class='fa fa-pencil'></i></a><a class='btn  btn-sm' title='delete' style='cursor: pointer;' onclick= Delete(" + data[i].Id + ") > <i class='fa fa-trash'></i></a > </td>" +
                         //"<td class='last-td'><label class='form-check-inline u-check g-mr-20 mx-0 mb-0'> <input class='g-hidden-xs-up g-pos-abs g-top-0 g-right-0' id='btnedit' href='https://localhost:44300/recruitment/editappliedcandidate/1' onclick='loadingeditdata(" + data.data[i].pk_metadataid + ")' name='radgroup1_1' data-toggle='modal' data-target='#mymodal'><i class='fa fa-pencil'></i></label ></td>" +
                         + "</tr></tbody>";

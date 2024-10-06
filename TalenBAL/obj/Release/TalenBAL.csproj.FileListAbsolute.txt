@@ -46,3 +46,27 @@ E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\
 E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Release\TalenBAL.csproj.CopyComplete
 E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Release\TalenBAL.dll
 E:\Upwork Task 2022\HRMS Merge\Updated Complete Project\Project Repository\HRMS\TalenBAL\obj\Release\TalenBAL.pdb
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\TalenBAL.dll.config
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\TalenBAL.dll
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\TalenBAL.pdb
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\EntityFramework.dll
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\EntityFramework.SqlServer.dll
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\ExcelDataReader.DataSet.dll
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\ExcelDataReader.dll
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\Newtonsoft.Json.dll
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\System.Data.SqlClient.dll
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\System.Net.Http.Formatting.dll
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\EntityFramework.xml
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\EntityFramework.SqlServer.xml
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\ExcelDataReader.pdb
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\ExcelDataReader.xml
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\ExcelDataReader.DataSet.pdb
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\ExcelDataReader.DataSet.xml
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\Newtonsoft.Json.xml
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\System.Data.SqlClient.xml
+C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Release\System.Net.Http.Formatting.xml
+C:\C# programs\HRMS NEW LATEST\TalenBAL\obj\Release\TalenBAL.csproj.AssemblyReference.cache
+C:\C# programs\HRMS NEW LATEST\TalenBAL\obj\Release\TalenBAL.csproj.CoreCompileInputs.cache
+C:\C# programs\HRMS NEW LATEST\TalenBAL\obj\Release\TalenBAL.csproj.Up2Date
+C:\C# programs\HRMS NEW LATEST\TalenBAL\obj\Release\TalenBAL.dll
+C:\C# programs\HRMS NEW LATEST\TalenBAL\obj\Release\TalenBAL.pdb

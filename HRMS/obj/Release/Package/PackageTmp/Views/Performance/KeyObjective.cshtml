@@ -62,8 +62,6 @@
                 <input id="departmentName" type="hidden" value="" />
             </div>
 
-
-
         </div>
     </center>
 
@@ -92,7 +90,7 @@
                             <div class="form-group g-mb-30">
                                 <label class="g-mb-10 bg-classification" for="inputGroupStatus">Department</label> <span style="color:red">*</span>
                                 <div class="form-group u-select--v3 g-pos-rel g-brd-gray-light-v7 g-rounded-4 mb-0">
-                                    <select id="DepId" name="DepId" class="form-control classification-select" onchange="DepartmentsChange(this.value)">
+                                    <select id="DepId" name="DepId" class="form-control classification-select" onchange="EmployeeChange(this.value)">
                                         <option value="-1" selected="selected">Select Department</option>
                                     </select>
                                 </div>
@@ -104,8 +102,8 @@
                             <div class="form-group g-mb-30">
                                 <label class="g-mb-10 bg-classification" for="inputGroupStatus">Employee</label> <span style="color:red">*</span>
                                 <div class="form-group u-select--v3 g-pos-rel g-brd-gray-light-v7 g-rounded-4 mb-0">
-                                    <select id="AssignedTo" name="AssignedTo" class="form-control classification-select" >
-                                        @*<option value="-1" selected="selected">Select Employee</option>*@
+                                    <select id="AssignedTo" name="AssignedTo" class="form-control classification-select" onchange="EmployeeChange(this.value)">
+                                        <option value="-1" selected="selected">Select Employee</option>
                                     </select>
                                 </div>
                             </div>
@@ -206,7 +204,7 @@
     <!-- Country List -->
     <div class="row">
         <div class="col-12">
-            <h4 class="all-md">Departmental Key Objectives List</h4> 
+            <h4 class="all-md">Departmental Key Objectives</h4> 
             <hr />
             @*<button type="button" class="btn btn-inverse-primary u-btn-3d  d-block ml-auto" data-toggle="modal" data-target="#DeductionModal" onclick="clearfields()"><i class="fas fa-plus tm-fa-plus"></i> Create</button>*@
 
@@ -285,8 +283,8 @@
         $(document).ready(function () {
             $("#AddTask").show();
             $(".updateTask").hide();
-            LoadingEmployeeCostDetails();
-           /* GetEmployeeId();*/
+            //LoadingEmployeeCostDetails();
+            GetEmployeeId();
             GetDepartmentList();
         });
 
@@ -314,20 +312,20 @@
         }
 
 
-        //$('#AssignedTo').select2({
-        //    selectOnClose: true
-        //});
+        $('#AssignedTo').select2({
+            selectOnClose: true
+        });
 
-        //$('#DepId').select2({
-        //    selectOnClose: true
-        //});
+        $('#DepId').select2({
+            selectOnClose: true
+        });
 
-        //$('#Priority').select2({
-        //    selectOnClose: true
-        //});
-        //$('#Status').select2({
-        //    selectOnClose: true
-        //});
+        $('#Priority').select2({
+            selectOnClose: true
+        });
+        $('#Status').select2({
+            selectOnClose: true
+        });
 
         function LoadingEmployeeCostDetails() {
 
@@ -623,34 +621,34 @@
             }
         }
 
-        //function GetEmployeeId() {
+        function GetEmployeeId() {
 
-        //    $.ajax({
-        //        type: "GET",
-        //        contentType: "application/json; charset=utf-8",
-        //        url: "/EmployeeProfile/Employeesddl",
-        //        success: function (data) {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/EmployeeProfile/Employeesddl",
+                success: function (data) {
 
-        //            if (data != 0) {
+                    if (data != 0) {
 
-        //                $('#AssignedTo').empty();
-        //                $('#AssignedTo').append('<option value="-1" selected disabled>Select Employee</option>');
-        //                $.each(data, function (i, tweet) {
-        //                    $('#AssignedTo').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
-        //                });
-        //            }
-        //        },
-        //        error: function (error) {
-        //            Swal.fire({
-        //                icon: 'error',
-        //                title: 'Oops...',
-        //                text: 'Something went wrong!',
-        //            });
-        //        },
-        //        cache: false,
+                        $('#AssignedTo').empty();
+                        $('#AssignedTo').append('<option value="-1" selected disabled>Select Employee</option>');
+                        $.each(data, function (i, tweet) {
+                            $('#AssignedTo').append('<option value="' + data[i].Id + '">' + data[i].Name + '</option>');
+                        });
+                    }
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                },
+                cache: false,
 
-        //    });
-        //}
+            });
+        }
 
         function GetDepartmentList() {
 
@@ -690,9 +688,9 @@
             $("#AddTask").show();
             $('#DepId').prop("disabled", false);
             $("#DefineObjective").val("");
-            //$("#AssignedTo").val("-1").select2();
-            //$("#Priority").val("-1").select2();
-            //$("#Status").val("-1").select2();
+            $("#AssignedTo").val("-1").select2();
+            $("#Priority").val("-1").select2();
+            $("#Status").val("-1").select2();
             $("#AssignDate").val("");
             $("#EndDate").val("");
             $("#AssignedPercentage").val("");
@@ -726,40 +724,7 @@
             });
         }
 
-       
 
-
-        function DepartmentsChange() {
-            var Id = document.getElementById("DepId").value;
-            $('#AssignedTo').empty();
-            $.ajax({
-                type: "GET",
-                contentType: "application/json; charset=utf-8",
-                data: { "Id": Id },
-                url: "/EmployeeProfile/DepartmentChange",
-                success: function (data) {
-                    if (data != "") {
-
-
-                        $('#AssignedTo').append('<option value="-1" selected disabled> Select Employee </option>');
-                        $.each(data, function (i, tweet) {
-                            $('#AssignedTo').append('<option value="' + data[i].Id + '">' + data[i].FirstName + " " + data[i].LastName + '</option>');
-
-                        });
-
-                    }
-
-                },
-                error: function (error) {
-
-                },
-                cache: false
-            });
-
-
-
-
-        }
                     //function isNumberKey(evt) {
                     //    var charCode = (evt.which) ? evt.which : evt.keyCode;
                     //    if (charCode != 46 && charCode > 31
@@ -804,12 +769,12 @@
                     //    }
                     //}
 
-        //function EmployeeChange(vaue) {
+        function EmployeeChange(vaue) {
 
-        //    debugger;
+            debugger;
 
-        //    console.log(value);
-        //}
+            console.log(value);
+        }
 
 
     </script>

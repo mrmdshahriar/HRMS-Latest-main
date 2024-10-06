@@ -53,6 +53,7 @@
                 <h3 class="all-md">Applied Candidate</h3>
                 <div class="btn_blk">
                     <div id="btnDive">
+   
                         <button type="button" id="Btnstatus" value="shortList" onclick="ShortlistEvent();" class="btn btn-inverse-primary">ShortList</button>
                     </div>
                     <div id="btnDiv">
@@ -71,7 +72,7 @@
                         <div class="form-group">
                             <label class="">Addvertise No</label>
                                 <input type="text" class="form-control" name="AddvertiseNo" id="txtAddvertiseNo" placeholder="Enter Addvertise No">
-                        
+            
                         </div>
                     </div>
 
@@ -313,11 +314,11 @@
                             <label class="" for="exampleFormControlSelect1">Apply Date</label>
                             <input type="text" class="form-control" name="ApplyDate1" id="ApplyDate1" readonly>
                             @*<div id="ApplyDate" class="input-group date datepicker">
-                    <input type="text" class="form-control" name="ApplyDate">
-                    <span class="input-group-addon input-group-append border-left">
-                        <span class="mdi mdi-calendar input-group-text"></span>
-                    </span>
-                </div>*@
+            <input type="text" class="form-control" name="ApplyDate">
+            <span class="input-group-addon input-group-append border-left">
+                <span class="mdi mdi-calendar input-group-text"></span>
+            </span>
+        </div>*@
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -325,14 +326,13 @@
                             <label class="" for="exampleFormControlSelect1">Available Date</label>
                             <input type="text" class="form-control" name="AvailableDate1" id="AvailableDate1" readonly>
                             @*<div id="AvailableDate" class="input-group date datepicker">
-                    <input type="text" class="form-control" name="AvailableDate">
-                    <span class="input-group-addon input-group-append border-left">
-                        <span class="mdi mdi-calendar input-group-text"></span>
-                    </span>
-                </div>*@
+                                <input type="text" class="form-control" name="AvailableDate">
+                                <span class="input-group-addon input-group-append border-left">
+                                    <span class="mdi mdi-calendar input-group-text"></span>
+                                </span>
+                            </div>*@
                         </div>
                     </div>
-                   
                 </div>
 
                 <div class="row" style="display:none">
@@ -388,13 +388,11 @@
             <div class="modal-body">
                 <div class="container">
                     @*@using (Html.BeginForm("OfferLetter", "Recruitment", FormMethod.Post, new { target = "_blank" }))
-        {*@
+            {*@
                     @*<input name="appliedId" id="appliedId" type="hidden" />*@
-                    <p style="color:orangered;font-weight:bold;">Note : 1 is lowest score nad 4 is higest score.</p>
+
                     <table class="table table-hover table-bordered">
-
                         <thead style="color: white; background: gray; ">
-
                             <tr>
                                 <th rowspan="2">Attributes</th>
                                 <th colspan="4">&nbsp;Interviewers</th>
@@ -788,11 +786,13 @@
                 //}
                 //var btnShortList = $("#Btnstatus").val();
                 //if (btnShortList == "shortList") {
-
+  
                 if (Url == "HrmAppliedCandidate") {
                     $("#Btnstatus").hide();
                     $('#BtnInter').hide();
-                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right' id='updatetask' onclick='updatestate(" + ID + ");'>ShortList</button>");
+                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='ShortList' data=" + ID +" id='updatetask' onclick='updatestate(this);'>ShortList</button>");
+                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Reject' data=" + ID +" id='btnReject' onclick='updatestate(this);'>Reject</button>");
+                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Hold' data="+ ID +" id='btnHold' onclick='updatestate(this);'>Hold</button>");
 
                     $.ajax({
                         type: "GET",
@@ -808,11 +808,12 @@
                     });
                 }
 
-
+             
                 if (Url == "ShortList") {
                     $("#Btnstatus").hide();
                     $('#BtnInter').hide();
-                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right' id='updatetask' onclick='updatestate(" + ID + ");'>InterView</button>");
+                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='InterView' data=" + ID + " id='updatetask' onclick='updatestate(this);'>InterView</button>");
+                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Hold' data=" + ID + " id='updatetask' onclick='updatestate(this);'>Hold</button>");
                     $.ajax({
                         type: "GET",
                         contentType: "application/json; charset=utf-8",
@@ -828,11 +829,15 @@
                 }
 
                 //var SelectedValue = $("#hdnSelected").data('value');
+           
                 if (Url == "Interview") {
                     $('#BtnInter').show();
                     $("#AddTasks").hide();
                     $("#Btnstatus").hide();
-                    $("#divAddTasks").append(" <button type='button' class='btn btn-primary updatetask float-right' id='updatetask' onclick='updatestate(" + ID + ");'>Selected</button>");
+                    $("#divAddTasks").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Selected' id='updatetask' data=" + ID + " onclick='updatestate(this);'>Selected</button>");
+                    $("#divAddTasks").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Rejected' id='updatetask' data=" + ID + " onclick='updatestate(this);'>Rejected</button>");
+                    $("#divAddTasks").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Another InterView' id='updatetask' data=" + ID + "  onclick='updatestate(this);'>Another InterView</button>");
+                    //$("#divAddTasks").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Another InterView' id='updatetask' data=" + ID + "  onclick='updatestate(" + ID + ");'>Another InterView</button>");
                     $.ajax({
                         type: "GET",
                         contentType: "application/json; charset=utf-8",
@@ -847,11 +852,11 @@
                     });
                 }
 
-
                 if (Url == "Selected") {
 
                     $("#Btnstatus").hide();
-                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right' id='updatetask' data-toggle='modal' data-target='#CityModal' >Offer Letter</button>");
+                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Offer Letter' id='updatetask' data-toggle='modal' data-target='#CityModal' >Offer Letter</button>");
+                    $("#btnDive").append(" <button type='button' class='btn btn-primary updatetask float-right m-1' Value='Hold' id='updatetask' data-toggle='modal' data-target='#CityModal' >Hold</button>");
                     $.ajax({
                         type: "GET",
                         contentType: "application/json; charset=utf-8",
@@ -898,7 +903,7 @@
 
 
     function onSuccessAppliedCandidate(data) {
-        debugger
+
         for (const element of data) {
             $("#txtCandidateName").val(element.CandidateName).attr('disabled', 'disabled');
             $("#txtJobLocation").val(element.Location).attr('disabled', 'disabled');
@@ -932,7 +937,6 @@
            
             $('#ApplyDate1').val(element.ApplyDate).attr('disabled', 'disabled');
             $('#AvailableDate1').val(element.AvailableDate).attr('disabled', 'disabled');
-         
            /* $('#ApplyDate').datepicker({ dateformat: "yy-mm-dd" }).find('input').val(element.applydate);*/
         /*    $('#AvailableDate').datepicker({ dateformat: "yy-mm-dd" }).find('input').val(element.availabledate);*/
            
@@ -1294,10 +1298,12 @@
             });
         }
 
+    function updatestate(obj) {
+        var id = $(obj).attr("data");
+        var Status = $(obj).attr("Value");
 
-        function updatestate(id) {
             mode = "update";
-
+           
             var formdata = new FormData();
 
             var candidatename = $("#txtCandidateName").val();
@@ -1315,7 +1321,7 @@
             var joblocation = $("#txtJobLocation").val();
             var gender = $("#DDLGender").val();
             var currency = $("#DDLCurrency").val();
-           /* var status = $("#DDLStatus").val();*/
+            var status = Status; // $("#updatetask").val();  //saif
             var appliedfrom = $("#txtAppliedFrom").val();
             var age = $("#txtAge").val();
             var minexpereince = $("#txtMinExpereince").val();
@@ -1390,7 +1396,7 @@
             formdata.append("Location", joblocation);
             formdata.append("Gender", gender);
             formdata.append("Currency", currency);
-            //formdata.append("Status", status);
+            formdata.append("Status", status); //saif uncommitt
             formdata.append("Age", age);
            /* formdata.append("Skills", skills.toString());*/
             formdata.append("expectedsalary", salaryrange);
@@ -1405,7 +1411,7 @@
             //var data = JSON.stringify(formData);
             //var result = JSON.stringify($("#EmployeeForm").serializeArray());
             //$('#responseTextDivId').html(result.responseText)
-
+            debugger
             $.ajax({
                 type: "POST",
                 data: formdata,

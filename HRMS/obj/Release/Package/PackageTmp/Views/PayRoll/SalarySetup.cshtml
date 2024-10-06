@@ -98,7 +98,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header modal-header">
-                    <h4 class="modal-title" style="color:white">Add/Update Deduction</h4>
+                    <h4 class="modal-title" style="color:white">Add/Update Salary Setup</h4>
                     <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
                 <div class="modal-body">
@@ -539,25 +539,45 @@
                 url: "/PayRoll/AddSalarySetup",
                 success: onSuccessAddManagement,
                 error: function (error) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong to Insert new Record!',
-                    });
+                    { error, error }
+                    
                 },
                 cache: false
             });
 
         }
 
-        function onSuccessAddManagement(data) {
-            Swal.fire({
-                icon: 'info',
-                title: 'Info',
-                text: 'Your work has been Save.',
-            }).then(function () {
-                location.reload(true);
-            });
+          function onSuccessAddManagement(data) {
+              debugger;
+
+              if (data.success == true) {
+                  Swal.fire({
+                      icon: 'info',
+                      title: 'Info',
+                      text: 'Your work has been Save.',
+                  }).then(function () {
+                      location.reload(true);
+                  });
+              }
+
+              if (data.success == false) {
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'error',
+                      text: data.message,
+                  }).then(function () {
+                      location.reload(true);
+                  });
+              }
+
+
+            //Swal.fire({
+            //    icon: 'info',
+            //    title: 'Info',
+            //    text: 'Your work has been Save.',
+            //}).then(function () {
+            //    location.reload(true);
+            //});
             Mode = "";
             clearfields();
 
@@ -671,7 +691,7 @@
         }
 
         function GetAllowanceId() {
-            
+            debugger;
             $.ajax({
                 type: "GET",
                 contentType: "application/json; charset=utf-8",

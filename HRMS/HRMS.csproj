@@ -786,6 +786,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Files\21fadb1cdf274ef7a7c1b40f704e98cc.png" />
     <Content Include="Files\41da5baf57514bc591cb24498375de14.jpg" />
     <Content Include="Files\60ef9f75be19482694af7119d3dbf60f.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -945,7 +946,9 @@
     <Content Include="Views\Master\Cost.cshtml" />
     <Content Include="Views\Master\Deduction.cshtml" />
     <Content Include="Views\Master\LoanType.cshtml" />
-    <Content Include="Views\EmployeeProfile\EmployeeVisaDetail.cshtml" />
+    <Content Include="Views\EmployeeProfile\EmployeeVisaDetail.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\LoanManagement\LoanSanction.cshtml" />
     <Content Include="Views\PayRoll\Arrear.cshtml" />
     <Content Include="Views\PayRoll\BonusSetup.cshtml" />

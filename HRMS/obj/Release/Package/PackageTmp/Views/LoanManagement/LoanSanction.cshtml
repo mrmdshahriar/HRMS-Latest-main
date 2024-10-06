@@ -103,14 +103,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12">
+                        @*<div class="col-sm-12">
                             <div class="form-group g-mb-30">
                                 <label class="g-mb-10 md-name" for="inputGroup-1_1">Loan Deferment Date</label> <span style="color:red">*</span>
                                 <div class="g-pos-rel">
                                     <input id="LoanDefermentDate" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="date" placeholder="mm/dd/yyyy">
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                         <div class="col-sm-12 col-md-2">
                             <div class="form-check">
                                 <label class="form-check-label">
@@ -277,7 +277,7 @@
                 "<th> Loan Deduction Start Date </th>" +
                 "<th> Tentative Return Month </th>" +
                 "<th> EMI Calculation </th>" +
-                "<th> Loan Deferment Date </th>" +
+                //"<th> Loan Deferment Date </th>" +
                 "<th class='last-td' style='width:35px'>Action</th> " +
                 "</tr>" +
                 "</thead>" +
@@ -327,7 +327,7 @@
                         "<td>" + data[i].LoanDeductionStartDate + "</td>" +
                         "<td>" + data[i].TentativeReturnMonth + "</td>" +
                         "<td>" + data[i].EmiCalculation + "</td>" +
-                        "<td>" + data[i].LoanDefermentDate + "</td>" +
+                        //"<td>" + data[i].LoanDefermentDate + "</td>" +
                         "<td class='last-td'><a class='btn btn-default btn-sm' title='Edit' style='cursor: pointer;' onclick='LoadingEditData(" + data[i].Id + ")' data-toggle='modal' data-target='#DeductionModal'><i class='fa fas fa-pencil'></i></a><a class='btn  btn-sm' title='Delete' style='cursor: pointer;' onclick = Delete(" + data[i].Id + ") > <i class='fa fa-trash'></i></a > "
                         // "<td class='last-td'><label class='form-check-inline u-check g-mr-20 mx-0 mb-0'> <input class='g-hidden-xs-up g-pos-abs g-top-0 g-right-0' id='btnEdit' onclick='LoadingEditData(" + data.data[i].pK_MetaDataID + ")' name = 'radGroup1_1' data-toggle='modal' data-target='#myModal'><i class='fa fa-pencil'></i></label ></td>" +
                         + "</tr></tbody>";
@@ -381,7 +381,7 @@
             $('#LoanDeductionStartDate').val(data.LoanDeductionStartDate);
             $("#TentativeReturnMonth").val(data.TentativeReturnMonth);
             $("#EmiCalculation").val(data.EmiCalculation);
-            $("#LoanDefermentDate").val(data.LoanDefermentDate);
+            //$("#LoanDefermentDate").val(data.LoanDefermentDate);
             $("#Activechk").prop('checked', data.Active);
         }
 
@@ -394,7 +394,7 @@
             var LoanDeductionStartDate = $("#LoanDeductionStartDate").val();
             var TentativeReturnMonth = $("#TentativeReturnMonth").val();
             var EmiCalculation = $("#EmiCalculation").val();
-            var LoanDefermentDate = $("#LoanDefermentDate").val();
+            //var LoanDefermentDate = $("#LoanDefermentDate").val();
             var Active = $('#Activechk').is(":checked");
             if (Active == false) {
 
@@ -445,13 +445,13 @@
                 return false;
             }
 
-            if (LoanDefermentDate == null || LoanDefermentDate == -1 || LoanDefermentDate == "") {
-                Swal.fire({
-                    icon: 'warning',
-                    text: 'Please Enter Loan Deferment Date!'
-                });
-                return false;
-            }    
+            //if (LoanDefermentDate == null || LoanDefermentDate == -1 || LoanDefermentDate == "") {
+            //    Swal.fire({
+            //        icon: 'warning',
+            //        text: 'Please Enter Loan Deferment Date!'
+            //    });
+            //    return false;
+            //}    
 
             var Data = JSON.stringify(
                 {
@@ -462,7 +462,7 @@
                     LoanDeductionStartDate: LoanDeductionStartDate,
                     TentativeReturnMonth: TentativeReturnMonth,
                     EmiCalculation: EmiCalculation,
-                    LoanDefermentDate: LoanDefermentDate,
+                    //LoanDefermentDate: LoanDefermentDate,
                     Active: Active
                 });
             $.ajax({
@@ -476,7 +476,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'Something went wrong to Insert new Deduction!',
+                        text: 'Something went wrong to Insert new Record!',
                     });
                 },
                 cache: false
@@ -485,15 +485,39 @@
         }
 
         function onSuccessAddManagement(data) {
-            Swal.fire({
-                icon: 'info',
-                title: 'Info',
-                text: 'Your work has been Save.',
-            }).then(function () {
-                location.reload(true);
-            });
-            Mode = "";
-            clearfields();
+            debugger
+            if (data.success == true) {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Info',
+                    text: 'Your work has been Save.',
+                }).then(function () {
+                    location.reload(true);
+                });
+                Mode = "";
+                clearfields();
+            }
+            if (data.success == false) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'error',
+                    text: data.message,
+                }).then(function () {
+                    location.reload(true);
+                });
+                Mode = "";
+                clearfields();
+            }
+
+            //Swal.fire({
+            //    icon: 'info',
+            //    title: 'Info',
+            //    text: 'Your work has been Save.',
+            //}).then(function () {
+            //    location.reload(true);
+            //});
+            //Mode = "";
+            //clearfields();
 
             LoadingLoanSanctionDetails();
 
@@ -510,7 +534,7 @@
             var LoanDeductionStartDate = $("#LoanDeductionStartDate").val();
             var TentativeReturnMonth = $("#TentativeReturnMonth").val();
             var EmiCalculation = $("#EmiCalculation").val();
-            var LoanDefermentDate = $("#LoanDefermentDate").val();
+            //var LoanDefermentDate = $("#LoanDefermentDate").val();
             var Active = $('#Activechk').is(":checked");
 
             if (EmployeeId == null || EmployeeId == -1 || EmployeeId == "") {
@@ -553,13 +577,13 @@
                 return false;
             }
 
-            if (LoanDefermentDate == null || LoanDefermentDate == -1 || LoanDefermentDate == "") {
-                Swal.fire({
-                    icon: 'warning',
-                    text: 'Please Enter Loan Deferment Date!'
-                });
-                return false;
-            }
+            //if (LoanDefermentDate == null || LoanDefermentDate == -1 || LoanDefermentDate == "") {
+            //    Swal.fire({
+            //        icon: 'warning',
+            //        text: 'Please Enter Loan Deferment Date!'
+            //    });
+            //    return false;
+            //}
 
 
             var Data = JSON.stringify(
@@ -571,7 +595,7 @@
                     LoanDeductionStartDate: LoanDeductionStartDate,
                     TentativeReturnMonth: TentativeReturnMonth,
                     EmiCalculation: EmiCalculation,
-                    LoanDefermentDate: LoanDefermentDate,
+                    //LoanDefermentDate: LoanDefermentDate,
                     Active: Active
 
                 });
@@ -669,7 +693,7 @@
             $('#LoanDeductionStartDate').val("");
             $("#TentativeReturnMonth").val("");
             $("#EmiCalculation").val("");
-            $("#LoanDefermentDate").val("");
+            //$("#LoanDefermentDate").val("");
 
         }
         function isNumberKey(evt) {

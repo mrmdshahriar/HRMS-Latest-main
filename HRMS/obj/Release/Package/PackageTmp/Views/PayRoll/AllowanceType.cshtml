@@ -29,7 +29,7 @@
                 <div class="modal-header modal-header">
                     <div id="ChangeTitle">
 
-                        <h4 class="modal-title" style="color:white" id="ChngName">Add Allowance  Type</h4>
+                        <h4 class="modal-title" style="color:white" id="ChngName">Add Allowance Type</h4>
                     </div>
                     <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
@@ -38,16 +38,16 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group g-mb-30">
-                                <label class="g-mb-10 md-name" for="inputGroup-1_1">Allowance  Type Code</label> <span style="color:red">*</span>
+                                <label class="g-mb-10 md-name" for="inputGroup-1_1">Allowance Type Code</label> <span style="color:red">*</span>
                                 <div class="g-pos-rel">
-                                    <input id="txtAllowanceTypeCode" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder="Allowance Type Code" required>
+                                    <input id="txtAllowanceTypeCode" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder="Allowance Type Code" readonly>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-12">
                             <div class="form-group g-mb-30">
-                                <label class="g-mb-10 md-name" for="inputGroup-1_1">Allowance  Type Name</label> <span style="color:red">*</span>
+                                <label class="g-mb-10 md-name" for="inputGroup-1_1">Allowance Type Name</label> <span style="color:red">*</span>
                                 <div class="g-pos-rel">
                                     <input id="txtAllowanceTypeName" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10 md-name-input" type="text" placeholder="Allowance Type Name">
                                 </div>
@@ -121,8 +121,27 @@
             $(".updateTask").hide();
             $(".txtUpdate").hide();
             LoadingGridDetails();
-
+            LoadingCode()
         });
+
+
+        function LoadingCode() {
+            debugger;
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                url: "/PayRoll/AutoCodeGenrateAllownceType",
+                success: function (data) {
+                    console.log(data);
+                    $("#txtAllowanceTypeCode").val(data);
+                },
+                error: function (error) {
+
+                },
+                cache: false
+            });
+        }
+
 
 
         function LoadingGridDetails() {
@@ -346,7 +365,7 @@
             $("#ChngName").show();
 
             $("#txtAllowanceTypeName").val("");
-            $('#txtAllowanceTypeCode').val("");
+            //$('#txtAllowanceTypeCode').val("");
         }
 
     </script>

@@ -26,9 +26,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <link href="~/Content/Assets/css/Country.css" rel="stylesheet" />
-<br />
-<br />
-<div class="container">
+
+<div class="container-fluid" style="padding:40px;">
     <!-- Button trigger modal -->
     @*<div class="row my-3">
             <div class="col-sm-12">
@@ -49,7 +48,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <div class="row">
+                    <div class="">
 
                         <div class="col-sm-12">
                             <div class="form-group g-mb-30">
@@ -69,8 +68,15 @@
                                 </div>
                             </div>
                         </div>
-
-
+                        <div class="col-sm-12 col-md-2">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" checked="" id="IsEncashable">
+                                    IsEncashable
+                                </label>
+                            </div>
+                        </div>
+                        <br />
                         <div class="col-sm-12 col-md-2">
                             <div class="form-check">
                                 <label class="form-check-label">
@@ -95,7 +101,7 @@
     <!-- Country List -->
     <div class="row">
         <div class="col-12">
-            <h3 class="all-md">Leave Policy List</h3>
+            <center><h3 class="all-md">Leave Policy List</h3></center>
             <hr />
             <button type="button" class="btn btn-inverse-primary u-btn-3d  d-block ml-auto" data-toggle="modal" data-target="#DeductionModal" onclick="clearfields()"><i class="fas fa-plus tm-fa-plus"></i> Create</button>
             <br />
@@ -240,6 +246,7 @@
         }
 
         $("#Activechk").prop('checked', data.Active);
+        $("#IsEncashable").prop('checked', data.IsEncashable);
     }
 
         function SaveData() {
@@ -247,7 +254,8 @@
 
         var LeaveDays = $("#LeaveDays").val();
         var LeaveTypeId = $('#LeaveTypeId').val();
-        var Active = $('#Activechk').is(":checked");
+            var IsEncashable = $('#IsEncashable').is(":checked");
+            var Active = $('#Activechk').is(":checked");
             if (LeaveDays == 0 || LeaveDays < 0 ) {
 
             Swal.fire({
@@ -270,6 +278,7 @@
 
                 LeaveDays: LeaveDays,
                 LeaveTypeId: LeaveTypeId,
+                IsEncashable: IsEncashable,
                 Active: Active
             });
         $.ajax({
@@ -311,6 +320,7 @@
 
         var LeaveDays = $('#LeaveDays').val();
         var LeaveTypeId = $('#LeaveTypeId').val();
+        var IsEncashable = $('#IsEncashable').is(":checked");
         var Active = $('#Activechk').is(":checked");
 
         var Data = JSON.stringify(
@@ -319,6 +329,7 @@
 
                 LeaveDays: LeaveDays,
                 LeaveTypeId: LeaveTypeId,
+                IsEncashable: IsEncashable,
                 Active: Active
 
             });

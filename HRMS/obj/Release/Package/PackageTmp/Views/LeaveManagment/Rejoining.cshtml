@@ -3,7 +3,18 @@
     ViewBag.Title = "Rejoining";
 }
 
-<h2>Rejoining Form</h2>
+<style>
+
+    .datepicker table {
+        width: 100%;
+    }
+
+    /*    .datepicker{
+        width: 100px!important;
+    }*/
+</style>
+
+<div style="background-color:cornflowerblue;color:white;font-size:28px;text-align:center;padding-top:2px;font-family:'Times New Roman'">Rejoining Form</div>
 
 
 <!-- base:css -->
@@ -28,7 +39,7 @@
 
 <div class="container-fluid">
 
-    <div class="__blk">
+    <div class="__blk" style="padding:20px;" >
         @*<form class="forms-sample" id="EmployeeForm">*@
 
         <div class="row">
@@ -45,13 +56,13 @@
             </div>
             <div class="col-md-6">
                 @*<div class="form-group">
-            <label class="col-form-label"> Rejoining Date</label>
-            <input type="date" class="form-control" name="RejoiningDate" id="RejoiningDate" value="">
-              </div>*@
+                    <label class="col-form-label"> Rejoining Date</label>
+                    <input type="date" class="form-control" name="RejoiningDate" id="RejoiningDate" value="">
+                      </div>*@
                 <div class="form-group">
                     <label class="col-form-label" for="exampleFormControlSelect1">Rejoining Date</label>
                     <div id="RejoiningDate" class="input-group date datepicker">
-                        <input type="text" class="form-control" name="txtRejoiningDate" id="txtRejoiningDate" disabled>
+                        <input type="text" class="form-control" name="txtRejoiningDate" id="txtRejoiningDate" onchange="RejoiningDateChanged(this.value);">
                         <span class="input-group-addon input-group-append border-left">
                             <span class="mdi mdi-calendar input-group-text"></span>
                         </span>
@@ -145,21 +156,45 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
-        *@
-
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> *@
     <script src="~/Content/Assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script src="~/Content/Assets/vendors/select2/select2.min.js"></script>
     <script src="~/Content/Assets/js/select2.js"></script>
     <script src="~/Content/Assets/js/formpickers.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+
     <script>
         $(document).ready(function () {
 
             debugger;
 
-            $("#txtRejoiningDate").val(moment(new Date()).format("MM/DD/YYYY"));
+            //$("#txtRejoiningDate").val(moment(new Date()).format("MM/DD/YYYY"));
 
-            $('#txtRejoiningDate').datepicker({ dateformat: "yy-mm-dd" })
+            $("#RejoiningDate").datepicker({
+                autoclose: true,
+                orientation: "bottom",
+                todayHighlight: true,
+            }).datepicker('update', new Date());
+
+            $('#DateFrom').datepicker('remove');
+
+            $("#DateFrom").datepicker({
+                autoclose: true,
+                orientation: "bottom",
+                todayHighlight: true,
+            });
+
+            $('#DateTo').datepicker('remove');
+
+            $("#DateTo").datepicker({
+                autoclose: true,
+                orientation: "bottom",
+                todayHighlight: true,
+            });
+
 
             GetEmployeeDDL();
 
@@ -171,9 +206,21 @@
                 selectOnClose: true
             });
 
-            
-
         });
+
+        function RejoiningDateChanged(value) {
+            debugger;
+
+            var rejoiningDate = moment(new Date(value));
+
+            var DateToData = moment(new Date($("#txtDateTo").val()));
+
+            var ExtraDaysTaken = rejoiningDate.diff(DateToData, 'days');
+
+            var ExtraDays = (ExtraDaysTaken - 1) < 0 ? 0 : (ExtraDaysTaken - 1);
+
+            $("#ExtraDaysTaken").val(ExtraDays);
+        }
 
         function EmployeeFormData(ddl) {
             debugger;
@@ -204,36 +251,41 @@
 
                         if (data.success == true) {
 
-                            $("#txtDateFrom").val(moment(data.EmployeeDataObj.DateFrom).format("MM/DD/YYYY"));
+                            if (data.EmployeeDataObj != null) {
 
-                            $("#txtDateTo").val(moment(data.EmployeeDataObj.DateTo).format("MM/DD/YYYY"));
+                                $("#txtDateFrom").val(moment(data.EmployeeDataObj.DateFrom).format("MM/DD/YYYY"));
 
-                            $("#txtLeaveDays").val(data.EmployeeDataObj.LeaveDays);
+                                $("#txtDateTo").val(moment(data.EmployeeDataObj.DateTo).format("MM/DD/YYYY"));
 
-                            $("#EligibilityDays").val(data.EmployeeDataObj.EligibilityDays);
+                                $("#txtLeaveDays").val(data.EmployeeDataObj.LeaveDays);
 
-                            $("#LeaveRequestId").val(data.EmployeeDataObj.Pk_LeaveRequest);
+                                $("#EligibilityDays").val(data.EmployeeDataObj.EligibilityDays);
 
-
-                            var today = moment(new Date());                         
-
-                            var DateToData = moment(data.EmployeeDataObj.DateTo);
-
-                            var ExtraDaysTaken = today.diff(DateToData, 'days');
-
-                            $("#ExtraDaysTaken").val(ExtraDaysTaken - 1);
-
-                            //Swal.fire({
-                            //    icon: 'info',
-                            //    title: 'Eligibility',
-                            //    text: "You Have " + data.EligibilityDays + " Eligible Days."
-                            //});
-
-                            //$("#EligibilityDays").val(data.EligibilityDays);
+                                $("#LeaveRequestId").val(data.EmployeeDataObj.Pk_LeaveRequest);
 
 
+                                var today = moment(new Date());
+
+                                var DateToData = moment(data.EmployeeDataObj.DateTo);
+
+                                var ExtraDaysTaken = today.diff(DateToData, 'days');
+
+                                $("#ExtraDaysTaken").val(ExtraDaysTaken - 1);
+                            }
+                            else {
+                                $("#txtDateFrom").val("");
+
+                                $("#txtDateTo").val("");
+
+                                $("#txtLeaveDays").val("");
+
+                                $("#EligibilityDays").val("");
+
+                                $("#LeaveRequestId").val("");
+
+                                $("#ExtraDaysTaken").val("");
+                            }
                         }
-
                     },
 
                     error: function (error) {
@@ -279,86 +331,86 @@
             $("#Activechk").prop('checked', data.IsActive);
         }
 
-        $("#DateTo").bind('change keyup', function () {
-            debugger;
+        //$("#DateTo").bind('change keyup', function () {
+        //    debugger;
 
-            var date1 = $('#DateFrom').datepicker('getDate');
-            var date2 = $(this).datepicker('getDate');
+        //    var date1 = $('#DateFrom').datepicker('getDate');
+        //    var date2 = $(this).datepicker('getDate');
 
 
-            var fullDatestart = new Date(date1);
-            var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
-            if (twoDigitMonthstart.length == 1)
-                twoDigitMonthstart = "0" + twoDigitMonthstart;
-            var twoDigitDatestart = fullDatestart.getDate() + "";
-            if (twoDigitDatestart.length == 1)
-                twoDigitDatestart = "0" + twoDigitDatestart;
+        //    var fullDatestart = new Date(date1);
+        //    var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
+        //    if (twoDigitMonthstart.length == 1)
+        //        twoDigitMonthstart = "0" + twoDigitMonthstart;
+        //    var twoDigitDatestart = fullDatestart.getDate() + "";
+        //    if (twoDigitDatestart.length == 1)
+        //        twoDigitDatestart = "0" + twoDigitDatestart;
 
-            var currentDatestart = fullDatestart.getFullYear() + "/" + twoDigitMonthstart + "/" + twoDigitDatestart;
+        //    var currentDatestart = fullDatestart.getFullYear() + "/" + twoDigitMonthstart + "/" + twoDigitDatestart;
 
-            var fullDatestart = new Date(date2);
-            var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
-            if (twoDigitMonthstart.length == 1)
-                twoDigitMonthstart = "0" + twoDigitMonthstart;
-            var twoDigitDatestart = fullDatestart.getDate() + "";
-            if (twoDigitDatestart.length == 1)
-                twoDigitDatestart = "0" + twoDigitDatestart;
+        //    var fullDatestart = new Date(date2);
+        //    var twoDigitMonthstart = (fullDatestart.getMonth() + 1) + "";
+        //    if (twoDigitMonthstart.length == 1)
+        //        twoDigitMonthstart = "0" + twoDigitMonthstart;
+        //    var twoDigitDatestart = fullDatestart.getDate() + "";
+        //    if (twoDigitDatestart.length == 1)
+        //        twoDigitDatestart = "0" + twoDigitDatestart;
 
-            var currentDatestart1 = fullDatestart.getFullYear() + "/" + twoDigitMonthstart + "/" + twoDigitDatestart;
+        //    var currentDatestart1 = fullDatestart.getFullYear() + "/" + twoDigitMonthstart + "/" + twoDigitDatestart;
 
-            var EligibilityDays = $("#EligibilityDays").val();
+        //    var EligibilityDays = $("#EligibilityDays").val();
 
-            if (currentDatestart == currentDatestart1) {
+        //    if (currentDatestart == currentDatestart1) {
 
-                var dayDiff = 1;
+        //        var dayDiff = 1;
 
-                if (dayDiff > parseInt(EligibilityDays)) {
+        //        if (dayDiff > parseInt(EligibilityDays)) {
 
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Please Check Leave Eligibility Days!',
-                    });
+        //            Swal.fire({
+        //                icon: 'error',
+        //                title: 'Oops...',
+        //                text: 'Please Check Leave Eligibility Days!',
+        //            });
 
-                    $("#txtDateTo").val("");
+        //            $("#txtDateTo").val("");
 
-                    $("#txtLeaveDays").val("").attr('disabled', 'disabled');
+        //            $("#txtLeaveDays").val("").attr('disabled', 'disabled');
 
-                    $("#PendingDays").val("");
+        //            $("#PendingDays").val("");
 
-                    return false;
-                }
+        //            return false;
+        //        }
 
-                $("#txtLeaveDays").val(dayDiff).attr('disabled', 'disabled');
+        //        $("#txtLeaveDays").val(dayDiff).attr('disabled', 'disabled');
 
-                $("#PendingDays").val(EligibilityDays - dayDiff);
+        //        $("#PendingDays").val(EligibilityDays - dayDiff);
 
-            } else {
+        //    } else {
 
-                var dayDiff = Math.ceil((date2 - date1) / (1000 * 60 * 60 * 24)) + 1;
+        //        var dayDiff = Math.ceil((date2 - date1) / (1000 * 60 * 60 * 24)) + 1;
 
-                if (dayDiff > parseInt(EligibilityDays)) {
+        //        if (dayDiff > parseInt(EligibilityDays)) {
 
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Please Check Leave Eligibility Days!',
-                    });
+        //            Swal.fire({
+        //                icon: 'error',
+        //                title: 'Oops...',
+        //                text: 'Please Check Leave Eligibility Days!',
+        //            });
 
-                    $("#txtDateTo").val("");
+        //            $("#txtDateTo").val("");
 
-                    $("#txtLeaveDays").val("").attr('disabled', 'disabled');
+        //            $("#txtLeaveDays").val("").attr('disabled', 'disabled');
 
-                    $("#PendingDays").val("");
+        //            $("#PendingDays").val("");
 
-                    return false;
-                }
+        //            return false;
+        //        }
 
-                $("#txtLeaveDays").val(dayDiff).attr('disabled', 'disabled');
+        //        $("#txtLeaveDays").val(dayDiff).attr('disabled', 'disabled');
 
-                $("#PendingDays").val(EligibilityDays - dayDiff);
-            }
-        });
+        //        $("#PendingDays").val(EligibilityDays - dayDiff);
+        //    }
+        //});
 
         function SaveData() {
 

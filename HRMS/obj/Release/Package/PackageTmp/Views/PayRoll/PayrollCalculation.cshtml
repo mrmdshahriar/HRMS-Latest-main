@@ -382,15 +382,15 @@
                 allowStr += '<table style="white-space:nowrap;" class="table table-bordered table-condensed table-hover table-striped">' +
                     '<thead>' +
                     '<tr style="background-color:cornflowerblue;color:white;">' +
-                        '<th style="width:50px;">No</th>' +
-                        '<th style="width:130px;">Employee Id</th>' +
-                        '<th>Employee Name</th>' +
-                        '<th>Normal OT Hours</th>' +
-                        '<th>Normal OT Salary</th>' +
-                        '<th>Weekend OT</th>' +
-                        '<th>Weekend OT Salary</th>' +
-                        '<th>Public Holiday OT Hours</th>' +
-                        '<th>Public Holiday OT Salary</th>' +
+                    '<th style="width:50px;">No</th>' +
+                    '<th style="width:130px;">Employee Id</th>' +
+                    '<th>Employee Name</th>' +
+                    '<th>Normal OT Hours</th>' +
+                    '<th>Normal OT Salary</th>' +
+                    '<th>Weekend OT</th>' +
+                    '<th>Weekend OT Salary</th>' +
+                    '<th>Public Holiday OT Hours</th>' +
+                    '<th>Public Holiday OT Salary</th>' +
                     '</tr>' +
                     '</thead>' +
                     '<tbody>';
@@ -511,6 +511,8 @@
                     '</thead>' +
                     '<tbody>';
 
+                var No = 1;
+
                 $.each(data, function (index, obj) {
 
                     var allowanceAmountArray = [];
@@ -518,7 +520,7 @@
                     $.each(obj.Allowances, function (index, val) {
 
                         allowStr += '<tr>' +
-                            '<td>' + (index + 1) + '</td>' +
+                            '<td>' + (No++) + '</td>' +
                             '<td>' + val.EmployeeId + '</td>' +
                             '<td>' + val.Allowances + '</td>' +
                             '<td>' + val.TotalAmount + '</td>' +
@@ -576,7 +578,7 @@
 
                 empObj.TotalPayableDays = $(obj).find("td:nth-child(12)").html();
 
-                empObj.MonthlySalary = $(obj).find("td:nth-child(13)").html();
+                empObj.TotalMonthlySalary = $(obj).find("td:nth-child(13)").html();
 
                 empObj.NormalOTHours = $(obj).find("td:nth-child(14)").html();
 
@@ -651,6 +653,13 @@
                 }
             });
 
+        }
+        else {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'There Is No Data To Process!'
+            });
         }
     }
 
@@ -887,7 +896,7 @@
                         '</tr>' +
                         '<tr>' +
                         '<th>Total Monthly Salary</th>' +
-                        '<th>' + obj.TotalSalaryWithAllowances +'</th>' +
+                        '<th>' + obj.TotalSalaryWithAllowances + '</th>' +
                         '<th></th>' +
                         '<th></th>' +
                         '</tr>' +
@@ -895,7 +904,7 @@
                         '<th>Present Days</th>' +
                         '<th>' + obj.PresentDays + '</th>' +
                         '<th>Absent Days</th>' +
-                        '<th>' + obj.AbsentDays +'</th>' +
+                        '<th>' + obj.AbsentDays + '</th>' +
                         '</tr>' +
                         '<tr>' +
                         '<th>Bank Name</th>' +
@@ -927,7 +936,7 @@
                         '</tr>' +
                         '<tr>' +
                         '<th>Normal OT</th>' +
-                        '<th>' + obj.NormalOTHours +'</th>' +
+                        '<th>' + obj.NormalOTHours + '</th>' +
                         '<th>Loan</th>' +
                         '<th>' + obj.Loan + '</th>' +
                         '</tr>' +
@@ -993,11 +1002,12 @@
         var CalendarDaysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
 
         var str = '';
-
+        debugger;
         $.ajax({
 
             type: "GET",
             url: "/PayRoll/GetPayrollCalculationTableData",
+
             success: function (data) {
                 debugger;
 

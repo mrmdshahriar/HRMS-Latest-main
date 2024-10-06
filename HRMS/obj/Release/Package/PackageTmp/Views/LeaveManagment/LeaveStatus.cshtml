@@ -144,7 +144,13 @@
                         "<td>" + data[i].Reason + "</td>" +
                         "<td>" + data[i].LeaveDays + "</td>" +
                         "<td>" + data[i].Status + "</td>" +
-                        "<td class='last-td'><a href='/LeaveManagment/AddLeaveStatus/" + data[i].Id + "' class='btn btn-default btn-sm' title='Status' style='cursor: pointer;'><i class='fa fa-eye'></i></a><a class='btn  btn-sm' title='delete' style='cursor: pointer;' onclick= Delete(" + data[i].Id + ") > <i class='fa fa-trash'></i></a > </td>" +
+                        //"<td class='last-td'><a href='/LeaveManagment/AddLeaveStatus/" + data[i].Id + "' class='btn btn-default btn-sm' title='Status' style='cursor: pointer;'><i class='fa fa-eye'></i></a><a class='btn  btn-sm' title='delete' style='cursor: pointer;' onclick= Delete(" + data[i].Id + ") > <i class='fa fa-trash'></i></a > </td>" +
+
+
+                        "<td class='last-td'><a href='/LeaveManagment/LeaveTypeEdit/" + data[i].Id + "' class='btn btn-default btn-sm' title='Status' style='cursor: pointer;'><i class='fa fa-eye'></i></a><a class='btn  btn-sm' title='delete' style='cursor: pointer;' onclick= Delete(" + data[i].Id + ") > <i class='fa fa-trash'></i></a > </td>" +
+
+
+
                         //"<td class='last-td'><label class='form-check-inline u-check g-mr-20 mx-0 mb-0'> <input class='g-hidden-xs-up g-pos-abs g-top-0 g-right-0' id='btnedit' href='https://localhost:44300/recruitment/editappliedcandidate/1' onclick='loadingeditdata(" + data.data[i].pk_metadataid + ")' name='radgroup1_1' data-toggle='modal' data-target='#mymodal'><i class='fa fa-pencil'></i></label ></td>" +
                         + "</tr></tbody>";
                     $('#values1').append(val);
