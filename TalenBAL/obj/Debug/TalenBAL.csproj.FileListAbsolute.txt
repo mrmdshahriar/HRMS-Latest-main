@@ -202,3 +202,27 @@ C:\C# programs\HRMS NEW LATEST\TalenBAL\obj\Debug\TalenBAL.csproj.CoreCompileInp
 C:\C# programs\HRMS NEW LATEST\TalenBAL\obj\Debug\TalenBAL.csproj.Up2Date
 C:\C# programs\HRMS NEW LATEST\TalenBAL\obj\Debug\TalenBAL.dll
 C:\C# programs\HRMS NEW LATEST\TalenBAL\obj\Debug\TalenBAL.pdb
+J:\RMS-Latest-main\TalenBAL\bin\Debug\TalenBAL.dll.config
+J:\RMS-Latest-main\TalenBAL\bin\Debug\TalenBAL.dll
+J:\RMS-Latest-main\TalenBAL\bin\Debug\TalenBAL.pdb
+J:\RMS-Latest-main\TalenBAL\bin\Debug\EntityFramework.dll
+J:\RMS-Latest-main\TalenBAL\bin\Debug\EntityFramework.SqlServer.dll
+J:\RMS-Latest-main\TalenBAL\bin\Debug\ExcelDataReader.DataSet.dll
+J:\RMS-Latest-main\TalenBAL\bin\Debug\ExcelDataReader.dll
+J:\RMS-Latest-main\TalenBAL\bin\Debug\Newtonsoft.Json.dll
+J:\RMS-Latest-main\TalenBAL\bin\Debug\System.Data.SqlClient.dll
+J:\RMS-Latest-main\TalenBAL\bin\Debug\System.Net.Http.Formatting.dll
+J:\RMS-Latest-main\TalenBAL\bin\Debug\EntityFramework.xml
+J:\RMS-Latest-main\TalenBAL\bin\Debug\EntityFramework.SqlServer.xml
+J:\RMS-Latest-main\TalenBAL\bin\Debug\ExcelDataReader.pdb
+J:\RMS-Latest-main\TalenBAL\bin\Debug\ExcelDataReader.xml
+J:\RMS-Latest-main\TalenBAL\bin\Debug\ExcelDataReader.DataSet.pdb
+J:\RMS-Latest-main\TalenBAL\bin\Debug\ExcelDataReader.DataSet.xml
+J:\RMS-Latest-main\TalenBAL\bin\Debug\Newtonsoft.Json.xml
+J:\RMS-Latest-main\TalenBAL\bin\Debug\System.Data.SqlClient.xml
+J:\RMS-Latest-main\TalenBAL\bin\Debug\System.Net.Http.Formatting.xml
+J:\RMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.csproj.AssemblyReference.cache
+J:\RMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.csproj.CoreCompileInputs.cache
+J:\RMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.csproj.Up2Date
+J:\RMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.dll
+J:\RMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.pdb
