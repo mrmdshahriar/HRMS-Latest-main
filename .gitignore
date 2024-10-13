@@ -4,10 +4,6 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 
-HRMS/obj/
-
-
-
 # User-specific files
 *.rsuser
 *.suo
@@ -22,6 +18,7 @@ HRMS/obj/
 mono_crash.*
 
 # Build results
+HRMS/obj/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
