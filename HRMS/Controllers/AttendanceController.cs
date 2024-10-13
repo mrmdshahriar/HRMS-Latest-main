@@ -118,6 +118,14 @@ namespace HRMS.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetEarlyOrLateCalculation(int? id)
+        {
+
+            var result = ObjBAL.GetEmployeeTimeIn(id);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult AttendanceCalculation()
         {
             ViewBag.DepartmentDLL = ObjBAL.GetAllDepartment();

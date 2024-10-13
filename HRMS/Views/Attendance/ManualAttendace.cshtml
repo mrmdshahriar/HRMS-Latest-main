@@ -46,10 +46,40 @@
             { Name: 'isOffDays', ArrEmployeeHolidays: _arroffdays });
     });
 
+
+    $(document).on('change', "#TimeIn", function () {
+
+        debugger;
+
+        var EmpId = parseInt($("#EmployeeId").val());
+
+
+        $.ajax({
+            type: "POST",
+
+            data: { id: EmpId },
+
+            url: "/Attendance/GetEarlyOrLateCalculation",
+
+            success: function (response) {
+                debugger;
+
+            },
+
+            error:function (response) {
+                    alert("Error: " + response);
+                }
+        });
+
+    });
+
+
     var employeeDefaultHolidays = [];
 
     function getEmployeeHolidays(Id) {
         debugger;
+
+        $("#EmployeeId").val(Id);
 
         employeeDefaultHolidays = [];
 
@@ -332,22 +362,22 @@
 
                 if (defaultHolidaysInNumbers.indexOf(5) != -1 && currentDate.getDay() == 5) {
 
-                    finTab += "<td id=isHoliDay><input class=spDays type='checkbox' id=isHoliDay name=isHoliDay checked></td>";
+                    finTab += "<td id='isHoliDay'><input class='spDays' type='checkbox' id='isHoliDay' name='isHoliDay' checked></td>";
                 }
 
                 else if (defaultHolidaysInNumbers.indexOf(6) != -1 && currentDate.getDay() == 6) {
 
-                    finTab += "<td id=isHoliDay><input class=spDays type='checkbox' id=isHoliDay name=isHoliDay checked></td>";
+                    finTab += "<td id='isHoliDay'><input class='spDays' type='checkbox' id='isHoliDay' name='isHoliDay' checked></td>";
                 }
 
                 else if (defaultHolidaysInNumbers.indexOf(0) != -1 && currentDate.getDay() == 0) {
 
-                    finTab += "<td id=isHoliDay><input class=spDays type='checkbox' id=isHoliDay name=isHoliDay checked></td>";
+                    finTab += "<td id='isHoliDay'><input class='spDays' type='checkbox' id='isHoliDay' name='isHoliDay' checked></td>";
                 }
 
                 else {
 
-                    finTab += "<td id=isHoliDay><input class=spDays type='checkbox' id=isHoliDay name=isHoliDay></td>";
+                    finTab += "<td id='isHoliDay'><input class='spDays' type='checkbox' id='isHoliDay' name='isHoliDay'></td>";
                 }
                 
                 finTab += "<td id=HoliDay><input class=spDays type='textbox' disabled=disabled id=HoliDay name=HoliDay></td>";
@@ -370,11 +400,11 @@
                     $(_trToBeDisabled).find('input[name=isHoliDay]').prop('checked', true);
 
 
-                if (_arrClasses[i] == 'IsLeave') {
-                    let _arrLeaveRequest = _arrManualAttendence.filter(x => x.Name == _arrClasses[i]);
-                    let _leaveType = _arrLeaveRequest[0].ArrEmployeeHolidays[0].Name;
-                    $(_trToBeDisabled).find('input[name="LeaveType"]').val(_leaveType);
-                }
+                //if (_arrClasses[i] == 'IsLeave') {
+                //    let _arrLeaveRequest = _arrManualAttendence.filter(x => x.Name == _arrClasses[i]);
+                //    let _leaveType = _arrLeaveRequest[0].ArrEmployeeHolidays[0].Name;
+                //    $(_trToBeDisabled).find('input[name="LeaveType"]').val(_leaveType);
+                //}
             }
         }
     }
@@ -557,7 +587,7 @@
                                                 <div class="form-group col-lg-3" id="Employeediv" style="display:block">
                                                     <label for="cname">Employee</label>
                                                     @Html.DropDownList("EmployeeDLL", new SelectList(ViewBag.EmployeeDLL, "Id", "FirstName"), "--Select Employee--", new { @style = "color:black;", @class = "form-control", id = "ddlEmployee", name = "ddlEmployee", onchange="getEmployeeHolidays(this.value)" })
-
+                                                    <input type="hidden" id="EmployeeId" name="EmployeeId" value="" />
                                                 </div>
                                                 <div class="form-group col-lg-3" id="month" style="display:block">
                                                     <label for="cname">Month</label>

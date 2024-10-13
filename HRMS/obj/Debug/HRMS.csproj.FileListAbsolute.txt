@@ -1136,7 +1136,6 @@ J:\HRMS-Latest-main\HRMS\bin\ExcelDataReader.DataSet.pdb
 J:\HRMS-Latest-main\HRMS\bin\ExcelDataReader.DataSet.xml
 J:\HRMS-Latest-main\HRMS\obj\Debug\HRMS.csproj.AssemblyReference.cache
 J:\HRMS-Latest-main\HRMS\obj\Debug\HRMS.csproj.CoreCompileInputs.cache
-J:\HRMS-Latest-main\HRMS\obj\Debug\HRMS.csproj.CopyComplete
 J:\HRMS-Latest-main\HRMS\obj\Debug\HRMS.dll
 J:\HRMS-Latest-main\HRMS\obj\Debug\HRMS.pdb
 C:\C# programs\HRMS NEW LATEST\HRMS\bin\HRMS.dll.config
@@ -1408,3 +1407,5 @@ J:\RMS-Latest-main\HRMS\obj\Debug\HRMS.csproj.CoreCompileInputs.cache
 J:\RMS-Latest-main\HRMS\obj\Debug\HRMS.csproj.Up2Date
 J:\RMS-Latest-main\HRMS\obj\Debug\HRMS.dll
 J:\RMS-Latest-main\HRMS\obj\Debug\HRMS.pdb
+J:\HRMS-Latest-main\HRMS\bin\Views\EmployeeProfile\EmployeeVisaDetail.cshtml
+J:\HRMS-Latest-main\HRMS\obj\Debug\HRMS.csproj.Up2Date

@@ -475,7 +475,6 @@ J:\HRMS-Latest-main\ApiProject\bin\ExcelDataReader.DataSet.pdb
 J:\HRMS-Latest-main\ApiProject\bin\ExcelDataReader.DataSet.xml
 J:\HRMS-Latest-main\ApiProject\obj\Debug\ApiProject.csproj.AssemblyReference.cache
 J:\HRMS-Latest-main\ApiProject\obj\Debug\ApiProject.csproj.CoreCompileInputs.cache
-J:\HRMS-Latest-main\ApiProject\obj\Debug\ApiProject.csproj.CopyComplete
 J:\HRMS-Latest-main\ApiProject\obj\Debug\ApiProject.dll
 J:\HRMS-Latest-main\ApiProject\obj\Debug\ApiProject.pdb
 C:\C# programs\HRMS NEW LATEST\ApiProject\bin\ApiProject.dll.config
@@ -718,3 +717,4 @@ J:\RMS-Latest-main\ApiProject\obj\Debug\ApiProject.csproj.CoreCompileInputs.cach
 J:\RMS-Latest-main\ApiProject\obj\Debug\ApiProject.csproj.Up2Date
 J:\RMS-Latest-main\ApiProject\obj\Debug\ApiProject.dll
 J:\RMS-Latest-main\ApiProject\obj\Debug\ApiProject.pdb
+J:\HRMS-Latest-main\ApiProject\obj\Debug\ApiProject.csproj.Up2Date

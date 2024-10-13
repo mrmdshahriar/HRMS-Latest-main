@@ -175,7 +175,6 @@ J:\HRMS-Latest-main\TalenBAL\bin\Debug\System.Data.SqlClient.xml
 J:\HRMS-Latest-main\TalenBAL\bin\Debug\System.Net.Http.Formatting.xml
 J:\HRMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.csproj.AssemblyReference.cache
 J:\HRMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.csproj.CoreCompileInputs.cache
-J:\HRMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.csproj.CopyComplete
 J:\HRMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.dll
 J:\HRMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.pdb
 C:\C# programs\HRMS NEW LATEST\TalenBAL\bin\Debug\TalenBAL.dll.config
@@ -226,3 +225,4 @@ J:\RMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.csproj.CoreCompileInputs.cache
 J:\RMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.csproj.Up2Date
 J:\RMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.dll
 J:\RMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.pdb
+J:\HRMS-Latest-main\TalenBAL\obj\Debug\TalenBAL.csproj.Up2Date
