@@ -4,9 +4,9 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 
-HRMS-latest-Main/HRMS/bin/
+/HRMS-latest-Main/HRMS/bin/
 
-HRMS-latest-Main/HRMS/obj/Debug/
+HRMS-latest-Main\HRMS\obj\Debug\
 
 
 # User-specific files
