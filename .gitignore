@@ -3,10 +3,17 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+HRMS/
+
+/HRMS/
+
+\HRMS\
+
+HRMS-latest-Main/HRMS/
 
 ../../bin/
 
-HRMS/bin/
+HRMS/bin/*.*
 
 /HRMS/bin/
 
