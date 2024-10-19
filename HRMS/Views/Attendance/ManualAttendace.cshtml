@@ -85,15 +85,20 @@
 
                 if (GivenTimeOfEmployee > GressTimeOfEmployee) {
 
-                    alert("Late");
+                    alert("You are Late");
 
-                    pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", true);
+                    pointer.closest("tr").find("td #isLate").prop("checked", true);
+
+                    //pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", true);
 
                 }
                 else {
-                    alert("Ok");
 
-                    pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", false);
+                    //alert("You are in Time");
+
+                    pointer.closest("tr").find("td #isLate").prop("checked", false);
+
+                    //pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", false);
                 }
 
             },
