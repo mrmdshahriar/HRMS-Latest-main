@@ -51,7 +51,9 @@
 
         debugger;
 
-        var inputTime = $(this).val();
+        var pointer = $(this);
+
+        var inputTime = pointer.val();
 
         var EmpId = $("#EmployeeId").val();
 
@@ -84,9 +86,14 @@
                 if (GivenTimeOfEmployee > GressTimeOfEmployee) {
 
                     alert("Late");
+
+                    pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", true);
+
                 }
                 else {
                     alert("Ok");
+
+                    pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", false);
                 }
 
             },
