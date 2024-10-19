@@ -47,12 +47,13 @@
     });
 
 
-    $(document).on('change', "#TimeIn", function () {
+    $(document).on('change', "#TimeIn", function (e) {
 
         debugger;
 
-        var EmpId = parseInt($("#EmployeeId").val());
+        var inputTime = $(this).val();
 
+        var EmpId = $("#EmployeeId").val();
 
         $.ajax({
             type: "POST",
@@ -164,8 +165,6 @@
                 function (response) {
 
                     var responseData = jQuery.parseJSON(response);
-
-
                 },
             error:
                 function (response) {
@@ -189,13 +188,11 @@
             success: function (data) {
                 if (data != "") {
 
-
                     $('#ddlEmployee').append('<option value="-1" selected disabled> Select Employee </option>');
                     $.each(data, function (i, tweet) {
                         $('#ddlEmployee').append('<option value="' + data[i].Id + '">' + data[i].FirstName + " " + data[i].LastName + '</option>');
 
                     });
-
                 }
 
             },
