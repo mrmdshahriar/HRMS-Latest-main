@@ -65,9 +65,30 @@
             success: function (data) {
                 debugger;
 
-                var str2 = data.GressTime.Minutes;
+                var str = data.GressTime.Hours + ":" + data.GressTime.Minutes;
 
-                var str = data.GressTime.Hours + ":" + str2;
+                var hours = Number(data.GressTime.Hours);
+
+                var minutes = Number(data.GressTime.Minutes);
+
+                var GressTimeOfEmployee = new Date(2024, 1, 1, hours, minutes);
+
+                var time = inputTime.split(':');
+
+                var hours1 = time[0];
+
+                var minutes1 = time[1];
+
+                var GivenTimeOfEmployee = new Date(2024, 1, 1, hours1, minutes1);
+
+                if (GivenTimeOfEmployee > GressTimeOfEmployee) {
+
+                    alert("Late");
+                }
+                else {
+                    alert("Ok");
+                }
+
             },
 
             error:function (response) {
