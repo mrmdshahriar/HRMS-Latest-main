@@ -62,9 +62,12 @@
 
             url: "/Attendance/GetEarlyOrLateCalculation",
 
-            success: function (response) {
+            success: function (data) {
                 debugger;
 
+                var str2 = data.GressTime.Minutes;
+
+                var str = data.GressTime.Hours + ":" + str2;
             },
 
             error:function (response) {

@@ -55,7 +55,7 @@ namespace HRMS
                 x.IsFriday,
                 x.IsSaturday,
                 x.IsSunday
-            }).ToList();
+            }).FirstOrDefault();
         }
 
 

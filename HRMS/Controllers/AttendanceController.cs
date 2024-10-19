@@ -120,8 +120,6 @@ namespace HRMS.Controllers
 
         public ActionResult GetEarlyOrLateCalculation(int? id)
         {
-
-
             var result = ObjBAL.GetEmployeeTimeIn(id);
 
             return Json(result, JsonRequestBehavior.AllowGet);
