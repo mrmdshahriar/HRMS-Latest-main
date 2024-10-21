@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using TalenBAL.ViewModel;
 
 
@@ -27,6 +28,19 @@ namespace HRMS
                 Islogin = true;
             }
             return Islogin;
+        }
+
+        public dynamic GetHrmEmployeesData()
+        {
+            var empList = db.HrmEmployees.Select(x => new
+            {
+                x.Id,
+                x.ShiftId
+            }).ToList();
+
+            var shiftMasterList = db.ShiftMasters.ToList();
+
+            return new { empList, shiftMasterList };
         }
 
         public dynamic GetEmployeeHolidays(int? id)

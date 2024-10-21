@@ -110,6 +110,13 @@ namespace HRMS.Controllers
             return View();
         }
 
+        public ActionResult GetHrmEmployeeAndShiftMasterData()
+        {
+            var hrmEmpAndShiftObj = ObjBAL.GetHrmEmployeesData();
+
+            return Json(hrmEmpAndShiftObj, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult GetEmployeeHolidays(int? id)
         {
 

@@ -35,7 +35,8 @@
 </style>
 
 <script type="text/javascript">
-  var _arrManualAttendence = [];
+
+    var _arrManualAttendence = [];
     var _arrBetweenDates = [];
     $(document).ready(function () {
         let _arrEmployeeLeaveRequests = @Html.Raw(ViewBag.EmployeeLeaveRequests);
@@ -45,6 +46,35 @@
             { Name: 'isHoliDay', ArrEmployeeHolidays: _arrPublicHolidays },
             { Name: 'isOffDays', ArrEmployeeHolidays: _arroffdays });
     });
+
+    GetEmployeeAndShiftMasterData();
+
+    var HrmEmployees = [];
+
+    var ShiftMasters = [];
+
+    function GetEmployeeAndShiftMasterData() {
+        debugger;
+
+        $.ajax({
+
+            type: "GET",
+
+            url: "/Attendance/GetHrmEmployeeAndShiftMasterData",
+
+            success: function (data) {
+                debugger;
+
+                HrmEmployees = data.empList;
+
+                ShiftMasters = data.shiftMasterList;
+            },
+
+            error: function (response) {
+                alert("Error: " + response);
+            }
+        });
+    }
 
 
     $(document).on('change', "#TimeIn", function (e) {
@@ -57,58 +87,118 @@
 
         var EmpId = $("#EmployeeId").val();
 
-        $.ajax({
-            type: "POST",
+        var EmpShiftId = 0;
 
-            data: { id: EmpId },
+        var GressTime = 0;
 
-            url: "/Attendance/GetEarlyOrLateCalculation",
+        $(HrmEmployees).each(function (index, value) {
 
-            success: function (data) {
-                debugger;
+            if (EmpId == value.Id) {
 
-                var str = data.GressTime.Hours + ":" + data.GressTime.Minutes;
-
-                var hours = Number(data.GressTime.Hours);
-
-                var minutes = Number(data.GressTime.Minutes);
-
-                var GressTimeOfEmployee = new Date(2024, 1, 1, hours, minutes);
-
-                var time = inputTime.split(':');
-
-                var hours1 = time[0];
-
-                var minutes1 = time[1];
-
-                var GivenTimeOfEmployee = new Date(2024, 1, 1, hours1, minutes1);
-
-                if (GivenTimeOfEmployee > GressTimeOfEmployee) {
-
-                    alert("You are Late");
-
-                    pointer.closest("tr").find("td #isLate").prop("checked", true);
-
-                    //pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", true);
-
-                }
-                else {
-
-                    //alert("You are in Time");
-
-                    pointer.closest("tr").find("td #isLate").prop("checked", false);
-
-                    //pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", false);
-                }
-
-            },
-
-            error:function (response) {
-                    alert("Error: " + response);
-                }
+                EmpShiftId = value.ShiftId;
+            }
         });
 
+        $(ShiftMasters).each(function (index, value) {
+
+            if (EmpShiftId == value.ShiftId) {
+
+                GressTime = value.GressTime;
+            }
+        });
+
+        var GressTimeOfEmployee = new Date(2024, 1, 1, GressTime.Hours, GressTime.Minutes);
+
+        var time = inputTime.split(':');
+
+        var hours = time[0];
+
+        var minutes = time[1];
+
+        var GivenTimeOfEmployee = new Date(2024, 1, 1, hours, minutes);
+
+        if (GivenTimeOfEmployee > GressTimeOfEmployee) {
+
+            alert("Sorry! You are Late");
+
+            pointer.closest("tr").find("td #isLate").prop("checked", true);
+
+            //pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", true);
+
+        }
+        else {
+
+            //alert("You are in Time");
+
+            pointer.closest("tr").find("td #isLate").prop("checked", false);
+
+            //pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", false);
+        }
     });
+
+
+    //$(document).on('change', "#TimeIn", function (e) {
+
+    //    debugger;
+
+    //    var pointer = $(this);
+
+    //    var inputTime = pointer.val();
+
+    //    var EmpId = $("#EmployeeId").val();
+
+    //    $.ajax({
+    //        type: "POST",
+
+    //        data: { id: EmpId },
+
+    //        url: "/Attendance/GetEarlyOrLateCalculation",
+
+    //        success: function (data) {
+    //            debugger;
+
+    //            var str = data.GressTime.Hours + ":" + data.GressTime.Minutes;
+
+    //            var hours = Number(data.GressTime.Hours);
+
+    //            var minutes = Number(data.GressTime.Minutes);
+
+    //            var GressTimeOfEmployee = new Date(2024, 1, 1, hours, minutes);
+
+    //            var time = inputTime.split(':');
+
+    //            var hours1 = time[0];
+
+    //            var minutes1 = time[1];
+
+    //            var GivenTimeOfEmployee = new Date(2024, 1, 1, hours1, minutes1);
+
+    //            if (GivenTimeOfEmployee > GressTimeOfEmployee) {
+
+    //                alert("You are Late");
+
+    //                pointer.closest("tr").find("td #isLate").prop("checked", true);
+
+    //                //pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", true);
+
+    //            }
+    //            else {
+
+    //                //alert("You are in Time");
+
+    //                pointer.closest("tr").find("td #isLate").prop("checked", false);
+
+    //                //pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", false);
+    //            }
+
+    //        },
+
+    //        error:function (response) {
+    //                alert("Error: " + response);
+    //            }
+    //    });
+
+    //});
 
 
     var employeeDefaultHolidays = [];
@@ -212,7 +302,7 @@
         zombieTime1 = $("#TimeIn").val();
         alert(zombieTime1);
     }
-   
+
    function DepartmentsChange() {
         var Id = document.getElementById("ddlDepartment").value;
         $('#ddlEmployee').empty();
@@ -374,16 +464,16 @@
                         return n.Name;
                     });
                 var ddd = i + "/" + selected_month + "/" + current_year;
-              
+
                 //+ (_arrFilter.length != (j + 1) ? " " : "")
                 finTab += "<tr class='trEmployeeAttendance" + (_arrFilter.length > 0 ? " " + _class.join(" ") : "") + "'>";
 
                 //finTab += "<tr " + (_arrBetweenDates.indexOf(new Date(current_year, selected_month - 1, i).toDateString()) != -1 ? "name='" + _name + "'" : "") + ">";
                 finTab += "<td id=AttendanceDate>" + i + "/" + selected_month + "/" + current_year + "</td>";
-              
+
                 finTab += "<td id=Date><input id=TimeIn class=form-control type=time name=TimeIn required></td>";
-                finTab += "<td><input id=TimeOut class=form-control type=time name=TimeOut required></td>";              
-                  
+                finTab += "<td><input id=TimeOut class=form-control type=time name=TimeOut required></td>";
+
                 finTab += "<td id=IsPresent><input type='checkbox' id=IsPresent name=IsPresent></td>";
                 finTab += "<td id=IsAbsent><input class=spDays type='checkbox' id=IsAbsent name=IsAbsent></td>";
                 finTab += "<td id=IsLeave><input class=spDays type='checkbox' id=IsLeave name=IsLeave></td>";
@@ -412,7 +502,7 @@
 
                     finTab += "<td id='isHoliDay'><input class='spDays' type='checkbox' id='isHoliDay' name='isHoliDay' onclick='return false;'></td>";
                 }
-                
+
                 finTab += "<td id=HoliDay><input class=spDays type='textbox' disabled=disabled id=HoliDay name=HoliDay></td>";
                 finTab += "<td id=isHalfDay><input class=spDays type='checkbox' id=isHalfDay name=isHalfDay></td>";
                 finTab += "<td id=isLate><input class=spDays type='checkbox' id=isLate name=isLate onclick='return false;'></td>";
@@ -490,7 +580,7 @@
         }
 
     }
- 
+
     function InsertEmployeeAttendence() {
         debugger;
       //  var d = $("#AttendanceDate").datepicker('getDate');
@@ -500,8 +590,8 @@
 
 
         var Year = document.getElementById("AttendanceDate").innerHTML = new Date().getFullYear();
-       
-     
+
+
 
         var tm = $("#TimeIn").val();
         var EmployeeAttendances = [];
@@ -509,13 +599,13 @@
             $('#monData > tbody  > .trEmployeeAttendance').each(function () {
                 var _obj = {};
                // var currentTime = date.toISOString().substring(11, 16);
-                //var TimeIn = 
-                  
+                //var TimeIn =
+
 
 
                 _obj.Department = parseInt($("#ddlDepartment").val());
                 _obj.EmployeeId = parseInt($("#ddlEmployee").val());
-        
+
                 _obj.Month = $('#month').find('option:selected').text();//document.getElementById("month").value; //$(this).find('#month').val();
                 _obj.AttendanceDate = $(this).find('#AttendanceDate').text();
                // _obj.Date = new Date($(" #AttendanceDate").text());
@@ -535,7 +625,7 @@
                 _obj.Year = Year;
                 EmployeeAttendances.push(_obj);
             });
-            
+
             var data = JSON.stringify({ dataa: { EmployeeAttendances } });
 
             $.ajax({
