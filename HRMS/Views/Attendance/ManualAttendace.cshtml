@@ -32,6 +32,10 @@
         -ms-user-select: none; /* IE 10 and IE 11 */
         user-select: none; /* Standard syntax */
     }
+
+    #titleBar th{
+        white-space:nowrap;
+    }
 </style>
 
 <script type="text/javascript">
@@ -454,7 +458,7 @@
                     );
                 }
             }
-            var finTab = "<tr><th>Date</th><th>Time In</th><th>Time Out</th><th>Is Present</th><th> Is Absent</th><th>Is Leave</th><th>Leave Type</th><th>Is HoliDay</th><th>Holi Day</th><th>Is Half Day</th><th>Is Late</th><th>Is Early</th><th>Actions</th></tr> ";
+            var finTab = "<tr id='titleBar'><th>Date</th><th>Time In</th><th>Time Out</th><th>Is Present</th><th> Is Absent</th><th>Is Leave</th><th>Leave Type</th><th>Is HoliDay</th><th>Holi Day</th><th>Is Half Day</th><th>Is Late</th><th>Is Early</th><th>Actions</th></tr> ";
             var days_in_month = get_days_in_month(selected_month, current_year);
             for (i = 1; i <= days_in_month; i++) {
                 var _class;
@@ -506,8 +510,8 @@
                 finTab += "<td id=HoliDay><input class=spDays type='textbox' disabled=disabled id=HoliDay name=HoliDay></td>";
                 finTab += "<td id=isHalfDay><input class=spDays type='checkbox' id=isHalfDay name=isHalfDay></td>";
                 finTab += "<td id=isLate><input class=spDays type='checkbox' id=isLate name=isLate onclick='return false;'></td>";
-                finTab += "<td id=isEarly><input class=spDays type='checkbox' id=isEarly name=isEarly></td>";
-                finTab += "<td id=signin_><i class='fas fa-pen'></i><i class='fas fa-trash' style='margin - left: 18px;'></i></td>";
+                finTab += "<td id=isEarly><input class=spDays type='checkbox' id=isEarly name=isEarly onclick='return false;'></td>";
+                finTab += "<td id=signin_><i class='fas fa-pen'></i><i class='fas fa-trash' style='margin-left: 18px;'></i></td>";
                 finTab += "<tr>";
             }
             document.getElementById("monData").innerHTML = finTab;  // will push the string in the element.
@@ -679,9 +683,8 @@
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:../../partials/_settings-panel.html -->
-
             <div class="main-panel" style="width: 1500px; overflow: auto;">
-                <div class="content-wrapper" id="dt" style="width:1600px;">
+                <div class="content-wrapper" id="dt" style="width:1700px;">
                     <h2>Manual Attendace </h2>
                     <div class="row grid-margin">
                         <div class="col-lg-12">
