@@ -601,8 +601,6 @@
                // var currentTime = date.toISOString().substring(11, 16);
                 //var TimeIn =
 
-
-
                 _obj.Department = parseInt($("#ddlDepartment").val());
                 _obj.EmployeeId = parseInt($("#ddlEmployee").val());
 
@@ -682,9 +680,8 @@
         <div class="container-fluid page-body-wrapper">
             <!-- partial:../../partials/_settings-panel.html -->
 
-
-            <div class="main-panel">
-                <div class="content-wrapper" id="dt" style="width:1450px">
+            <div class="main-panel" style="width: 1500px; overflow: auto;">
+                <div class="content-wrapper" id="dt" style="width:1600px;">
                     <h2>Manual Attendace </h2>
                     <div class="row grid-margin">
                         <div class="col-lg-12">
@@ -696,12 +693,12 @@
                                         <fieldset>
                                             <div class="row">
                                                 @*<input type="time" id="zombieTimeInput" />
-            <button onclick="TimeIn();"> Check</button>*@
+                                                    <button onclick="TimeIn();"> Check</button>*@
                                                 @*<div class="form-group col-lg-3" id="Employeeddl" style="display:block">
-                <label for="cname">Employee Group</label>
-                @Html.DropDownList("EmployeeGroupDLL", new SelectList(ViewBag.EmployeeGroupDLL, "Id", "Name"), "--Select Employee Group--", new { @style = "color:black;", @class = "form-control", id = "ddlEmployeeGroup",name= "ddlEmployeeGroup" })
+                                                        <label for="cname">Employee Group</label>
+                                                        @Html.DropDownList("EmployeeGroupDLL", new SelectList(ViewBag.EmployeeGroupDLL, "Id", "Name"), "--Select Employee Group--", new { @style = "color:black;", @class = "form-control", id = "ddlEmployeeGroup",name= "ddlEmployeeGroup" })
 
-            </div>*@
+                                                    </div>*@
                                                 <div class="form-group col-lg-3" id="Departmentdiv" style="display:block">
                                                     <label for="cname">Department</label>
                                                     @Html.DropDownList("DepartmentDLL", new SelectList(ViewBag.DepartmentDLL, "Id", "Name"), "--Select Department--", new { @style = "color:black;", @class = "form-control", id = "ddlDepartment", name = "ddlDepartment", @onchange = "DepartmentsChange(this.value)" })
@@ -709,7 +706,7 @@
                                                 </div>
                                                 <div class="form-group col-lg-3" id="Employeediv" style="display:block">
                                                     <label for="cname">Employee</label>
-                                                    @Html.DropDownList("EmployeeDLL", new SelectList(ViewBag.EmployeeDLL, "Id", "FirstName"), "--Select Employee--", new { @style = "color:black;", @class = "form-control", id = "ddlEmployee", name = "ddlEmployee", onchange="getEmployeeHolidays(this.value)" })
+                                                    @Html.DropDownList("EmployeeDLL", new SelectList(ViewBag.EmployeeDLL, "Id", "FirstName"), "--Select Employee--", new { @style = "color:black;", @class = "form-control", id = "ddlEmployee", name = "ddlEmployee", onchange = "getEmployeeHolidays(this.value)" })
                                                     <input type="hidden" id="EmployeeId" name="EmployeeId" value="" />
                                                 </div>
                                                 <div class="form-group col-lg-3" id="month" style="display:block">
@@ -736,13 +733,13 @@
                                                 <div class="form-group col-lg-3">
 
                                                     @*<label for="cemail">Date From</label>
-                <input id="datefrom" class="form-control" type="date" onchange="DateChange()" name="date" required>*@
+                                                        <input id="datefrom" class="form-control" type="date" onchange="DateChange()" name="date" required>*@
                                                 </div>
 
                                                 @*<div class="form-group col-lg-3">
-                <label for="cemail">Date To</label>
-                <input id="dateto" class="form-control" onchange="chdate()" type="date" name="date" required>
-            </div>*@
+                                                        <label for="cemail">Date To</label>
+                                                        <input id="dateto" class="form-control" onchange="chdate()" type="date" name="date" required>
+                                                    </div>*@
 
                                             </div>
 
