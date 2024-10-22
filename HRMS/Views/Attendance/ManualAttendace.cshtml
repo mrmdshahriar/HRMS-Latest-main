@@ -35,6 +35,8 @@
 
     #titleBar th{
         white-space:nowrap;
+        background-color:blue;
+        color:white;
     }
 </style>
 
@@ -125,7 +127,7 @@
 
             alert("Sorry! You are Late");
 
-            pointer.closest("tr").find("td #isLate").prop("checked", true);
+            pointer.closest("tr").find("#isLate").prop("checked", true);
 
             //pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", true);
 
@@ -134,7 +136,7 @@
 
             //alert("You are in Time");
 
-            pointer.closest("tr").find("td #isLate").prop("checked", false);
+            pointer.closest("tr").find("#isLate").prop("checked", false);
 
             //pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", false);
         }
@@ -752,11 +754,6 @@
                                     </form>
                                     @*}*@
 
-
-
-
-
-
                                     <div align="right" style="display:none">
                                         <button onclick="onSigninClick()">Sign In</button>
                                         <button>Sign out</button>
@@ -781,14 +778,6 @@
                                                 <th>Actions</th>
                                             </tr>*@
                                     </table>
-
-
-
-
-
-
-
-
 
                                     <div class="row" style="margin-top: 30px;display:none">
                                         <div class="table-responsive">
