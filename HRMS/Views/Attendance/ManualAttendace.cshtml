@@ -97,6 +97,8 @@
 
         var GressTime = 0;
 
+        var HalfDay = 0;
+
         $(HrmEmployees).each(function (index, value) {
 
             if (EmpId == value.Id) {
@@ -110,6 +112,7 @@
             if (EmpShiftId == value.ShiftId) {
 
                 GressTime = value.GressTime;
+                HalfDay = value.HalfDay;
             }
         });
 
@@ -123,22 +126,35 @@
 
         var GivenTimeOfEmployee = new Date(2024, 1, 1, hours, minutes);
 
-        if (GivenTimeOfEmployee > GressTimeOfEmployee) {
 
-            alert("Sorry! You are Late");
+        var HalfDayTime = new Date(2024, 1, 1, HalfDay.Hours, HalfDay.Minutes);
 
-            pointer.closest("tr").find("#isLate").prop("checked", true);
+        if (GivenTimeOfEmployee > HalfDayTime) {
 
-            //pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", true);
+            alert("Half Day Counted!");
 
+            pointer.closest("tr").find("#isHalfDay").prop("checked", true);
+            pointer.closest("tr").find("#isLate").prop("checked", false);
         }
         else {
 
-            //alert("You are in Time");
+            pointer.closest("tr").find("#isHalfDay").prop("checked", false);
+        }
 
-            pointer.closest("tr").find("#isLate").prop("checked", false);
+        if (GivenTimeOfEmployee < HalfDayTime) {
 
-            //pointer.closest("tr").find("td:nth-child(11)").find("#isLate").prop("checked", false);
+            if (GivenTimeOfEmployee > GressTimeOfEmployee) {
+
+                alert("Sorry! You are Late");
+
+                pointer.closest("tr").find("#isLate").prop("checked", true);
+            }
+            else {
+
+                alert("You are in Time");
+
+                pointer.closest("tr").find("#isLate").prop("checked", false);
+            }
         }
     });
 
