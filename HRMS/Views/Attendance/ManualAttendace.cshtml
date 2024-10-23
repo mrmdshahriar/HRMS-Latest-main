@@ -272,12 +272,10 @@
         debugger;
 
         let _startTime = $(this).attr('id') == "TimeIn" ? $(this).val() : $(this).closest('tr').find("#TimeIn").val();
+
         let _endTime = $(this).attr('id') == "TimeOut" ? $(this).val() : $(this).closest('tr').find("#TimeOut").val();
+
         if (_startTime != "" && _endTime != "") {
-
-            //var x = document.getElementById("IsLeave");
-
-            //document.getElementById("IsLeave").disabled = true;
 
             CalculateTime(_startTime, _endTime, $(this));
         }
