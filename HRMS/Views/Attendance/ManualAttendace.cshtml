@@ -83,7 +83,7 @@
     }
 
 
-    $(document).on('change', "#TimeIn", function (e) {
+    $(document).on('change', "#TimeIn3333", function (e) {
 
         debugger;
 
@@ -268,19 +268,61 @@
             });
     }
 
-    $(document).on('change', '#TimeIn,#TimeOut', function () {
+    $(document).on('change', '#TimeOut', function () {
         debugger;
 
         let _startTime = $(this).attr('id') == "TimeIn" ? $(this).val() : $(this).closest('tr').find("#TimeIn").val();
         let _endTime = $(this).attr('id') == "TimeOut" ? $(this).val() : $(this).closest('tr').find("#TimeOut").val();
         if (_startTime != "" && _endTime != "") {
-            var x = document.getElementById("IsLeave");
 
-            document.getElementById("IsLeave").disabled = true;
+            //var x = document.getElementById("IsLeave");
+
+            //document.getElementById("IsLeave").disabled = true;
 
             CalculateTime(_startTime, _endTime, $(this));
         }
     });
+
+
+    function CalculateTime(_startTime, _endTime, _this) {
+        debugger;
+        var _thisRow = _this;
+        var _empId = $("#ddlEmployee").val();
+        if (_empId != "") {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                data: "{'EmpId':'" + _empId + "','StartTime':'" + _startTime + "',EndTime:'" + _endTime + "'}",
+                dataType: "json",
+                url: "/Attendance/CheckEmployeeTimeFacility",
+                success:
+                    function (response) {
+                        debugger;
+                        //Enabledcontrols();
+                        var responseData = jQuery.parseJSON(response);
+                        if (responseData) {
+                            if (responseData != null) {
+                                $(_thisRow).closest('tr').find("input#IsPresent").prop("checked", true);
+                                $(_thisRow).closest('tr').find("input#IsLeave").prop("checked", false);
+                                //$(_thisRow).closest('tr').find("input#isHalfDay").prop("checked", false);
+                                //$(_thisRow).closest('tr').find("input#isLate").prop("checked", false);
+                                //$(_thisRow).closest('tr').find("input#isEarly").prop("checked", false);
+
+                                $(_thisRow).closest('tr').find('.spDays').prop("checked", false);
+                                $(_thisRow).closest('tr').find('.spDays').prop("disabled", true);
+                                $(_thisRow).closest('tr').find("input#isLate").prop("checked", responseData.IsLate);
+                                $(_thisRow).closest('tr').find("input#isEarly").prop("checked", responseData.IsEarly);
+                                $(_thisRow).closest('tr').find("input#isHalfDay").prop("checked", responseData.IsHalfDay);
+                            }
+                        }
+                    },
+                error:
+                    function (response) {
+                    }
+            });
+        }
+
+    }
 
     function DepartmentChange() {
 
@@ -429,8 +471,8 @@
     // function to render the month table
     function getMonth(selected_month) {
         debugger;
-        var current_year = new Date().getFullYear() // current year
-        var selected_month = (parseInt(selected_month) + 1)  // selected month
+        var current_year = new Date().getFullYear(); // current year
+        var selected_month = (parseInt(selected_month) + 1);  // selected month
         if (!month)  // if month not selected alert user
             alert("Please select Month");
         else {
@@ -535,15 +577,26 @@
             document.getElementById("monData").innerHTML = finTab;  // will push the string in the element.
 
             debugger;
-            let _arrClasses = $.map(_arrManualAttendence, function (obj) { return obj.Name; });
-            for (var i = 0; i < _arrClasses.length; i++) {
-                let _trToBeDisabled = $('table').find('.' + _arrClasses[i]);
-                $(_trToBeDisabled).css('background-color', 'peachpuff');
-                $(_trToBeDisabled).find('input').attr('disabled', 'disabled');
-                $(_trToBeDisabled).find('input[name=' + _arrClasses[i] + ']').prop('checked', true);
-                if (_arrClasses[i] == "isOffDays")
-                    $(_trToBeDisabled).find('input[name=isHoliDay]').prop('checked', true);
 
+            let _arrClasses = $.map(_arrManualAttendence, function (obj) {
+
+                return obj.Name;
+            });
+
+            for (var i = 0; i < _arrClasses.length; i++) {
+
+            let _trToBeDisabled = $('table').find('.' + _arrClasses[i]);
+
+            $(_trToBeDisabled).css('background-color', 'peachpuff');
+
+            $(_trToBeDisabled).find('input').attr('disabled', 'disabled');
+
+            $(_trToBeDisabled).find('input[name=' + _arrClasses[i] + ']').prop('checked', true);
+
+            if (_arrClasses[i] == "isOffDays") {
+
+                $(_trToBeDisabled).find('input[name=isHoliDay]').prop('checked', true);
+            }
 
                 //if (_arrClasses[i] == 'IsLeave') {
                 //    let _arrLeaveRequest = _arrManualAttendence.filter(x => x.Name == _arrClasses[i]);
@@ -563,45 +616,6 @@
         }
     }
 
-    function CalculateTime(_startTime, _endTime, _this) {
-        debugger;
-        var _thisRow = _this;
-        var _empId = $("#ddlEmployee").val();
-        if (_empId != "") {
-            $.ajax({
-                type: "POST",
-                contentType: "application/json; charset=utf-8",
-                data: "{'EmpId':'" + _empId + "','StartTime':'" + _startTime + "',EndTime:'" + _endTime + "'}",
-                dataType: "json",
-                url: "/Attendance/CheckEmployeeTimeFacility",
-                success:
-                    function (response) {
-                        debugger;
-                        //Enabledcontrols();
-                        var responseData = jQuery.parseJSON(response);
-                        if (responseData) {
-                            if (responseData != null) {
-                                $(_thisRow).closest('tr').find("input#IsPresent").prop("checked", true);
-                                $(_thisRow).closest('tr').find("input#IsLeave").prop("checked", false);
-                                //$(_thisRow).closest('tr').find("input#isHalfDay").prop("checked", false);
-                                //$(_thisRow).closest('tr').find("input#isLate").prop("checked", false);
-                                //$(_thisRow).closest('tr').find("input#isEarly").prop("checked", false);
-
-                                $(_thisRow).closest('tr').find('.spDays').prop("checked", false);
-                                $(_thisRow).closest('tr').find('.spDays').prop("disabled", true);
-                                $(_thisRow).closest('tr').find("input#isLate").prop("checked", responseData.IsLate);
-                                $(_thisRow).closest('tr').find("input#isEarly").prop("checked", responseData.IsEarly);
-                                $(_thisRow).closest('tr').find("input#isHalfDay").prop("checked", responseData.IsHalfDay);
-                            }
-                        }
-                    },
-                error:
-                    function (response) {
-                    }
-            });
-        }
-
-    }
 
     function InsertEmployeeAttendence() {
         debugger;
