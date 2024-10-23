@@ -469,6 +469,14 @@
     // function to render the month table
     function getMonth(selected_month) {
         debugger;
+
+        var EmpId = $("#ddlEmployee").val();
+
+        var empObj = HrmEmployees.filter(x => x.Id == EmpId);
+
+        var shiftId = empObj[0].ShiftId;
+
+
         var current_year = new Date().getFullYear(); // current year
         var selected_month = (parseInt(selected_month) + 1);  // selected month
         if (!month)  // if month not selected alert user
@@ -481,7 +489,10 @@
                     var getTot = daysInMonth(selected_month, current_year);
                     if (_arrManualAttendence[i].ArrEmployeeHolidays != null) {
 
-                    var _arr = _arrManualAttendence[i].ArrEmployeeHolidays[0];
+                        /*var _arr = _arrManualAttendence[i].ArrEmployeeHolidays[0];*/
+
+                        var _arr = _arrManualAttendence[i].ArrEmployeeHolidays.filter(x => x.ShiftId == shiftId)[0];
+
                     for (var i = 1; i <= getTot; i++) {    //looping through days in month
                         var newDate = new Date(current_year, selected_month -1, i)
                         if (_arr.IsSunday) {
@@ -541,7 +552,6 @@
                 finTab += "<td id=IsLeave><input class=spDays type='checkbox' id=IsLeave name=IsLeave></td>";
                 finTab += "<td id=LeaveType><input  class=spDays type='textbox' disabled=disabled id=LeaveType name=LeaveType></td>";
 
-                debugger;
 
                 var currentDate = new Date(current_year, selected_month - 1, i);
 
