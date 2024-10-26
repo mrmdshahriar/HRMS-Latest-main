@@ -268,7 +268,7 @@
             });
     }
 
-    $(document).on('change', '#TimeOut', function () {
+    $(document).on('change', '#TimeIn,#TimeOut', function () {
         debugger;
 
         let _startTime = $(this).attr('id') == "TimeIn" ? $(this).val() : $(this).closest('tr').find("#TimeIn").val();
