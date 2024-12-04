@@ -633,10 +633,9 @@
         //date1 = $("input").datepicker({ dateFormat: 'dd, mm, yy' });
         //var date = $("#AttendanceDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
 
+        /*var Year = document.getElementById("AttendanceDate").innerHTML = new Date().getFullYear();*/
 
-        var Year = document.getElementById("AttendanceDate").innerHTML = new Date().getFullYear();
-
-
+        var Year = new Date().getFullYear();
 
         var tm = $("#TimeIn").val();
         var EmployeeAttendances = [];
@@ -684,12 +683,14 @@
                     if (response == true) {
                         $("#table-information tbody").empty();
                         Swal.fire({
-                            icon: 'Success',
+                            title: "Success!",
+                            icon: 'success',
                             text: "Data Has been saved Successfully"
                         });
                     }
                     else {
                         Swal.fire({
+                            title: "Warning!",
                             icon: 'warning',
                             text: "SomeThing went Wrong!!!!!"
                         });
@@ -697,12 +698,14 @@
                 },
                 failure: function (response) {
                     Swal.fire({
+                        title: "Warning!",
                         icon: 'warning',
                         text: "SomeThing went Wrong!!!!!"
                     });
                 },
                 error: function (response) {
                     Swal.fire({
+                        title: "Warning!",
                         icon: 'warning',
                         text: "SomeThing went Wrong!!!!!"
                     });
@@ -711,6 +714,7 @@
         }
         else {
             Swal.fire({
+                title: "Warning!",
                 icon: 'error',
                 text: "Noting to Save"
             });
