@@ -637,8 +637,10 @@
 
         var Year = new Date().getFullYear();
 
-        var tm = $("#TimeIn").val();
+        //var tm = $("#TimeIn").val();
+
         var EmployeeAttendances = [];
+
         if ($('#monData > tbody  > .trEmployeeAttendance').length > 0) {
             $('#monData > tbody  > .trEmployeeAttendance').each(function () {
                 var _obj = {};
@@ -665,6 +667,7 @@
                 _obj.IsLate = $(this).find('td #isLate').is(":checked");
                 _obj.IsEarly = $(this).find('td #isEarly').is(":checked");
                 _obj.Year = Year;
+
                 EmployeeAttendances.push(_obj);
             });
 
@@ -679,34 +682,38 @@
                 url: "/Attendance/AddAttendance",
 
                 success: function (response) {
+                    debugger;
 
-                    if (response == true) {
+                    if (response.StatusCode == 200) {
                         $("#table-information tbody").empty();
                         Swal.fire({
                             title: "Success!",
                             icon: 'success',
-                            text: "Data Has been saved Successfully"
+                            text: response.StatusMessage
                         });
                     }
-                    else {
+
+                    if (response.StatusCode == 203) {
                         Swal.fire({
                             title: "Warning!",
                             icon: 'warning',
-                            text: "SomeThing went Wrong!!!!!"
+                            text: response.StatusMessage
+                        });
+                    }
+
+                    if (response.StatusCode == 500) {
+                        Swal.fire({
+                            title: "Error!",
+                            icon: 'error',
+                            text: response.StatusMessage
                         });
                     }
                 },
-                failure: function (response) {
-                    Swal.fire({
-                        title: "Warning!",
-                        icon: 'warning',
-                        text: "SomeThing went Wrong!!!!!"
-                    });
-                },
+
                 error: function (response) {
                     Swal.fire({
-                        title: "Warning!",
-                        icon: 'warning',
+                        title: "Error!",
+                        icon: 'error',
                         text: "SomeThing went Wrong!!!!!"
                     });
                 }
@@ -718,7 +725,8 @@
                 icon: 'error',
                 text: "Noting to Save"
             });
-            return false;
+
+        return false;
         }
     }
 </script>

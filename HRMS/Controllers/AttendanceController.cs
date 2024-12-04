@@ -151,7 +151,8 @@ namespace HRMS.Controllers
         public JsonResult AddAttendance(EmployeeModel dataa)
         {
             Response _objRes = _objBLAttendance.AddAttendance(dataa);
-            return Json(_objRes.StatusCode == 200 ? true : false);
+            //return Json(_objRes.StatusCode == 200 ? true : false);
+            return Json(_objRes, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

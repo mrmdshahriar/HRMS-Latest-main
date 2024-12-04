@@ -95,6 +95,18 @@ namespace TalenBAL.BAL
         public Response AddAttendance(EmployeeModel dataa)
         {
             Response _objRes = new Response();
+
+            var obj = dataa.EmployeeAttendances.FirstOrDefault();
+
+            var dataExists = db.Attendances.Where(x => x.EmployeeId == obj.EmployeeId && x.Month == obj.Month && x.Year == obj.Year).FirstOrDefault();
+
+            if(dataExists != null)
+            {
+                _objRes.StatusCode = 203;
+                _objRes.StatusMessage = "This Employee Has Saved Data For Month " + obj.Month;
+                return _objRes;
+            }
+
             List<Attendance> attendanceList = new List<Attendance>();
             try
             {
@@ -108,9 +120,9 @@ namespace TalenBAL.BAL
                             attendanceList.Add(new Attendance
                             {
                                 
-                                 EmployeeId = x.EmployeeId,
+                                EmployeeId = x.EmployeeId,
                                 IsPresent = x.IsPresent,
-                                 Date = x.AttendanceDate,
+                                Date = x.AttendanceDate,
                                 AttendanceDate = x.AttendanceDate,
                                 //Date = dateTime,//Convert.ToDateTime(x.AttendanceDate), //== DateTime.MinValue ? (DateTime?)null : x.Date,
                                 // just convert date from strng to date
@@ -135,7 +147,7 @@ namespace TalenBAL.BAL
                             db.SaveChanges();
 
                             _objRes.StatusCode = 200;
-                            _objRes.StatusMessage = "Monthly attendance has been saved successfully.";
+                            _objRes.StatusMessage = "Monthly Attendance Saved Successfully.";
                         }
                     }
                 }
