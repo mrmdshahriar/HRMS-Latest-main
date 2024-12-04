@@ -25,20 +25,14 @@ namespace HRMS.Controllers
             Session["UserId"] = form["Userid"];
             
             if (ObjBAL.UserLogin(UserId,Password) == true)
-            {
-                
+            {        
                 return RedirectToAction("Dashboard", "Home");
-
             }
             else
             {
                 TempData["IsLogin"] = "Faild";
                 return RedirectToAction("Index", "Home");
-
-
             }
-
-
         }
         public ActionResult Dashboard()
         {
