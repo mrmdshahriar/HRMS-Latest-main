@@ -646,7 +646,7 @@
                 var _obj = {};
                // var currentTime = date.toISOString().substring(11, 16);
                 //var TimeIn =
-
+                debugger;
                 _obj.Department = parseInt($("#ddlDepartment").val());
                 _obj.EmployeeId = parseInt($("#ddlEmployee").val());
 
@@ -654,8 +654,16 @@
                 _obj.AttendanceDate = $(this).find('#AttendanceDate').text();
                // _obj.Date = new Date($(" #AttendanceDate").text());
 
-                _obj.TimeIn = $(this).find('td #TimeIn').val();// document.getElementById("TimeIn").value;// $(this).find('#TimeIn').text().trim();
-                _obj.TimeOut = $(this).find('td #TimeOut').val();//document.getElementById("TimeOut").value;// $(this).find('#TimeOut').text().trim();
+                //_obj.TimeIn = $(this).find('td #TimeIn').val();// document.getElementById("TimeIn").value;// $(this).find('#TimeIn').text().trim();
+                //_obj.TimeOut = $(this).find('td #TimeOut').val();//document.getElementById("TimeOut").value;// $(this).find('#TimeOut').text().trim();
+
+                var day = _obj.AttendanceDate.split('/')[0];
+                var month = _obj.AttendanceDate.split('/')[1];
+                var year = _obj.AttendanceDate.split('/')[2];
+
+                _obj.TimeIn = year + "-" + month + "-" + day + " " + $(this).find('td #TimeIn').val();
+
+                _obj.TimeOut = year + "-" + month + "-" + day + " " + $(this).find('td #TimeOut').val();
 
                 _obj.IsPresent = $(this).find('td #IsPresent').is(":checked");
                 _obj.IsAbsent = $(this).find('td #IsAbsent').is(":checked");
