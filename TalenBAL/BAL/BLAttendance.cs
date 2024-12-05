@@ -155,7 +155,7 @@ namespace TalenBAL.BAL
             catch (Exception ex)
             {
                 _objRes.StatusCode = 500;
-                _objRes.StatusMessage = "Something went wrong, please contact technical team!";
+                _objRes.StatusMessage = "Error : " + ex.Message;
             }
             return _objRes;
         }
