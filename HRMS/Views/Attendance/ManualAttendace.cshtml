@@ -661,9 +661,27 @@
                 var month = _obj.AttendanceDate.split('/')[1];
                 var year = _obj.AttendanceDate.split('/')[2];
 
-                _obj.TimeIn = year + "-" + month + "-" + day + " " + $(this).find('td #TimeIn').val();
+                var timeInvalue = $(this).find('td #TimeIn').val();
 
-                _obj.TimeOut = year + "-" + month + "-" + day + " " + $(this).find('td #TimeOut').val();
+                if (timeInvalue == "") {
+
+                    _obj.TimeIn = "";
+                }
+                else {
+
+                    _obj.TimeIn = year + "-" + month + "-" + day + " " + $(this).find('td #TimeIn').val();
+                }
+
+                var timeOutvalue = $(this).find('td #TimeOut').val();
+
+                if (timeOutvalue == "") {
+
+                    _obj.TimeOut = "";
+                }
+                else {
+
+                    _obj.TimeOut = year + "-" + month + "-" + day + " " + $(this).find('td #TimeOut').val();
+                }
 
                 _obj.IsPresent = $(this).find('td #IsPresent').is(":checked");
                 _obj.IsAbsent = $(this).find('td #IsAbsent').is(":checked");
