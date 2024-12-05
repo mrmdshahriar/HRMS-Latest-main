@@ -628,6 +628,35 @@
 
     function InsertEmployeeAttendence() {
         debugger;
+
+        if ($('#monData > tbody  > .trEmployeeAttendance').length > 0) {
+
+            var bools = false;
+
+            $('#monData > tbody  > .trEmployeeAttendance').each(function () {
+
+                var TimeIn = $(this).find('td #TimeIn').val();
+
+                var TimeOut = $(this).find('td #TimeOut').val();
+
+                if (TimeIn != "" && TimeOut != "") {
+
+                    bools = true;
+                }
+            });
+
+            if (bools == false) {
+
+                Swal.fire({
+                    title: "Warning!",
+                    icon: 'warning',
+                    text: "Please Insert At Least One Data"
+                });
+
+                return false;
+            }
+        }
+
       //  var d = $("#AttendanceDate").datepicker('getDate');
         //var date1 = $("#AttendanceDate").val();
         //date1 = $("input").datepicker({ dateFormat: 'dd, mm, yy' });
